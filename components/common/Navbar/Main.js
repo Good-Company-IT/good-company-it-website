@@ -1,249 +1,464 @@
-'use client'
+"use client";
 
-//Functional imports
 import Image from "next/image";
 import Link from "next/link";
-import { useTranslation } from "next-i18next";
-import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useWindowDimensions } from "@/utils/screen-measure/getWindowDimensions";
 import { usePathname } from "next/navigation";
 
-//Vercel
-import { track } from '@vercel/analytics'
-
-//Icons
 import { IoMdMenu } from "react-icons/io";
-import { MdInsertChartOutlined } from "react-icons/md";
-import { FaRegUserCircle } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
-import { MdKeyboardArrowRight } from "react-icons/md";
-import { FaArrowRight } from "react-icons/fa";
 
-//Logo
-import logo from "@/public/imgs/logo.png";
+import logo from "@/public/logo.svg";
+import { Button } from "../Buttons/Button";
 
-//Components
-import Dropdown from "./Dropdown";
-import LanguageChanger from "./LanguageChanger";
-
-function Navbar({ locale }) {
-  const { t } = useTranslation();
+function Navbar() {
   const [isTop, setIsTop] = useState(true);
-  const [isNavbarShort, setIsNavbarShort] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const scrollThreshold = 50;
-      setIsTop(scrollTop <= scrollThreshold);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  const { width } = useWindowDimensions()
-
-  // Checks if navbar is too wide for the screen
-  useEffect(() => {
-    if (width < 1515 && width > 1183) {
-      setIsNavbarShort(true)
-    } else {
-      setIsNavbarShort(false)
-    }
-  }, [width])
-
-  const [currentNavState, setCurrentNavState] = useState("");
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const path = usePathname();
+  const { width } = useWindowDimensions();
+  const navRef = useRef(null);
+  const isInView = useInView(navRef, { once: true, threshold: 0.1 });
 
-  const [isCouldBeWorse, setIsCouldBeWorse] = useState(currentNavState == 'could-be-worse' ? true : false);
-
-  const [pathname, setPathname] = useState(usePathname());
-  const path = usePathname()
-
-  useEffect(() => {
-    const segments = pathname.split('/').filter(Boolean);
-    if (segments[1] === 'could-be-worse') {
-      setCurrentNavState('could-be-worse');
-    }
-  }, []);
-
-  useEffect(() => {
-    if (currentNavState === 'could-be-worse') {
-      setIsCouldBeWorse(true)
-    } else {
-      setIsCouldBeWorse(false)
-    }
-  }, [currentNavState]);
-
-  const handleMenuToggle = () => {
-    setMobileMenuIsOpen(!mobileMenuIsOpen);
+  const linksStyle = {
+    desktop: `text-white hover:text-primary-orange cursor-pointer font-normal py-2 transition-all duration-200 flex items-center gap-1`,
+    mobile: `text-text-dark cursor-pointer font-normal px-4 py-3 text-lg hover:text-black hover:bg-gray-50 transition-all duration-200 rounded-md block w-full text-left`,
   };
 
-  const handleCloseMenu = () => {
+  // Navigation data structure
+  const navigationItems = [
+    {
+      label: "IT Services",
+      hasDropdown: true,
+      dropdownItems: [
+        { label: "Web Development", href: "/services/web-development" },
+        { label: "Mobile Apps", href: "/services/mobile-apps" },
+        { label: "Cloud Solutions", href: "/services/cloud" },
+        { label: "Cybersecurity", href: "/services/security" },
+        { label: "IT Consulting", href: "/services/consulting" },
+      ]
+    },
+    {
+      label: "Blog",
+      hasDropdown: true,
+      dropdownItems: [
+        { label: "Case Studies", href: "/clients/case-studies" },
+        { label: "Testimonials", href: "/clients/testimonials" },
+        { label: "Success Stories", href: "/clients/success-stories" },
+        { label: "Client Portal", href: "/clients/portal" },
+      ]
+    },
+    {
+      label: "About Us",
+      hasDropdown: true,
+      dropdownItems: [
+        { label: "Our Story", href: "/about/story" },
+        { label: "Team", href: "/about/team" },
+        { label: "Careers", href: "/about/careers" },
+        { label: "Contact", href: "/about/contact" },
+      ]
+    },
+    {
+      label: "Community Work",
+      hasDropdown: true,
+      dropdownItems: [
+        { label: "Local Initiatives", href: "/community/initiatives" },
+        { label: "Partnerships", href: "/community/partnerships" },
+        { label: "Volunteer Programs", href: "/community/volunteer" },
+        { label: "Events", href: "/community/events" },
+      ]
+    }
+  ];
+
+  const handleDropdownToggle = (index) => {
+    setActiveDropdown(activeDropdown === index ? null : index);
+  };
+
+  const handleCloseMenus = () => {
+    setActiveDropdown(null);
     setMobileMenuIsOpen(false);
   };
 
-  const linksStyle = {
-    desktop: `text-gray-700 hover:text-black cursor-pointer font-medium px-4 py-2 transition-all duration-200 rounded-md hover:bg-gray-100`,
-    mobile: "text-gray-700 cursor-pointer font-medium px-4 py-3 text-lg hover:text-black hover:bg-gray-50 transition-all duration-200 rounded-md block w-full text-left",
-    selected: "text-black cursor-pointer font-semibold px-4 py-2 bg-gray-100 rounded-md transition-all duration-200"
+  useEffect(() => {
+    const handleScroll = () => setIsTop(window.scrollY <= 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoaded(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (navRef.current && !navRef.current.contains(event.target)) {
+        setActiveDropdown(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
+  const handleMenuToggle = () => setMobileMenuIsOpen(!mobileMenuIsOpen);
+  const handleCloseMenu = () => setMobileMenuIsOpen(false);
+
+  // Animation variants
+  const navContainerVariants = {
+    hidden: {
+      opacity: 0,
+      y: -50
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 1.2,
+        delay: 0.1,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        staggerChildren: 0.15,
+        delayChildren: 0.4
+      }
+    }
   };
 
+  const logoVariants = {
+    hidden: {
+      opacity: 0,
+      y: -60,
+      scale: 0.8,
+      rotate: -5
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 1,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
 
+  const navLinksVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.4,
+        staggerChildren: 0.2,
+        delayChildren: 0.2,
+        ease: [0.25, 0.46, 0.45, 0.94]
+      }
+    }
+  };
 
+  const linkVariants = {
+    hidden: {
+      opacity: 0,
+      y: -40,
+      scale: 0.9,
+      rotate: -3
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 0.8,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 120,
+        damping: 12
+      }
+    }
+  };
+
+  const mobileButtonVariants = {
+    hidden: {
+      opacity: 0,
+      y: -50,
+      scale: 0.8,
+      rotate: 5
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 1,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 100,
+        damping: 15
+      }
+    }
+  };
+
+  const dropdownVariants = {
+    hidden: {
+      opacity: 0,
+      y: -20,
+      scale: 0.9
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.4,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 150,
+        damping: 15,
+        staggerChildren: 0.08,
+        delayChildren: 0.1
+      }
+    },
+    exit: {
+      opacity: 0,
+      y: -15,
+      scale: 0.95,
+      transition: {
+        duration: 0.2,
+        ease: [0.4, 0.0, 1, 1]
+      }
+    }
+  };
+
+  const dropdownItemVariants = {
+    hidden: {
+      opacity: 0,
+      y: -15,
+      x: -5
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 200,
+        damping: 20
+      }
+    }
+  };
 
   return (
     <>
-      <nav
-        className={`${isTop ? 'bg-white shadow-sm' : 'bg-white/95 backdrop-blur-sm shadow-md'} transition-all duration-300 ease-in-out fixed top-0 w-full z-50 border-b border-gray-200`}
+      <motion.nav
+        ref={navRef}
+        className="fixed top-0 w-full h-16 md:h-20 z-50 text-white bg-black"
+        variants={navContainerVariants}
+        initial="hidden"
+        animate={isLoaded ? "visible" : "hidden"}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            {/* Logo */}
-            <div className="flex items-center">
-              <Link href={`https://www.zeenti.com/${locale}`} onClick={() => setCurrentNavState('')} alt="Home">
-                <Image
-                  src={isCouldBeWorse && isTop ? logoBlack : logo}
-                  priority={true}
-                  alt="toptier_logo"
-                  className="object-contain h-8 w-auto sm:h-10"
-                />
-              </Link>
-            </div>
+        <div className="max-w-[1440px] mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <motion.div variants={logoVariants}>
+            <Link href="/">
+              <Image src={logo} alt="Good Company Logo" className="h-10 md:h-12 w-auto" />
+            </Link>
+          </motion.div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden lg:flex items-center space-x-1">
-
-              <Link
-                href={`https://www.zeenti.com/${locale}/about`}
-                className={
-                  currentNavState === "about"
-                    ? linksStyle.selected
-                    : linksStyle.desktop
-                }
-                onClick={() => setCurrentNavState("about")}
+          {/* Desktop Navigation */}
+          <motion.div
+            className="hidden lg:flex items-center gap-8"
+            variants={navLinksVariants}
+          >
+            {navigationItems.map((item, index) => (
+              <motion.div
+                key={item.label}
+                className="relative"
+                variants={linkVariants}
               >
-                {t("navbar:about")}
-              </Link>
+                <motion.button
+                  onClick={() => handleDropdownToggle(index)}
+                  className={linksStyle.desktop}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  {item.label}
+                  <motion.svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    animate={{ rotate: activeDropdown === index ? 180 : 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </motion.svg>
+                </motion.button>
 
-              <Link
-                href={`https://www.zeenti.com/${locale}/contact`}
-                className={
-                  currentNavState === "contact"
-                    ? linksStyle.selected
-                    : linksStyle.desktop
-                }
-                onClick={() => setCurrentNavState("contact")}
-              >
-                {t("navbar:contact")}
-              </Link>
+                <AnimatePresence>
+                  {activeDropdown === index && (
+                    <motion.div
+                      className="absolute top-full left-0 w-72 bg-black/95 backdrop-blur-md text-white mt-2 rounded-lg shadow-xl z-50 border border-white/10"
+                      variants={dropdownVariants}
+                      initial="hidden"
+                      animate="visible"
+                      exit="exit"
+                    >
+                      {item.dropdownItems.map((dropdownItem, idx) => (
+                        <motion.div key={dropdownItem.href} variants={dropdownItemVariants}>
+                          <Link
+                            href={dropdownItem.href}
+                            onClick={handleCloseMenus}
+                            className="block px-5 py-3 text-base hover:bg-orange-500/20 hover:text-primary-orange transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
+                          >
+                            {dropdownItem.label}
+                          </Link>
+                        </motion.div>
+                      ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
 
-              <Link
-                href={`./blog`}
-                className={
-                  currentNavState === "blog"
-                    ? linksStyle.selected
-                    : linksStyle.desktop
-                }
-                onClick={() => setCurrentNavState("blog")}
-              >
-                {t("navbar:blog")}
-              </Link>
+            {/* CTA Button */}
+            <motion.div variants={linkVariants}>
+              <Button appearance="primary">
+                Secure Your Business
+              </Button>
+            </motion.div>
+          </motion.div>
 
-            </div>
-
-            {/* Right side buttons */}
-            <div className="flex items-center space-x-4">
-              {/* Language Changer - Hidden on mobile */}
-              <div className="hidden md:block">
-                <LanguageChanger isTop={isTop} isCouldBeWorse={isCouldBeWorse} />
-              </div>
-
-
-              {/* Get Started Button */}
-              <Link
-                href="https://www.zeenti.com/free-quote"
-                target="_blank"
-                className="bg-black hover:bg-gray-800 text-white px-4 py-2 rounded-lg transition-all duration-200 flex items-center"
-                onClick={() => track('Navbar - Get Started')}
-              >
-                <span className="text-sm font-medium">{t("navbar:started")}</span>
-                <FaArrowRight className="w-3 h-3 ml-2" />
-              </Link>
-
-              {/* Mobile Menu Button */}
-              <motion.button
-                onClick={handleMenuToggle}
-                whileTap={{ scale: 0.95 }}
-                className="lg:hidden p-2 rounded-md text-gray-700 hover:text-black hover:bg-gray-100 transition-colors duration-200"
+          {/* Mobile Menu Toggle */}
+          <motion.button
+            onClick={handleMenuToggle}
+            className="lg:hidden"
+            variants={mobileButtonVariants}
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.9 }}
+            transition={{ duration: 0.2 }}
+          >
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={mobileMenuIsOpen ? "close" : "menu"}
+                initial={{ opacity: 0, rotate: -90 }}
+                animate={{ opacity: 1, rotate: 0 }}
+                exit={{ opacity: 0, rotate: 90 }}
+                transition={{ duration: 0.2 }}
               >
                 {mobileMenuIsOpen ? (
                   <IoClose className="w-6 h-6" />
                 ) : (
                   <IoMdMenu className="w-6 h-6" />
                 )}
-              </motion.button>
-            </div>
-          </div>
+              </motion.div>
+            </AnimatePresence>
+          </motion.button>
         </div>
-      </nav>
+      </motion.nav>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {mobileMenuIsOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.2 }}
-            className="lg:hidden fixed top-16 left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-40"
+            initial={{ opacity: 0, y: -30, scale: 0.9 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{
+              duration: 0.4,
+              ease: [0.34, 1.56, 0.64, 1],
+              type: "spring",
+              stiffness: 150,
+              damping: 18
+            }}
+            className="lg:hidden fixed top-16 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 max-h-screen overflow-y-auto"
           >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-2">
-              {/* Mobile Language Changer */}
-              <div className="py-2 border-b border-gray-100">
-                <LanguageChanger isTop={isTop} isCouldBeWorse={isCouldBeWorse} />
-              </div>
-
-              {/* Mobile Dropdowns */}
-
-
-              {/* Mobile Links */}
-              <div className="space-y-1 border-t border-gray-100 pt-2">
-
-                <Link
-                  href={`https://www.zeenti.com/${locale}/about`}
-                  className="flex items-center justify-between p-3 rounded-md hover:bg-gray-50 transition-colors duration-200"
-                  onClick={handleCloseMenu}
+            <motion.div
+              className="px-6 py-4 space-y-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                delay: 0.1,
+                duration: 0.3,
+                staggerChildren: 0.12,
+                delayChildren: 0.2
+              }}
+            >
+              {navigationItems.map((item, index) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, y: -25, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  transition={{
+                    delay: 0.32 + (index * 0.1),
+                    duration: 0.6,
+                    ease: [0.34, 1.56, 0.64, 1],
+                    type: "spring",
+                    stiffness: 180,
+                    damping: 18
+                  }}
                 >
-                  <span className="text-gray-700 font-medium">{t("navbar:about")}</span>
-                  <MdKeyboardArrowRight className="w-5 h-5 text-gray-400" />
-                </Link>
+                  <p className="text-gray-500 uppercase text-xs mb-2 font-semibold">
+                    {item.label}
+                  </p>
+                  {item.dropdownItems.map((dropdownItem, idx) => (
+                    <motion.div
+                      key={dropdownItem.href}
+                      initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
+                      transition={{
+                        delay: 0.44 + (index * 0.1) + (idx * 0.05),
+                        duration: 0.5,
+                        ease: [0.34, 1.56, 0.64, 1],
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 20
+                      }}
+                    >
+                      <Link
+                        href={dropdownItem.href}
+                        className={linksStyle.mobile}
+                        onClick={handleCloseMenu}
+                      >
+                        {dropdownItem.label}
+                      </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+              ))}
 
-                <Link
-                  href={`https://www.zeenti.com/${locale}/contact`}
-                  className="flex items-center justify-between p-3 rounded-md hover:bg-gray-50 transition-colors duration-200"
-                  onClick={handleCloseMenu}
-                >
-                  <span className="text-gray-700 font-medium">{t("navbar:contact")}</span>
-                  <MdKeyboardArrowRight className="w-5 h-5 text-gray-400" />
-                </Link>
+              {/* Mobile CTA */}
+              <motion.div
+                initial={{ opacity: 0, y: -25, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{
+                  delay: 1.2,
+                  duration: 0.6,
+                  ease: [0.34, 1.56, 0.64, 1],
+                  type: "spring",
+                  stiffness: 180,
+                  damping: 18
+                }}
+                className="pt-4 flex justify-center"
+              >
+                <Button appearance="primary">Secure Your Business</Button>
+              </motion.div>
 
-                <Link
-                  href={`./blog`}
-                  className="flex items-center justify-between p-3 rounded-md hover:bg-gray-50 transition-colors duration-200"
-                  onClick={handleCloseMenu}
-                >
-                  <span className="text-gray-700 font-medium">{t("navbar:blog")}</span>
-                  <MdKeyboardArrowRight className="w-5 h-5 text-gray-400" />
-                </Link>
-
-
-              </div>
-            </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>

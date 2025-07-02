@@ -15,6 +15,9 @@ module.exports = {
         'cta-text': '1.125rem', // 18px
       },
       colors: {
+        'primary-orange': '#FF4E00',
+        'secondary-orange': '#FF723F',
+        'text-dark': '#1A1A1A',
 
         'title-h1': '#000000',
         'title-h2': '#000000',
