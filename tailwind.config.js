@@ -22,7 +22,7 @@ module.exports = {
         'title-h1': '#000000',
         'title-h2': '#000000',
         'description-dark': '#000000',
-        'description-light':'#000000',
+        'description-light': '#000000',
 
 
         'background': '#000000',
@@ -44,6 +44,18 @@ module.exports = {
         'secondary-cta-text-hover': '#FFFFFF',
         'secondary-cta-text-disabled': '#FFFFFF',
 
+      },
+      backgroundImage: {
+        'gradient-light-orange': 'linear-gradient(169deg, #21024D 0%, #601436 19%, #AA2A1D 50%, #FF4300 75%, #FF8C62 94%)',
+        'gradient-outline': 'linear-gradient(-113deg, #DBDDFB 0%, #555886 35%, #DBDDFB 99%)',
+        'gradient-cards': 'linear-gradient(90deg, #FFFFFF 3%, #040B59 52%, #010425 100%)',
+        'gradient-blue-1': 'linear-gradient(90deg, #040B59 0%, #024893 39%, #0094DC 58%, #00B2F9 79%, #91E0FF 95%)',
+        'gradient-gray-3': 'linear-gradient(90deg, #FFFFFF 0%, #999999 100%)',
+        'gradient-outline-4': 'linear-gradient(90deg, #DBDDFB 0%, #555886 35%, #DBDDFB 99%)',
+        'gradient-radial-blue': 'radial-gradient(circle, #00B2F9 0%, #00AEF5 7%, #0088CD 11%, #0066AB 15%, #00498D 19%, #003174 24%, #001F62 30%, #001254 36%, #000B4D 45%, #01094B 61%, #000000 100%)',
+      },
+      animation: {
+        'scroll-left': 'scroll-left 40s linear infinite',
       },
     },
   },

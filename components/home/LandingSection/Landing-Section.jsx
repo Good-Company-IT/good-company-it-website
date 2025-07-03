@@ -1,214 +1,258 @@
-import Link from "next/link"
-import Image from "next/image"
-import { motion } from "framer-motion"
-import { useState, useEffect } from "react"
+"use client";
 
-function LandingSection({ locale, translations }) {
+import Image from "next/image";
+import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import { motion, useInView } from "framer-motion";
+
+// You can replace this with your actual logo import
+import logoImage from "@/public/isotype.svg"; // Replace with your actual logo path
+import { Button } from "@/components/common/Buttons/Button";
+import TestimonialCarousel from "./TestimonialCarrousel";
+
+function LandingSection() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    setIsLoaded(true);
+    const timer = setTimeout(() => setIsLoaded(true), 300);
+    return () => clearTimeout(timer);
   }, []);
 
-  const mainLang = locale?.split('-')[0] || 'en';
-
-  // Animation variants
+  // Animation variants for the container
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1
+        duration: 0.8,
+        ease: [0.25, 0.46, 0.45, 0.94],
+        staggerChildren: 0.3,
+        delayChildren: 0.2
       }
     }
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  // Animation variants for text elements
+  const textVariants = {
+    hidden: {
+      opacity: 0,
+      y: 50,
+      scale: 0.9
+    },
     visible: {
       opacity: 1,
       y: 0,
-      transition: {
-        duration: 0.8,
-        ease: "easeOut"
-      }
-    }
-  };
-
-  const logoVariants = {
-    hidden: { opacity: 0, scale: 0.8 },
-    visible: {
-      opacity: 1,
       scale: 1,
       transition: {
-        duration: 0.6,
-        ease: "easeOut"
+        duration: 1,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 100,
+        damping: 15
       }
     }
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 50 },
+  // Animation variants for the main heading
+  const headingVariants = {
+    hidden: {
+      opacity: 0,
+      y: 60,
+      scale: 0.8
+    },
     visible: {
       opacity: 1,
       y: 0,
+      scale: 1,
       transition: {
-        duration: 0.8,
-        ease: "easeOut"
+        duration: 1.2,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 80,
+        damping: 15
       }
     }
   };
 
-  // Fallback translations if not provided
-  const defaultTranslations = {
-    titleOne: "Start with",
-    titleTwo: "digital excellence",
-    description: "Consulting that helps you transform and thrive better, delivered as promised in as fast as a week.",
-    cta: "Get Started",
-    webDevelopment: "Web Development",
-    mobileApps: "Mobile Apps",
-    digitalStrategy: "Digital Strategy",
-    cloudSolutions: "Cloud Solutions",
-    projectsDelivered: "Projects Delivered",
-    clientSatisfaction: "Client Satisfaction",
-    supportAvailable: "Support Available"
+  // Animation variants for the button
+  const buttonVariants = {
+    hidden: {
+      opacity: 0,
+      y: 40,
+      scale: 0.8
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 0.8,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 120,
+        damping: 15,
+        delay: 0.5
+      }
+    }
   };
 
-  const t = translations || defaultTranslations;
+  // Animation variants for the logo/image
+  const logoVariants = {
+    hidden: {
+      opacity: 0,
+      x: 100,
+      scale: 0.8,
+      rotate: 10
+    },
+    visible: {
+      opacity: 1,
+      x: 0,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 1.5,
+        ease: [0.34, 1.56, 0.64, 1],
+        type: "spring",
+        stiffness: 60,
+        damping: 15,
+        delay: 0.8
+      }
+    }
+  };
+
+  // Floating animation for stars
+  const starVariants = {
+    animate: {
+      y: [0, -10, 0],
+      opacity: [0.3, 1, 0.3],
+      scale: [0.8, 1.2, 0.8],
+      transition: {
+        duration: 3,
+        repeat: Infinity,
+        ease: "easeInOut"
+      }
+    }
+  };
 
   return (
-    <main className="min-h-screen bg-gray-50 flex flex-col">
-      {/* Logo Section */}
-      <motion.div 
-        className="pt-24 pb-8 flex justify-start px-6 lg:px-12"
+    <section className="relative min-h-screen bg-black text-white overflow-hidden">
+      {/* Animated Stars Background */}
+      <div className="absolute inset-0">
+        {[...Array(50)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 bg-white rounded-full"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            variants={starVariants}
+            animate="animate"
+            transition={{
+              delay: Math.random() * 2,
+              duration: 2 + Math.random() * 2,
+              repeat: Infinity,
+              ease: "easeInOut"
+            }}
+          />
+        ))}
+      </div>
+
+      {/* Main Content Container */}
+      <motion.div
+        className="relative z-10 max-w-[1440px] mx-auto px-6 py-20 md:py-32 lg:py-40"
+        variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
-        variants={logoVariants}
       >
-        <div className="flex items-center">
-          <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center mr-3">
-            <span className="text-white font-bold text-sm">Z</span>
-          </div>
-          <span className="text-xl font-semibold text-black">Zeenti</span>
-        </div>
-      </motion.div>
+        <div className="grid lg:grid-cols-2 items-center min-h-[calc(100vh-10rem)]">
 
-      {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center px-6 lg:px-12">
-        <motion.div
-          className="max-w-6xl w-full"
-          initial="hidden"
-          animate={isLoaded ? "visible" : "hidden"}
-          variants={containerVariants}
-        >
-          {/* Hero Text */}
-          <div className="text-center mb-16">
-            <motion.h1 
-              className="text-5xl md:text-6xl lg:text-7xl font-light text-black leading-tight mb-6"
-              variants={itemVariants}
+          {/* Left Content */}
+          <div className="space-y-8 lg:space-y-12">
+
+            {/* Main Heading */}
+            <motion.div variants={headingVariants} className="space-y-4">
+              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                <span className="text-white">You have a </span>
+                <motion.span
+                  className="inline-block text-transparent bg-clip-text"
+                  style={{
+                    backgroundImage: 'var(--Light-Orange-gradient)',
+                    backgroundSize: '300%', // Make it much wider than the text
+                    backgroundPosition: 'center',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                  }}
+                >
+                  DREAM
+                </motion.span>
+
+              </h1>
+
+              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
+                <span className="text-white">We </span>
+                <motion.span
+                  className="bg-gradient-blue-1 bg-clip-text text-transparent inline-block"
+                  whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+                >
+                  PROTECT I.T
+                </motion.span>
+              </h2>
+            </motion.div>
+
+            {/* Description */}
+            <motion.p
+              variants={textVariants}
+              className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed max-w-2xl"
             >
-              {t.titleOne}
-              <br />
-              <span className="font-normal">{t.titleTwo}</span>
-            </motion.h1>
-            
-            <motion.p 
-              className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed mb-12"
-              variants={itemVariants}
-            >
-              {t.description}
+              We help you get the suite of tech your company needs to protect
+              and propel your business into the future.
             </motion.p>
 
-            <motion.div variants={itemVariants}>
-              <Link 
-                href="/contact"
-                className="inline-flex items-center px-8 py-4 bg-black text-white rounded-full font-medium hover:bg-gray-800 transition-all duration-300 transform hover:scale-105 shadow-lg hover:shadow-xl"
-              >
-                {t.cta}
-                <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
+            {/* CTA Button */}
+            <motion.div variants={buttonVariants}>
+              <Link href="/contact">
+                <Button appearance="primary">
+                  Get in Touch with Us
+                </Button>
               </Link>
             </motion.div>
           </div>
 
-          {/* Portfolio Cards */}
-          <motion.div 
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-end"
-            variants={containerVariants}
-          >
-            {/* Card 1 - Web Development */}
-            <motion.div 
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2"
-              variants={cardVariants}
-              whileHover={{ scale: 1.02 }}
+          {/* Right Content - Logo/Image */}
+          <div className="flex justify-center lg:justify-end">
+            <motion.div
+              variants={logoVariants}
+              className="relative"
             >
-              <div className="h-48 bg-gradient-to-br from-blue-50 to-blue-100 p-6 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-gray-800">{t.webDevelopment}</h3>
-                </div>
+
+              {/* Logo Container */}
+              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[37rem] xl:h-[28rem] transform transition-transform duration-300">
+
+                {/* Logo/Image Placeholder */}
+                <motion.div
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  <Image
+                    src={logoImage}
+                    alt="Good Company Logo"
+                    width={590}
+                    height={450}
+                    className=" object-contain drop-shadow-2xl"
+                  />
+
+                </motion.div>
               </div>
             </motion.div>
+          </div>
+        </div>
 
-            {/* Card 2 - Mobile Apps */}
-            <motion.div 
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2 lg:translate-y-8"
-              variants={cardVariants}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="h-56 bg-gradient-to-br from-green-50 to-green-100 p-6 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-gray-800">{t.mobileApps}</h3>
-                </div>
-              </div>
-            </motion.div>
+        <TestimonialCarousel/>
+      </motion.div>
 
-            {/* Card 3 - Digital Strategy (Center Circle) */}
-            <motion.div 
-              className="bg-black rounded-full w-32 h-32 mx-auto flex items-center justify-center shadow-xl hover:shadow-2xl transition-all duration-500 transform hover:scale-110"
-              variants={cardVariants}
-              whileHover={{ rotate: 5 }}
-            >
-              <div className="text-center">
-                <h3 className="font-semibold text-white text-sm">{t.digitalStrategy?.split(' ')[0] || 'Digital'}</h3>
-                <h3 className="font-semibold text-white text-sm">{t.digitalStrategy?.split(' ')[1] || 'Strategy'}</h3>
-              </div>
-            </motion.div>
-
-            {/* Card 4 - Cloud Solutions */}
-            <motion.div 
-              className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 transform hover:-translate-y-2"
-              variants={cardVariants}
-              whileHover={{ scale: 1.02 }}
-            >
-              <div className="h-48 bg-gradient-to-br from-purple-50 to-purple-100 p-6 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M9 19l3 3m0 0l3-3m-3 3V10" />
-                    </svg>
-                  </div>
-                  <h3 className="font-semibold text-gray-800">{t.cloudSolutions}</h3>
-                </div>
-              </div>
-            </motion.div>
-          </motion.div>
-
-
-        </motion.div>
-      </div>
-    </main>
+      {/* Gradient Overlay at Bottom */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/50 to-transparent pointer-events-none" />
+    </section>
   );
 }
 
