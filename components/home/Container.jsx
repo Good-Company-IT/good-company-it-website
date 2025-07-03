@@ -13,11 +13,17 @@ const LandingSection = dynamic(() => import("./LandingSection/Landing-Section"),
   ssr: false
 });
 
+const WhyGoCompany = dynamic(() => import("./WhyGoco/WhyGoco"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 export default function Container({ locale, translations, mainLang }) {
 
   return (
     <>
           <LandingSection locale={locale} translations={translations.homeTranslations} />
+          <WhyGoCompany />
     </>
   );
 }
