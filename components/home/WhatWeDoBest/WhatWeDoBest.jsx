@@ -345,7 +345,7 @@ function ServicesSection() {
             <div
                 className="fixed inset-0 w-full h-full -z-10"
                 style={{
-                    background: `radial-gradient(circle at center bottom, 
+                    background: `radial-gradient(circle at center 120%, 
             #00B2F9 0%, 
             #00AEF5 7%, 
             #008BCD 11%, 
@@ -511,12 +511,12 @@ function ServicesSection() {
                             <div className="lg:col-span-4 relative">
                                 <AnimatedBlock delay={0.6}>
                                     {/* Vertical line above image */}
-                                    <div className="absolute left-1/2 -top-32 w-[2.5px] h-32 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
+                                    <div className="absolute left-1/2 -top-48 w-[2.5px] h-44 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
 
                                     {/* Vertical line below image */}
-                                    <div className="absolute left-1/2 -bottom-32 w-[2px] h-32 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
+                                    <div className="absolute left-1/2 -bottom-56 w-[2px] h-44 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
 
-                                    <div className="relative h-64 sm:h-80 md:h-96 rounded-2xl overflow-hidden mx-auto max-w-md lg:max-w-none">
+                                    <div className="relative h-56 sm:h-60 md:h-72 rounded-xl overflow-hidden mx-auto max-w-md lg:max-w-none">
                                         <AnimatePresence mode="wait">
                                             <motion.div
                                                 key={activeService}
@@ -530,7 +530,7 @@ function ServicesSection() {
                                                     src={servicesData[activeService].image}
                                                     alt={servicesData[activeService].category}
                                                     fill
-                                                    className="object-cover"
+                                                    className="object-cover rounded-xl"
                                                     sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                                     priority={activeService === 0}
                                                 />
