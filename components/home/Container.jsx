@@ -23,6 +23,11 @@ const WhatWeDoBest = dynamic(() => import("./WhatWeDoBest/WhatWeDoBest"), {
   ssr: true
 });
 
+const HeroCtaSection = dynamic(() => import("./HeroCtaSection/HeroCtaSection"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 export default function Container({ locale, translations, mainLang }) {
 
   return (
@@ -30,6 +35,7 @@ export default function Container({ locale, translations, mainLang }) {
           <LandingSection locale={locale} translations={translations.homeTranslations} />
           <WhyGoCompany />
           <WhatWeDoBest />
+          <HeroCtaSection/>
     </>
   );
 }
