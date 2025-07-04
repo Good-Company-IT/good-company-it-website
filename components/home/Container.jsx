@@ -18,12 +18,18 @@ const WhyGoCompany = dynamic(() => import("./WhyGoco/WhyGoco"), {
   ssr: true
 });
 
+const WhatWeDoBest = dynamic(() => import("./WhatWeDoBest/WhatWeDoBest"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 export default function Container({ locale, translations, mainLang }) {
 
   return (
     <>
           <LandingSection locale={locale} translations={translations.homeTranslations} />
           <WhyGoCompany />
+          <WhatWeDoBest />
     </>
   );
 }
