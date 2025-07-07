@@ -1,7 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
 :root {
   --Light-Orange-gradient: linear-gradient(30deg, #21024D 0%, #601436 19%, #AA2A1D 50%, #FF4300 75%, #FF8C62 94%);
   --Outline: linear-gradient(90deg, #DBDDFB 0%, #555886 35%, #DBDDFB 99%);

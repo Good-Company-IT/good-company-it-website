@@ -28,11 +28,23 @@ const HeroCtaSection = dynamic(() => import("./HeroCtaSection/HeroCtaSection"), 
   ssr: true
 });
 
+/* const ValuesSelector = dynamic(() => import("./Bento/ValuesSelector"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+}); */
+
+const TechBento = dynamic(() => import("./Bento/TechSolutionsBento"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 export default function Container({ locale, translations, mainLang }) {
 
   return (
     <>
           <LandingSection locale={locale} translations={translations.homeTranslations} />
+          {/* <ValuesSelector/> */}
+          <TechBento/>
           <WhyGoCompany />
           <WhatWeDoBest />
           <HeroCtaSection/>

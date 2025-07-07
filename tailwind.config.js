@@ -7,6 +7,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-poppins)', 'sans-serif'],
+        poppins: ['var(--font-poppins)', 'sans-serif'],
+      },
       fontSizes: {
         'title-h1': '2.5rem', // 40px
         'title-h2': '2rem', // 32px

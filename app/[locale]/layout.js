@@ -6,13 +6,13 @@ import { Analytics } from "@vercel/analytics/react";
 import "@/globals.css";
 
 // Font from Google
-import { Inter } from "next/font/google";
-const inter = Inter({
-  subsets: ["latin"],
-  weights: ["300", "400", "500", "700", "900"],
-  display: 'swap',
-  preload: true,
-});
+import { Poppins } from 'next/font/google'
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],
+  variable: '--font-poppins',
+})
 
 // Components - Remove ssr: false and use regular imports or SSR-compatible dynamic imports
 const NavbarLazyLoading = dynamic(
@@ -102,7 +102,7 @@ export default async function Layout({ children, params }) {
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
-      <body className={inter.className}>
+      <body className={poppins.className}>
         <TranslationsProvider
           resources={resources}
           locale={locale}
