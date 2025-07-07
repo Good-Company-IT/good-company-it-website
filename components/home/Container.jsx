@@ -28,15 +28,21 @@ const HeroCtaSection = dynamic(() => import("./HeroCtaSection/HeroCtaSection"), 
   ssr: true
 });
 
-/* const ValuesSelector = dynamic(() => import("./Bento/ValuesSelector"), {
-  loading: () => <MinimalLoader />,
-  ssr: true
-}); */
-
 const TechBento = dynamic(() => import("./Bento/TechSolutionsBento"), {
   loading: () => <MinimalLoader />,
   ssr: true
 });
+
+/* const QuoteCardExample = dynamic(() => import('@/components/common/Cards/QuoteCard'), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+}); */
+
+const WeBuild = dynamic(() => import("./WeBuild/QuotesSection"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 
 export default function Container({ locale, translations, mainLang }) {
 
@@ -48,6 +54,8 @@ export default function Container({ locale, translations, mainLang }) {
           <WhyGoCompany />
           <WhatWeDoBest />
           <HeroCtaSection/>
+          {/* <QuoteCardExample /> */}
+          <WeBuild />
     </>
   );
 }
