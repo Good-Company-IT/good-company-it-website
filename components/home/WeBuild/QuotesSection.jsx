@@ -1,86 +1,18 @@
-import React from 'react';
-import Image from 'next/image';
+import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Button } from '@/components/common/Buttons/Button';
+import QuoteCard from '@/components/common/Cards/QuoteCard';
 
-// QuoteCard Component
-const QuoteCard = ({ 
-  image, 
-  quote, 
-  author, 
-  company, 
-  size = 'normal' // 'normal' or 'large'
-}) => {
-  // Define image dimensions based on size prop
-  const getImageHeight = () => {
-    return size === 'large' ? 445 : 285;
-  };
-
-  const getCardHeight = () => {
-    return size === 'large' ? 'h-[300px] sm:h-[350px] md:h-[400px] lg:h-[445px]' : 'h-[200px] sm:h-[220px] md:h-[250px] lg:h-[285px]';
-  };
-
-  const getContainerWidth = () => {
-    return 'w-[280px] xs:w-[300px] sm:w-[320px] md:w-[350px] lg:w-[400px]';
-  };
-
-  const getLineHeight = () => {
-    return 'h-8 xs:h-12 sm:h-16 md:h-20 lg:h-60';
-  };
-
-  return (
-    <div className={`flex flex-col items-center ${getContainerWidth()}`}>
-      {/* Top Vertical Line */}
-      <div className={`w-0.5 ${getLineHeight()} bg-orange-500`} />
-      
-      {/* Quote Card */}
-      <div className={`relative ${getContainerWidth()} ${getCardHeight()} rounded-xl lg:rounded-2xl overflow-hidden group cursor-pointer transition-all duration-300 hover:scale-[1.02] hover:shadow-2xl`}>
-        {/* Background Image */}
-        <div className="absolute inset-0">
-          <Image
-            src={image}
-            alt="Quote background"
-            width={400}
-            height={getImageHeight()}
-            className="w-full h-full object-cover"
-            priority
-          />
-          {/* Dark Overlay */}
-          <div className="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-all duration-300" />
-        </div>
-
-        {/* Content */}
-        <div className="relative z-10 h-full flex flex-col justify-between p-3 sm:p-4 md:p-5 lg:p-6">
-          {/* Quote Icon */}
-          <div className="flex justify-start mb-2 sm:mb-3 lg:mb-4">
-            <div className="text-blue-400 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold leading-none">
-              "
-            </div>
-          </div>
-
-          {/* Quote Text */}
-          <div className="flex-1 flex items-center">
-            <blockquote className="text-white text-xs sm:text-sm md:text-base font-medium leading-relaxed">
-              {quote}
-            </blockquote>
-          </div>
-
-          {/* Author & Company */}
-          <div className="mt-2 sm:mt-3 lg:mt-4">
-            <div className="text-white text-xs sm:text-sm md:text-base font-semibold">
-              {author}
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Bottom Vertical Line */}
-      <div className={`w-0.5 ${getLineHeight()} bg-orange-500`} />
-    </div>
-  );
-};
-
-// Main QuotesSection Component
 const QuotesSection = () => {
+  const sectionRef = useRef(null);
+  const leftColumnRef = useRef(null);
+  const rightColumnRef = useRef(null);
+  const centerRef = useRef(null);
+  const animationFrameRef = useRef(null);
+  const lastScrollProgressRef = useRef(0);
+  const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+  const [isTablet, setIsTablet] = useState(false);
+
   // Mock data for quote cards
   const leftColumnQuotes = [
     {
@@ -130,28 +62,367 @@ const QuotesSection = () => {
     }
   ];
 
+  // Handle responsive breakpoints
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      setIsMobile(width < 768);
+      setIsTablet(width >= 768 && width < 1024);
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Optimized animation function - only for desktop
+  const updateAnimation = useCallback((scrollProgress) => {
+    if (isMobile || isTablet) return; // Skip animations on mobile/tablet
+
+    const leftColumn = leftColumnRef.current;
+    const rightColumn = rightColumnRef.current;
+    const centerContent = centerRef.current;
+
+    if (!leftColumn || !rightColumn || !centerContent) return;
+
+    // Only update if scroll progress has changed significantly
+    const progressDiff = Math.abs(scrollProgress - lastScrollProgressRef.current);
+    if (progressDiff < 0.001) return;
+
+    lastScrollProgressRef.current = scrollProgress;
+
+    // Calculate transforms with easing for smoother end
+    const maxTransform = Math.min(500, window.innerHeight * 0.6); // Responsive max transform
+    const easedProgress = scrollProgress < 0.8 ? scrollProgress :
+      0.8 + (scrollProgress - 0.8) * 0.5; // Slow down after 80%
+
+    const leftTransform = Math.round(easedProgress * maxTransform);
+    const rightTransform = Math.round(-easedProgress * maxTransform);
+
+    // Apply column transforms
+    leftColumn.style.transform = `translate3d(0, ${leftTransform}px, 0)`;
+    rightColumn.style.transform = `translate3d(0, ${rightTransform}px, 0)`;
+
+    // Calculate center content properties
+    let opacity = 0;
+    let scale = 0.95;
+    let blur = 3;
+    let isSticky = false;
+
+    if (scrollProgress >= 0.05 && scrollProgress <= 0.15) {
+      // Fade in phase
+      const fadeProgress = (scrollProgress - 0.05) / 0.1;
+      const easedProgress = 1 - Math.pow(1 - fadeProgress, 3); // Ease out cubic
+      opacity = easedProgress;
+      scale = 0.95 + (easedProgress * 0.05);
+      blur = 3 * (1 - easedProgress);
+      isSticky = true;
+    } else if (scrollProgress > 0.15 && scrollProgress <= 0.55) {
+      // Fully visible phase
+      opacity = 1;
+      scale = 1;
+      blur = 0;
+      isSticky = true;
+    } else if (scrollProgress > 0.55 && scrollProgress <= 0.75) {
+      // Extended fade out phase for smoother ending
+      const fadeProgress = (scrollProgress - 0.55) / 0.2;
+      const easedProgress = Math.pow(fadeProgress, 2); // Ease in quadratic
+      opacity = 1 - easedProgress;
+      scale = 1 - (easedProgress * 0.05);
+      blur = 3 * easedProgress;
+      isSticky = true;
+    } else if (scrollProgress > 0.75 && scrollProgress <= 0.85) {
+      // Final transition phase - smooth release from sticky
+      const releaseProgress = (scrollProgress - 0.75) / 0.1;
+      const easedRelease = 1 - Math.pow(1 - releaseProgress, 3);
+
+      centerContent.style.position = 'relative';
+      centerContent.style.top = 'auto';
+      centerContent.style.left = 'auto';
+      centerContent.style.transform = `scale(${0.95 + easedRelease * 0.05})`;
+      centerContent.style.opacity = easedRelease;
+      centerContent.style.filter = `blur(${3 * (1 - easedRelease)}px)`;
+      centerContent.style.zIndex = 'auto';
+      centerContent.style.pointerEvents = 'auto';
+      centerContent.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
+      return; // Early return to avoid sticky logic
+    }
+
+    // Apply center content styles
+    if (isSticky && scrollProgress <= 0.75) {
+      centerContent.style.position = 'fixed';
+      centerContent.style.top = '50%';
+      centerContent.style.left = '50%';
+      centerContent.style.transform = `translate3d(-50%, -50%, 0) scale(${scale})`;
+      centerContent.style.opacity = opacity;
+      centerContent.style.filter = `blur(${blur}px)`;
+      centerContent.style.zIndex = '20';
+      centerContent.style.pointerEvents = opacity > 0.5 ? 'auto' : 'none';
+      centerContent.style.transition = 'none';
+    } else if (scrollProgress > 0.85) {
+      // Final state - fully reset and visible
+      centerContent.style.position = 'relative';
+      centerContent.style.top = 'auto';
+      centerContent.style.left = 'auto';
+      centerContent.style.transform = 'none';
+      centerContent.style.opacity = '1';
+      centerContent.style.filter = 'none';
+      centerContent.style.zIndex = 'auto';
+      centerContent.style.pointerEvents = 'auto';
+      centerContent.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+    }
+  }, [isMobile, isTablet]);
+
+  // Throttled scroll handler using requestAnimationFrame
+  const handleScroll = useCallback(() => {
+    if (isMobile || isTablet) return; // Skip scroll handling on mobile/tablet
+
+    if (animationFrameRef.current) {
+      cancelAnimationFrame(animationFrameRef.current);
+    }
+
+    animationFrameRef.current = requestAnimationFrame(() => {
+      const section = sectionRef.current;
+      if (!section) return;
+
+      const rect = section.getBoundingClientRect();
+      const sectionTop = rect.top;
+      const sectionHeight = rect.height;
+      const windowHeight = window.innerHeight;
+
+      // Calculate scroll progress with improved bounds
+      const rawProgress = -sectionTop / (sectionHeight - windowHeight);
+      const scrollProgress = Math.max(0, Math.min(0.95, rawProgress)); // Cap at 95% to ensure clean ending
+
+      // Update visibility state
+      const shouldBeVisible = scrollProgress > 0 && scrollProgress < 0.95;
+      if (shouldBeVisible !== isVisible) {
+        setIsVisible(shouldBeVisible);
+      }
+
+      // Update animations only when section is visible
+      if (shouldBeVisible) {
+        updateAnimation(scrollProgress);
+      } else if (scrollProgress >= 0.95) {
+        // Final cleanup state - ensure everything is properly positioned
+        const leftColumn = leftColumnRef.current;
+        const rightColumn = rightColumnRef.current;
+        const centerContent = centerRef.current;
+
+        if (leftColumn && rightColumn && centerContent) {
+          // Set final positions for columns
+          const finalTransform = Math.round(0.8 * Math.min(500, window.innerHeight * 0.6));
+          leftColumn.style.transform = `translate3d(0, ${finalTransform}px, 0)`;
+          rightColumn.style.transform = `translate3d(0, ${-finalTransform}px, 0)`;
+          leftColumn.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+          rightColumn.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+
+          // Ensure center content is properly positioned and visible
+          centerContent.style.position = 'relative';
+          centerContent.style.top = 'auto';
+          centerContent.style.left = 'auto';
+          centerContent.style.transform = 'none';
+          centerContent.style.opacity = '1';
+          centerContent.style.filter = 'none';
+          centerContent.style.zIndex = 'auto';
+          centerContent.style.pointerEvents = 'auto';
+          centerContent.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        }
+
+        // Reset last scroll progress
+        lastScrollProgressRef.current = scrollProgress;
+      } else {
+        // Reset all transforms when section is completely out of view (beginning)
+        const leftColumn = leftColumnRef.current;
+        const rightColumn = rightColumnRef.current;
+        const centerContent = centerRef.current;
+
+        if (leftColumn && rightColumn && centerContent) {
+          leftColumn.style.transform = 'translate3d(0, 0, 0)';
+          rightColumn.style.transform = 'translate3d(0, 0, 0)';
+          leftColumn.style.transition = 'transform 0.3s ease-out';
+          rightColumn.style.transition = 'transform 0.3s ease-out';
+
+          centerContent.style.position = 'relative';
+          centerContent.style.top = 'auto';
+          centerContent.style.left = 'auto';
+          centerContent.style.transform = 'scale(0.95)';
+          centerContent.style.opacity = '0';
+          centerContent.style.filter = 'blur(3px)';
+          centerContent.style.zIndex = 'auto';
+          centerContent.style.pointerEvents = 'auto';
+          centerContent.style.transition = 'all 0.3s ease-out';
+        }
+
+        // Reset last scroll progress
+        lastScrollProgressRef.current = 0;
+      }
+    });
+  }, [isVisible, updateAnimation, isMobile, isTablet]);
+
+  useEffect(() => {
+    if (isMobile || isTablet) {
+      // Reset all styles for mobile/tablet
+      const leftColumn = leftColumnRef.current;
+      const rightColumn = rightColumnRef.current;
+      const centerContent = centerRef.current;
+
+      if (leftColumn && rightColumn && centerContent) {
+        leftColumn.style.transform = 'none';
+        rightColumn.style.transform = 'none';
+        leftColumn.style.transition = 'none';
+        rightColumn.style.transition = 'none';
+
+        centerContent.style.position = 'relative';
+        centerContent.style.top = 'auto';
+        centerContent.style.left = 'auto';
+        centerContent.style.transform = 'none';
+        centerContent.style.opacity = '1';
+        centerContent.style.filter = 'none';
+        centerContent.style.zIndex = 'auto';
+        centerContent.style.pointerEvents = 'auto';
+        centerContent.style.transition = 'none';
+      }
+      return;
+    }
+
+    // Initial setup for desktop
+    const centerContent = centerRef.current;
+    if (centerContent) {
+      centerContent.style.opacity = '0';
+      centerContent.style.transform = 'scale(0.95)';
+      centerContent.style.filter = 'blur(3px)';
+      centerContent.style.transition = 'none';
+    }
+
+    // Add scroll listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Initial call
+    handleScroll();
+
+    return () => {
+      // Cleanup
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [handleScroll, isMobile, isTablet]);
+
+  // Get responsive height
+  const getSectionHeight = () => {
+    if (isMobile) return 'auto';
+    if (isTablet) return '200vh';
+    return '300vh';
+  };
+
+  // Mobile/Tablet Layout
+  if (isMobile || isTablet) {
+    return (
+      <div
+        ref={sectionRef}
+        className="relative bg-[#F3F5F9] overflow-hidden py-12 md:py-16"
+      >
+        <div
+          className="absolute inset-0 bg-center bg-no-repeat bg-cover"
+          style={{
+            backgroundImage: "url('/imgs/texture.svg')",
+          }}
+        />
+        
+        {/* Content Container */}
+        <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
+          {/* Center Content First on Mobile */}
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-dark mb-6 leading-tight">
+              We don't just build IT systems,{' '}
+              <span className="text-primary-orange">
+                we build relationships.
+              </span>
+            </h2>
+
+            <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+              Our clients trust us because{' '}
+              <span className="font-semibold text-gray-900">we show up, solve problems, and deliver results</span>{' '}
+              that make their day-to-day easier and their growth more secure.
+            </p>
+
+            <Button className="mx-auto">
+              Learn More
+            </Button>
+          </div>
+
+          {/* Quote Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+            {/* Left Column Cards */}
+            <div className="">
+              {leftColumnQuotes.map((quote, index) => (
+                <div key={quote.id} className="flex justify-center">
+                  <QuoteCard {...quote} />
+                </div>
+              ))}
+            </div>
+
+            {/* Right Column Cards */}
+            <div className="">
+              {rightColumnQuotes.map((quote, index) => (
+                <div key={quote.id} className="flex justify-center">
+                  <QuoteCard {...quote} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  // Desktop Layout with Animations
   return (
-    <div className="relative min-h-screen bg-gray-50 overflow-hidden">
+    <div
+      ref={sectionRef}
+      className="relative bg-[#F3F5F9] overflow-hidden"
+      style={{ height: getSectionHeight() }}
+    >
+      <div
+        className="absolute inset-0 bg-center bg-no-repeat bg-cover"
+        style={{
+          backgroundImage: "url('/imgs/texture.svg')",
+        }}
+      />
       
       {/* Content Container */}
-      <div className="relative z-10 max-w-[1400px] mx-auto px-8 h-full">
+      <div className="relative z-10 max-w-[1440px] mx-auto px-8">
         {/* Quote Cards Layout */}
-        <div className="flex flex-col lg:flex-row justify-between items-stretch h-full relative">
+        <div className="flex flex-col lg:flex-row justify-between items-stretch min-h-screen relative">
           {/* Left Column */}
-          <div className="flex flex-col items-center justify-center h-full">
-            <div className="flex justify-start">
-              <QuoteCard {...leftColumnQuotes[0]} />
-            </div>
-            <div className="flex justify-center">
-              <QuoteCard {...leftColumnQuotes[1]} />
-            </div>
-            <div className="flex justify-start">
-              <QuoteCard {...leftColumnQuotes[2]} />
-            </div>
+          <div
+            ref={leftColumnRef}
+            className="flex flex-col items-center justify-center min-h-screen"
+            style={{
+              willChange: 'transform',
+              backfaceVisibility: 'hidden',
+              perspective: '1000px'
+            }}
+          >
+            {leftColumnQuotes.map((quote, index) => (
+              <div key={quote.id} className="flex justify-start">
+                <QuoteCard {...quote} />
+              </div>
+            ))}
           </div>
 
           {/* Center Content */}
-          <div className="flex-1 flex items-center justify-center px-8 lg:px-16 my-12 lg:my-0 min-w-0">
+          <div
+            ref={centerRef}
+            className="flex-1 flex items-center justify-center px-8 lg:px-16 min-w-0 min-h-screen"
+            style={{
+              willChange: 'transform, opacity, filter',
+              backfaceVisibility: 'hidden',
+              perspective: '1000px'
+            }}
+          >
             <div className="text-center max-w-lg">
               <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-text-dark mb-6 leading-tight">
                 We don't just build IT systems,{' '}
@@ -159,13 +430,13 @@ const QuotesSection = () => {
                   we build relationships.
                 </span>
               </h2>
-              
+
               <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
                 Our clients trust us because{' '}
                 <span className="font-semibold text-gray-900">we show up, solve problems, and deliver results</span>{' '}
                 that make their day-to-day easier and their growth more secure.
               </p>
-              
+
               <Button className="mx-auto">
                 Learn More
               </Button>
@@ -173,16 +444,20 @@ const QuotesSection = () => {
           </div>
 
           {/* Right Column */}
-          <div className="flex flex-col items-center justify-center h-full">
-            <div className="flex justify-end">
-              <QuoteCard {...rightColumnQuotes[0]} />
-            </div>
-            <div className="flex justify-end lg:justify-end">
-              <QuoteCard {...rightColumnQuotes[1]} />
-            </div>
-            <div className="flex justify-end">
-              <QuoteCard {...rightColumnQuotes[2]} />
-            </div>
+          <div
+            ref={rightColumnRef}
+            className="flex flex-col items-center justify-center min-h-screen"
+            style={{
+              willChange: 'transform',
+              backfaceVisibility: 'hidden',
+              perspective: '1000px'
+            }}
+          >
+            {rightColumnQuotes.map((quote, index) => (
+              <div key={quote.id} className="flex justify-end">
+                <QuoteCard {...quote} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
