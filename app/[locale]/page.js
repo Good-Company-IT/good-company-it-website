@@ -33,7 +33,6 @@ const metadata_en = {
     languages: {
       'en': '/en',
       'es': '/es',
-      'fr': '/fr'
     }
   }
 };

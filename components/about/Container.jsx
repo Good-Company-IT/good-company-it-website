@@ -44,10 +44,6 @@ const OurServices = dynamic(() => import("./OurServices/OurServices"), {
   ssr: true
 });
 
-const TeamSection = dynamic(() => import("../about/TeamSection/TeamSection"), {
-  loading: () => <MinimalLoader />,
-  ssr: true
-});
 
 export default function Container({ locale, translations, mainLang }) {
 
@@ -55,7 +51,6 @@ export default function Container({ locale, translations, mainLang }) {
     <>
           <LandingSection locale={locale} translations={translations.homeTranslations} />
           {/* <ValuesSelector/> */}
-          <TeamSection/>
           <TechBento/>
           <WhyGoCompany />
           <WhatWeDoBest />
