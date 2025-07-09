@@ -33,12 +33,13 @@ const TechBento = dynamic(() => import("./Bento/TechSolutionsBento"), {
   ssr: true
 });
 
-/* const QuoteCardExample = dynamic(() => import('@/components/common/Cards/QuoteCard'), {
-  loading: () => <MinimalLoader />,
-  ssr: true
-}); */
 
 const WeBuild = dynamic(() => import("./WeBuild/QuotesSection"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
+const OurServices = dynamic(() => import("./OurServices/OurServices"), {
   loading: () => <MinimalLoader />,
   ssr: true
 });
@@ -53,9 +54,9 @@ export default function Container({ locale, translations, mainLang }) {
           <TechBento/>
           <WhyGoCompany />
           <WhatWeDoBest />
-          <HeroCtaSection/>
-          {/* <QuoteCardExample /> */}
+          <OurServices />
           <WeBuild />
+          <HeroCtaSection/>
     </>
   );
 }

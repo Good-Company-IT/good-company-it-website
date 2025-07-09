@@ -380,9 +380,9 @@ const QuotesSection = () => {
 
   // Desktop Layout with Animations
   return (
-    <div
+    <section
       ref={sectionRef}
-      className="relative bg-[#F3F5F9] overflow-hidden"
+      className="relative bg-[#F3F5F9] overflow-hidden max-h-[2500px]"
       style={{ height: getSectionHeight() }}
     >
       <div
@@ -461,7 +461,7 @@ const QuotesSection = () => {
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
