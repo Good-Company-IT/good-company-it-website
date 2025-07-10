@@ -120,7 +120,7 @@ function TestimonialCarousel() {
     // Prevent hydration mismatch
     if (!isMounted) {
         return (
-            <section className="py-16 bg-black overflow-hidden">
+            <section className="py-16 overflow-hidden">
                 <div className="max-w-full h-[200px] flex items-center justify-center">
                     <div className="text-white">Loading testimonials...</div>
                 </div>
@@ -129,7 +129,7 @@ function TestimonialCarousel() {
     }
 
     return (
-        <section className="py-16 sm:py-12 xs:py-8 bg-black overflow-hidden">
+        <section className="py-16 sm:py-12 xs:py-8 overflow-hidden">
             <div className="max-w-full">
                 {/* Carousel Container */}
                 <div
@@ -149,10 +149,10 @@ function TestimonialCarousel() {
 
                     {/* Gradient Fade Edges - Responsive */}
                     <div
-                        className="absolute left-0 top-0 w-5 sm:w-14 h-full bg-gradient-to-r from-black to-transparent pointer-events-none z-10"
+                        className="absolute backdrop:blur-lg left-0 top-0 w-5 sm:w-14 h-full bg-gradient-to-r from-black/80 to-transparent pointer-events-none z-10"
                     />
                     <div
-                        className="absolute right-0 top-0 w-5 sm:w-14 h-full bg-gradient-to-l from-black to-transparent pointer-events-none z-10"
+                        className="absolute backdrop:blur-lg right-0 top-0 w-5 sm:w-14 h-full bg-gradient-to-l from-black/80 to-transparent pointer-events-none z-10"
                     />
                 </div>
             </div>
