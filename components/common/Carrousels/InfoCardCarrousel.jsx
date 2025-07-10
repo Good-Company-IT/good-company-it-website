@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import InfoCard from "../Cards/InfoCard";
 
-function InfoCardCarousel({ infoData }) {
+function InfoCardCarousel({ infoData, variant = "primary" }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [dimensions, setDimensions] = useState({ cardWidth: 280, visibleCount: 1 });
@@ -122,6 +122,7 @@ function InfoCardCarousel({ infoData }) {
                 index >= currentIndex && 
                 index < currentIndex + Math.ceil(visibleCount)
               }
+              variant={variant}
             />
           ))}
         </motion.div>

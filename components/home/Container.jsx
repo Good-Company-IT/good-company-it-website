@@ -49,13 +49,19 @@ const TeamSection = dynamic(() => import("../about/TeamSection/TeamSection"), {
   ssr: true
 });
 
+const WhyItMatters = dynamic(() => import("../about/WhyItMatters/WhyItMatters"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 export default function Container({ locale, translations, mainLang }) {
 
   return (
     <>
           <LandingSection locale={locale} translations={translations.homeTranslations} />
           {/* <ValuesSelector/> */}
-          <TeamSection/>
+          <TeamSection/> {/* About page*/}
+          <WhyItMatters/>
           <TechBento/>
           <WhyGoCompany />
           <WhatWeDoBest />
