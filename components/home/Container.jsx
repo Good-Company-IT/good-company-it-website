@@ -60,8 +60,6 @@ export default function Container({ locale, translations, mainLang }) {
     <>
           <LandingSection locale={locale} translations={translations.homeTranslations} />
           {/* <ValuesSelector/> */}
-          <TeamSection/> {/* About page*/}
-          <WhyItMatters/>
           <TechBento/>
           <WhyGoCompany />
           <WhatWeDoBest />
