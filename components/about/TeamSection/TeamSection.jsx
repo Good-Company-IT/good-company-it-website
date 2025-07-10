@@ -24,27 +24,32 @@ const TeamSection = () => {
   const teamMembers = [
     {
       id: 1,
-      alt: "John Smith",
+      name: "Marc Hart Botero",
+      role: "Founder",
       image: "./imgs/team/member1.png"
     },
     {
       id: 2,
-      alt: "Maria Garcia",
+      name: "Julian Ussa",
+      role: "Co-Founder",
       image: "./imgs/team/member2.png"
     },
     {
       id: 3,
-      alt: "Alex Johnson",
+      name: "Carolina Camargo",
+      role: "Project Coordinator",
       image: "./imgs/team/member3.png"
     },
     {
       id: 4,
-      alt: "Sarah Wilson",
+      name: "Laura Forero",
+      role: "Designer",
       image: "./imgs/team/member4.png"
     },
     {
       id: 5,
-      alt: "David Chen",
+      name: "Diego Lopez",
+      role: "Consultant",
       image: "./imgs/team/member5.png"
     }
   ];
@@ -76,7 +81,7 @@ const TeamSection = () => {
               <p className="text-gray-600 text-base mb-4">
                 we're here to make it easier for you.
               </p>
-              <Button 
+              <Button
                 onClick={handleGetInTouch}
                 className=''
               >
@@ -114,7 +119,7 @@ const TeamSection = () => {
                   <div className="w-32 h-32 xs:w-40 xs:h-40 sm:w-44 sm:h-44 mx-auto mb-2 rounded-lg overflow-hidden shadow-md">
                     <img
                       src={member.image}
-                      alt={member.alt}
+                      alt={member.name}
                       className="w-full h-full object-cover"
                       loading="lazy"
                     />
@@ -133,10 +138,10 @@ const TeamSection = () => {
   return (
     <section className="relative bg-white py-20 lg:py-24 overflow-hidden">
       <div className={`mx-auto px-8 ${isLargeScreen ? 'max-w-[1800px]' : 'max-w-[1400px]'}`}>
-        
+
         {/* 4x3 Grid Layout */}
         <div className="grid grid-cols-4 grid-rows-3 gap-8 min-h-[600px] lg:min-h-[700px]">
-          
+
           {/* Row 1, Col 1 - "Who's Behind Good Company?" */}
           <div className="col-span-1 row-span-1 flex flex-col justify-center">
             <div className="text-right mr-6">
@@ -152,17 +157,22 @@ const TeamSection = () => {
 
           {/* Row 1, Col 2 - First team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
-              isLargeScreen ? 'w-[340px] h-[340px]' : 
-              isMobile ? 'w-48 h-48' : 
-              'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-            }`}>
+            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
+              isMobile ? 'w-48 h-48' :
+                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
+              }`}>
               <img
                 src={teamMembers[0].image}
                 alt={teamMembers[0].name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
+                <h3 className="text-xl font-bold mb-2">{teamMembers[0].name}</h3>
+                <span className="bg-white text-primary-orange px-3 py-1 rounded-full text-sm font-medium">
+                  {teamMembers[0].role}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -194,33 +204,43 @@ const TeamSection = () => {
 
           {/* Row 2, Col 1 - Second team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
-              isLargeScreen ? 'w-[340px] h-[340px]' : 
-              isMobile ? 'w-48 h-48' : 
-              'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-            }`}>
+            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
+              isMobile ? 'w-48 h-48' :
+                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
+              }`}>
               <img
                 src={teamMembers[1].image}
                 alt={teamMembers[1].name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
+                <h3 className="text-xl font-bold mb-2">{teamMembers[1].name}</h3>
+                <span className="bg-white text-primary-orange px-3 py-1 rounded-full text-sm font-medium">
+                  {teamMembers[1].role}
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Row 2, Col 2 - Third team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
-              isLargeScreen ? 'w-[340px] h-[340px]' : 
-              isMobile ? 'w-48 h-48' : 
-              'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-            }`}>
+            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
+              isMobile ? 'w-48 h-48' :
+                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
+              }`}>
               <img
                 src={teamMembers[2].image}
                 alt={teamMembers[2].name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-primary-blue/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
+                <h3 className="text-xl font-bold mb-2">{teamMembers[2].name}</h3>
+                <span className="bg-white text-primary-blue px-3 py-1 rounded-full text-sm font-medium">
+                  {teamMembers[2].role}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -233,7 +253,7 @@ const TeamSection = () => {
                 we're here to make it<br />
                 easier for you.
               </p>
-              <Button 
+              <Button
                 onClick={handleGetInTouch}
               >
                 Get in Touch with Us
@@ -243,33 +263,43 @@ const TeamSection = () => {
 
           {/* Row 3, Col 2 - Fourth team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
-              isLargeScreen ? 'w-[340px] h-[340px]' : 
-              isMobile ? 'w-48 h-48' : 
-              'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-            }`}>
+            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
+              isMobile ? 'w-48 h-48' :
+                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
+              }`}>
               <img
                 src={teamMembers[3].image}
                 alt={teamMembers[3].name}
-                className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                className="w-full h-full object-cover transition-transform duration-300"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
+                <h3 className="text-xl font-bold mb-2">{teamMembers[3].name}</h3>
+                <span className="bg-white text-primary-orange px-3 py-1 rounded-full text-sm font-medium">
+                  {teamMembers[3].role}
+                </span>
+              </div>
             </div>
           </div>
 
           {/* Row 3, Col 3 - Fifth team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
-              isLargeScreen ? 'w-[340px] h-[340px]' : 
-              isMobile ? 'w-48 h-48' : 
-              'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-            }`}>
+            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
+              isMobile ? 'w-48 h-48' :
+                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
+              }`}>
               <img
                 src={teamMembers[4].image}
                 alt={teamMembers[4].name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-primary-blue/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
+                <h3 className="text-xl font-bold mb-2">{teamMembers[4].name}</h3>
+                <span className="bg-white text-primary-blue px-3 py-1 rounded-full text-sm font-medium">
+                  {teamMembers[4].role}
+                </span>
+              </div>
             </div>
           </div>
 
@@ -279,7 +309,7 @@ const TeamSection = () => {
               <p className={`text-text-dark ${isLargeScreen ? 'text-xl' : 'text-lg'}`}>
                 You're in
               </p>
-                <span className="text-orange-500 font-semibold text-lg lg:text-xl">Good Company</span>
+              <span className="text-orange-500 font-semibold text-lg lg:text-xl">Good Company</span>
             </div>
           </div>
 
