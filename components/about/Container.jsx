@@ -9,6 +9,11 @@ const MinimalLoader = () => <div className="min-h-screen" />;
 
 // Regular Components (lazy loaded)
 
+const BornFromExp = dynamic(() => import("./BornFromExp/BornFromExp"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 const OurInfo = dynamic(() => import("./OurInfo/OurInfo"), {
   loading: () => <MinimalLoader />,
   ssr: true
@@ -29,6 +34,7 @@ export default function Container({ locale, translations, mainLang }) {
 
   return (
     <>
+    <BornFromExp/>
     <OurInfo/>
       <TeamSection /> {/* About page*/}
       <WhyItMatters />
