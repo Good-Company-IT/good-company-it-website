@@ -57,9 +57,16 @@ const BornFromExp = () => {
   return (
     <section 
       ref={sectionRef}
-      className="bg-gray-50 py-16 sm:py-20 lg:py-24 xl:py-28"
+      className="relative z-10 overflow-hidden bg-white py-56 sm:py-60 lg:py-64 xl:py-72"
     >
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Overlay Image - Now behind content */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+        style={{
+          backgroundImage: "url('/imgs/why/texture.png')",
+        }}
+      />
+      <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
           initial="hidden"
