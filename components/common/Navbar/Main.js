@@ -17,7 +17,6 @@ function Navbar() {
   const [isTop, setIsTop] = useState(true);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState(null);
   const path = usePathname();
   const { width } = useWindowDimensions();
   const navRef = useRef(null);
@@ -28,57 +27,27 @@ function Navbar() {
     mobile: `text-text-dark cursor-pointer font-normal px-4 py-3 text-lg hover:text-black hover:bg-gray-50 transition-all duration-200 rounded-md block w-full text-left`,
   };
 
-  // Navigation data structure
+  // Navigation data structure - simplified to just links
   const navigationItems = [
     {
       label: "IT Services",
-      hasDropdown: true,
-      dropdownItems: [
-        { label: "Web Development", href: "/services/web-development" },
-        { label: "Mobile Apps", href: "/services/mobile-apps" },
-        { label: "Cloud Solutions", href: "/services/cloud" },
-        { label: "Cybersecurity", href: "/services/security" },
-        { label: "IT Consulting", href: "/services/consulting" },
-      ]
+      href: "/services"
     },
     {
       label: "Blog",
-      hasDropdown: true,
-      dropdownItems: [
-        { label: "Case Studies", href: "/clients/case-studies" },
-        { label: "Testimonials", href: "/clients/testimonials" },
-        { label: "Success Stories", href: "/clients/success-stories" },
-        { label: "Client Portal", href: "/clients/portal" },
-      ]
+      href: "/blog"
     },
     {
       label: "About Us",
-      hasDropdown: true,
-      dropdownItems: [
-        { label: "Our Story", href: "/about/story" },
-        { label: "Team", href: "/about/team" },
-        { label: "Careers", href: "/about/careers" },
-        { label: "Contact", href: "/about/contact" },
-      ]
+      href: "/about"
     },
     {
       label: "Community Work",
-      hasDropdown: true,
-      dropdownItems: [
-        { label: "Local Initiatives", href: "/community/initiatives" },
-        { label: "Partnerships", href: "/community/partnerships" },
-        { label: "Volunteer Programs", href: "/community/volunteer" },
-        { label: "Events", href: "/community/events" },
-      ]
+      href: "/community"
     }
   ];
 
-  const handleDropdownToggle = (index) => {
-    setActiveDropdown(activeDropdown === index ? null : index);
-  };
-
-  const handleCloseMenus = () => {
-    setActiveDropdown(null);
+  const handleCloseMenu = () => {
     setMobileMenuIsOpen(false);
   };
 
@@ -93,19 +62,7 @@ function Navbar() {
     return () => clearTimeout(timer);
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (navRef.current && !navRef.current.contains(event.target)) {
-        setActiveDropdown(null);
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
   const handleMenuToggle = () => setMobileMenuIsOpen(!mobileMenuIsOpen);
-  const handleCloseMenu = () => setMobileMenuIsOpen(false);
 
   // Animation variants
   const navContainerVariants = {
@@ -205,57 +162,6 @@ function Navbar() {
     }
   };
 
-  const dropdownVariants = {
-    hidden: {
-      opacity: 0,
-      y: -20,
-      scale: 0.9
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.4,
-        ease: [0.34, 1.56, 0.64, 1],
-        type: "spring",
-        stiffness: 150,
-        damping: 15,
-        staggerChildren: 0.08,
-        delayChildren: 0.1
-      }
-    },
-    exit: {
-      opacity: 0,
-      y: -15,
-      scale: 0.95,
-      transition: {
-        duration: 0.2,
-        ease: [0.4, 0.0, 1, 1]
-      }
-    }
-  };
-
-  const dropdownItemVariants = {
-    hidden: {
-      opacity: 0,
-      y: -15,
-      x: -5
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      x: 0,
-      transition: {
-        duration: 0.5,
-        ease: [0.34, 1.56, 0.64, 1],
-        type: "spring",
-        stiffness: 200,
-        damping: 20
-      }
-    }
-  };
-
   return (
     <>
       <motion.nav
@@ -281,57 +187,22 @@ function Navbar() {
             {navigationItems.map((item, index) => (
               <motion.div
                 key={item.label}
-                className="relative"
                 variants={linkVariants}
               >
-                <motion.button
-                  onClick={() => handleDropdownToggle(index)}
-                  className={linksStyle.desktop}
-                  whileHover={{ scale: 1.05 }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
+                <Link
+                  href={item.href}
+                  className={`${linksStyle.desktop} ${
+                    path === item.href ? 'text-primary-orange' : ''
+                  }`}
                 >
-                  {item.label}
-                  <motion.svg
-                    className="w-4 h-4"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    animate={{ rotate: activeDropdown === index ? 180 : 0 }}
-                    transition={{ duration: 0.3 }}
+                  <motion.span
+                    whileHover={{ scale: 1.05 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.2 }}
                   >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 9l-7 7-7-7"
-                    />
-                  </motion.svg>
-                </motion.button>
-
-                <AnimatePresence>
-                  {activeDropdown === index && (
-                    <motion.div
-                      className="absolute top-full left-0 w-72 bg-black/95 backdrop-blur-md text-white mt-2 rounded-lg shadow-xl z-50 border border-white/10"
-                      variants={dropdownVariants}
-                      initial="hidden"
-                      animate="visible"
-                      exit="exit"
-                    >
-                      {item.dropdownItems.map((dropdownItem, idx) => (
-                        <motion.div key={dropdownItem.href} variants={dropdownItemVariants}>
-                          <Link
-                            href={dropdownItem.href}
-                            onClick={handleCloseMenus}
-                            className="block px-5 py-3 text-base hover:bg-orange-500/20 hover:text-primary-orange transition-colors duration-200 first:rounded-t-lg last:rounded-b-lg"
-                          >
-                            {dropdownItem.label}
-                          </Link>
-                        </motion.div>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                    {item.label}
+                  </motion.span>
+                </Link>
               </motion.div>
             ))}
 
@@ -388,7 +259,7 @@ function Navbar() {
             className="lg:hidden fixed top-16 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 max-h-screen overflow-y-auto"
           >
             <motion.div
-              className="px-6 py-4 space-y-4"
+              className="px-6 py-6 space-y-2"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{
@@ -412,32 +283,15 @@ function Navbar() {
                     damping: 18
                   }}
                 >
-                  <p className="text-gray-500 uppercase text-xs mb-2 font-semibold">
+                  <Link
+                    href={item.href}
+                    className={`${linksStyle.mobile} ${
+                      path === item.href ? 'text-primary-orange bg-orange-50' : ''
+                    }`}
+                    onClick={handleCloseMenu}
+                  >
                     {item.label}
-                  </p>
-                  {item.dropdownItems.map((dropdownItem, idx) => (
-                    <motion.div
-                      key={dropdownItem.href}
-                      initial={{ opacity: 0, y: -20, scale: 0.95 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      transition={{
-                        delay: 0.44 + (index * 0.1) + (idx * 0.05),
-                        duration: 0.5,
-                        ease: [0.34, 1.56, 0.64, 1],
-                        type: "spring",
-                        stiffness: 200,
-                        damping: 20
-                      }}
-                    >
-                      <Link
-                        href={dropdownItem.href}
-                        className={linksStyle.mobile}
-                        onClick={handleCloseMenu}
-                      >
-                        {dropdownItem.label}
-                      </Link>
-                    </motion.div>
-                  ))}
+                  </Link>
                 </motion.div>
               ))}
 
@@ -446,7 +300,7 @@ function Navbar() {
                 initial={{ opacity: 0, y: -25, scale: 0.9 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{
-                  delay: 1.2,
+                  delay: 0.8,
                   duration: 0.6,
                   ease: [0.34, 1.56, 0.64, 1],
                   type: "spring",
@@ -455,9 +309,10 @@ function Navbar() {
                 }}
                 className="pt-4 flex justify-center"
               >
-                <Button appearance="primary">Secure Your Business</Button>
+                <Button appearance="primary" onClick={handleCloseMenu}>
+                  Secure Your Business
+                </Button>
               </motion.div>
-
             </motion.div>
           </motion.div>
         )}
