@@ -122,7 +122,7 @@ const OurInfo = () => {
     if (isLargeScreen) {
       return "py-24 lg:py-32";
     }
-    return "py-16 lg:py-24";
+    return "py-12 sm:py-16 lg:py-24";
   };
 
   return (
@@ -144,7 +144,7 @@ const OurInfo = () => {
 
       <div className={`${getContainerClasses()} relative z-10`}>
         {/* Main Content Container */}
-        <div className="flex flex-col">
+        <div className="flex flex-col space-y-12 lg:space-y-16">
 
           {/* Our Mission Section */}
           <motion.div
@@ -152,10 +152,10 @@ const OurInfo = () => {
             variants={containerVariants}
             initial="hidden"
             animate={isMissionInView ? "visible" : "hidden"}
-            className="flex flex-row items-center justify-around h-80"
+            className="flex flex-col lg:flex-row items-center justify-center lg:justify-around min-h-[250px] lg:h-80"
           >
-            {/* Left Side - Diagonal Line */}
-            <div className="flex items-end w-1/2 h-full ">
+            {/* Left Side - Diagonal Line (Hidden on mobile/tablet) */}
+            <div className="hidden lg:flex items-end w-1/2 h-full">
               <motion.div
                 variants={lineVariants}
                 className="w-full h-52"
@@ -171,19 +171,25 @@ const OurInfo = () => {
             </div>
 
             {/* Right Side - Content Container */}
-            <div className="flex flex-col flex-1 max-w-lg">
+            <div className="flex flex-col flex-1 max-w-lg text-center lg:text-left">
               <motion.h2
                 variants={textVariants}
-                className={`font-bold text-white mb-6 ${isLargeScreen ? 'text-5xl' : 'text-2xl md:text-3xl lg:text-4xl'
-                  }`}
+                className={`font-bold text-white mb-4 sm:mb-6 ${
+                  isLargeScreen 
+                    ? 'text-5xl' 
+                    : 'text-2xl sm:text-3xl md:text-4xl lg:text-4xl'
+                }`}
               >
                 OUR MISSION
               </motion.h2>
 
               <motion.p
                 variants={textVariants}
-                className={`text-gray-200 leading-relaxed ${isLargeScreen ? 'text-lg' : 'text-sm md:text-base'
-                  }`}
+                className={`text-gray-200 leading-relaxed ${
+                  isLargeScreen 
+                    ? 'text-lg' 
+                    : 'text-sm sm:text-base md:text-base'
+                }`}
               >
                 To be an integral part of your team by offering top-tier I.T.
                 consulting services that protect your company, keep you
@@ -200,22 +206,28 @@ const OurInfo = () => {
             variants={containerVariants}
             initial="hidden"
             animate={isVisionInView ? "visible" : "hidden"}
-            className="flex flex-row items-center justify-around h-80 m-0"
+            className="flex flex-col-reverse lg:flex-row items-center justify-center lg:justify-around min-h-[250px] lg:h-80"
           >
             {/* Left Side - Content Container */}
-            <div className="flex flex-col flex-1 m-0 max-w-lg text-right">
+            <div className="flex flex-col flex-1 max-w-lg text-center lg:text-right">
               <motion.h2
                 variants={textVariants}
-                className={`font-bold text-white mb-6 ${isLargeScreen ? 'text-5xl' : 'text-2xl md:text-3xl lg:text-4xl'
-                  }`}
+                className={`font-bold text-white mb-4 sm:mb-6 ${
+                  isLargeScreen 
+                    ? 'text-5xl' 
+                    : 'text-2xl sm:text-3xl md:text-4xl lg:text-4xl'
+                }`}
               >
                 OUR VISION
               </motion.h2>
 
               <motion.p
                 variants={textVariants}
-                className={`text-white leading-relaxed ${isLargeScreen ? 'text-lg' : 'text-sm md:text-base'
-                  }`}
+                className={`text-white leading-relaxed ${
+                  isLargeScreen 
+                    ? 'text-lg' 
+                    : 'text-sm sm:text-base md:text-base'
+                }`}
               >
                 To become the go-to Managed Service Provider (MSP)
                 in Florida's Tri-City region: Orlando, Miami, and Tampa,
@@ -224,8 +236,8 @@ const OurInfo = () => {
               </motion.p>
             </div>
 
-            {/* Right Side - Straight Line */}
-            <div className="flex flex-row w-1/2 h-full items-end">
+            {/* Right Side - Straight Line (Hidden on mobile/tablet) */}
+            <div className="hidden lg:flex flex-row w-1/2 h-full items-end">
               <motion.div
                 variants={lineVariants}
                 className="flex flex-col w-full h-60"
@@ -249,16 +261,13 @@ const OurInfo = () => {
             animate={isValuesInView ? "visible" : "hidden"}
             className="flex flex-col"
           >
-            {/* Section Header */}
-
-
-            {/* Values Carousel */}
+            {/* Values Content */}
             <motion.div
               variants={textVariants}
-              className="flex flex-row relative mb-12"
+              className="flex flex-col lg:flex-row relative"
             >
-              {/* Bottom Diagonal Line */}
-              <div className="flex w-1/2 items-center">
+              {/* Bottom Diagonal Line (Hidden on mobile/tablet) */}
+              <div className="hidden lg:flex w-1/2 items-center">
                 <motion.div
                   variants={lineVariants}
                   className="w-full h-52"
@@ -273,19 +282,21 @@ const OurInfo = () => {
                 </motion.div>
               </div>
 
-              <div className="flex flex-col w-1/2">
-                <div className="text-left mb-8">
+              <div className="flex flex-col w-full lg:w-1/2">
+                <div className="text-center lg:text-left mb-6 lg:mb-8">
                   <motion.h2
                     variants={textVariants}
-                    className={`font-bold text-white ${isLargeScreen ? 'text-5xl' : 'text-2xl md:text-3xl lg:text-4xl'
-                      }`}
+                    className={`font-bold text-white ${
+                      isLargeScreen 
+                        ? 'text-5xl' 
+                        : 'text-2xl sm:text-3xl md:text-4xl lg:text-4xl'
+                    }`}
                   >
                     OUR VALUES
                   </motion.h2>
                 </div>
                 <InfoCardCarousel infoData={valuesData} variant="terciary" />
               </div>
-
             </motion.div>
           </motion.div>
         </div>
