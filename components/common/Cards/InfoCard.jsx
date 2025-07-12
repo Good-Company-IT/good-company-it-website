@@ -17,13 +17,24 @@ function InfoCard({ info, isActive, variant = "primary" }) {
   const getVariantStyles = () => {
     if (variant === "secondary") {
       return {
-      borderColor: "border-primary-orange",
-      iconBgColor: "bg-primary-blue",
-      iconTextColor: "text-white",
-      titleColor: "text-white",
-      descriptionColor: "text-white",
-      bgColor: "backdrop-blur-[25px] bg-gradient-to-br from-white/15 via-blue-900/15 to-slate-900/15",
-      borderColor: "border border-[#DBDDFB]",
+        borderColor: "border-primary-orange",
+        iconBgColor: "bg-primary-blue",
+        iconTextColor: "text-white",
+        titleColor: "text-white",
+        descriptionColor: "text-white",
+        bgColor: "backdrop-blur-[25px] bg-gradient-to-br from-white/15 via-blue-900/15 to-slate-900/15",
+        borderColor: "border border-[#DBDDFB]",
+      };
+    }
+    
+    if (variant === "terciary") {
+      return {
+        borderColor: "border border-[#DBDDFB] rounded-xl",
+        iconBgColor: "bg-transparent p-0",
+        iconTextColor: "text-primary-blue",
+        titleColor: "text-white",
+        descriptionColor: "text-white",
+        bgColor: "bg-gradient-to-br from-white/15 via-blue-900/15 to-slate-900/15"
       };
     }
     
@@ -38,7 +49,26 @@ function InfoCard({ info, isActive, variant = "primary" }) {
     };
   };
 
+  // Height configurations based on variant
+  const getHeightStyles = () => {
+    if (variant === "terciary") {
+      return `w-[280px] h-[250px]
+              sm:w-[300px] sm:h-[270px] 
+              md:w-[320px] md:h-[280px]
+              lg:w-[340px] lg:h-[290px]
+              xl:w-[360px] xl:h-[300px]`;
+    }
+    
+    // Default height for primary and secondary variants
+    return `w-[280px] h-[320px]
+            sm:w-[300px] sm:h-[340px] 
+            md:w-[320px] md:h-[400px]
+            lg:w-[340px] lg:h-[400px]
+            xl:w-[360px] xl:h-[400px]`;
+  };
+
   const styles = getVariantStyles();
+  const heightStyles = getHeightStyles();
 
   const getIcon = (index) => {
     const iconClass = `w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 ${styles.iconTextColor}`;
@@ -57,12 +87,8 @@ function InfoCard({ info, isActive, variant = "primary" }) {
   return (
     <motion.div
       className={`flex-shrink-0 
-                 w-[280px] h-[320px]
-                 sm:w-[300px] sm:h-[340px] 
-                 md:w-[320px] md:h-[400px]
-                 lg:w-[340px] lg:h-[400px]
-                 xl:w-[360px] xl:h-[400px]
-               ${styles.bgColor} ${styles.borderColor} rounded-xl px-4 py-10 sm:p-5 md:p-6 shadow-lg ${styles.borderColor}`}
+                 ${heightStyles}
+               ${styles.bgColor} ${styles.borderColor} rounded-xl px-4 py-6 sm:p-5 md:p-6 shadow-lg`}
       initial={{ opacity: 0, scale: 0.9, y: 50 }}
       animate={{ 
         opacity: isActive ? 1 : 0.8, 
@@ -83,14 +109,14 @@ function InfoCard({ info, isActive, variant = "primary" }) {
       }}
     >
       {/* Icon */}
-      <div className="flex justify-start mb-4 sm:mb-5 md:mb-6">
+      <div className="flex justify-start mb-3 sm:mb-4 md:mb-5">
         <div className={`w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 ${styles.iconBgColor} rounded-full flex items-center justify-center`}>
           {getIcon(info.index)}
         </div>
       </div>
 
       {/* Content */}
-      <div className="text-left space-y-2 sm:space-y-3 md:space-y-4">
+      <div className="text-left space-y-2 sm:space-y-3">
         {/* Title */}
         <h3 className={`font-bold 
                        text-md sm:text-lg md:text-xl 
@@ -101,7 +127,7 @@ function InfoCard({ info, isActive, variant = "primary" }) {
         {/* Description */}
         <p className={`text-left
                       text-sm sm:text-base md:text-lg 
-                      leading-relaxed line-clamp-4 sm:line-clamp-5 md:line-clamp-6 ${styles.descriptionColor}`}>
+                      leading-relaxed line-clamp-3 sm:line-clamp-4 ${styles.descriptionColor}`}>
           {info.text}
         </p>
       </div>

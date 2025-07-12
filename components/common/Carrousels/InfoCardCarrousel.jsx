@@ -8,7 +8,7 @@ import {
 } from "react-icons/fa";
 import InfoCard from "../Cards/InfoCard";
 
-function InfoCardCarousel({ infoData, variant = "primary" }) {
+function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMounted, setIsMounted] = useState(false);
   const [dimensions, setDimensions] = useState({ cardWidth: 280, visibleCount: 1 });
@@ -103,8 +103,40 @@ function InfoCardCarousel({ infoData, variant = "primary" }) {
   const gap = window.innerWidth >= 640 ? 24 : 16; // Responsive gap
   const totalCardWidth = cardWidth + gap;
 
+  // Navigation Buttons Component
+  const NavigationButtons = () => (
+    <div className="flex justify-start gap-3 sm:gap-4">
+      <button
+        onClick={goToPrevious}
+        className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-orange hover:bg-secondary-orange 
+                   rounded-full flex items-center justify-center text-white 
+                   shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        aria-label="Previous card"
+      >
+        <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+      </button>
+
+      <button
+        onClick={goToNext}
+        className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-orange hover:bg-secondary-orange 
+                   rounded-full flex items-center justify-center text-white 
+                   shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
+        aria-label="Next card"
+      >
+        <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+      </button>
+    </div>
+  );
+
   return (
     <div className="w-full">
+      {/* Navigation Arrows - Top (conditionally rendered) */}
+      {buttonsOnTop && (
+        <div className="mb-6 sm:mb-8">
+          <NavigationButtons />
+        </div>
+      )}
+
       {/* Carousel Container */}
       <div className="overflow-hidden mb-6 sm:mb-8">
         <motion.div
@@ -128,29 +160,10 @@ function InfoCardCarousel({ infoData, variant = "primary" }) {
         </motion.div>
       </div>
 
-      {/* Navigation Arrows - Responsive */}
-      <div className="flex justify-start gap-3 sm:gap-4">
-        <button
-          onClick={goToPrevious}
-          className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-orange hover:bg-secondary-orange 
-                     rounded-full flex items-center justify-center text-white 
-                     shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          aria-label="Previous card"
-        >
-          <FaChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-
-        <button
-          onClick={goToNext}
-          className="w-10 h-10 sm:w-12 sm:h-12 bg-primary-orange hover:bg-secondary-orange 
-                     rounded-full flex items-center justify-center text-white 
-                     shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-400"
-          aria-label="Next card"
-        >
-          <FaChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
-        </button>
-      </div>
+      {/* Navigation Arrows - Bottom (conditionally rendered) */}
+      {!buttonsOnTop && <NavigationButtons />}
     </div>
   );
 }
+
 export default InfoCardCarousel;
