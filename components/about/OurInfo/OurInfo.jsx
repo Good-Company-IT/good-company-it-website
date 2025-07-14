@@ -128,7 +128,7 @@ const OurInfo = () => {
   return (
     <section
       ref={sectionRef}
-      className={`relative overflow-hidden ${getSectionSpacing()}`}
+      className={`relative py-56 sm:py-60 lg:py-64 xl:py-72 overflow-hidden ${getSectionSpacing()}`}
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">

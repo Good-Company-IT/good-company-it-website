@@ -29,12 +29,20 @@ const WhyItMatters = dynamic(() => import("../about/WhyItMatters/WhyItMatters"),
   ssr: true
 });
 
+const ImagesContainer = dynamic(() => import("../common/Carrousels/ImagesCarrousel"), {
+  loading: () => <MinimalLoader />,
+  ssr: false
+});
+
 
 export default function Container({ locale, translations, mainLang }) {
 
   return (
     <>
     <BornFromExp/>
+    <div className='relative w-full'>
+      <ImagesContainer />
+    </div>
     <OurInfo/>
       <TeamSection /> {/* About page*/}
       <WhyItMatters />
