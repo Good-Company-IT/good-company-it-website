@@ -73,7 +73,7 @@ const HeroSection = () => {
     };
 
     return (
-        <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
+        <section className="relative min-h-screen flex items-start lg:items-center justify-center pt-16 sm:pt-20 md:pt-24 lg:pt-0 overflow-hidden bg-black">
             {/* Background GOCO SVG */}
             <motion.div 
                 className="absolute inset-0 flex items-center justify-center z-0"
@@ -114,7 +114,7 @@ const HeroSection = () => {
 
             {/* Main Content */}
             <motion.div 
-                className="relative z-10 text-center px-4 sm:px-6 lg:px-8 mx-auto"
+                className="relative z-10 text-center px-4 sm:px-6 lg:px-8 mx-auto mt-12 sm:mt-16 md:mt-20 lg:mt-0"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
