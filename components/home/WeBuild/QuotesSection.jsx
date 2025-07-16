@@ -2,7 +2,17 @@ import React, { useEffect, useRef, useState, useCallback } from 'react';
 import { Button } from '@/components/common/Buttons/Button';
 import QuoteCard from '@/components/common/Cards/QuoteCard';
 
-const QuotesSection = () => {
+const QuotesSection = ({ 
+  servicesPage = false,
+  centerTitle = "We don't just build IT systems, we build relationships.",
+  centerTitleHighlight = "we build relationships.",
+  centerDescription = "Our clients trust us because we show up, solve problems, and deliver results that make their day-to-day easier and their growth more secure.",
+  centerDescriptionHighlight = "we show up, solve problems, and deliver results",
+  centerSecondParagraph = null,
+  centerSecondParagraphHighlight = null,
+  buttonText = "Learn More",
+  onButtonClick
+}) => {
   const sectionRef = useRef(null);
   const leftColumnRef = useRef(null);
   const rightColumnRef = useRef(null);
@@ -61,6 +71,70 @@ const QuotesSection = () => {
       size: "large"
     }
   ];
+
+  // Helper function to render title with highlight
+  const renderTitle = () => {
+    if (!centerTitleHighlight) {
+      return centerTitle;
+    }
+
+    const parts = centerTitle.split(centerTitleHighlight);
+    if (parts.length === 1) {
+      return centerTitle;
+    }
+
+    return (
+      <>
+        {parts[0]}
+        <span className="text-primary-orange">
+          {centerTitleHighlight}
+        </span>
+        {parts[1]}
+      </>
+    );
+  };
+
+  // Helper function to render description with highlight
+  const renderDescription = () => {
+    if (!centerDescriptionHighlight) {
+      return centerDescription;
+    }
+
+    const parts = centerDescription.split(centerDescriptionHighlight);
+    if (parts.length === 1) {
+      return centerDescription;
+    }
+
+    return (
+      <>
+        {parts[0]}
+        <span className="font-semibold text-gray-900">{centerDescriptionHighlight}</span>
+        {parts[1]}
+      </>
+    );
+  };
+
+  // Helper function to render second paragraph with highlight
+  const renderSecondParagraph = () => {
+    if (!centerSecondParagraph) return null;
+
+    if (!centerSecondParagraphHighlight) {
+      return centerSecondParagraph;
+    }
+
+    const parts = centerSecondParagraph.split(centerSecondParagraphHighlight);
+    if (parts.length === 1) {
+      return centerSecondParagraph;
+    }
+
+    return (
+      <>
+        {parts[0]}
+        <span className="font-semibold text-gray-900">{centerSecondParagraphHighlight}</span>
+        {parts[1]}
+      </>
+    );
+  };
 
   // Handle responsive breakpoints
   useEffect(() => {
@@ -336,20 +410,24 @@ const QuotesSection = () => {
           {/* Center Content First on Mobile */}
           <div className="text-center mb-12 md:mb-16">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-dark mb-6 leading-tight">
-              We don't just build IT systems,{' '}
-              <span className="text-primary-orange">
-                we build relationships.
-              </span>
+              {renderTitle()}
             </h2>
 
             <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
-              Our clients trust us because{' '}
-              <span className="font-semibold text-gray-900">we show up, solve problems, and deliver results</span>{' '}
-              that make their day-to-day easier and their growth more secure.
+              {renderDescription()}
             </p>
 
-            <Button className="mx-auto">
-              Learn More
+            {centerSecondParagraph && (
+              <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed max-w-2xl mx-auto">
+                {renderSecondParagraph()}
+              </p>
+            )}
+
+            <Button 
+              className="mx-auto"
+              onClick={onButtonClick}
+            >
+              {buttonText}
             </Button>
           </div>
 
@@ -425,20 +503,24 @@ const QuotesSection = () => {
           >
             <div className="text-center max-w-lg">
               <h2 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold text-text-dark mb-6 leading-tight">
-                We don't just build IT systems,{' '}
-                <span className="text-primary-orange">
-                  we build relationships.
-                </span>
+                {renderTitle()}
               </h2>
 
               <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
-                Our clients trust us because{' '}
-                <span className="font-semibold text-gray-900">we show up, solve problems, and deliver results</span>{' '}
-                that make their day-to-day easier and their growth more secure.
+                {renderDescription()}
               </p>
 
-              <Button className="mx-auto">
-                Learn More
+              {centerSecondParagraph && (
+                <p className="text-gray-600 text-base md:text-lg mb-8 leading-relaxed">
+                  {renderSecondParagraph()}
+                </p>
+              )}
+
+              <Button 
+                className="mx-auto"
+                onClick={onButtonClick}
+              >
+                {buttonText}
               </Button>
             </div>
           </div>
