@@ -19,12 +19,18 @@ const WeBuild = dynamic(() => import("../home/WeBuild/QuotesSection"), {
     ssr: true
 });
 
+const OurProcess = dynamic(() => import("./OurProcess/OurProcess"), {
+    loading: () => <MinimalLoader />,
+    ssr: true
+});
+
 
 export default function Container({ locale, translations, mainLang }) {
 
     return (
         <>
             <WhatMakesDiff/>
+            <OurProcess/>
             <WeBuild 
                 centerTitle='Trusted by Founders' 
                 centerTitleHighlight='Founders' 
