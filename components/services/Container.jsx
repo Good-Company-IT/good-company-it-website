@@ -8,6 +8,12 @@ import dynamic from 'next/dynamic';
 const MinimalLoader = () => <div className="min-h-screen" />;
 
 // Regular Components (lazy loaded)
+
+const WhatMakesDiff = dynamic(() => import("./WhatMakesDiff/WhatMakesDiff"), {
+    loading: () => <MinimalLoader />,
+    ssr: true
+});
+
 const WeBuild = dynamic(() => import("../home/WeBuild/QuotesSection"), {
     loading: () => <MinimalLoader />,
     ssr: true
@@ -18,6 +24,7 @@ export default function Container({ locale, translations, mainLang }) {
 
     return (
         <>
+            <WhatMakesDiff/>
             <WeBuild 
                 centerTitle='Trusted by Founders' 
                 centerTitleHighlight='Founders' 

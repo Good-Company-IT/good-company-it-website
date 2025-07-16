@@ -37,6 +37,17 @@ function InfoCard({ info, isActive, variant = "primary" }) {
         bgColor: "bg-gradient-to-br from-white/15 via-blue-900/15 to-slate-900/15"
       };
     }
+
+    if (variant === "fourth") {
+      return {
+        borderColor: "border-2 border-primary-orange rounded-xl",
+        iconBgColor: "bg-transparent p-0",
+        iconTextColor: "text-primary-blue",
+        titleColor: "text-text-dark",
+        descriptionColor: "text-text-dark",
+        bgColor: "border border-[#DBDDFB]"
+      };
+    }
     
     // Primary variant (default)
     return {
@@ -57,6 +68,14 @@ function InfoCard({ info, isActive, variant = "primary" }) {
               md:w-[320px] md:h-[280px]
               lg:w-[340px] lg:h-[290px]
               xl:w-[360px] xl:h-[300px]`;
+    }
+
+    if (variant === "fourth") {
+      return `w-[280px] h-[250px]
+              sm:w-[280px] sm:h-[270px] 
+              md:w-[300px] md:h-[280px]
+              lg:w-[310px] lg:h-[290px]
+              xl:w-[320px] xl:h-[300px]`;
     }
     
     // Default height for primary and secondary variants

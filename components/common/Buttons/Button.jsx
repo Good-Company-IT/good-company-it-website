@@ -1,8 +1,9 @@
+import Link from "next/link";
 import { FiArrowRight } from "react-icons/fi";
 
 // imports para React
 const icons = {
-    arrowRight: FiArrowRight,
+  arrowRight: FiArrowRight,
 
 }
 
@@ -15,7 +16,8 @@ export const Button = ({
   onClick,
   appearance = 'primary',
   icon = null, // nombre del ícono como string, ej: "FaArrowRight"
-  iconPosition = 'right' // opcional: 'left' o 'right'
+  iconPosition = 'right', // opcional: 'left' o 'right'
+  href = '/'
 }) => {
   const appearances = {
     primary: "bg-primary-orange py-3 px-6 text-white rounded-lg cursor-pointer hover:bg-secondary-orange transition-all duration-300",
@@ -27,15 +29,17 @@ export const Button = ({
   const Icon = icon ? icons[icon] : null;
 
   return (
-    <button
-      type={type}
-      onClick={onClick}
-      disabled={disabled}
-      className={`${appearances[appearance]} ${className} flex items-center gap-2`}
-    >
-      {iconPosition === 'left' && Icon && <Icon size={20} />}
-      {showText === true && children}
-      {iconPosition === 'right' && Icon && <Icon size={20} />}
-    </button>
+    <Link href={href}>
+      <button
+        type={type}
+        onClick={onClick}
+        disabled={disabled}
+        className={`${appearances[appearance]} ${className} flex items-center gap-2`}
+      >
+        {iconPosition === 'left' && Icon && <Icon size={20} />}
+        {showText === true && children}
+        {iconPosition === 'right' && Icon && <Icon size={20} />}
+      </button>
+    </Link>
   );
 };
