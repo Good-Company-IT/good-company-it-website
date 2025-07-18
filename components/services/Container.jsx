@@ -24,11 +24,17 @@ const OurProcess = dynamic(() => import("./OurProcess/OurProcess"), {
     ssr: true
 });
 
+const HowWeDo = dynamic(() => import("./HowWeDo/HowWeDo"), {
+    loading: () => <MinimalLoader />,
+    ssr: true
+});
+
 
 export default function Container({ locale, translations, mainLang }) {
 
     return (
         <>
+            <HowWeDo/>
             <WhatMakesDiff/>
             <OurProcess/>
             <WeBuild 
