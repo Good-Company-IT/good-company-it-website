@@ -64,7 +64,7 @@ export default function Container({ locale, translations, mainLang }) {
         <ImagesContainer />
       </div>
       <OurInfo/>
-      <TeamSection /> {/* About page*/}
+      <TeamSection />
       <WhyItMatters />
     </>
   );

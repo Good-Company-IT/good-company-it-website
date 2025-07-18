@@ -26,31 +26,31 @@ const TeamSection = () => {
       id: 1,
       name: "Marc Hart Botero",
       role: "Founder",
-      image: "/imgs/team/member1.png"
+      image: "/imgs/team/member1.jpg"
     },
     {
       id: 2,
       name: "Julian Ussa",
       role: "Co-Founder",
-      image: "/imgs/team/member2.png"
+      image: "/imgs/team/member2.jpg"
     },
     {
       id: 3,
       name: "Carolina Camargo",
       role: "Project Coordinator",
-      image: "/imgs/team/member3.png"
+      image: "/imgs/team/member3.jpg"
     },
     {
       id: 4,
       name: "Laura Forero",
       role: "Designer",
-      image: "/imgs/team/member4.png"
+      image: "/imgs/team/member4.JPG"
     },
     {
       id: 5,
       name: "Diego Lopez",
       role: "Consultant",
-      image: "/imgs/team/member5.png"
+      image: "/imgs/team/member5.jpg"
     }
   ];
 

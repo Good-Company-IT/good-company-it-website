@@ -129,11 +129,9 @@ function WhyItMatters() {
 
                         {/* CTA Button */}
                         <div>
-                            <Link href="/contact">
-                                <Button appearance="primary">
+                                <Button appearance="primary" href="/contact">
                                     Contact Us
                                 </Button>
-                            </Link>
                         </div>
                     </motion.div>
 
