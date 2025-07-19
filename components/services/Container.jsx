@@ -9,6 +9,11 @@ const MinimalLoader = () => <div className="min-h-screen" />;
 
 // Regular Components (lazy loaded)
 
+const HeroSection = dynamic(() => import("./HeroSection/HeroSection"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 const WhatMakesDiff = dynamic(() => import("./WhatMakesDiff/WhatMakesDiff"), {
     loading: () => <MinimalLoader />,
     ssr: true
@@ -34,6 +39,7 @@ export default function Container({ locale, translations, mainLang }) {
 
     return (
         <>
+            <HeroSection/>
             <HowWeDo/>
             <WhatMakesDiff/>
             <OurProcess/>

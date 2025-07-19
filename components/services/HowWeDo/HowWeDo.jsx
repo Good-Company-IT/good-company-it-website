@@ -152,7 +152,7 @@ const HowWeDo = () => {
     };
 
     return (
-        <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 min-h-screen py-12 sm:py-16 lg:py-20 overflow-hidden transition-all duration-300 ease-in-out">
+        <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 min-h-screen pb-12 pt-20 sm:pt-24 md:pt-28 lg:pt-44 overflow-hidden transition-all duration-300 ease-in-out">
             {/* Overlay Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
