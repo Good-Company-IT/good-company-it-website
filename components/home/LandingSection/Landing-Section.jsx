@@ -15,51 +15,38 @@ function LandingSection() {
   const [videoLoaded, setVideoLoaded] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 300);
+    // Slightly longer delay for smoother initial load
+    const timer = setTimeout(() => setIsLoaded(true), 500);
     return () => clearTimeout(timer);
   }, []);
 
-  // Animation variants for the container
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.8,
-        ease: [0.25, 0.46, 0.45, 0.94],
-        staggerChildren: 0.3,
-        delayChildren: 0.2
-      }
-    }
-  };
+  // Enhanced easing curves for smoother animations
+  const smoothEase = [0.25, 0.1, 0.25, 1.0]; // More natural easing
+  const bounceEase = [0.68, -0.55, 0.265, 1.55]; // Subtle bounce
+  const gentleEase = [0.4, 0.0, 0.2, 1]; // Very smooth
 
-  // Animation variants for text elements
-  const textVariants = {
-    hidden: {
-      opacity: 0,
-      y: 50,
-      scale: 0.9
+  // Refined container animation with better timing
+  const containerVariants = {
+    hidden: { 
+      opacity: 0 
     },
     visible: {
       opacity: 1,
-      y: 0,
-      scale: 1,
       transition: {
-        duration: 1,
-        ease: [0.34, 1.56, 0.64, 1],
-        type: "spring",
-        stiffness: 100,
-        damping: 15
+        duration: 1.2,
+        ease: gentleEase,
+        staggerChildren: 0.15, // Reduced stagger for smoother sequence
+        delayChildren: 0.1
       }
     }
   };
 
-  // Animation variants for the main heading
-  const headingVariants = {
+  // Smoother text animations with reduced motion
+  const textVariants = {
     hidden: {
       opacity: 0,
-      y: 60,
-      scale: 0.8
+      y: 30, // Reduced movement for subtlety
+      scale: 0.95 // Less dramatic scale
     },
     visible: {
       opacity: 1,
@@ -67,70 +54,124 @@ function LandingSection() {
       scale: 1,
       transition: {
         duration: 1.2,
-        ease: [0.34, 1.56, 0.64, 1],
-        type: "spring",
-        stiffness: 80,
-        damping: 15
+        ease: smoothEase,
+        type: "tween" // Smoother than spring
       }
     }
   };
 
-  // Animation variants for the button
-  const buttonVariants = {
+  // More refined heading animation
+  const headingVariants = {
     hidden: {
       opacity: 0,
       y: 40,
-      scale: 0.8
+      scale: 0.92
     },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
       transition: {
-        duration: 0.8,
-        ease: [0.34, 1.56, 0.64, 1],
-        type: "spring",
-        stiffness: 120,
-        damping: 15,
-        delay: 0.5
+        duration: 1.4,
+        ease: smoothEase,
+        type: "tween"
       }
     }
   };
 
-  // Animation variants for the logo/image
+  // Gradient text animation with smooth color transition
+  const gradientTextVariants = {
+    hidden: {
+      opacity: 0,
+      y: 20,
+      scale: 0.95
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1.6,
+        ease: smoothEase,
+        delay: 0.2
+      }
+    }
+  };
+
+  // Enhanced button animation with hover-ready state
+  const buttonVariants = {
+    hidden: {
+      opacity: 0,
+      y: 25,
+      scale: 0.9
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        duration: 1.0,
+        ease: bounceEase,
+        delay: 0.8 // Later entrance for better hierarchy
+      }
+    },
+    hover: {
+      scale: 1.05,
+      transition: {
+        duration: 0.3,
+        ease: gentleEase
+      }
+    },
+    tap: {
+      scale: 0.98
+    }
+  };
+
+  // Refined logo animation with elegant entry
   const logoVariants = {
     hidden: {
       opacity: 0,
-      x: 100,
-      scale: 0.8,
-      rotate: 10
+      x: 60, // Reduced movement
+      y: 20,
+      scale: 0.85,
+      rotate: 5 // Subtle rotation
     },
     visible: {
       opacity: 1,
       x: 0,
+      y: 0,
       scale: 1,
       rotate: 0,
       transition: {
-        duration: 1.5,
-        ease: [0.34, 1.56, 0.64, 1],
-        type: "spring",
-        stiffness: 60,
-        damping: 15,
-        delay: 0.8
+        duration: 1.8,
+        ease: smoothEase,
+        delay: 0.6
       }
     }
   };
 
-  // Floating animation for stars (optional overlay effect)
+  // More subtle floating stars
   const starVariants = {
     animate: {
-      y: [0, -10, 0],
-      opacity: [0.1, 0.3, 0.1],
-      scale: [0.8, 1.2, 0.8],
+      y: [0, -8, 0],
+      opacity: [0.1, 0.25, 0.1],
+      scale: [0.8, 1.1, 0.8],
       transition: {
-        duration: 3,
+        duration: 4,
         repeat: Infinity,
         ease: "easeInOut"
+      }
+    }
+  };
+
+  // Smooth overlay fade-in
+  const overlayVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 2.0,
+        ease: gentleEase
       }
     }
   };
@@ -139,35 +180,49 @@ function LandingSection() {
     <section className="relative min-h-screen text-white overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
-        <video
+        <motion.video
           className="absolute inset-0 w-full h-full object-cover"
           autoPlay
           loop
           muted
           playsInline
-          poster="/images/video-poster.jpg" // Optional: Add a poster image
+          poster="/images/video-poster.jpg"
           onLoadedData={() => setVideoLoaded(true)}
+          initial={{ scale: 1.1, opacity: 0 }}
+          animate={{ 
+            scale: videoLoaded ? 1 : 1.1, 
+            opacity: videoLoaded ? 1 : 0 
+          }}
+          transition={{ duration: 2.0, ease: gentleEase }}
         >
           <source 
             src="https://res.cloudinary.com/dvqmtc0yd/video/upload/v1752173938/Video_HERO_GOCO_fxhind.mp4" 
             type="video/mp4" 
           />
-          {/* Fallback for browsers that don't support video */}
           <div className="absolute inset-0 bg-black"></div>
-        </video>
+        </motion.video>
         
         {/* Fallback background while video loads */}
         {!videoLoaded && (
-          <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"></div>
+          <motion.div 
+            className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-800"
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.0 }}
+          />
         )}
       </div>
 
-      {/* Dark overlay for better text readability */}
-      <div className="absolute inset-0 bg-black/40 z-10"></div>
+      {/* Dark overlay with smooth fade */}
+      <motion.div 
+        className="absolute inset-0 bg-black/40 z-10"
+        variants={overlayVariants}
+        initial="hidden"
+        animate={isLoaded ? "visible" : "hidden"}
+      />
 
-      {/* Animated Stars Overlay (subtle) */}
+      {/* Animated Stars Overlay (more subtle) */}
       <div className="absolute inset-0 z-20">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(20)].map((_, i) => ( // Reduced number for cleaner look
           <motion.div
             key={i}
             className="absolute w-0.5 h-0.5 bg-white rounded-full"
@@ -178,8 +233,8 @@ function LandingSection() {
             variants={starVariants}
             animate="animate"
             transition={{
-              delay: Math.random() * 2,
-              duration: 2 + Math.random() * 2,
+              delay: Math.random() * 3 + 1, // Later start
+              duration: 3 + Math.random() * 2,
               repeat: Infinity,
               ease: "easeInOut"
             }}
@@ -189,56 +244,81 @@ function LandingSection() {
 
       {/* Main Content Container */}
       <motion.div
-        className="relative z-30 max-w-[1440px] mx-auto px-6 py-20 md:py-32 lg:py-40"
+        className="relative z-30 max-w-[1440px] mx-auto px-6 py-10 md:py-20"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        <div className="grid lg:grid-cols-2 items-center min-h-[calc(100vh-10rem)]">
+        <div className="flex flex-col md:flex-row justify-evenly md:justify-around items-center min-h-[calc(100vh-10rem)]">
 
           {/* Left Content */}
           <div className="space-y-8 lg:space-y-12">
 
             {/* Main Heading */}
             <motion.div variants={headingVariants} className="space-y-4">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <span className="text-white drop-shadow-lg">You have a </span>
-                <motion.span
-                  className="inline-block text-transparent bg-clip-text drop-shadow-lg"
-                  style={{
-                    backgroundImage: 'var(--Light-Orange-gradient)',
-                    backgroundSize: '300%',
-                    backgroundPosition: 'center',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent',
-                  }}
+              <div className="overflow-hidden"> {/* Prevents text from jumping during animation */}
+                <motion.h1 
+                  className="text-4xl md:text-6xl font-semibold leading-tight"
+                  variants={textVariants}
                 >
-                  DREAM
-                </motion.span>
-              </h1>
+                  <span className="text-white drop-shadow-lg">You have a </span>
+                  <motion.span
+                    className="inline-block text-transparent bg-clip-text font-bold drop-shadow-lg"
+                    style={{
+                      backgroundImage: 'var(--Light-Orange-gradient)',
+                      backgroundSize: '300%',
+                      backgroundPosition: 'center',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                    }}
+                    variants={gradientTextVariants}
+                    whileHover={{ 
+                      scale: 1.02,
+                      transition: { duration: 0.3, ease: gentleEase }
+                    }}
+                  >
+                    DREAM
+                  </motion.span>
+                </motion.h1>
+              </div>
 
-              <h2 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight">
-                <span className="text-white drop-shadow-lg">We </span>
-                <motion.span
-                  className="bg-gradient-blue-1 bg-clip-text text-transparent inline-block drop-shadow-lg"
-                  whileHover={{ scale: 1.05, transition: { duration: 0.3 } }}
+              <div className="overflow-hidden">
+                <motion.h2 
+                  className="text-4xl md:text-6xl font-semibold leading-tight"
+                  variants={textVariants}
                 >
-                  PROTECT I.T
-                </motion.span>
-              </h2>
+                  <span className="text-white drop-shadow-lg">We </span>
+                  <motion.span
+                    className="bg-gradient-to-r font-bold from-blue-800 to-blue-400 bg-clip-text text-transparent inline-block drop-shadow-lg"
+                    variants={gradientTextVariants}
+                    whileHover={{ 
+                      scale: 1.02, 
+                      transition: { duration: 0.3, ease: gentleEase } 
+                    }}
+                  >
+                    PROTECT I.T
+                  </motion.span>
+                </motion.h2>
+              </div>
             </motion.div>
 
             {/* Description */}
-            <motion.p
-              variants={textVariants}
-              className="text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-2xl drop-shadow-md"
-            >
-              We help you get the suite of tech your company needs to protect
-              and propel your business into the future.
-            </motion.p>
+            <div className="overflow-hidden">
+              <motion.p
+                variants={textVariants}
+                className="text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-2xl drop-shadow-md"
+              >
+                We help you get the suite of tech your company needs to protect
+                and propel your business into the future.
+              </motion.p>
+            </div>
 
             {/* CTA Button */}
-            <motion.div variants={buttonVariants}>
+            <motion.div 
+              variants={buttonVariants}
+              whileHover="hover"
+              whileTap="tap"
+            >
               <Link href="/contact">
                 <Button appearance="primary">
                   Get in Touch with Us
@@ -252,21 +332,23 @@ function LandingSection() {
             <motion.div
               variants={logoVariants}
               className="relative"
+              whileHover={{ 
+                scale: 1.02,
+                rotate: 1,
+                transition: { duration: 0.4, ease: gentleEase }
+              }}
             >
-
               {/* Logo Container */}
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 xl:w-[37rem] xl:h-[28rem] transform transition-transform duration-300">
-
+              <div className="relative w-64 h-64 md:w-96 md:h-96">
                 {/* Logo/Image */}
-                <motion.div
-                  className="absolute inset-0 flex items-center justify-center"
-                >
+                <motion.div className="absolute inset-0 flex items-center justify-center">
                   <Image
                     src={logoImage}
                     alt="Good Company Logo"
                     width={590}
                     height={450}
                     className="object-contain drop-shadow-2xl"
+                    priority // Ensures faster loading
                   />
                 </motion.div>
               </div>
@@ -274,11 +356,27 @@ function LandingSection() {
           </div>
         </div>
 
-        <TestimonialCarousel/>
+        {/* Testimonial Carousel with staggered entry */}
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            duration: 1.2, 
+            ease: smoothEase, 
+            delay: 1.5 // Appears after main content
+          }}
+        >
+          <TestimonialCarousel/>
+        </motion.div>
       </motion.div>
 
-      {/* Gradient Overlay at Bottom */}
-      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-20" />
+      {/* Gradient Overlay at Bottom with smooth fade */}
+      <motion.div 
+        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-20"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 2.0, ease: gentleEase, delay: 1.0 }}
+      />
     </section>
   );
 }

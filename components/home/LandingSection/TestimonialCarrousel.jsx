@@ -129,7 +129,7 @@ function TestimonialCarousel() {
     }
 
     return (
-        <section className="py-16 sm:py-12 xs:py-8 overflow-hidden">
+        <section className=" overflow-hidden">
             <div className="max-w-full">
                 {/* Carousel Container */}
                 <div

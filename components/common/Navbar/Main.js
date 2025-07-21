@@ -14,13 +14,10 @@ import logo from "@/public/logo.svg";
 import { Button } from "../Buttons/Button";
 
 function Navbar() {
-  const [isTop, setIsTop] = useState(true);
   const [mobileMenuIsOpen, setMobileMenuIsOpen] = useState(false);
   const [isLoaded, setIsLoaded] = useState(false);
   const path = usePathname();
-  const { width } = useWindowDimensions();
   const navRef = useRef(null);
-  const isInView = useInView(navRef, { once: true, threshold: 0.1 });
 
   const linksStyle = {
     desktop: `text-white hover:text-primary-orange cursor-pointer font-normal py-2 transition-all duration-200 flex items-center gap-1`,
@@ -32,10 +29,6 @@ function Navbar() {
     {
       label: "IT Services",
       href: "/services"
-    },
-    {
-      label: "Blog",
-      href: "/blog"
     },
     {
       label: "About Us",
@@ -50,12 +43,6 @@ function Navbar() {
   const handleCloseMenu = () => {
     setMobileMenuIsOpen(false);
   };
-
-  useEffect(() => {
-    const handleScroll = () => setIsTop(window.scrollY <= 50);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoaded(true), 100);
