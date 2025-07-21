@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 
 
 // Minimal loading for dynamic imports
-const MinimalLoader = () => <div className="min-h-screen" />;
+const MinimalLoader = () => <div className="min-h-screen " />;
 
 // Regular Components (lazy loaded)
 const LandingSection = dynamic(() => import("./LandingSection/Landing-Section"), {
