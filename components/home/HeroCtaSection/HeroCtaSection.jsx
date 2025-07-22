@@ -149,7 +149,7 @@ function HeroCtaSection() {
               transition: { duration: 0.3, ease: "easeOut" }
             }}
           >
-            <span className="bg-gradient-light-orange bg-clip-text text-transparent">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
               security and efficiency,
             </span>
           </motion.h2>
@@ -169,7 +169,7 @@ function HeroCtaSection() {
               transition: { duration: 0.3, ease: "easeOut" }
             }}
           >
-            <span className="bg-gradient-blue-1 bg-clip-text text-transparent">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-primary-blue">
               growth and innovation
             </span>
           </motion.h4>
