@@ -197,17 +197,6 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
       ) : (
         /* MOBILE VERSION - Card Stack with Swipe Animation */
         <div className="w-full">
-          {/* Mobile Title */}
-          <div className="mb-4 sm:mb-6 text-center px-2 sm:px-4">
-            <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-1 sm:mb-2">
-              Why Choose Good Company
-            </h4>
-            <p className="text-xs sm:text-sm text-gray-600">
-              <span className="hidden xs:inline">Tap arrows or swipe to explore</span>
-              <span className="xs:hidden">Tap arrows to explore</span>
-            </p>
-          </div>
-
           {/* Single Card with Swipe Animation */}
           <div className="relative h-96 overflow-hidden">
             <AnimatePresence mode="wait" custom={direction}>
@@ -276,13 +265,6 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
               Next →
             </button>
           </div> */}
-
-          {/* Progress info */}
-          <div className="text-center mt-4 px-4">
-            <span className="text-xs text-gray-500">
-              {currentIndex + 1} of {infoData.length} reasons to choose us
-            </span>
-          </div>
         </div>
       )}
     </div>

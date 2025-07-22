@@ -377,7 +377,7 @@ function ServicesSection() {
                                     BEST
                                 </span>
                             </h2>
-                            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+                            <p className="text-sm sm:text-base text-white leading-relaxed">
                                 We know that there isn't one solution that fits every business, and that technological/
                                 security challenges change over time. That's why we work alongside your team to build
                                 out the projects you need, when you need them. Here's how we do it:
@@ -385,54 +385,46 @@ function ServicesSection() {
                         </AnimatedBlock>
 
                         {/* Mobile Services List */}
-                        <div className="space-y-12">
+                        <div className="space-y-6">
                             {servicesData.map((service, index) => (
                                 <AnimatedBlock
                                     key={service.id}
                                     delay={0.2 + (index * 0.1)}
-                                    className="bg-slate-800/30 backdrop-blur-sm rounded-2xl p-6 border border-slate-700/50"
+                                    className="bg-slate-800/30 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden"
                                 >
-                                    {/* Mobile Service Image */}
-                                    <div className="relative h-48 sm:h-64 rounded-xl overflow-hidden mb-6">
-                                        <Image
-                                            src={service.image}
-                                            alt={service.category}
-                                            fill
-                                            className="object-cover"
-                                            sizes="(max-width: 768px) 100vw, 50vw"
-                                        />
-                                    </div>
-
-                                    {/* Mobile Service Content */}
-                                    <div className="space-y-4">
-                                        <div className="flex items-center gap-3">
-                                            <FaCheckCircle className="w-6 h-6 text-primary-blue flex-shrink-0" />
-                                            <h3 className="text-xl sm:text-2xl font-bold text-white leading-tight">
-                                                {service.category}
-                                            </h3>
+                                    <div className="flex flex-col sm:flex-row">
+                                        {/* Image Section */}
+                                        <div className="relative w-full sm:w-1/3 h-48 sm:h-auto bg-slate-700/20 flex items-center justify-center">
+                                            <div className="relative w-full h-full max-w-xs">
+                                                <Image
+                                                    src={service.image}
+                                                    alt={service.category}
+                                                    fill
+                                                    className="object-fill"
+                                                    sizes="(max-width: 640px) 100vw, 33vw"
+                                                />
+                                            </div>
                                         </div>
 
-                                        <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-                                            {service.description}
-                                        </p>
-
-                                        <p className="text-gray-400 text-sm leading-relaxed">
-                                            {service.additionalInfo}
-                                        </p>
-
-                                        <div className="pt-2">
-                                            <Link href="/learn-more">
-                                                <motion.button
-                                                    className="px-6 py-2.5 rounded-lg font-semibold text-white shadow-lg transition-all duration-300 text-sm bg-gradient-to-r from-orange-500 to-orange-600"
-                                                    whileHover={{
-                                                        scale: 1.05,
-                                                        boxShadow: "0 20px 40px rgba(249, 115, 22, 0.3)"
-                                                    }}
-                                                    whileTap={{ scale: 0.98 }}
-                                                >
+                                        {/* Content Section */}
+                                        <div className="flex-1 space-y-4 px-6 py-6">
+                                            <div className="flex items-start gap-3">
+                                                <FaCheckCircle className="w-5 h-5 text-primary-blue flex-shrink-0 mt-1" />
+                                                <div className="space-y-3">
+                                                    <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
+                                                        {service.category}
+                                                    </h3>
+                                                    <p className="text-gray-300 text-sm leading-relaxed">
+                                                        {service.description}
+                                                    </p>
+                                                    <p className="text-gray-400 text-xs leading-relaxed">
+                                                        {service.additionalInfo}
+                                                    </p>
+                                                </div>
+                                            </div>
+                                                <Button className="text-sm sm:text-base" href={"/"}>
                                                     Learn More
-                                                </motion.button>
-                                            </Link>
+                                                </Button>
                                         </div>
                                     </div>
                                 </AnimatedBlock>
@@ -497,8 +489,8 @@ function ServicesSection() {
                                                 </motion.div>
 
                                                 <span className={`text-sm sm:text-base md:text-lg font-medium transition-all duration-300 ${index === activeService
-                                                        ? 'text-white'
-                                                        : 'text-white/55 group-hover:text-primary-blue'
+                                                    ? 'text-white'
+                                                    : 'text-white/55 group-hover:text-primary-blue'
                                                     }`}>
                                                     {service.title}
                                                 </span>
@@ -586,22 +578,6 @@ function ServicesSection() {
                                 </AnimatedBlock>
                             </div>
                         </div>
-
-                        {/*             <div className="text-center mt-8">
-              <div className="flex justify-center gap-2 mb-4">
-                {servicesData.map((_, index) => (
-                  <div 
-                    key={index}
-                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                      index === activeService ? 'bg-blue-400' : 'bg-gray-600'
-                    }`}
-                  />
-                ))}
-              </div>
-              <p className="text-gray-400 text-xs sm:text-sm">
-                Scroll to explore services • {activeService + 1} of {servicesData.length}
-              </p>
-            </div> */}
                     </div>
                 </div>
             )}
