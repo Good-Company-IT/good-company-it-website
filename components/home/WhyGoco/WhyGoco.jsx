@@ -83,7 +83,7 @@ function WhyGoco() {
   };
 
   return (
-    <section className="relative min-h-screen py-20 md:py-32 overflow-hidden">
+    <section className="relative min-h-screen overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -99,26 +99,27 @@ function WhyGoco() {
           backgroundImage: "url('/imgs/why/texture.png')",
         }}
       />
+      
       {/* Content Container */}
       <motion.div
-        className="relative z-10 max-w-[1440px] mx-auto px-6"
+        className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 lg:py-32 min-h-screen flex items-center"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div className="w-full grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 lg:min-h-[600px]">
           
           {/* Left Content */}
           <motion.div 
-            className="space-y-8"
+            className="flex flex-col justify-center space-y-6 sm:space-y-8 lg:pr-8"
             variants={itemVariants}
           >
             {/* Heading */}
-            <div className="space-y-4">
-              <h2 className="text-4xl md:text-5xl xl:text-6xl font-medium text-gray-900 leading-tight">
+            <div className="space-y-2 sm:space-y-3 md:space-y-4">
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-medium text-gray-900 leading-[1.1] sm:leading-tight">
                 Why business choose
               </h2>
-              <h3 className="text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-tight">
+              <h3 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
                 <span>
                   Good Company
                 </span>
@@ -126,12 +127,12 @@ function WhyGoco() {
             </div>
 
             {/* Subtitle */}
-            <p className="text-xl text-text-dark leading-relaxed max-w-lg">
+            <p className="text-base sm:text-lg md:text-xl text-text-dark leading-relaxed max-w-none sm:max-w-lg">
               A partnership built on Excellence, Transparency, and Diligence.
             </p>
 
             {/* CTA Button */}
-            <div>
+            <div className="pt-2">
               <Link href="/contact">
                 <Button appearance="primary">
                     Contact Us
@@ -143,9 +144,23 @@ function WhyGoco() {
           {/* Right Content - InfoCard Carousel */}
           <motion.div
             variants={carouselVariants}
-            className="relative"
+            className="flex flex-col justify-end lg:pl-8"
           >
-            <InfoCardCarousel infoData={infoData} />
+            {/* Spacer for desktop */}
+            <div className="hidden lg:block flex-1 min-h-[100px]"></div>
+            
+            {/* Carousel - Full width on mobile, constrained on desktop */}
+            <div className="w-full">
+              {/* Mobile: Full viewport width carousel */}
+              <div className="lg:hidden">
+                <InfoCardCarousel infoData={infoData} />
+              </div>
+              
+              {/* Desktop: Normal container */}
+              <div className="hidden lg:block">
+                <InfoCardCarousel infoData={infoData} />
+              </div>
+            </div>
           </motion.div>
         </div>
       </motion.div>
