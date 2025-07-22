@@ -102,7 +102,7 @@ function WhyGoco() {
       
       {/* Content Container */}
       <motion.div
-        className="relative z-10 w-full max-w-[1440px] mx-auto px-24 py-10 md:py-20 min-h-screen flex items-center"
+        className="relative z-10 w-full max-w-[1440px] mx-auto px-0 md:px-14 py-10 md:py-20 min-h-screen flex items-center"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
@@ -111,7 +111,7 @@ function WhyGoco() {
           
           {/* Left Content */}
           <motion.div 
-            className="flex flex-col justify-center space-y-6 sm:space-y-8 lg:pr-8"
+            className="flex flex-col justify-center px-5 space-y-6 sm:space-y-8 lg:pr-8"
             variants={itemVariants}
           >
             {/* Heading */}
