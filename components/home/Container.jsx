@@ -23,7 +23,7 @@ const WhatWeDoBest = dynamic(() => import("./WhatWeDoBest/WhatWeDoBest"), {
   ssr: true
 });
 
-const HeroCtaSection = dynamic(() => import("./HeroCtaSection/HeroCtaSection"), {
+const HeroCTA = dynamic(() => import("./HeroCtaSection/HeroCtaSection"), {
   loading: () => <MinimalLoader />,
   ssr: true
 });
@@ -58,14 +58,22 @@ export default function Container({ locale, translations, mainLang }) {
 
   return (
     <>
-          <LandingSection locale={locale} translations={translations.homeTranslations} />
-          {/* <ValuesSelector/> */}
-          <TechBento/>
-          <WhyGoCompany />
-          <WhatWeDoBest />
-          <OurServices />
-          <WeBuild />
-          <HeroCtaSection/>
+      <LandingSection locale={locale} translations={translations.homeTranslations} />
+      {/* <ValuesSelector/> */}
+      <TechBento />
+      <WhyGoCompany />
+      <WhatWeDoBest />
+      <OurServices />
+      <WeBuild />
+      <HeroCTA
+        headings={[
+          { text: "We deliver", style: "normal" },
+          { text: "security and efficiency,", style: "gradient-orange" },
+          { text: "so you can focus on", style: "normal" },
+          { text: "growth and innovation", style: "gradient-blue" }
+        ]}
+        cta={{ text: "Secure Your Business", href: "/contact" }}
+      />
     </>
   );
 }
