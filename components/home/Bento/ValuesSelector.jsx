@@ -161,7 +161,7 @@ function ValuesSelector() {
                             exit="exit"
                             className={`${getTextGradient(valuesData[activeValue].color)} rounded-2xl px-8 py-11 w-full h-full flex items-center justify-center`}
                         >
-                            <p className="text-white text-lg sm:text-base md:text-lg lg:text-xl xl:text-[22px] font-medium leading-relaxed text-center">
+                            <p className="text-white text-lg sm:text-base md:text-lg font-medium leading-relaxed text-center">
                                 {valuesData[activeValue].description}
                             </p>
                         </motion.div>
@@ -195,18 +195,18 @@ function ValuesSelector() {
 
                 {/* Buttons Section */}
                 <div className="h-[170px] rounded-xl p-6 bg-gradient-to-br from-[#555886]/70 from-5% to-[#DBDDFB]">
-                    <div className="flex flex-wrap gap-x-5 gap-y-3 h-full items-start content-start">
+                    <div className="flex flex-wrap gap-x-5 gap-y-3 h-full xl:justify-center items-start content-center">
                         {valuesData.map((value, index) => (
                             <motion.button
                                 key={value.id}
                                 onClick={() => setActiveValue(index)}
                                 className={`
                                 ${getButtonStyle(index, value.color)}
-                                rounded-full text-xs lg:text-sm font-light
+                                rounded-full text-xs xl:text-sm font-light
                                 transition-all duration-300 ease-out
                                 border border-white/20
                                 flex items-center justify-center
-                                px-5 lg:px-5 xl:px-10 py-1
+                                px-5 lg:px-4 xl:px-8 py-1
                                 whitespace-nowrap
                               `}
                                 whileHover={{
@@ -245,7 +245,7 @@ function ValuesSelector() {
                                     key={value.id}
                                     className={`
                                         ${getCardGradient(value.color)}
-                                        rounded-2xl p-6 w-80 sm:w-96 flex-shrink-0
+                                        rounded-2xl p-6 w-72 sm:w-96 flex-shrink-0
                                         backdrop-blur-sm border border-white/20
                                         shadow-lg hover:shadow-xl transition-all duration-300
                                     `}

@@ -118,14 +118,8 @@ function WhyGoco() {
               <h2 className="text-4xl md:text-5xl xl:text-6xl font-medium text-gray-900 leading-tight">
                 Why business choose
               </h2>
-              <h3 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-tight">
-                <span
-                  style={{
-                    background: 'var(--Light-Orange-gradient)',
-                    WebkitBackgroundClip: 'text',
-                    WebkitTextFillColor: 'transparent'
-                  }}
-                >
+              <h3 className="text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-tight">
+                <span>
                   Good Company
                 </span>
               </h3>

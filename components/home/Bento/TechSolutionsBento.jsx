@@ -40,7 +40,7 @@ const SpaceBackground = () => (
 
 const TechSolutionsBento = () => {
     return (
-        <div className="relative px-24 py-40">
+        <div className="relative px-3 sm:px-12 md:px-24 py-40">
       <div className="absolute inset-0 w-full h-full -z-10" />
       {/* SVG Background */}
       <div 
@@ -52,13 +52,9 @@ const TechSolutionsBento = () => {
             <div className="max-w-[1440px] mx-auto">
                 {/* Header */}
                 <div className="text-center my-16">
-                    <h1 className="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-medium text-white mb-4">
+                    <h1 className="text-xl md:text-2xl lg:text-3xl font-medium text-white mb-4">
                         Tech solutions for businesses that need{' '}
-                        <span className="font-bold" style={{
-                            background: 'var(--Light-Orange-gradient)',
-                            WebkitBackgroundClip: 'text',
-                            WebkitTextFillColor: 'transparent'
-                        }}>more than just IT support</span>
+                        <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange">more than just IT support</span>
                     </h1>
                 </div>
 
@@ -80,7 +76,7 @@ const TechSolutionsBento = () => {
 
                             {/* Main Content */}
                             <div className="flex-1">
-                                <p className="text-white/90 text-sm md:text-base lg:text-lg xl:text-xl leading-relaxed mb-6 max-w-md">
+                                <p className="text-white/90 text-sm md:text-base lg:text-lg leading-relaxed mb-6 max-w-md">
                                     To be in Good Company means you have an IT partner that has your back. Whether you're just getting started, or looking to expand securely. It means you have a dedicated IT and PM team that wants to see you reach success.
                                 </p>
 
@@ -92,20 +88,16 @@ const TechSolutionsBento = () => {
                             {/* Bottom Section */}
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-end">
                                 <div className="mt-10">
-                                    <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-white mb-2">
+                                    <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2">
                                         Our Motto is you are in
                                     </h2>
-                                    <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-2" style={{
-                                        background: 'var(--Light-Orange-gradient)',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent'
-                                    }}>
+                                    <h2 className="text-3xl lg:text-4xl font-bold mb-2 text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange">
                                         Good Company
                                     </h2>
                                 </div>
 
                                 <div className="text-right">
-                                    <p className="text-white text-sm md:text-base lg:text-lg xl:text-xl mb-6 max-w-[380px] ml-auto">
+                                    <p className="text-white text-sm md:text-base lg:text-lg mb-6 max-w-[380px] ml-auto">
                                         We combine technical expertise with Business IQ to help you scale securely, operate smarter, and stay focused on growing your business.
                                     </p>
                                     <SocialMedia />
