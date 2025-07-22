@@ -102,12 +102,12 @@ function WhyGoco() {
       
       {/* Content Container */}
       <motion.div
-        className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-6 py-12 sm:py-16 md:py-20 lg:py-32 min-h-screen flex items-center"
+        className="relative z-10 w-full max-w-[1440px] mx-auto px-24 py-10 md:py-20 min-h-screen flex items-center"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        <div className="w-full grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 lg:min-h-[600px]">
+        <div className="w-full grid lg:grid-cols-2 gap-8 lg:gap-0 lg:min-h-[600px]">
           
           {/* Left Content */}
           <motion.div 
@@ -116,10 +116,10 @@ function WhyGoco() {
           >
             {/* Heading */}
             <div className="space-y-2 sm:space-y-3 md:space-y-4">
-              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-medium text-gray-900 leading-[1.1] sm:leading-tight">
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 leading-[1.1] sm:leading-tight">
                 Why business choose
               </h2>
-              <h3 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
+              <h3 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
                 <span>
                   Good Company
                 </span>

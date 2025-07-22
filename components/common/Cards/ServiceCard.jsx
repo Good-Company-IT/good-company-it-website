@@ -41,13 +41,13 @@ const ServiceCard = ({
                     <GoShieldCheck className='w-11 h-11 text-primary-blue' />
 
                     {/* Title */}
-                    <h3 className="text-base sm:text-lg font-bold leading-tight 
+                    <h3 className="text-sm sm:text-base font-bold leading-tight 
                         text-primary-blue transition-colors duration-300">
                         {title}
                     </h3>
                 </div>
 
-                <p className="text-text-dark text-sm sm:text-base leading-relaxed h-24 mb-3 
+                <p className="text-text-dark text-xs sm:text-sm leading-relaxed h-24 mb-3 
                      line-clamp-4">
                     {text}
                 </p>
@@ -57,6 +57,7 @@ const ServiceCard = ({
                     <Button
                         onClick={onButtonClick}
                         variant="primary"
+                        className='text-xs sm:text-sm'
                     >
                         {buttonText}
                     </Button>

@@ -138,14 +138,14 @@ function InfoCard({ info, isActive, variant = "primary" }) {
       <div className="text-left space-y-2 sm:space-y-3">
         {/* Title */}
         <h3 className={`font-bold 
-                       text-md sm:text-lg md:text-xl 
+                       text-md sm:text-lg 
                        leading-tight line-clamp-2 ${styles.titleColor}`}>
           {info.title}
         </h3>
 
         {/* Description */}
         <p className={`text-left
-                      text-sm sm:text-base md:text-lg 
+                      text-sm sm:text-base 
                       leading-relaxed line-clamp-3 sm:line-clamp-4 ${styles.descriptionColor}`}>
           {info.text}
         </p>

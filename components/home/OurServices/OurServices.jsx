@@ -73,16 +73,16 @@ const OurServices = () => {
 
   const getTitleClasses = () => {
     if (isLargeScreen) {
-      return "text-4xl sm:text-5xl lg:text-6xl font-bold text-center mb-6";
+      return "text-4xl sm:text-5xl font-bold text-center mb-6";
     }
     return "text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-6";
   };
 
   const getSubtitleClasses = () => {
     if (isLargeScreen) {
-      return "text-lg sm:text-xl lg:text-2xl text-center mb-16 max-w-4xl mx-auto leading-relaxed";
+      return "text-base sm:text-lg text-center mb-16 max-w-4xl mx-auto leading-relaxed";
     }
-    return "text-base sm:text-lg lg:text-xl text-center mb-12 max-w-3xl mx-auto leading-relaxed";
+    return "text-sm sm:text-base text-center mb-12 max-w-3xl mx-auto leading-relaxed";
   };
 
   return (
@@ -117,7 +117,7 @@ const OurServices = () => {
             </span>
           </h2>
           
-          <p className={`text-gray-300 ${getSubtitleClasses()}`}>
+          <p className={`text-white ${getSubtitleClasses()}`}>
             Lorem ipsum dolor sit amet consectetur adipiscing elit natoque aptent,
             fermentum nunc curae porta sodales rutrum egestas fermentum.
           </p>
