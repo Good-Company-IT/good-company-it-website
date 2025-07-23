@@ -113,7 +113,7 @@ const TeamCTASection = ({socialMedia = true, imageSrc="/imgs/about/teamCTA.png",
                             </motion.h2>
                             
                             <motion.p
-                                className="text-white text-base leading-relaxed mb-8 flex-grow"
+                                className="text-white text-sm sm:text-base leading-relaxed mb-8 flex-grow"
                                 variants={itemVariants}
                             >
                                 {text}
@@ -122,7 +122,7 @@ const TeamCTASection = ({socialMedia = true, imageSrc="/imgs/about/teamCTA.png",
                             <motion.div
                                 variants={itemVariants}
                             >
-                                <Button className="w-full sm:w-auto">
+                                <Button className="w-full text-sm sm:text-base sm:w-auto">
                                     Get in Touch with Us
                                 </Button>
                             </motion.div>
