@@ -77,67 +77,105 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
     </div>
   );
 
-  // Mobile Card Component
-  const MobileCard = ({ info, index }) => (
-    <motion.div 
-      className="bg-white rounded-2xl p-6 shadow-xl border border-gray-100 mx-4"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.3 }}
-    >
-      {/* Header */}
-      <div className="flex items-center justify-between mb-4">
-        <div className="w-10 h-10 bg-gradient-to-r from-orange-400 to-orange-600 rounded-full flex items-center justify-center">
-          <span className="text-white text-sm font-bold">{index + 1}</span>
+  // Mobile Card Component with Variant Support
+  const MobileCard = ({ info, index, variant }) => {
+    // Get variant styles for mobile card
+    const getMobileVariantStyles = () => {
+      if (variant === "terciary") {
+        return {
+          cardBg: "bg-gradient-to-br from-white/15 via-blue-900/15 to-slate-900/15 border border-[#DBDDFB]",
+          titleColor: "text-white",
+          textColor: "text-white",
+          numberBg: "bg-gradient-to-r from-orange-400 to-orange-600",
+          numberText: "text-white",
+          counterText: "text-white/70",
+          arrowActiveBg: "bg-orange-100/20",
+          arrowActiveText: "text-orange-300",
+          arrowInactiveBg: "bg-white/10",
+          arrowInactiveText: "text-white/30",
+          instructionText: "text-white/50"
+        };
+      }
+      
+      // Default (primary) variant
+      return {
+        cardBg: "bg-white border border-gray-100",
+        titleColor: "text-gray-900",
+        textColor: "text-gray-600",
+        numberBg: "bg-gradient-to-r from-orange-400 to-orange-600",
+        numberText: "text-white",
+        counterText: "text-gray-400",
+        arrowActiveBg: "bg-orange-100",
+        arrowActiveText: "text-orange-600",
+        arrowInactiveBg: "bg-gray-100",
+        arrowInactiveText: "text-gray-300",
+        instructionText: "text-gray-500"
+      };
+    };
+
+    const styles = getMobileVariantStyles();
+
+    return (
+      <motion.div 
+        className={`${styles.cardBg} rounded-2xl p-6 shadow-xl mx-4`}
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.9 }}
+        transition={{ duration: 0.3 }}
+      >
+        {/* Header */}
+        <div className="flex items-center justify-between mb-4">
+          <div className={`w-10 h-10 ${styles.numberBg} rounded-full flex items-center justify-center`}>
+            <span className={`${styles.numberText} text-sm font-bold`}>{index + 1}</span>
+          </div>
+          <div className={`text-xs ${styles.counterText} font-medium`}>
+            {index + 1} of {infoData.length}
+          </div>
         </div>
-        <div className="text-xs text-gray-400 font-medium">
-          {index + 1} of {infoData.length}
+
+        {/* Title */}
+        <h3 className={`text-lg font-bold ${styles.titleColor} mb-4 leading-tight`}>
+          {info.title}
+        </h3>
+
+        {/* Description */}
+        <p className={`text-sm ${styles.textColor} leading-relaxed mb-6`}>
+          {info.text}
+        </p>
+
+        {/* Navigation arrows for mobile */}
+        <div className="flex justify-between items-center">
+          <button
+            onClick={goToPrevious}
+            disabled={index === 0}
+            className={`p-2 rounded-full transition-all duration-300 ${
+              index === 0 
+                ? `${styles.arrowInactiveBg} ${styles.arrowInactiveText} cursor-not-allowed` 
+                : `${styles.arrowActiveBg} ${styles.arrowActiveText} hover:opacity-80`
+            }`}
+          >
+            <FaArrowLeft className="w-4 h-4" />
+          </button>
+
+          <div className={`text-xs ${styles.instructionText} font-medium`}>
+            Swipe or tap arrows
+          </div>
+
+          <button
+            onClick={goToNext}
+            disabled={index === infoData.length - 1}
+            className={`p-2 rounded-full transition-all duration-300 ${
+              index === infoData.length - 1 
+                ? `${styles.arrowInactiveBg} ${styles.arrowInactiveText} cursor-not-allowed` 
+                : `${styles.arrowActiveBg} ${styles.arrowActiveText} hover:opacity-80`
+            }`}
+          >
+            <FaArrowRight className="w-4 h-4" />
+          </button>
         </div>
-      </div>
-
-      {/* Title */}
-      <h3 className="text-lg font-bold text-gray-900 mb-4 leading-tight">
-        {info.title}
-      </h3>
-
-      {/* Description */}
-      <p className="text-sm text-gray-600 leading-relaxed mb-6">
-        {info.text}
-      </p>
-
-      {/* Navigation arrows for mobile */}
-      <div className="flex justify-between items-center">
-        <button
-          onClick={goToPrevious}
-          disabled={index === 0}
-          className={`p-2 rounded-full transition-all duration-300 ${
-            index === 0 
-              ? 'bg-gray-100 text-gray-300 cursor-not-allowed' 
-              : 'bg-orange-100 text-orange-600 hover:bg-orange-200'
-          }`}
-        >
-          <FaArrowLeft className="w-4 h-4" />
-        </button>
-
-        <div className="text-xs text-gray-500 font-medium">
-          Swipe or tap arrows
-        </div>
-
-        <button
-          onClick={goToNext}
-          disabled={index === infoData.length - 1}
-          className={`p-2 rounded-full transition-all duration-300 ${
-            index === infoData.length - 1 
-              ? 'bg-gray-100 text-gray-300 cursor-not-allowed' 
-              : 'bg-orange-100 text-orange-600 hover:bg-orange-200'
-          }`}
-        >
-          <FaArrowRight className="w-4 h-4" />
-        </button>
-      </div>
-    </motion.div>
-  );
+      </motion.div>
+    );
+  };
 
   // Mobile swipe variants
   const slideVariants = {
@@ -154,6 +192,22 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
       opacity: 0
     })
   };
+
+  // Get dot indicator styles based on variant
+  const getDotStyles = () => {
+    if (variant === "terciary") {
+      return {
+        active: "bg-orange-500 text-white shadow-lg",
+        inactive: "bg-white/20 text-white/70 hover:bg-white/30 active:bg-white/40 border border-white/20"
+      };
+    }
+    return {
+      active: "bg-orange-500 text-white shadow-lg",
+      inactive: "bg-gray-200 text-gray-600 hover:bg-gray-300 active:bg-gray-400"
+    };
+  };
+
+  const dotStyles = getDotStyles();
 
   return (
     <div className="w-full">
@@ -195,7 +249,7 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
           )}
         </div>
       ) : (
-        /* MOBILE VERSION - Card Stack with Swipe Animation */
+        /* MOBILE VERSION - Custom Card with Variant Support */
         <div className="w-full">
           {/* Single Card with Swipe Animation */}
           <div className="relative h-96 overflow-hidden">
@@ -216,13 +270,14 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
               >
                 <MobileCard 
                   info={infoData[currentIndex]} 
-                  index={currentIndex} 
+                  index={currentIndex}
+                  variant={variant}
                 />
               </motion.div>
             </AnimatePresence>
           </div>
 
-          {/* Enhanced Dot Indicators - Bigger and more interactive */}
+          {/* Enhanced Dot Indicators with Variant Support */}
           <div className="flex justify-center items-center gap-3 mt-6 px-4">
             {infoData.map((_, index) => (
               <button
@@ -230,8 +285,8 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
                 onClick={() => goToCard(index)}
                 className={`transition-all duration-300 rounded-full min-w-[44px] min-h-[44px] flex items-center justify-center ${
                   index === currentIndex 
-                    ? 'bg-orange-500 text-white shadow-lg' 
-                    : 'bg-gray-200 text-gray-600 hover:bg-gray-300 active:bg-gray-400'
+                    ? dotStyles.active
+                    : dotStyles.inactive
                 }`}
                 aria-label={`Go to slide ${index + 1}`}
               >
@@ -239,32 +294,6 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
               </button>
             ))}
           </div>
-
-{/*           <div className="flex justify-center gap-4 mt-4 px-4">
-            <button
-              onClick={goToPrevious}
-              disabled={currentIndex === 0}
-              className={`flex-1 max-w-[140px] py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
-                currentIndex === 0
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : 'bg-orange-500 text-white hover:bg-orange-600 active:bg-orange-700 shadow-lg'
-              }`}
-            >
-              ← Previous
-            </button>
-            
-            <button
-              onClick={goToNext}
-              disabled={currentIndex === infoData.length - 1}
-              className={`flex-1 max-w-[140px] py-3 px-6 rounded-xl font-semibold transition-all duration-300 ${
-                currentIndex === infoData.length - 1
-                  ? 'bg-gray-100 text-gray-400 cursor-not-allowed'
-                  : 'bg-orange-500 text-white hover:bg-orange-600 active:bg-orange-700 shadow-lg'
-              }`}
-            >
-              Next →
-            </button>
-          </div> */}
         </div>
       )}
     </div>
