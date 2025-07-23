@@ -204,7 +204,7 @@ const HowWeDo = () => {
                 <div className="text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-300 ease-in-out">
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4 transition-all duration-300 ease-in-out">
                         Here's how we do{' '}
-                        <span className="font-bold bg-gradient-to-r from-orange-400 to-orange-500 bg-clip-text text-transparent">
+                        <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
                             IT
                         </span>
                     </h2>
@@ -215,7 +215,7 @@ const HowWeDo = () => {
                     {/* Navigation Buttons - Hidden on mobile, shown on tablet+ */}
                     <button
                         onClick={prevSlide}
-                        className="hidden sm:flex absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-orange-500 hover:bg-orange-600 rounded-full items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="hidden sm:flex absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange hover:bg-secondary-orange rounded-full items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
                         aria-label="Previous slide"
                     >
                         <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,7 +225,7 @@ const HowWeDo = () => {
 
                     <button
                         onClick={nextSlide}
-                        className="hidden sm:flex absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-orange-500 hover:bg-orange-600 rounded-full items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                        className="hidden sm:flex absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange hover:bg-secondary-orange rounded-full items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
                         aria-label="Next slide"
                     >
                         <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
