@@ -79,10 +79,7 @@ function WhyItMatters() {
     };
 
     return (
-        <section className="relative min-h-screen py-20 md:py-32 overflow-hidden">
-
-
-
+        <section className="relative lg:max-h-screen py-32 md:py-44 overflow-hidden">
             {/* Overlay Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -90,14 +87,20 @@ function WhyItMatters() {
                     backgroundImage: "url('/imgs/backgrounds/radialBlue.svg')",
                 }}
             />
+            <div
+                className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50"
+                style={{
+                    backgroundImage: "url('/imgs/texture2.svg')",
+                }}
+            />
             {/* Content Container */}
             <motion.div
-                className="relative z-10 max-w-[1440px] mx-auto px-6"
+                className="relative z-10 max-w-[1440px] mx-auto sm:px-6"
                 variants={containerVariants}
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
             >
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center px-6">
 
                     {/* Left Content */}
                     <motion.div
@@ -106,33 +109,25 @@ function WhyItMatters() {
                     >
                         {/* Heading */}
                         <div className="space-y-4">
-                            <h2 className="text-4xl md:text-5xl xl:text-6xl font-medium text-white leading-tight">
+                            <h2 className="text-3xl md:text-4xl font-medium text-white leading-tight">
                                 Why It Matters
                             </h2>
-                            <h3 className="text-5xl md:text-6xl xl:text-7xl font-bold leading-tight">
-                                <span
-                                    style={{
-                                        background: 'var(--Light-Orange-gradient)',
-                                        WebkitBackgroundClip: 'text',
-                                        WebkitTextFillColor: 'transparent'
-                                    }}
-                                >
+                            <h3 className="text-4xl md:text-5xl font-bold leading-tight">
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
                                     For Our Clients
                                 </span>
                             </h3>
                         </div>
 
                         {/* Subtitle */}
-                        <p className="text-xl text-white leading-relaxed max-w-lg">
+                        <p className="text-sm sm:text-base text-white leading-relaxed max-w-lg">
                             At Good Company IT, trust is built on results. Our clients choose us because we combine deep technical expertise with a proactive, human -centered approach.
                         </p>
 
                         {/* CTA Button */}
-                        <div>
-                                <Button appearance="primary" href="/contact">
-                                    Contact Us
-                                </Button>
-                        </div>
+                        <Button className="w-36" appearance="primary" href="/contact">
+                            Contact Us
+                        </Button>
                     </motion.div>
 
                     {/* Right Content - InfoCard Carousel */}
@@ -140,7 +135,7 @@ function WhyItMatters() {
                         variants={carouselVariants}
                         className="relative"
                     >
-                        <InfoCardCarousel infoData={infoData} variant="secondary" />
+                        <InfoCardCarousel infoData={infoData} variant="terciary" />
                     </motion.div>
                 </div>
             </motion.div>
