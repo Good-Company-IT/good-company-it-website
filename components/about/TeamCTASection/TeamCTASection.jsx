@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { Button } from '@/components/common/Buttons/Button';
 
-// Your existing SocialMedia component
 const SocialMedia = () => {
     const socialLinks = [
         { icon: FaInstagram, href: '#', color: 'hover:bg-secondary-orange' },
@@ -34,15 +34,6 @@ const SocialMedia = () => {
     );
 };
 
-// Button component placeholder - replace with your actual Button component
-const Button = ({ children, className = '', ...props }) => (
-    <button
-        className={`px-6 py-3 bg-primary-orange text-white font-medium rounded-lg hover:bg-secondary-orange transition-all duration-200 hover:scale-105 ${className}`}
-        {...props}
-    >
-        {children}
-    </button>
-);
 
 const TeamCTASection = () => {
     const containerVariants = {
@@ -110,16 +101,16 @@ const TeamCTASection = () => {
                         className="flex-1 lg:flex-[2] flex flex-col justify-center"
                         variants={itemVariants}
                     >
-                        <div className="rounded-[22px] border border-[#DBDDFB] bg-gradient-to-br from-white/15 via-[#040B59]/15 to-[#010425]/15 backdrop-blur-md p-8 lg:p-10 h-full flex flex-col justify-center">
+                        <div className="rounded-[22px] border border-[#DBDDFB] bg-gradient-to-br from-white/15 via-[#040B59]/35 to-[#010425]/35 backdrop-blur-md p-8 lg:p-10 h-full flex flex-col justify-center">
                             <motion.h2
-                                className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-6"
+                                className="text-2xl sm:text-3xl font-bold text-white mb-6"
                                 variants={itemVariants}
                             >
                                 Who We Are
                             </motion.h2>
                             
                             <motion.p
-                                className="text-white text-base sm:text-lg leading-relaxed mb-8 flex-grow"
+                                className="text-white text-base leading-relaxed mb-8 flex-grow"
                                 variants={itemVariants}
                             >
                                 We offer I.T. consulting that goes beyond solving technical issues. Our 
