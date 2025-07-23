@@ -76,22 +76,17 @@ const BornFromExp = () => {
           {/* Left Side - Title and Description */}
           <div className="space-y-6 lg:space-y-8">
             <motion.div variants={textVariants} className="space-y-4">
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark leading-tight">
+              <h2 className="text-3xl sm:text-4xl font-regular text-text-dark leading-tight">
                 Born from Experience.
               </h2>
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight" style={{
-                background: 'linear-gradient(42deg, #21024D -77.23%, #601436 -46.28%, #AA2A1D 2.12%, #FF4300 40.99%, #FF8C62 72.73%)',
-                backgroundClip: 'text',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent'
-              }}>
+              <h3 className="text-3xl sm:text-4xl font-semibold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
                 Built on Purpose.
               </h3>
             </motion.div>
 
             <motion.p 
               variants={textVariants}
-              className="text-text-dark text-sm sm:text-base lg:text-lg leading-relaxed max-w-lg"
+              className="text-text-dark text-sm sm:text-base leading-relaxed max-w-lg"
             >
               We believe good support feels like part of your team: 
               thoughtful, responsive, and reliable.
@@ -103,7 +98,7 @@ const BornFromExp = () => {
             {/* First Paragraph */}
             <motion.p 
               variants={textVariants}
-              className="text-text-dark text-sm sm:text-base lg:text-lg leading-relaxed"
+              className="text-text-dark text-sm sm:text-base leading-relaxed"
             >
               Good Company was founded in 2024 by two cybersecurity 
               professionals who saw the same pattern again and again: 
@@ -117,7 +112,7 @@ const BornFromExp = () => {
               variants={textVariants}
               className="border-2 border-primary-orange rounded-xl p-6 sm:p-8 bg-white"
             >
-              <p className="text-text-dark text-sm sm:text-base lg:text-lgB leading-relaxed mb-4">
+              <p className="text-text-dark text-sm sm:text-base leading-relaxed mb-4">
                 Our goal was simple: <span className="font-semibold text-text-dark">
                 to create a consulting partner that felt intimate and dependable, 
                 even as companies scale.
