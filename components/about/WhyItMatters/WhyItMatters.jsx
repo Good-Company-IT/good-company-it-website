@@ -104,7 +104,7 @@ function WhyItMatters() {
 
                     {/* Left Content */}
                     <motion.div
-                        className="space-y-8"
+                        className="space-y-8 px-6"
                         variants={itemVariants}
                     >
                         {/* Heading */}

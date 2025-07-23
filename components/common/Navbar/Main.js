@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { useWindowDimensions } from "@/utils/screen-measure/getWindowDimensions";
 import { usePathname } from "next/navigation";
 
 import { IoMdMenu } from "react-icons/io";
