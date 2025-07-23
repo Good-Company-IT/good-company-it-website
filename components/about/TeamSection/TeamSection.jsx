@@ -70,8 +70,8 @@ const TeamSection = () => {
             <div className="mb-6">
               <p className="text-lg text-gray-700 mb-2">Who's Behind</p>
               <h2 className="text-3xl sm:text-4xl font-bold">
-                <span className="text-orange-500">Go</span>{' '}
-                <span className="text-gray-900">od</span>
+                <span className="text-orange-500">Go</span>
+                <span className="text-gray-900">od</span>{" "}
                 <span className="text-orange-500">Co</span>
                 <span className="text-gray-900">mpany?</span>
               </h2>
@@ -93,11 +93,11 @@ const TeamSection = () => {
           <div className="text-center">
             <h3 className="text-2xl sm:text-3xl font-bold text-text-dark mb-4">
               We Work{' '}
-              <span className="text-primary-orange block sm:inline">TOGETHER</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400 block sm:inline">TOGETHER</span>
             </h3>
             <h4 className="text-2xl sm:text-3xl font-bold text-text-dark mb-6">
               We Innovate{' '}
-              <span className="text-primary-blue block sm:inline">TOGETHER</span>
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-blue to-blue-400 block sm:inline">TOGETHER</span>
             </h4>
 
             <div className="mb-8">
@@ -136,8 +136,8 @@ const TeamSection = () => {
 
   // Desktop Layout - Using Grid Structure as Guide
   return (
-    <section className="relative bg-white py-20 lg:py-24 overflow-hidden">
-      <div className={`mx-auto px-8 ${isLargeScreen ? 'max-w-[1800px]' : 'max-w-[1400px]'}`}>
+    <section className="relative bg-white px-5 py-20 lg:py-24 overflow-hidden">
+      <div className={`mx-auto px-8 max-w-[1400px]`}>
 
         {/* 4x3 Grid Layout */}
         <div className="grid grid-cols-4 grid-rows-3 gap-8 min-h-[600px] lg:min-h-[700px]">
@@ -179,17 +179,17 @@ const TeamSection = () => {
           {/* Row 1-2, Col 3-4 - Complete "We Work TOGETHER We Innovate TOGETHER" block with description */}
           <div className="col-span-2 row-span-2 ml-8 flex flex-col justify-center">
             <div className="text-left">
-              <h3 className={`font-bold leading-tight mb-2 ${isLargeScreen ? 'text-7xl' : 'text-5xl lg:text-6xl'}`}>
+              <h3 className={`font-medium leading-tight mb-2 ${isLargeScreen ? 'text-6xl' : 'text-4xl lg:text-5xl'}`}>
                 <span className="text-gray-900">We Work</span>
               </h3>
-              <h3 className={`font-bold leading-tight mb-6 ${isLargeScreen ? 'text-7xl' : 'text-5xl lg:text-6xl'}`}>
-                <span className="text-orange-500">TOGETHER</span>
+              <h3 className={`font-bold leading-tight mb-6 ${isLargeScreen ? 'text-6xl' : 'text-4xl lg:text-5xl'}`}>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">TOGETHER</span>
               </h3>
-              <h4 className={`font-bold leading-tight mb-6 ${isLargeScreen ? 'text-7xl' : 'text-5xl lg:text-6xl'}`}>
+              <h4 className={`font-medium leading-tight mb-6 ${isLargeScreen ? 'text-6xl' : 'text-4xl lg:text-5xl'}`}>
                 <span className="text-gray-900">We Innovate</span>
               </h4>
-              <h4 className={`font-bold leading-tight mb-8 ${isLargeScreen ? 'text-7xl' : 'text-5xl lg:text-6xl'}`}>
-                <span className="text-blue-500">TOGETHER</span>
+              <h4 className={`font-bold leading-tight mb-8 ${isLargeScreen ? 'text-6xl' : 'text-4xl lg:text-5xl'}`}>
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-primary-blue">TOGETHER</span>
               </h4>
               <p className={`text-text-dark leading-relaxed ${isLargeScreen ? 'text-xl' : 'text-lg'}`}>
                 We're operators, engineers, and ex-startup folks<br />
