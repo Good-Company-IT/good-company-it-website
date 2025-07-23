@@ -14,7 +14,7 @@ const HeroSection = dynamic(() => import("./HeroSection/HeroSection"), {
   ssr: true
 });
 
-const TeamCTASection = dynamic(() => import("./TeamCTASection/TeamCTASection"), {
+const TeamCTASection = dynamic(() => import("../common/TeamCTASection/TeamCTASection"), {
   loading: () => <MinimalLoader />,
   ssr: true
 });
@@ -58,7 +58,10 @@ export default function Container({ locale, translations, mainLang }) {
         <HeroSection />
         {/* TeamCTASection positioned to overlap bottom of Hero and top of BornFromExp */}
         <div className='absolute bottom-20 left-0 right-0 transform translate-y-1/2 z-20 px-4'>
-          <TeamCTASection />
+          <TeamCTASection 
+            socialMedia={true} 
+            title="Who We Are"
+            text="We offer I.T. consulting that goes beyond solving technical issues. Our focus is on helping companies grow with clarity, structure, and long-term support. That means not just fixing what's broken, but helping improve the way things run." />
         </div>
       </div>
       {/* Add top padding to BornFromExp to account for overlapping content */}

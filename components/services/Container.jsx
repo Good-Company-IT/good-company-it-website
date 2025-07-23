@@ -39,12 +39,28 @@ const HeroCTA = dynamic(() => import("../home/HeroCtaSection/HeroCtaSection"), {
     ssr: true
 });
 
+const TeamCTASection = dynamic(() => import("../common/TeamCTASection/TeamCTASection"), {
+    loading: () => <MinimalLoader />,
+    ssr: true
+});
+
 
 export default function Container({ locale, translations, mainLang }) {
 
     return (
         <>
-            <HeroSection />
+            <div className='relative'>
+                <HeroSection />
+                <div className='absolute bottom-20 left-0 right-0 transform translate-y-1/2 z-20 px-4'>
+                    <TeamCTASection
+                        socialMedia={false}
+                        imageSrc='/imgs/services/teamWork.png'
+                        title="At Good Company,"
+                        titleHighlight={true}
+                        titleHighlightText="We Get It"
+                        text="Growing businesses don’t just need someone to fix tech issues when things break. You need a real partner who helps you stay ahead of problems, optimize your processes, and keep your team running smoothly without breaking the bank." />
+                </div>
+            </div>
             <HowWeDo />
             <WhatMakesDiff />
             <OurProcess />

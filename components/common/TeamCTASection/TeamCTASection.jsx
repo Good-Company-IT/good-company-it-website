@@ -35,7 +35,7 @@ const SocialMedia = () => {
 };
 
 
-const TeamCTASection = () => {
+const TeamCTASection = ({socialMedia = true, imageSrc="/imgs/about/teamCTA.png",title,titleHighlight = false, titleHighlightText, text}) => {
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -76,23 +76,23 @@ const TeamCTASection = () => {
                     >
                         <div className="relative h-64 sm:h-80 lg:h-96 rounded-2xl overflow-hidden shadow-2xl">
                             <img
-                                src="/imgs/about/teamCTA.png"
+                                src={imageSrc}
                                 alt="Happy diverse team working together"
                                 className="w-full h-full object-cover"
                             />
                             
-                            {/* Overlay with Follow Us */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
-                                <div className="absolute bottom-6 right-6">
-                                    <motion.div
-                                        initial={{ opacity: 0, x: 20 }}
-                                        animate={{ opacity: 1, x: 0 }}
-                                        transition={{ delay: 0.8, duration: 0.5 }}
-                                    >
-                                        <SocialMedia />
-                                    </motion.div>
+                            {socialMedia && (
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent">
+                                    <div className="absolute bottom-6 right-6">
+                                        <motion.div
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                        >
+                                            <SocialMedia />
+                                        </motion.div>
+                                    </div>
                                 </div>
-                            </div>
+                            )}
                         </div>
                     </motion.div>
 
@@ -103,20 +103,20 @@ const TeamCTASection = () => {
                     >
                         <div className="rounded-[22px] border border-[#DBDDFB] bg-gradient-to-br from-white/15 via-[#040B59]/35 to-[#010425]/35 backdrop-blur-md p-8 lg:p-10 h-full flex flex-col justify-center">
                             <motion.h2
-                                className="text-2xl sm:text-3xl font-bold text-white mb-6"
+                                className="text-xl sm:text-2xl font-bold text-white mb-6"
                                 variants={itemVariants}
                             >
-                                Who We Are
+                                {title}
+                                {titleHighlight && (
+                                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-300"> {titleHighlightText}</span>
+                                )}
                             </motion.h2>
                             
                             <motion.p
                                 className="text-white text-base leading-relaxed mb-8 flex-grow"
                                 variants={itemVariants}
                             >
-                                We offer I.T. consulting that goes beyond solving technical issues. Our 
-                                focus is on helping companies grow with clarity, structure, and long-term 
-                                support. That means not just fixing what's broken, but helping improve the 
-                                way things run.
+                                {text}
                             </motion.p>
                             
                             <motion.div

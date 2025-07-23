@@ -18,7 +18,7 @@ const HeroSection = () => {
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 w-full px-12 mx-auto">
+        <div className="relative z-10 w-full pb-64 sm:pb-60 md:pb-52 lg:pb-36 xl:pb-24 px-12 mx-auto">
           <div className="flex flex-col justify-center min-h-screen sm:px-24 py-20">
             <div className="max-w-5xl">
               {/* Services Badge */}
@@ -57,9 +57,6 @@ const HeroSection = () => {
           </div>
         </div>
       </section>
-{/*       <div className='absolute bottom-20 left-0 right-0 transform translate-y-1/2 z-20 px-4'>
-        <CTASection />
-      </div> */}
     </>
   );
 };
