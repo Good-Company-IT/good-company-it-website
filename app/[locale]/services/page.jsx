@@ -1,8 +1,6 @@
 //Functions
 import TranslationsProvider from "@/TranslationsProvider";
 import initTranslations from "@/i18n";
-import dynamic from "next/dynamic";
-import Script from "next/script";
 
 // Import Container component
 import Container from "@/components/services/Container";

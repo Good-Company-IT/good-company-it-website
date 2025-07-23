@@ -2,7 +2,6 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import CTASection from '../CTASection/CTASection';
 
 const HeroSection = () => {
   const contentRef = useRef(null);
@@ -78,10 +77,10 @@ const HeroSection = () => {
                 className="space-y-2 mb-8"
                 variants={itemVariants}
               >
-                <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
+                <h1 className="text-4xl sm:text-5xl font-medium leading-tight">
                   <span className="text-white block">You Don't Have to</span>
                   <span
-                    className="block text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400"
+                    className="block font-bold text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400"
                   >
                     Do IT Alone.
                   </span>

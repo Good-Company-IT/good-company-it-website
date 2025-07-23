@@ -5,7 +5,6 @@ import { MdKeyboardArrowDown } from "react-icons/md";
 
 function Dropdown({ list, currentNavState, setCurrentNavState, setmobileMenuIsOpen, isNavbarShort }) {
     const dropdownRef = useRef(null);
-    const { width } = useWindowDimensions();
     const [isOpen, setIsOpen] = useState(false);
     const [isDesktop, setIsDesktop] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
