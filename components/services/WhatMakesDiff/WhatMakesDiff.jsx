@@ -12,15 +12,15 @@ const BornFromExp = () => {
     const infoData = [
         {
             title: "Proactive by design",
-            text: "We don’t just wait for tickets. We build systems that work and scale from day one."
-},
+            text: "We don't just wait for tickets. We build systems that work and scale from day one."
+        },
         {
             title: "Human-first",
             text: "We talk like people, not robots. No tech-shaming.",
         },
         {
             title: "Flexible Hourly Plans",
-            text: "We help you choose a package of hours that’s right for your business today and can grow with you tomorrow."
+            text: "We help you choose a package of hours that's right for your business today and can grow with you tomorrow."
         },
         {
             title: "Strategic Mindset",
@@ -56,7 +56,7 @@ const BornFromExp = () => {
         }
     };
 
-    const buttonVariants = {
+    const cardVariants = {
         hidden: {
             opacity: 0,
             y: 20,
@@ -68,8 +68,7 @@ const BornFromExp = () => {
             scale: 1,
             transition: {
                 duration: 0.5,
-                ease: [0.34, 1.56, 0.64, 1],
-                delay: 0.3
+                ease: [0.34, 1.56, 0.64, 1]
             }
         }
     };
@@ -91,20 +90,15 @@ const BornFromExp = () => {
                     variants={containerVariants}
                     initial="hidden"
                     animate={isInView ? "visible" : "hidden"}
-                    className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6 xl:gap-4 items-center"
+                    className="grid grid-cols-1 xl:grid-cols-12 gap-8 md:gap-12 px-0 lg:px-14 items-center"
                 >
-                    {/* Left Side - Title and Description */}
-                    <div className="space-y-6 lg:space-y-8">
-                        <motion.div variants={textVariants} className="space-y-4">
-                            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-text-dark leading-tight">
+                    {/* Left Side - Title and Description (smaller on XL) */}
+                    <div className="xl:col-span-5 space-y-6 lg:space-y-8">
+                        <motion.div className="space-y-4">
+                            <h2 className="text-3xl sm:text-4xl font-bold text-text-dark leading-tight">
                                 What Makes Us
                             </h2>
-                            <h3 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight" style={{
-                                background: 'linear-gradient(42deg, #21024D -77.23%, #601436 -46.28%, #AA2A1D 2.12%, #FF4300 40.99%, #FF8C62 72.73%)',
-                                backgroundClip: 'text',
-                                WebkitBackgroundClip: 'text',
-                                WebkitTextFillColor: 'transparent'
-                            }}>
+                            <h3 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
                                 Different
                             </h3>
                         </motion.div>
@@ -121,16 +115,31 @@ const BornFromExp = () => {
                         >
                             At Good Company, we&apos;re consultants, not just troubleshooters. That means we think like part of your team, not like outsiders.
                         </motion.p>
-                        <Button className="my-12" href="/contact" >
+                        <Button className="my-12 w-36" href="/contact">
                             Contact Us
                         </Button>
                     </div>
 
-                    {/* Right Side - Two Paragraphs */}
-                    <div className="flex flex-wrap gap-4 items-center justify-center">
-                        {infoData.map((info) => (
-                            <InfoCard key={info.title} variant="fourth" info={info} />
-                        ))}
+                    {/* Right Side - Cards Grid (bigger on XL) */}
+                    <div className="xl:col-span-7">
+                        <motion.div 
+                            className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto xl:mx-0"
+                            variants={containerVariants}
+                        >
+                            {infoData.map((info, index) => (
+                                <motion.div
+                                    key={info.title}
+                                    variants={cardVariants}
+                                    className="flex justify-center"
+                                >
+                                    <InfoCard 
+                                        variant="fourth" 
+                                        info={{ ...info, index }} 
+                                        isActive={true}
+                                    />
+                                </motion.div>
+                            ))}
+                        </motion.div>
                     </div>
                 </motion.div>
             </div>
