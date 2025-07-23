@@ -1,10 +1,39 @@
-import React from 'react';
+"use client";
+
+import React, { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 import CTASection from '../CTASection/CTASection';
 
 const HeroSection = () => {
+  const contentRef = useRef(null);
+  const isInView = useInView(contentRef, { once: true, margin: "-100px" });
+
+  // Simple fade animation variants
+  const fadeVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.8,
+        ease: "easeOut",
+        staggerChildren: 0.2
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
     <>
-
       <section className="relative min-h-screen bg-black text-white overflow-hidden">
         {/* Background SVG Container */}
         <div className="absolute inset-0">
@@ -20,9 +49,18 @@ const HeroSection = () => {
         {/* Content Container */}
         <div className="relative z-10 w-full pb-64 sm:pb-60 md:pb-52 lg:pb-36 xl:pb-24 px-12 mx-auto">
           <div className="flex flex-col justify-center min-h-screen sm:px-24 py-20">
-            <div className="max-w-5xl">
+            <motion.div 
+              ref={contentRef}
+              className="max-w-5xl"
+              variants={fadeVariants}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
               {/* Services Badge */}
-              <div className="inline-block mb-8">
+              <motion.div 
+                className="inline-block mb-8"
+                variants={itemVariants}
+              >
                 <span
                   className="inline-flex items-center px-8 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity"
                   style={{
@@ -33,27 +71,34 @@ const HeroSection = () => {
                 >
                   Services
                 </span>
-              </div>
+              </motion.div>
 
               {/* Main Heading */}
-              <div className="space-y-2 mb-8">
+              <motion.div 
+                className="space-y-2 mb-8"
+                variants={itemVariants}
+              >
                 <h1 className="text-4xl sm:text-5xl font-bold leading-tight">
                   <span className="text-white block">You Don't Have to</span>
                   <span
-                    className="block text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400" >
+                    className="block text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400"
+                  >
                     Do IT Alone.
                   </span>
                 </h1>
-              </div>
+              </motion.div>
 
               {/* Description */}
-              <div className="max-w-lg">
+              <motion.div 
+                className="max-w-lg"
+                variants={itemVariants}
+              >
                 <p className="text-base sm:text-lg text-white leading-relaxed">
                   From cybersecurity to day-to-day IT support, our services are built to protect your team, your data, and your business.
                 </p>
-              </div>
+              </motion.div>
 
-            </div>
+            </motion.div>
           </div>
         </div>
       </section>
