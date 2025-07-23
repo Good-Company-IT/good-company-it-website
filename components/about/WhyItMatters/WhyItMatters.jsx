@@ -100,7 +100,7 @@ function WhyItMatters() {
                 initial="hidden"
                 animate={isLoaded ? "visible" : "hidden"}
             >
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center px-6">
+                <div className="grid lg:grid-cols-2 gap-12 lg:gap-0 items-center px-0 md:px-14">
 
                     {/* Left Content */}
                     <motion.div
