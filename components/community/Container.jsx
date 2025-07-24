@@ -13,11 +13,17 @@ const HeroSection = dynamic(() => import("./HeroSection/HeroSection"), {
     ssr: true
 });
 
+const OurProjects = dynamic(() => import("./OurProjects/OurProjects"), {
+    loading: () => <MinimalLoader />,
+    ssr: true
+});
+
 export default function Container({ locale, translations, mainLang }) {
 
   return (
     <>
       <HeroSection /> 
+      <OurProjects />
     </>
   );
 }
