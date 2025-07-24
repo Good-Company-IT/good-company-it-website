@@ -32,7 +32,7 @@ const slides = [
 
 const OurProjects = () => {
     return (
-        <section className="relative overflow-hidden py-12 px-6">
+        <section className="relative overflow-hidden py-12 px-6" id="our-projects">
             <div
                 className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
                 style={{

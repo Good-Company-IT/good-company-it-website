@@ -132,7 +132,7 @@ const BornFromExp = () => {
         >
           <motion.h4 
             variants={textVariants}
-            className="text-2xl sm:text-3xl lg:text-3xl font-semibold text-text-dark leading-tight max-w-5xl mx-auto"
+            className="text-2xl sm:text-3xl font-medium text-text-dark leading-tight max-w-5xl mx-auto"
           >
             We combine our technical expertise with AI-driven systems to 
             deliver practical, humane solutions to real-world problems.
