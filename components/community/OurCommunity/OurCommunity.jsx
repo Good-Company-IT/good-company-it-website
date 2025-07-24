@@ -95,30 +95,59 @@ const OurCommunity = () => {
                         </Button>
                     </div>
 
-                    {/* Right Side - Two Paragraphs */}
-                    <div className="space-y-8 lg:space-y-12">
-                        {/* First Paragraph */}
-                        <motion.p
-                            variants={textVariants}
-                            className="text-text-dark text-sm sm:text-base leading-relaxed"
-                        >
-                            Whether it's starting a project from the ground up or partnering with existing ones, our goal is the same: lasting, human-centered impact.
-                        </motion.p>
+                    {/* Right Side - Image Collage Layout */}
+                    <motion.div
+                        variants={textVariants}
+                        className="relative w-full h-[500px] lg:h-[600px]"
+                    >
+                        {/* Left Image */}
+                        <div className="absolute left-0 top-0 w-[45%] h-full">
+                            <div className="w-full h-full rounded-3xl overflow-hidden">
+                                <img
+                                    src="/imgs/community/ourCommunity/bubbles.png"
+                                    alt="Community bubbles"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        </div>
 
-                        {/* Second Paragraph with Orange Border */}
-                        <motion.div
-                            variants={textVariants}
-                            className="border-2 border-primary-orange rounded-xl p-6 sm:p-8 bg-white"
-                        >
-                            <p className="text-text-dark text-sm sm:text-base leading-relaxed mb-4">
-                                Our goal was simple: <span className="font-semibold text-text-dark">
-                                    to create a consulting partner that felt intimate and dependable,
-                                    even as companies scale.
-                                </span> A team that shows up early, communicates clearly,
-                                and solves problems before they become emergencies.
-                            </p>
-                        </motion.div>
-                    </div>
+                        {/* Center Video with Logo */}
+                        <div className="absolute left-[30%] top-[15%] w-[50%] h-[70%] z-10">
+                            <div className="relative w-full h-full rounded-2xl overflow-hidden">
+                                <video
+                                    className="w-full h-full object-cover "
+                                    controls
+                                    loop
+                                    style={{
+                                        filter: 'none',
+                                        backdropFilter: 'none'
+                                    }}
+                                >
+                                    <source src="/imgs/community/ourCommunity/marc-video.mp4" type="video/mp4" />
+                                </video>
+
+                                {/* Logo Circle - Top Right */}
+                                <div className="absolute -top-4 -right-4 w-16 h-16 lg:w-20 lg:h-20 bg-white rounded-full flex items-center justify-center z-20">
+                                    <img
+                                        src="/imgs/community/ourCommunity/daguaLogo.svg"
+                                        alt="Project Dagua Logo"
+                                        className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Right Image */}
+                        <div className="absolute right-0 bottom-0 w-[45%] h-[75%]">
+                            <div className="w-full h-full rounded-3xl overflow-hidden shadow-lg">
+                                <img
+                                    src="/imgs/community/ourCommunity/happyGirl.png"
+                                    alt="Happy child"
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        </div>
+                    </motion.div>
                 </motion.div>
 
                 {/* Bottom Section - Centered Content */}
