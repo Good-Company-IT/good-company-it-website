@@ -77,7 +77,8 @@ export default function Container({ locale, translations, mainLang }) {
                 ]}
                 description="You're building something that matters, and you shouldn't have to worry about tech slowing you down. We're here to make sure your infrastructure, data, and team are protected every step of the way."
                 cta={{ text: "Get in Touch", href: "/contact" }}
-                backgroundType="starfield"
+                backgroundType="video"
+                videoSrc={"/imgs/backgroundCTA.mp4"}
             />
         </>
     );

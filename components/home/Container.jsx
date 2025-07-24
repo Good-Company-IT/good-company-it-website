@@ -73,6 +73,8 @@ export default function Container({ locale, translations, mainLang }) {
           { text: "growth and innovation", style: "gradient-blue" }
         ]}
         cta={{ text: "Secure Your Business", href: "/contact" }}
+        backgroundType="video"
+        videoSrc={"/imgs/backgroundCTA.mp4"}
       />
     </>
   );

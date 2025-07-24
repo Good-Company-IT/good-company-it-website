@@ -80,7 +80,8 @@ export default function Container({ locale, translations, mainLang }) {
         ]}
         description="Whether you're hiring your first remote team or untangling years of tech debt, we're here to help you take the next step with confidence."
         cta={{ text: "Start the Conversation", href: "/contact" }}
-        backgroundType="starfield"
+        backgroundType="video"
+        videoSrc={"/imgs/backgroundCTA.mp4"}
       />
     </>
   );

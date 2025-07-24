@@ -251,37 +251,3 @@ function HeroCTA({
 }
 
 export default HeroCTA;
-
-// Usage examples remain the same
-export const HeroCase1 = () => (
-  <HeroCTA
-    headings={[
-      { text: "We deliver", style: "normal" },
-      { text: "security and efficiency,", style: "gradient-orange" },
-      { text: "so you can focus on", style: "normal" },
-      { text: "growth and innovation", style: "gradient-blue" }
-    ]}
-    cta={{ text: "Secure Your Business", href: "/contact" }}
-  />
-);
-
-export const HeroCase2 = () => (
-  <HeroCTA
-    headings={[
-      { text: "Let's Build SMARTER, Together", style: "mixed-gradient", highlight: "SMARTER" }
-    ]}
-    description="Whether you're hiring your first remote team or untangling years of tech debt, we're here to help you take the next step with confidence."
-    cta={{ text: "Start the Conversation", href: "/contact" }}
-  />
-);
-
-export const HeroCase3 = () => (
-  <HeroCTA
-    headings={[
-      { text: "You Have a Dream.", style: "mixed-gradient", highlight: "Dream" },
-      { text: "We'll Protect It.", style: "mixed-blue-gradient", highlight: "Protect" }
-    ]}
-    description="You're building something that matters, and you shouldn't have to worry about tech slowing you down. We're here to make sure your infrastructure, data, and team are protected every step of the way."
-    cta={{ text: "Get in Touch", href: "/contact" }}
-  />
-);
