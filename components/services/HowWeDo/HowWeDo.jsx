@@ -1,11 +1,15 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import { BiCheckCircle } from 'react-icons/bi';
 import { GoShieldCheck } from 'react-icons/go';
 
 const HowWeDo = () => {
     const [activeSlide, setActiveSlide] = useState(0);
     const [isMobile, setIsMobile] = useState(false);
+    const [direction, setDirection] = useState(1); // 1 for next, -1 for prev
     const scrollContainerRef = useRef(null);
+    const sectionRef = useRef(null);
+    const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     useEffect(() => {
         const handleResize = () => {
@@ -113,16 +117,188 @@ const HowWeDo = () => {
         }
     ];
 
+    // Animation variants
+    const containerVariants = {
+        hidden: { 
+            opacity: 0,
+            y: 50
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.8,
+                ease: [0.25, 0.46, 0.45, 0.94],
+                staggerChildren: 0.2,
+                delayChildren: 0.1
+            }
+        }
+    };
+
+    const headerVariants = {
+        hidden: {
+            opacity: 0,
+            y: 30,
+            scale: 0.95
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: {
+                duration: 0.7,
+                ease: [0.34, 1.56, 0.64, 1]
+            }
+        }
+    };
+
+    const slideVariants = {
+        enter: (direction) => ({
+            x: direction > 0 ? 400 : -400,
+            opacity: 0,
+            scale: 0.95
+        }),
+        center: {
+            zIndex: 1,
+            x: 0,
+            opacity: 1,
+            scale: 1,
+            transition: {
+                x: { 
+                    duration: 0.5, 
+                    ease: [0.22, 1, 0.36, 1] 
+                },
+                opacity: { 
+                    duration: 0.4, 
+                    ease: "easeOut" 
+                },
+                scale: { 
+                    duration: 0.5, 
+                    ease: [0.22, 1, 0.36, 1] 
+                }
+            }
+        },
+        exit: (direction) => ({
+            zIndex: 0,
+            x: direction < 0 ? 400 : -400,
+            opacity: 0,
+            scale: 0.95,
+            transition: {
+                x: { 
+                    duration: 0.4, 
+                    ease: [0.22, 1, 0.36, 1] 
+                },
+                opacity: { 
+                    duration: 0.3, 
+                    ease: "easeIn" 
+                },
+                scale: { 
+                    duration: 0.4, 
+                    ease: [0.22, 1, 0.36, 1] 
+                }
+            }
+        })
+    };
+
+    const contentVariants = {
+        hidden: {
+            opacity: 0,
+            y: 20
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.4,
+                delay: 0.15,
+                ease: [0.22, 1, 0.36, 1],
+                staggerChildren: 0.08,
+                delayChildren: 0.2
+            }
+        }
+    };
+
+    const imageVariants = {
+        hidden: {
+            opacity: 0,
+            scale: 1.02
+        },
+        visible: {
+            opacity: 1,
+            scale: 1,
+            transition: {
+                duration: 0.5,
+                delay: 0.1,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+    const featureVariants = {
+        hidden: {
+            opacity: 0,
+            y: 15
+        },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.3,
+                ease: [0.22, 1, 0.36, 1]
+            }
+        }
+    };
+
+    const buttonVariants = {
+        rest: { 
+            scale: 1,
+            backgroundColor: "#f97316"
+        },
+        hover: { 
+            scale: 1.05,
+            backgroundColor: "#ea580c",
+            transition: {
+                duration: 0.2,
+                ease: "easeInOut"
+            }
+        },
+        tap: { 
+            scale: 0.95,
+            transition: {
+                duration: 0.1,
+                ease: "easeInOut"
+            }
+        }
+    };
+
+    const dotVariants = {
+        inactive: {
+            scale: 1,
+            opacity: 0.5
+        },
+        active: {
+            scale: 1.25,
+            opacity: 1,
+            transition: {
+                duration: 0.3,
+                ease: [0.34, 1.56, 0.64, 1]
+            }
+        }
+    };
+
     // Desktop navigation functions
     const nextSlide = () => {
+        setDirection(1);
         setActiveSlide((prev) => (prev + 1) % slides.length);
     };
 
     const prevSlide = () => {
+        setDirection(-1);
         setActiveSlide((prev) => (prev - 1 + slides.length) % slides.length);
     };
 
     const goToSlide = (index) => {
+        setDirection(index > activeSlide ? 1 : -1);
         setActiveSlide(index);
     };
 
@@ -142,41 +318,77 @@ const HowWeDo = () => {
 
     // Mobile Card Component
     const MobileCard = ({ slide, index }) => (
-        <div className="flex-shrink-0 w-full h-full bg-white rounded-2xl shadow-xl overflow-hidden">
-            <div className="relative h-48 bg-gray-100 overflow-hidden">
+        <motion.div 
+            className="flex-shrink-0 w-full h-full bg-white rounded-2xl shadow-xl overflow-hidden"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+                duration: 0.6, 
+                delay: index * 0.1,
+                ease: [0.25, 0.46, 0.45, 0.94]
+            }}
+        >
+            <motion.div 
+                className="relative h-48 bg-gray-100 overflow-hidden"
+                initial={{ opacity: 0, scale: 1.1 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+            >
                 <img
                     src={slide.image}
                     alt={slide.title}
                     className="w-full h-full object-cover"
                 />
-            </div>
+            </motion.div>
             
-            <div className="p-6">
-                <div className="flex gap-x-3 items-start mb-4 text-primary-blue">
+            <motion.div 
+                className="p-6"
+                variants={contentVariants}
+                initial="hidden"
+                animate="visible"
+            >
+                <motion.div 
+                    className="flex gap-x-3 items-start mb-4 text-primary-blue"
+                    variants={featureVariants}
+                >
                     <GoShieldCheck className='w-8 h-8 flex-shrink-0 mt-1' />
                     <h3 className="text-lg font-bold leading-tight">
                         {slide.title}
                     </h3>
-                </div>
+                </motion.div>
 
-                <p className="text-text-dark text-sm leading-relaxed mb-6">
+                <motion.p 
+                    className="text-text-dark text-sm leading-relaxed mb-6"
+                    variants={featureVariants}
+                >
                     {slide.description}
-                </p>
+                </motion.p>
 
-                <div className="space-y-2">
+                <motion.div className="space-y-2">
                     {slide.features.map((feature, featureIndex) => (
-                        <div key={featureIndex} className="flex gap-x-3 items-start">
+                        <motion.div 
+                            key={featureIndex} 
+                            className="flex gap-x-3 items-start"
+                            variants={featureVariants}
+                            custom={featureIndex}
+                        >
                             <BiCheckCircle className='text-primary-blue h-5 w-5 flex-shrink-0 mt-0.5' />
                             <span className="text-gray-700 text-xs leading-relaxed">{feature}</span>
-                        </div>
+                        </motion.div>
                     ))}
-                </div>
-            </div>
-        </div>
+                </motion.div>
+            </motion.div>
+        </motion.div>
     );
 
     return (
-        <section className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 min-h-screen pb-12 pt-96 sm:pt-80 md:pt-80 lg:pt-56 xl:pt-44 overflow-hidden transition-all duration-300 ease-in-out">
+        <motion.section 
+            ref={sectionRef}
+            className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 min-h-screen pb-12 pt-96 sm:pt-80 md:pt-80 lg:pt-56 xl:pt-44 overflow-hidden"
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+        >
             {/* Background Elements */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -192,48 +404,116 @@ const HowWeDo = () => {
                 }}
             />
 
-            <div className="absolute inset-0 transition-all duration-300 ease-in-out">
-                <div className="absolute top-0 left-0 w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 bg-blue-400/10 rounded-full blur-3xl transition-all duration-300 ease-in-out"></div>
-                <div className="absolute bottom-0 right-0 w-40 h-40 sm:w-56 sm:h-56 lg:w-80 lg:h-80 bg-purple-400/10 rounded-full blur-3xl transition-all duration-300 ease-in-out"></div>
-                <div className="absolute top-1/2 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-cyan-400/5 rounded-full blur-2xl transition-all duration-300 ease-in-out"></div>
-            </div>
+            {/* Animated Background Blobs */}
+            <motion.div 
+                className="absolute inset-0"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 2, delay: 0.5 }}
+            >
+                <motion.div 
+                    className="absolute top-0 left-0 w-48 h-48 sm:w-64 sm:h-64 lg:w-96 lg:h-96 bg-blue-400/10 rounded-full blur-3xl"
+                    animate={{ 
+                        x: [0, 50, 0],
+                        y: [0, 30, 0],
+                        scale: [1, 1.1, 1]
+                    }}
+                    transition={{ 
+                        duration: 8, 
+                        repeat: Infinity, 
+                        ease: "easeInOut" 
+                    }}
+                />
+                <motion.div 
+                    className="absolute bottom-0 right-0 w-40 h-40 sm:w-56 sm:h-56 lg:w-80 lg:h-80 bg-purple-400/10 rounded-full blur-3xl"
+                    animate={{ 
+                        x: [0, -30, 0],
+                        y: [0, -50, 0],
+                        scale: [1, 1.2, 1]
+                    }}
+                    transition={{ 
+                        duration: 10, 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: 1
+                    }}
+                />
+                <motion.div 
+                    className="absolute top-1/2 left-1/4 w-32 h-32 sm:w-48 sm:h-48 lg:w-64 lg:h-64 bg-cyan-400/5 rounded-full blur-2xl"
+                    animate={{ 
+                        x: [0, 40, 0],
+                        y: [0, -40, 0],
+                        scale: [1, 0.8, 1]
+                    }}
+                    transition={{ 
+                        duration: 12, 
+                        repeat: Infinity, 
+                        ease: "easeInOut",
+                        delay: 2
+                    }}
+                />
+            </motion.div>
 
             {/* Curved Lines Background */}
-            <svg className="absolute inset-0 w-full h-full" viewBox="0 0 1200 800" fill="none">
-                <path
+            <motion.svg 
+                className="absolute inset-0 w-full h-full" 
+                viewBox="0 0 1200 800" 
+                fill="none"
+                initial={{ opacity: 0, pathLength: 0 }}
+                animate={{ opacity: 1, pathLength: 1 }}
+                transition={{ duration: 3, delay: 1 }}
+            >
+                <motion.path
                     d="M-100 100 Q200 50 400 100 T800 150 Q1000 120 1300 100"
                     stroke="rgba(59, 130, 246, 0.1)"
                     strokeWidth="2"
                     fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 2, delay: 1.5 }}
                 />
-                <path
+                <motion.path
                     d="M-50 300 Q300 250 600 300 T1200 350"
                     stroke="rgba(147, 51, 234, 0.08)"
                     strokeWidth="2"
                     fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 2.5, delay: 2 }}
                 />
-                <path
+                <motion.path
                     d="M100 600 Q400 550 700 600 T1300 650"
                     stroke="rgba(6, 182, 212, 0.06)"
                     strokeWidth="2"
                     fill="none"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 3, delay: 2.5 }}
                 />
-            </svg>
+            </motion.svg>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 transition-all duration-300 ease-in-out">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Header */}
-                <div className="text-center mb-8 sm:mb-12 lg:mb-16 transition-all duration-300 ease-in-out">
-                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4 transition-all duration-300 ease-in-out">
+                <motion.div 
+                    className="text-center mb-8 sm:mb-12 lg:mb-16"
+                    variants={headerVariants}
+                >
+                    <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4">
                         Here's how we do{' '}
                         <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
                             IT
                         </span>
                     </h2>
-                </div>
+                </motion.div>
 
                 {/* Mobile Version - Horizontal Scroll */}
                 {isMobile ? (
-                    <div className="w-full">
+                    <motion.div 
+                        className="w-full"
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                    >
                         {/* Scroll Container */}
                         <div 
                             ref={scrollContainerRef}
@@ -253,108 +533,178 @@ const HowWeDo = () => {
                         </div>
 
                         {/* Scroll Hint */}
-                        <div className="text-center mt-4">
+                        <motion.div 
+                            className="text-center mt-4"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            transition={{ duration: 1, delay: 1 }}
+                        >
                             <p className="text-white/70 text-sm">← Swipe to explore services →</p>
-                        </div>
+                        </motion.div>
 
                         {/* Dots Indicator */}
-                        <div className="flex justify-center mt-6 space-x-2">
+                        <motion.div 
+                            className="flex justify-center mt-6 space-x-2"
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.8 }}
+                        >
                             {slides.map((_, index) => (
-                                <div
+                                <motion.div
                                     key={index}
-                                    className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                                    className={`w-2 h-2 rounded-full ${
                                         index === activeSlide
-                                            ? 'bg-white scale-125'
+                                            ? 'bg-white'
                                             : 'bg-white/50'
                                     }`}
+                                    variants={dotVariants}
+                                    animate={index === activeSlide ? "active" : "inactive"}
                                 />
                             ))}
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 ) : (
                     /* Desktop Version - Original Slider */
-                    <div className="relative">
+                    <motion.div 
+                        className="relative"
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.8, delay: 0.4 }}
+                    >
                         {/* Navigation Buttons */}
-                        <button
+                        <motion.button
                             onClick={prevSlide}
-                            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange hover:bg-secondary-orange rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange rounded-full flex items-center justify-center shadow-lg"
                             aria-label="Previous slide"
+                            variants={buttonVariants}
+                            initial="rest"
+                            whileHover="hover"
+                            whileTap="tap"
                         >
                             <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
                             </svg>
-                        </button>
+                        </motion.button>
 
-                        <button
+                        <motion.button
                             onClick={nextSlide}
-                            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange hover:bg-secondary-orange rounded-full flex items-center justify-center transition-all duration-300 shadow-lg hover:shadow-xl"
+                            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange rounded-full flex items-center justify-center shadow-lg"
                             aria-label="Next slide"
+                            variants={buttonVariants}
+                            initial="rest"
+                            whileHover="hover"
+                            whileTap="tap"
                         >
                             <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                             </svg>
-                        </button>
+                        </motion.button>
 
                         {/* Card Container */}
-                        <div className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:w-[1200px] mx-auto transition-all duration-300 ease-in-out">
-                            <div className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden transition-all duration-300 ease-in-out">
-                                <div className="grid grid-cols-1 lg:grid-cols-2 h-[750px] sm:h-[800px] md:h-[850px] lg:h-[650px] transition-all duration-300 ease-in-out">
-                                    {/* Image Section */}
-                                    <div className="relative bg-gray-100 overflow-hidden order-2 lg:order-1 transition-all duration-300 ease-in-out h-48 sm:h-64 md:h-80 lg:h-full">
-                                        <img
-                                            src={slides[activeSlide].image}
-                                            alt={slides[activeSlide].title}
-                                            className="w-full h-full object-cover transition-all duration-300 ease-in-out"
-                                        />
-                                    </div>
+                        <div className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:w-[1200px] mx-auto">
+                            <motion.div 
+                                className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
+                                whileHover={{ 
+                                    scale: 1.02,
+                                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                                }}
+                                transition={{ duration: 0.3 }}
+                            >
+                                <AnimatePresence mode="wait" custom={direction}>
+                                    <motion.div
+                                        key={activeSlide}
+                                        custom={direction}
+                                        variants={slideVariants}
+                                        initial="enter"
+                                        animate="center"
+                                        exit="exit"
+                                        className="grid grid-cols-1 lg:grid-cols-2 h-[750px] sm:h-[800px] md:h-[850px] lg:h-[650px]"
+                                    >
+                                        {/* Image Section */}
+                                        <motion.div 
+                                            className="relative bg-gray-100 overflow-hidden order-2 lg:order-1 h-48 sm:h-64 md:h-80 lg:h-full"
+                                            variants={imageVariants}
+                                            initial="hidden"
+                                            animate="visible"
+                                        >
+                                            <img
+                                                src={slides[activeSlide].image}
+                                                alt={slides[activeSlide].title}
+                                                className="w-full h-full object-cover"
+                                            />
+                                        </motion.div>
 
-                                    {/* Content Section */}
-                                    <div className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center order-1 lg:order-2 transition-all duration-300 ease-in-out flex-1 lg:h-full overflow-y-auto">
-                                        <div className="py-6 sm:py-8 md:py-10 lg:py-8">
-                                            <div className="flex gap-x-2 sm:gap-x-3 md:gap-x-4 items-start sm:items-center mb-4 sm:mb-6 text-primary-blue transition-all duration-300 ease-in-out">
-                                                <GoShieldCheck className='w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 mt-1 sm:mt-0 transition-all duration-300 ease-in-out' />
-                                                <h3 className="text-lg sm:text-xl md:text-2xl font-bold leading-tight transition-all duration-300 ease-in-out">
-                                                    {slides[activeSlide].title}
-                                                </h3>
+                                        {/* Content Section */}
+                                        <motion.div 
+                                            className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center order-1 lg:order-2 flex-1 lg:h-full overflow-y-auto"
+                                            variants={contentVariants}
+                                            initial="hidden"
+                                            animate="visible"
+                                        >
+                                            <div className="py-6 sm:py-8 md:py-10 lg:py-8">
+                                                <motion.div 
+                                                    className="flex gap-x-2 sm:gap-x-3 md:gap-x-4 items-start sm:items-center mb-4 sm:mb-6 text-primary-blue"
+                                                    variants={featureVariants}
+                                                >
+                                                    <GoShieldCheck className='w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 mt-1 sm:mt-0' />
+                                                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold leading-tight">
+                                                        {slides[activeSlide].title}
+                                                    </h3>
+                                                </motion.div>
+
+                                                <motion.p 
+                                                    className="text-text-dark text-sm sm:text-base leading-relaxed mb-6 sm:mb-8"
+                                                    variants={featureVariants}
+                                                >
+                                                    {slides[activeSlide].description}
+                                                </motion.p>
+
+                                                <motion.div className="space-y-2 sm:space-y-3">
+                                                    {slides[activeSlide].features.map((feature, index) => (
+                                                        <motion.div 
+                                                            key={index} 
+                                                            className="flex gap-x-2 sm:gap-x-3 md:gap-x-4 items-start"
+                                                            variants={featureVariants}
+                                                        >
+                                                            <BiCheckCircle className='text-primary-blue h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0 mt-0.5 sm:mt-0' />
+                                                            <span className="text-text-dark text-xs sm:text-sm md:text-base leading-relaxed">{feature}</span>
+                                                        </motion.div>
+                                                    ))}
+                                                </motion.div>
                                             </div>
-
-                                            <p className="text-text-dark text-sm sm:text-base leading-relaxed mb-6 sm:mb-8 transition-all duration-300 ease-in-out">
-                                                {slides[activeSlide].description}
-                                            </p>
-
-                                            <div className="space-y-2 sm:space-y-3 transition-all duration-300 ease-in-out">
-                                                {slides[activeSlide].features.map((feature, index) => (
-                                                    <div key={index} className="flex gap-x-2 sm:gap-x-3 md:gap-x-4 items-start transition-all duration-300 ease-in-out">
-                                                        <BiCheckCircle className='text-primary-blue h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0 mt-0.5 sm:mt-0 transition-all duration-300 ease-in-out' />
-                                                        <span className="text-text-dark text-xs sm:text-sm md:text-base leading-relaxed transition-all duration-300 ease-in-out">{feature}</span>
-                                                    </div>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                        </motion.div>
+                                    </motion.div>
+                                </AnimatePresence>
+                            </motion.div>
                         </div>
 
                         {/* Dots Indicator */}
-                        <div className="flex justify-center mt-6 sm:mt-8 space-x-2">
+                        <motion.div 
+                            className="flex justify-center mt-6 sm:mt-8 space-x-2"
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.6 }}
+                        >
                             {slides.map((_, index) => (
-                                <button
+                                <motion.button
                                     key={index}
                                     onClick={() => goToSlide(index)}
-                                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all duration-300 ${
+                                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
                                         index === activeSlide
-                                            ? 'bg-white scale-125'
-                                            : 'bg-white/50 hover:bg-white/70'
+                                            ? 'bg-white'
+                                            : 'bg-white/50'
                                     }`}
                                     aria-label={`Go to slide ${index + 1}`}
+                                    variants={dotVariants}
+                                    animate={index === activeSlide ? "active" : "inactive"}
+                                    whileHover={{ scale: 1.2 }}
                                 />
                             ))}
-                        </div>
-                    </div>
+                        </motion.div>
+                    </motion.div>
                 )}
             </div>
-        </section>
+        </motion.section>
     );
 };
 
