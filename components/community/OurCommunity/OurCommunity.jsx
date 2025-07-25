@@ -115,7 +115,7 @@ const OurCommunity = () => {
                         <div className="absolute left-[30%] top-[15%] w-[50%] h-[70%] z-10">
                             <div className="relative w-full h-full rounded-2xl overflow-hidden">
                                 <video
-                                    className="w-full h-full object-cover "
+                                    className="w-full h-full object-cover"
                                     controls
                                     loop
                                     style={{
