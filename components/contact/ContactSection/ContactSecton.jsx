@@ -3,8 +3,21 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import SocialMediaIcons from "@/components/common/SocialMediaIcons/SocialMediaIcons";
+import { Button } from "@/components/common/Buttons/Button";
 
 const ContactSection = () => {
+
+    const itemVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut"
+            }
+        }
+    };
+
     const [formData, setFormData] = useState({
         fullName: "",
         companyName: "",
@@ -22,7 +35,7 @@ const ContactSection = () => {
             if (name === "services") {
                 setFormData(prev => ({
                     ...prev,
-                    services: checked 
+                    services: checked
                         ? [...prev.services, value]
                         : prev.services.filter(service => service !== value)
                 }));
@@ -78,7 +91,7 @@ const ContactSection = () => {
     };
 
     return (
-        <motion.div 
+        <motion.div
             className="relative w-full"
             variants={containerVariants}
             initial="hidden"
@@ -86,7 +99,7 @@ const ContactSection = () => {
             viewport={{ once: true, margin: "-100px" }}
         >
             {/* Top Section - Hero with geometric background */}
-            <motion.section 
+            <motion.section
                 variants={sectionVariants}
                 className="relative min-h-[60vh] lg:min-h-[70vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 overflow-hidden"
                 style={{
@@ -94,82 +107,44 @@ const ContactSection = () => {
                 }}
             >
                 {/* SVG Background Pattern */}
-                <div className="absolute inset-0 w-full h-full">
-                    <svg 
-                        className="absolute inset-0 w-full h-full" 
-                        viewBox="0 0 1200 800" 
-                        fill="none" 
-                        preserveAspectRatio="xMidYMid slice"
-                    >
-                        {/* Geometric grid pattern */}
-                        <defs>
-                            <pattern id="grid" width="60" height="60" patternUnits="userSpaceOnUse">
-                                <path d="M 60 0 L 0 0 0 60" fill="none" stroke="rgba(59, 130, 246, 0.1)" strokeWidth="1"/>
-                            </pattern>
-                            <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-                                <stop offset="0%" stopColor="rgba(59, 130, 246, 0.3)" />
-                                <stop offset="100%" stopColor="transparent" />
-                            </radialGradient>
-                        </defs>
-                        
-                        {/* Grid background */}
-                        <rect width="100%" height="100%" fill="url(#grid)" />
-                        
-                        {/* Center glow */}
-                        <circle cx="600" cy="400" r="400" fill="url(#centerGlow)" />
-                        
-                        {/* Animated lines */}
-                        <motion.g
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 2, delay: 0.5 }}
-                        >
-                            {Array.from({ length: 8 }, (_, i) => (
-                                <motion.line
-                                    key={i}
-                                    x1="600"
-                                    y1="400"
-                                    x2={600 + Math.cos(i * Math.PI / 4) * 300}
-                                    y2={400 + Math.sin(i * Math.PI / 4) * 300}
-                                    stroke="rgba(59, 130, 246, 0.2)"
-                                    strokeWidth="1"
-                                    initial={{ pathLength: 0 }}
-                                    animate={{ pathLength: 1 }}
-                                    transition={{ 
-                                        duration: 1.5, 
-                                        delay: 0.8 + i * 0.1,
-                                        ease: "easeOut"
-                                    }}
-                                />
-                            ))}
-                        </motion.g>
-                    </svg>
+                <div className="absolute inset-0">
+                    <img
+                        src="/imgs/contact/linesBackground.svg"
+                        alt="Background pattern"
+                        className="w-full h-full object-cover"
+                    />
                 </div>
 
                 {/* Content */}
                 <div className="relative z-10 max-w-4xl mx-auto">
+                    {/* Badge */}
                     <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="mb-8"
+                        className="inline-block mb-8"
+                        variants={itemVariants}
                     >
-                        <span className="text-white/80 text-sm sm:text-base font-medium mb-4 block">
+                        <span
+                            className="inline-flex items-center px-8 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity"
+                            style={{
+                                borderRadius: '200px',
+                                border: '1px solid #DBDDFB',
+                                background: 'linear-gradient(238deg, rgba(255, 255, 255, 0.15) -9.79%, rgba(4, 11, 89, 0.15) 61.45%, rgba(1, 4, 37, 0.15) 130.31%)'
+                            }}
+                        >
                             Contact
                         </span>
                     </motion.div>
-                    
-                    <motion.h1 
-                        className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal text-white mb-4 lg:mb-6"
+
+                    <motion.h1
+                        className="text-4xl sm:text-5xl font-normal text-white mb-4 lg:mb-6"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.4 }}
                     >
                         Let's Make Tech Easier
                     </motion.h1>
-                    
-                    <motion.h2 
-                        className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600"
+
+                    <motion.h2
+                        className="text-5xl sm:text-6xl h-20 font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400"
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
@@ -180,77 +155,43 @@ const ContactSection = () => {
             </motion.section>
 
             {/* Bottom Section - Form with dark background */}
-            <motion.section 
+            <motion.section
                 variants={sectionVariants}
                 className="relative min-h-screen bg-slate-900 px-4 sm:px-6 lg:px-8 py-12 lg:py-20"
             >
                 {/* SVG Background Pattern */}
-                <div className="absolute inset-0 w-full h-full">
-                    <svg 
-                        className="absolute inset-0 w-full h-full" 
-                        viewBox="0 0 1200 1200" 
-                        fill="none"
-                        preserveAspectRatio="xMidYMid slice"
-                    >
-                        {/* Subtle circuit-like pattern */}
-                        <defs>
-                            <pattern id="circuit" width="100" height="100" patternUnits="userSpaceOnUse">
-                                <circle cx="50" cy="50" r="1" fill="rgba(59, 130, 246, 0.1)" />
-                                <path d="M 25 50 L 75 50 M 50 25 L 50 75" stroke="rgba(59, 130, 246, 0.05)" strokeWidth="0.5"/>
-                            </pattern>
-                        </defs>
-                        <rect width="100%" height="100%" fill="url(#circuit)" />
-                        
-                        {/* Floating geometric shapes */}
-                        <motion.circle
-                            cx="200"
-                            cy="200"
-                            r="2"
-                            fill="rgba(59, 130, 246, 0.3)"
-                            animate={{
-                                y: [0, -20, 0],
-                                opacity: [0.3, 0.6, 0.3]
-                            }}
-                            transition={{
-                                duration: 4,
-                                repeat: Infinity,
-                                ease: "easeInOut"
-                            }}
-                        />
-                        <motion.circle
-                            cx="1000"
-                            cy="800"
-                            r="1.5"
-                            fill="rgba(251, 146, 60, 0.4)"
-                            animate={{
-                                y: [0, 15, 0],
-                                opacity: [0.4, 0.7, 0.4]
-                            }}
-                            transition={{
-                                duration: 3,
-                                repeat: Infinity,
-                                ease: "easeInOut",
-                                delay: 1
-                            }}
-                        />
-                    </svg>
-                </div>
+                <div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+                    style={{
+                        backgroundImage: "url('/imgs/backgrounds/radialBlue.svg')",
+                    }}
+                />
 
                 <div className="relative z-10 max-w-7xl mx-auto">
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-start">
                         {/* Left Side - Text Content */}
-                        <motion.div 
+                        <motion.div
                             className="space-y-8"
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.8, delay: 0.2 }}
                         >
-                            <div className="inline-block">
-                                <span className="bg-slate-800 text-white px-4 py-2 rounded-full text-sm font-medium">
+                            <motion.div
+                                className="inline-block mb-8"
+                                variants={itemVariants}
+                            >
+                                <span
+                                    className="inline-flex items-center px-8 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity"
+                                    style={{
+                                        borderRadius: '200px',
+                                        border: '1px solid #DBDDFB',
+                                        background: 'linear-gradient(238deg, rgba(255, 255, 255, 0.15) -9.79%, rgba(4, 11, 89, 0.15) 61.45%, rgba(1, 4, 37, 0.15) 130.31%)'
+                                    }}
+                                >
                                     Get in Touch
                                 </span>
-                            </div>
+                            </motion.div>
 
                             <div className="space-y-6">
                                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
@@ -262,22 +203,22 @@ const ContactSection = () => {
 
                                 <div className="space-y-4 text-white/80 text-base sm:text-lg leading-relaxed">
                                     <p>
-                                        Whether you have a question, need support, or are ready 
+                                        Whether you have a question, need support, or are ready
                                         to talk strategy, we're here and happy to connect.
                                     </p>
                                     <p>
-                                        Fill out the form, send us a message, or book a time to 
+                                        Fill out the form, send us a message, or book a time to
                                         chat. We'll get back to you as soon as possible.
                                     </p>
                                 </div>
                             </div>
 
                             {/* Social Links */}
-                            <SocialMediaIcons divClass="justify-start"/>
+                            <SocialMediaIcons divClass="justify-start" />
                         </motion.div>
 
                         {/* Right Side - Contact Form */}
-                        <motion.div 
+                        <motion.div
                             variants={formVariants}
                             className="bg-white rounded-3xl p-8 lg:p-10 shadow-2xl"
                         >
@@ -400,8 +341,8 @@ const ContactSection = () => {
                                 </div>
 
                                 {/* Newsletter Subscription */}
-                                <div>
-                                    <label className="flex items-start space-x-3 cursor-pointer">
+                                <div className="flex flex-row">
+                                    <label className="flex items-start max-w-xs space-x-3 cursor-pointer">
                                         <input
                                             type="checkbox"
                                             name="subscribe"
@@ -413,23 +354,18 @@ const ContactSection = () => {
                                             I would like to subscribe to updates and insights from Good Company.
                                         </span>
                                     </label>
-                                </div>
 
-                                {/* Submit Button */}
-                                <motion.button
-                                    type="submit"
-                                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-200 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2"
-                                    whileHover={{ scale: 1.02 }}
-                                    whileTap={{ scale: 0.98 }}
-                                >
-                                    Send Message
-                                </motion.button>
+                                    {/* Submit Button */}
+                                    <Button>
+                                        Send Message
+                                    </Button>
+                                </div>
                             </form>
                         </motion.div>
                     </div>
                 </div>
             </motion.section>
-        </motion.div>
+        </motion.div >
     );
 };
 

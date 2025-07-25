@@ -371,13 +371,13 @@ function ServicesSection() {
                     <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
                         {/* Mobile Header */}
                         <AnimatedBlock delay={0.2} className="text-center mb-16">
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6">
+                            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
                                 What we do{" "}
                                 <span className="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                                     BEST
                                 </span>
                             </h2>
-                            <p className="text-sm sm:text-base text-white leading-relaxed">
+                            <p className="text-xs sm:text-sm text-white leading-relaxed">
                                 We know that there isn't one solution that fits every business, and that technological/
                                 security challenges change over time. That's why we work alongside your team to build
                                 out the projects you need, when you need them. Here's how we do it:
@@ -447,13 +447,13 @@ function ServicesSection() {
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
 
                         <AnimatedBlock delay={0.2} className="text-center mb-12 md:mb-16">
-                            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 md:mb-8">
+                            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 md:mb-8">
                                 What we do{" "}
                                 <span className="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                                     BEST
                                 </span>
                             </h2>
-                            <p className="text-base sm:text-lg md:text-xl text-white max-w-4xl mx-auto leading-relaxed px-4">
+                            <p className="text-sm sm:text-base text-white max-w-4xl mx-auto leading-relaxed px-4">
                                 We know that there isn't one solution that fits every business, and that technological/
                                 security challenges change over time. That's why we work alongside your team to build
                                 out the projects you need, when you need them. Here's how we do it:
