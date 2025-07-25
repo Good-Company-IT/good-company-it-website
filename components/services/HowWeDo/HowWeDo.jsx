@@ -1,31 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import {
-    MdSecurity,
-    MdCloud,
-    MdStorage,
-    MdNetworkCheck,
-    MdSupport,
-    MdDevices,
-    MdAnalytics
-} from 'react-icons/md';
-import {
-    FaShieldAlt,
-    FaServer,
-    FaDatabase,
-    FaNetworkWired,
-    FaHeadset,
-    FaLaptop,
-    FaChartLine
-} from 'react-icons/fa';
-import {
-    HiShieldCheck,
-    HiCloudUpload,
-    HiDatabase,
-    HiGlobeAlt,
-    HiSupport,
-    HiDesktopComputer,
-    HiTrendingUp
-} from 'react-icons/hi';
 import { BiCheckCircle } from 'react-icons/bi';
 import { GoShieldCheck } from 'react-icons/go';
 
