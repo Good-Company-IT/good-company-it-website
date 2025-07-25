@@ -18,9 +18,20 @@ function Navbar() {
   const path = usePathname();
   const navRef = useRef(null);
 
+  // Helper function to check if a link is active
+  const isLinkActive = (href) => {
+    // Handle language prefixes (e.g., /fr, /en, /es)
+    const pathWithoutLang = path.replace(/^\/[a-z]{2}/, '') || '/';
+    
+    if (href === '/') {
+      return pathWithoutLang === '/';
+    }
+    return pathWithoutLang.startsWith(href);
+  };
+
   const linksStyle = {
-    desktop: `text-white hover:text-primary-orange cursor-pointer font-normal py-2 transition-all duration-200 flex items-center gap-1`,
-    mobile: `text-text-dark cursor-pointer font-normal px-4 py-3 text-lg hover:text-black hover:bg-gray-50 transition-all duration-200 rounded-md block w-full text-left`,
+    desktop: `hover:text-primary-orange cursor-pointer font-normal py-2 transition-all duration-200 flex items-center gap-1`,
+    mobile: `cursor-pointer font-normal px-4 py-3 text-lg hover:text-black hover:bg-gray-50 transition-all duration-200 rounded-md block w-full text-left`,
   };
 
   // Navigation data structure - simplified to just links
@@ -148,6 +159,9 @@ function Navbar() {
     }
   };
 
+  // Debug: Console log the current path
+  console.log('Current path:', path);
+
   return (
     <>
       <motion.nav
@@ -170,27 +184,30 @@ function Navbar() {
             className="hidden lg:flex items-center gap-8"
             variants={navLinksVariants}
           >
-            {navigationItems.map((item, index) => (
-              <motion.div
-                key={item.label}
-                variants={linkVariants}
-              >
-                <Link
-                  href={item.href}
-                  className={`${linksStyle.desktop} ${
-                    path === item.href ? 'text-primary-orange' : ''
-                  }`}
+            {navigationItems.map((item, index) => {
+              const isActive = isLinkActive(item.href);
+              return (
+                <motion.div
+                  key={item.label}
+                  variants={linkVariants}
                 >
-                  <motion.span
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ duration: 0.2 }}
+                  <Link
+                    href={item.href}
+                    className={`${linksStyle.desktop} ${
+                      isActive ? 'text-primary-orange' : 'text-white'
+                    }`}
                   >
-                    {item.label}
-                  </motion.span>
-                </Link>
-              </motion.div>
-            ))}
+                    <motion.span
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      transition={{ duration: 0.2 }}
+                    >
+                      {item.label}
+                    </motion.span>
+                  </Link>
+                </motion.div>
+              );
+            })}
 
             {/* CTA Button */}
             <motion.div variants={linkVariants}>
@@ -255,31 +272,34 @@ function Navbar() {
                 delayChildren: 0.2
               }}
             >
-              {navigationItems.map((item, index) => (
-                <motion.div
-                  key={item.label}
-                  initial={{ opacity: 0, y: -25, scale: 0.9 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  transition={{
-                    delay: 0.32 + (index * 0.1),
-                    duration: 0.6,
-                    ease: [0.34, 1.56, 0.64, 1],
-                    type: "spring",
-                    stiffness: 180,
-                    damping: 18
-                  }}
-                >
-                  <Link
-                    href={item.href}
-                    className={`${linksStyle.mobile} ${
-                      path === item.href ? 'text-primary-orange bg-orange-50' : ''
-                    }`}
-                    onClick={handleCloseMenu}
+              {navigationItems.map((item, index) => {
+                const isActive = isLinkActive(item.href);
+                return (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, y: -25, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{
+                      delay: 0.32 + (index * 0.1),
+                      duration: 0.6,
+                      ease: [0.34, 1.56, 0.64, 1],
+                      type: "spring",
+                      stiffness: 180,
+                      damping: 18
+                    }}
                   >
-                    {item.label}
-                  </Link>
-                </motion.div>
-              ))}
+                    <Link
+                      href={item.href}
+                      className={`${linksStyle.mobile} ${
+                        isActive ? 'text-primary-orange bg-orange-50' : 'text-text-dark'
+                      }`}
+                      onClick={handleCloseMenu}
+                    >
+                      {item.label}
+                    </Link>
+                  </motion.div>
+                );
+              })}
 
               {/* Mobile CTA */}
               <motion.div
