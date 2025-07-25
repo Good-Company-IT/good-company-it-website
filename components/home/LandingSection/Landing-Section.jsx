@@ -264,14 +264,7 @@ function LandingSection() {
                 >
                   <span className="text-white drop-shadow-lg">You have a </span>
                   <motion.span
-                    className="inline-block text-transparent bg-clip-text font-bold drop-shadow-lg"
-                    style={{
-                      backgroundImage: 'var(--Light-Orange-gradient)',
-                      backgroundSize: '300%',
-                      backgroundPosition: 'center',
-                      WebkitBackgroundClip: 'text',
-                      WebkitTextFillColor: 'transparent',
-                    }}
+                    className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400 font-bold drop-shadow-lg"
                     variants={gradientTextVariants}
                     whileHover={{ 
                       scale: 1.02,
@@ -290,7 +283,7 @@ function LandingSection() {
                 >
                   <span className="text-white drop-shadow-lg">We </span>
                   <motion.span
-                    className="bg-gradient-to-r font-bold from-blue-800 to-blue-400 bg-clip-text text-transparent inline-block drop-shadow-lg"
+                    className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-primary-blue font-bold inline-block drop-shadow-lg"
                     variants={gradientTextVariants}
                     whileHover={{ 
                       scale: 1.02, 

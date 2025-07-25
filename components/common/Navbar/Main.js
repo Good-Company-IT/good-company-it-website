@@ -211,7 +211,7 @@ function Navbar() {
 
             {/* CTA Button */}
             <motion.div variants={linkVariants}>
-              <Button appearance="primary">
+              <Button href={"/contact"} appearance="primary">
                 Secure Your Business
               </Button>
             </motion.div>
@@ -315,7 +315,7 @@ function Navbar() {
                 }}
                 className="pt-4 flex justify-center"
               >
-                <Button appearance="primary" onClick={handleCloseMenu}>
+                <Button href={"/contact"} appearance="primary" onClick={handleCloseMenu}>
                   Secure Your Business
                 </Button>
               </motion.div>
