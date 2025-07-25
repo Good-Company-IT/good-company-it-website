@@ -15,28 +15,34 @@ function TestimonialCarousel() {
     // Memoized testimonials data
     const testimonials = React.useMemo(() => [
         {
-            name: "William Dawn",
-            quote: "My IT cost reduced by 70% and the response time from GoCo has been phenomenal.",
+            name: "Andrew Castillo",
+            quote: "“Highly recommend Good Company IT for anyone needing top-notch tech support. Huge thanks to Julian Ussa for the outstanding work”",
             hasAvatar: true,
-            avatar: 'william.png'
         },
         {
-            name: "Matt Johnson",
-            quote: "Good Company gave us the tools we needed to get compliant!",
+            name: "Trellanie Vernon:",
+            quote: "Their team provided exceptional customer service and quickly resolved my IT issue.",
             hasAvatar: true,
-            avatar: "matt.png"
         },
         {
-            name: "Jhon Cooper",
-            quote: "Cost effective, excellent service. A must have for any start up.",
+            name: "Fabian Ramos",
+            quote: "Excellent service and support! Julian from Good Company IT is the best- very helpful, patient, and dedicated to resolving any IT issues",
             hasAvatar: true,
-            avatar: "jhon.png"
         },
         {
-            name: "Elena Botero",
-            quote: "I knew my industry but needed the tech the results I'm seeing now!",
+            name: "On-Demand Trading Compliance:",
+            quote: "From start to finish, the team at Good Company IT is extremely responsive, knowledgeable, and incredibly patient.",
             hasAvatar: true,
-            avatar: "elena.png"
+        },
+        {
+            name: "Colleen Van Rooyen:",
+            quote: "Absolute great experience working with Julian Ussa. Efficient, professional and always eager to assist",
+            hasAvatar: true,
+        },
+        {
+            name: "Alarape Gbolahan:",
+            quote: "Julian was incredibly helpful throughout our interaction. He handled everything with a clear understanding of what needed to be done.",
+            hasAvatar: true,
         }
     ], []);
 
@@ -137,7 +143,7 @@ function TestimonialCarousel() {
                     className="relative w-full overflow-hidden"
                 >
                     {/* Cards Container */}
-                    <div className="w-max flex gap-6 animate-scroll-left">
+                    <div className="w-max flex gap-5 p-4 animate-scroll-left">
                         {/* Duplicate twice for smooth infinite scroll */}
                         {[...infiniteTestimonials, ...infiniteTestimonials].map((testimonial, index) => (
                             <TestimonialCard
