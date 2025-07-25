@@ -222,7 +222,7 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
           )}
 
           {/* Desktop Carousel */}
-          <div className="mb-8 overflow-hidden">
+          <div className="mb-8 p-6 overflow-hidden">
             <motion.div
               className="flex gap-6 transition-transform duration-500 ease-out"
               style={{
