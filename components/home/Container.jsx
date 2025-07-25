@@ -61,7 +61,7 @@ export default function Container({ locale, translations, mainLang }) {
       <LandingSection locale={locale} translations={translations.homeTranslations} />
       {/* <ValuesSelector/> */}
       <TechBento />
-      <WhyGoCompany />
+      <WhyGoCompany title="Why business choose" titleHightlight="Good Company" subtitle="A partnership built on Excellence, Transparency, and Diligence."/>
       <WhatWeDoBest />
       <OurServices />
       <WeBuild />

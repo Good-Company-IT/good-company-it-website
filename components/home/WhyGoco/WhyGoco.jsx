@@ -7,7 +7,7 @@ import { Button } from "@/components/common/Buttons/Button"
 import InfoCardCarousel from "@/components/common/Carrousels/InfoCardCarrousel";
 
 // Main Section Component
-function WhyGoco() {
+function WhyGoco({ title, titleHightlight, subtitle }) {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
@@ -116,19 +116,19 @@ function WhyGoco() {
           >
             {/* Heading */}
             <div className="space-y-2 sm:space-y-3 md:space-y-4">
-              <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-medium text-gray-900 leading-[1.1] sm:leading-tight">
-                Why business choose
+              <h2 className="text-2xl xs:text-3xl sm:text-4xl font-regular text-gray-900 leading-[1.1] sm:leading-tight">
+                {title}
               </h2>
-              <h3 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
+              <h3 className="text-3xl xs:text-4xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
                 <span>
-                  Good Company
+                  {titleHightlight}
                 </span>
               </h3>
             </div>
 
             {/* Subtitle */}
             <p className="text-base sm:text-lg md:text-xl text-text-dark leading-relaxed max-w-none sm:max-w-lg">
-              A partnership built on Excellence, Transparency, and Diligence.
+              {subtitle}
             </p>
 
             {/* CTA Button */}
