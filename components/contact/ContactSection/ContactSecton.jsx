@@ -29,6 +29,9 @@ const ContactSection = () => {
         subscribe: false
     });
 
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
+
     const handleInputChange = (e) => {
         const { name, value, type, checked } = e.target;
         if (type === "checkbox") {
@@ -47,10 +50,61 @@ const ContactSection = () => {
         }
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log("Form submitted:", formData);
-        // Handle form submission here
+        setIsSubmitting(true);
+        setSubmitStatus(null);
+
+        try {
+            const response = await fetch('https://formspree.io/f/xkgzodkr', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    fullName: formData.fullName,
+                    companyName: formData.companyName,
+                    email: formData.email,
+                    phone: formData.phone,
+                    industry: formData.industry,
+                    services: formData.services.join(', '), // Convert array to string
+                    message: formData.message,
+                    subscribe: formData.subscribe,
+                }),
+            });
+
+            if (response.ok) {
+                console.log('✅ Form submitted successfully!', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    formData: formData
+                });
+                setSubmitStatus('success');
+                // Reset form after successful submission
+                setFormData({
+                    fullName: "",
+                    companyName: "",
+                    email: "",
+                    phone: "",
+                    industry: "",
+                    services: [],
+                    message: "",
+                    subscribe: false
+                });
+            } else {
+                console.error('❌ Form submission failed:', {
+                    status: response.status,
+                    statusText: response.statusText,
+                    response: response
+                });
+                setSubmitStatus('error');
+            }
+        } catch (error) {
+            console.error('Form submission error:', error);
+            setSubmitStatus('error');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     // Animation variants
@@ -228,6 +282,23 @@ const ContactSection = () => {
                                 </h3>
                             </div>
 
+                            {/* Success/Error Messages */}
+                            {submitStatus === 'success' && (
+                                <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-xl">
+                                    <p className="text-green-800 text-sm">
+                                        Thank you! Your message has been sent successfully. We'll get back to you soon.
+                                    </p>
+                                </div>
+                            )}
+
+                            {submitStatus === 'error' && (
+                                <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl">
+                                    <p className="text-red-800 text-sm">
+                                        Sorry, there was an error sending your message. Please try again.
+                                    </p>
+                                </div>
+                            )}
+
                             <form onSubmit={handleSubmit} className="space-y-6">
                                 {/* Name and Company */}
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -240,6 +311,7 @@ const ContactSection = () => {
                                             onChange={handleInputChange}
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
                                             required
+                                            disabled={isSubmitting}
                                         />
                                     </div>
                                     <div>
@@ -251,6 +323,7 @@ const ContactSection = () => {
                                             onChange={handleInputChange}
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
                                             required
+                                            disabled={isSubmitting}
                                         />
                                     </div>
                                 </div>
@@ -266,6 +339,7 @@ const ContactSection = () => {
                                             onChange={handleInputChange}
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
                                             required
+                                            disabled={isSubmitting}
                                         />
                                     </div>
                                     <div>
@@ -277,6 +351,7 @@ const ContactSection = () => {
                                             onChange={handleInputChange}
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
                                             required
+                                            disabled={isSubmitting}
                                         />
                                     </div>
                                 </div>
@@ -289,6 +364,7 @@ const ContactSection = () => {
                                         onChange={handleInputChange}
                                         className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 appearance-none"
                                         required
+                                        disabled={isSubmitting}
                                     >
                                         <option value="">Company's Industry *</option>
                                         <option value="technology">Technology</option>
@@ -320,6 +396,7 @@ const ContactSection = () => {
                                                     value={service}
                                                     onChange={handleInputChange}
                                                     className="w-5 h-5 text-orange-500 border-2 border-gray-300 rounded focus:ring-orange-500 focus:ring-2"
+                                                    disabled={isSubmitting}
                                                 />
                                                 <span className="text-sm text-slate-700">{service}</span>
                                             </label>
@@ -337,11 +414,12 @@ const ContactSection = () => {
                                         onChange={handleInputChange}
                                         rows={4}
                                         className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200 resize-none"
+                                        disabled={isSubmitting}
                                     />
                                 </div>
 
                                 {/* Newsletter Subscription */}
-                                <div className="flex flex-row">
+                                <div className="flex flex-col gap-y-5 justify-between sm:flex-row">
                                     <label className="flex items-start max-w-xs space-x-3 cursor-pointer">
                                         <input
                                             type="checkbox"
@@ -349,6 +427,7 @@ const ContactSection = () => {
                                             checked={formData.subscribe}
                                             onChange={handleInputChange}
                                             className="w-5 h-5 text-orange-500 border-2 border-gray-300 rounded focus:ring-orange-500 focus:ring-2 mt-0.5"
+                                            disabled={isSubmitting}
                                         />
                                         <span className="text-sm text-slate-700 leading-relaxed">
                                             I would like to subscribe to updates and insights from Good Company.
@@ -356,8 +435,8 @@ const ContactSection = () => {
                                     </label>
 
                                     {/* Submit Button */}
-                                    <Button>
-                                        Send Message
+                                    <Button type="submit" disabled={isSubmitting}>
+                                        {isSubmitting ? 'Sending...' : 'Send Message'}
                                     </Button>
                                 </div>
                             </form>
