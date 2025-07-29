@@ -13,7 +13,7 @@ import {
 
 // InfoCard Component - Fully Responsive & Optimized with Variant Support
 function InfoCard({ info, isActive, variant = "primary" }) {
-  // Color configurations based on variant
+
   const getVariantStyles = () => {
     if (variant === "secondary") {
       return {
