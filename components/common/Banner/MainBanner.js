@@ -5,8 +5,6 @@ import { motion } from 'framer-motion';
 
 import JuneSummerPromoBanner from './promotions/JuneSummerPromoBanner';
 
-
-
 function MainBanner({ translations, locale }) {
   const list = ['JuneSummerPromoBanner'];
   const [currentContent, setCurrentContent] = useState(list[0]); // Initial content
