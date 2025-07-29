@@ -18,6 +18,11 @@ const WorkingWithUs = dynamic(() => import("../home/WhyGoco/WhyGoco"), {
   ssr: true
 });
 
+const CTASection = dynamic(() => import("./CTASection/CTASection"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 export default function Container({ locale, translations, mainLang }) {
 
   return (
@@ -27,6 +32,7 @@ export default function Container({ locale, translations, mainLang }) {
         title="What it's like" 
         titleHightlight="Working with us" 
         subtitle="Because you deserve more than a ticketing system. We become part of your team — your go-to people for all things tech, strategy, and security." />
+        <CTASection />
     </>
   );
 }

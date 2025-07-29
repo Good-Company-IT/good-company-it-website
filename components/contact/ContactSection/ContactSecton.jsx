@@ -150,6 +150,7 @@ const ContactSection = () => {
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
+            id="contact-section"
             viewport={{ once: true, margin: "-100px" }}
         >
             {/* Top Section - Hero with geometric background */}
