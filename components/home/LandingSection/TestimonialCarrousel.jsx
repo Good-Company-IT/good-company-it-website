@@ -20,7 +20,7 @@ function TestimonialCarousel() {
             hasAvatar: true,
         },
         {
-            name: "Trellanie Vernon:",
+            name: "Trellanie Vernon",
             quote: "Their team provided exceptional customer service and quickly resolved my IT issue.",
             hasAvatar: true,
         },
@@ -30,17 +30,17 @@ function TestimonialCarousel() {
             hasAvatar: true,
         },
         {
-            name: "On-Demand Trading Compliance:",
+            name: "On-Demand Trading Compliance",
             quote: "From start to finish, the team at Good Company IT is extremely responsive, knowledgeable, and incredibly patient.",
             hasAvatar: true,
         },
         {
-            name: "Colleen Van Rooyen:",
+            name: "Colleen Van Rooyen",
             quote: "Absolute great experience working with Julian Ussa. Efficient, professional and always eager to assist",
             hasAvatar: true,
         },
         {
-            name: "Alarape Gbolahan:",
+            name: "Alarape Gbolahan",
             quote: "Julian was incredibly helpful throughout our interaction. He handled everything with a clear understanding of what needed to be done.",
             hasAvatar: true,
         }
