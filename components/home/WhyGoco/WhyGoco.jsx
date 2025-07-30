@@ -83,7 +83,7 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
   };
 
   return (
-    <section className="relative min-h-screen overflow-hidden">
+    <section className="relative max-h-[800px] h-[800px] overflow-hidden">
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -102,24 +102,24 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
       
       {/* Content Container */}
       <motion.div
-        className="relative z-10 w-full max-w-[1440px] mx-auto px-0 md:px-14 py-16 md:py-20 lg:py-28 min-h-screen flex items-center"
+        className="relative z-10 w-full h-full max-w-[1440px] mx-auto px-0 md:px-14 py-8 sm:py-12 md:py-16 flex items-center"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        <div className="w-full grid lg:grid-cols-2 gap-8 lg:gap-0 lg:min-h-[600px]">
+        <div className="w-full h-full grid lg:grid-cols-2 gap-6 lg:gap-8 items-center">
           
           {/* Left Content */}
           <motion.div 
-            className="flex flex-col justify-center px-5 space-y-6 sm:space-y-8 lg:pr-8"
+            className="flex flex-col justify-center px-4 sm:px-5 space-y-4 sm:space-y-6 lg:pr-8"
             variants={itemVariants}
           >
             {/* Heading */}
-            <div className="space-y-2 sm:space-y-3 md:space-y-4">
-              <h2 className="text-2xl xs:text-3xl sm:text-4xl font-regular text-gray-900 leading-[1.1] sm:leading-tight">
+            <div className="space-y-1 sm:space-y-2 md:space-y-3">
+              <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-regular text-gray-900 leading-[1.1] sm:leading-tight">
                 {title}
               </h2>
-              <h3 className="text-3xl xs:text-4xl sm:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
+              <h3 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
                 <span>
                   {titleHightlight}
                 </span>
@@ -127,12 +127,12 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
             </div>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg md:text-xl text-text-dark leading-relaxed max-w-none sm:max-w-lg">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-text-dark leading-relaxed max-w-none sm:max-w-lg">
               {subtitle}
             </p>
 
             {/* CTA Button */}
-            <div className="pt-2">
+            <div className="pt-1 sm:pt-2">
               <Link href="/contact">
                 <Button appearance="primary">
                     Contact Us
@@ -144,20 +144,17 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
           {/* Right Content - InfoCard Carousel */}
           <motion.div
             variants={carouselVariants}
-            className="flex flex-col justify-end lg:pl-8"
+            className="flex flex-col justify-center h-full lg:pl-8"
           >
-            {/* Spacer for desktop */}
-            <div className="hidden lg:block flex-1 min-h-[100px]"></div>
-            
-            {/* Carousel - Full width on mobile, constrained on desktop */}
-            <div className="w-full">
+            {/* Carousel - Optimized for 800px height */}
+            <div className="w-full h-full flex items-center">
               {/* Mobile: Full viewport width carousel */}
-              <div className="lg:hidden">
+              <div className="lg:hidden w-full">
                 <InfoCardCarousel infoData={infoData} />
               </div>
               
               {/* Desktop: Normal container */}
-              <div className="hidden lg:block">
+              <div className="hidden lg:block w-full">
                 <InfoCardCarousel infoData={infoData} />
               </div>
             </div>
