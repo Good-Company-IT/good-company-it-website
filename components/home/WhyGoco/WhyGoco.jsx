@@ -102,7 +102,7 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
       
       {/* Content Container */}
       <motion.div
-        className="relative z-10 w-full max-w-[1440px] mx-auto px-0 md:px-14 py-10 md:py-20 min-h-screen flex items-center"
+        className="relative z-10 w-full max-w-[1440px] mx-auto px-0 md:px-14 py-16 md:py-20 lg:py-28 min-h-screen flex items-center"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
