@@ -1,6 +1,5 @@
 "use client";
 
-
 import Image from "next/image";
 import Link from "next/link";
 import React, { useState, useEffect } from "react";
@@ -178,7 +177,7 @@ function LandingSection() {
   };
 
   return (
-    <section className="relative min-h-screen text-white overflow-hidden">
+    <section className="relative h-[1300px] text-white overflow-hidden">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <motion.video
@@ -244,21 +243,22 @@ function LandingSection() {
 
       {/* Main Content Container */}
       <motion.div
-        className="relative z-30 max-w-[1440px] mx-auto px-6 py-14 md:py-20"
+        className="relative z-30 h-full max-w-[1440px] mx-auto px-4 sm:px-6 flex flex-col"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
-        <div className="flex flex-col md:flex-row justify-evenly md:justify-around items-center min-h-[calc(100vh-10rem)]">
+        {/* Hero Content - Takes most of the space */}
+        <div className="flex-1 flex flex-col md:flex-row justify-evenly md:justify-around items-center py-6 sm:py-8 md:py-12 lg:py-16">
 
           {/* Left Content */}
-          <div className="space-y-8 lg:space-y-12">
+          <div className="space-y-4 sm:space-y-6 lg:space-y-8 max-w-2xl">
 
             {/* Main Heading */}
-            <motion.div variants={headingVariants} className="space-y-4">
+            <motion.div variants={headingVariants} className="space-y-2 sm:space-y-3">
               <div className="overflow-hidden"> {/* Prevents text from jumping during animation */}
                 <motion.h1 
-                  className="text-4xl md:text-6xl font-semibold leading-tight"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight"
                   variants={textVariants}
                 >
                   <span className="text-white drop-shadow-lg">You have a </span>
@@ -277,7 +277,7 @@ function LandingSection() {
 
               <div className="overflow-hidden">
                 <motion.h2 
-                  className="text-4xl md:text-6xl font-semibold leading-tight"
+                  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold leading-tight"
                   variants={textVariants}
                 >
                   <span className="text-white drop-shadow-lg">We </span>
@@ -299,7 +299,7 @@ function LandingSection() {
             <div className="overflow-hidden">
               <motion.p
                 variants={textVariants}
-                className="text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed max-w-2xl drop-shadow-md"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-200 leading-relaxed drop-shadow-md"
               >
                 We help you get the suite of tech your company needs to protect
                 and propel your business into the future.
@@ -321,7 +321,7 @@ function LandingSection() {
           </div>
 
           {/* Right Content - Logo/Image */}
-          <div className="flex justify-center lg:justify-end">
+          <div className="flex justify-center lg:justify-end mt-8 md:mt-0">
             <motion.div
               variants={logoVariants}
               className="relative"
@@ -332,16 +332,16 @@ function LandingSection() {
               }}
             >
               {/* Logo Container */}
-              <div className="relative w-64 h-64 md:w-96 md:h-96">
+              <div className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96">
                 {/* Logo/Image */}
                 <motion.div className="absolute inset-0 flex items-center justify-center">
                   <Image
                     src={logoImage}
                     alt="Good Company Logo"
-                    width={590}
-                    height={450}
+                    fill
                     className="object-contain drop-shadow-2xl"
                     priority // Ensures faster loading
+                    sizes="(max-width: 640px) 192px, (max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                   />
                 </motion.div>
               </div>
@@ -349,8 +349,9 @@ function LandingSection() {
           </div>
         </div>
 
-        {/* Testimonial Carousel with staggered entry */}
+        {/* Testimonial Carousel - Fixed at bottom */}
         <motion.div
+          className="pb-2 sm:pb-3 md:pb-4"
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ 
@@ -365,7 +366,7 @@ function LandingSection() {
 
       {/* Gradient Overlay at Bottom with smooth fade */}
       <motion.div 
-        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-20"
+        className="absolute bottom-0 left-0 right-0 h-24 sm:h-32 bg-gradient-to-t from-black/60 to-transparent pointer-events-none z-20"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 2.0, ease: gentleEase, delay: 1.0 }}

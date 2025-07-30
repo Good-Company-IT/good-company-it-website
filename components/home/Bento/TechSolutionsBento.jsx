@@ -40,7 +40,7 @@ const SpaceBackground = () => (
 
 const TechSolutionsBento = () => {
     return (
-        <div className="relative px-3 sm:px-12 md:px-24 py-40">
+        <div className="relative px-3 sm:px-12 md:px-24 py-14 md:pb-20">
       <div className="absolute inset-0 w-full h-full -z-10" />
       {/* SVG Background */}
       <div 
