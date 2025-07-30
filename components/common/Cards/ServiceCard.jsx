@@ -56,6 +56,7 @@ const ServiceCard = ({
 
                     <Button
                         onClick={onButtonClick}
+                        href={"/services"}
                         variant="primary"
                         className='text-xs sm:text-sm'
                     >
