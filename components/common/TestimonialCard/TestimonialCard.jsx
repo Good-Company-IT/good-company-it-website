@@ -48,7 +48,7 @@ function TestimonialCard({ testimonial, index = 0 }) {
                     duration: 0.4,
                     ease: "backOut"
                 }}
-                className="w-5 h-5 text-yellow-400 fill-current"
+                className="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400 fill-current"
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
             >
@@ -70,8 +70,20 @@ function TestimonialCard({ testimonial, index = 0 }) {
                 scale: 1.02,
                 transition: { duration: 0.2 }
             }}
-            className="w-full max-w-[500px] min-h-[220px] flex-shrink-0 
-                       rounded-3xl p-8 relative overflow-hidden 
+            className="w-full 
+                       /* Mobile: 280px-320px */
+                       min-w-[280px] max-w-[300px] min-h-[200px]
+                       /* Small mobile: 320px-480px */
+                       xs:min-w-[300px] xs:max-w-[320px] xs:min-h-[210px]
+                       /* Small screens: 480px+ */
+                       sm:min-w-[340px] sm:max-w-[360px] sm:min-h-[220px]
+                       /* Medium screens: 768px+ */
+                       md:min-w-[380px] md:max-w-[400px] md:min-h-[240px]
+                       /* Large screens: 1024px+ */
+                       lg:max-w-[420px] lg:min-h-[250px]
+                       
+                       flex-shrink-0 rounded-2xl sm:rounded-3xl 
+                       p-4 sm:p-6 md:p-8 relative overflow-hidden 
                        border border-white/10 backdrop-blur-sm
                        bg-gradient-to-br from-slate-800/40 via-slate-900/60 to-slate-900/80
                        shadow-2xl transition-all duration-300"
@@ -80,7 +92,7 @@ function TestimonialCard({ testimonial, index = 0 }) {
             <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/10 pointer-events-none" />
             
             {/* Animated border glow */}
-            <div className="absolute inset-0 rounded-3xl bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20 opacity-0 hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
+            <div className="absolute inset-0 rounded-2xl sm:rounded-3xl bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-blue-500/20 opacity-0 hover:opacity-100 transition-opacity duration-500 -z-10 blur-xl" />
 
             {/* Content */}
             <motion.div 
@@ -88,9 +100,11 @@ function TestimonialCard({ testimonial, index = 0 }) {
                 className="relative z-10 h-full flex flex-col"
             >
                 {/* Header with name */}
-                <div >
+                <div className="mb-3 sm:mb-4">
                     <motion.h3 
-                        className="text-white font-bold text-xl leading-tight"
+                        className="text-white font-bold 
+                                   text-base sm:text-lg md:text-xl 
+                                   leading-tight"
                         initial={{ opacity: 0, x: -20 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ 
@@ -105,7 +119,7 @@ function TestimonialCard({ testimonial, index = 0 }) {
 
                 {/* Quote */}
                 <motion.div 
-                    className="my-5 flex flex-col justify-between"
+                    className="flex-1 flex flex-col justify-center mb-3 sm:mb-4"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ 
@@ -113,14 +127,17 @@ function TestimonialCard({ testimonial, index = 0 }) {
                         duration: 0.6
                     }}
                 >
-                    <p className="text-white/90 text-base leading-relaxed font-normal">
-                        "{testimonial.quote}"
+                    <p className="text-white/90 
+                                  text-sm sm:text-base md:text-base 
+                                  leading-relaxed sm:leading-relaxed 
+                                  font-normal line-clamp-4 sm:line-clamp-none">
+                        {testimonial.quote}
                     </p>
                 </motion.div>
 
                 {/* Star rating */}
                 <motion.div 
-                    className="flex gap-1"
+                    className="flex gap-0.5 sm:gap-1 justify-start"
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ 
@@ -132,9 +149,15 @@ function TestimonialCard({ testimonial, index = 0 }) {
                 </motion.div>
             </motion.div>
 
-            {/* Background decoration */}
-            <div className="absolute top-4 right-4 w-20 h-20 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-2xl" />
-            <div className="absolute bottom-4 left-4 w-16 h-16 bg-gradient-to-br from-orange-400/10 to-red-400/10 rounded-full blur-xl" />
+            {/* Background decoration - Responsive sizes */}
+            <div className="absolute top-2 right-2 sm:top-4 sm:right-4 
+                           w-12 h-12 sm:w-16 sm:h-16 md:w-20 md:h-20 
+                           bg-gradient-to-br from-blue-400/10 to-purple-400/10 
+                           rounded-full blur-xl sm:blur-2xl" />
+            <div className="absolute bottom-2 left-2 sm:bottom-4 sm:left-4 
+                           w-10 h-10 sm:w-12 sm:h-12 md:w-16 md:h-16 
+                           bg-gradient-to-br from-orange-400/10 to-red-400/10 
+                           rounded-full blur-lg sm:blur-xl" />
         </motion.div>
     );
 }

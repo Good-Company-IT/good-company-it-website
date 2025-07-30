@@ -123,6 +123,16 @@ function TestimonialCarousel() {
     const gap = 24; // 6 * 4px (gap-6)
     const totalCardWidth = cardWidth + gap;
 
+        const getGap = () => {
+        if (typeof window !== 'undefined') {
+            const width = window.innerWidth;
+            if (width < 480) return 16; // Smaller gap on mobile
+            if (width < 768) return 20; // Medium gap on tablets
+            return 24; // Standard gap on desktop
+        }
+        return 20;
+    };
+
     // Prevent hydration mismatch
     if (!isMounted) {
         return (
@@ -134,32 +144,60 @@ function TestimonialCarousel() {
         );
     }
 
-    return (
-        <section className=" overflow-hidden">
+     return (
+        <section className="py-8 sm:py-12 md:py-16 overflow-hidde">
             <div className="max-w-full">
+                {/* Optional: Section Title for Mobile */}
+                <div className="text-center mb-6 sm:mb-8 px-4 sm:hidden">
+                    <h2 className="text-white text-xl font-bold mb-2">What Our Clients Say</h2>
+                    <p className="text-white/70 text-sm">Real feedback from satisfied customers</p>
+                </div>
+
                 {/* Carousel Container */}
                 <div
                     ref={carouselRef}
                     className="relative w-full overflow-hidden"
                 >
-                    {/* Cards Container */}
-                    <div className="w-max flex gap-5 p-4 animate-scroll-left">
+                    {/* Cards Container with responsive gap */}
+                    <div 
+                        className="w-max flex p-2 sm:p-4 animate-scroll-left"
+                        style={{ gap: `${getGap()}px` }}
+                    >
                         {/* Duplicate twice for smooth infinite scroll */}
                         {[...infiniteTestimonials, ...infiniteTestimonials].map((testimonial, index) => (
                             <TestimonialCard
                                 key={`${testimonial.name}-${index}`}
                                 testimonial={testimonial}
+                                index={index}
                             />
                         ))}
                     </div>
 
-                    {/* Gradient Fade Edges - Responsive */}
-                    <div
-                        className="absolute backdrop:blur-lg left-0 top-0 w-5 sm:w-14 h-full bg-gradient-to-r from-black/80 to-transparent pointer-events-none z-10"
-                    />
-                    <div
-                        className="absolute backdrop:blur-lg right-0 top-0 w-5 sm:w-14 h-full bg-gradient-to-l from-black/80 to-transparent pointer-events-none z-10"
-                    />
+                    {/* Mobile-optimized Gradient Fade Edges */}
+                    <div className="absolute left-0 top-0 
+                                   w-3 xs:w-4 sm:w-8 md:w-12 lg:w-14 
+                                   h-full bg-gradient-to-r from-black via-black/80 to-transparent 
+                                   pointer-events-none z-10" />
+                    <div className="absolute right-0 top-0 
+                                   w-3 xs:w-4 sm:w-8 md:w-12 lg:w-14 
+                                   h-full bg-gradient-to-l from-black via-black/80 to-transparent 
+                                   pointer-events-none z-10" />
+                </div>
+
+                {/* Mobile: Optional scroll indicator */}
+                <div className="flex justify-center mt-4 sm:hidden">
+                    <div className="flex space-x-1">
+                        {testimonials.map((_, index) => (
+                            <div
+                                key={index}
+                                className={`w-2 h-2 rounded-full transition-colors duration-300 ${
+                                    (currentIndex % testimonials.length) === index
+                                        ? 'bg-orange-500'
+                                        : 'bg-white/30'
+                                }`}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </section>

@@ -187,7 +187,6 @@ function LandingSection() {
           loop
           muted
           playsInline
-          poster="/images/video-poster.jpg"
           onLoadedData={() => setVideoLoaded(true)}
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ 
@@ -245,7 +244,7 @@ function LandingSection() {
 
       {/* Main Content Container */}
       <motion.div
-        className="relative z-30 max-w-[1440px] mx-auto px-6 py-10 md:py-20"
+        className="relative z-30 max-w-[1440px] mx-auto px-6 py-14 md:py-20"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
