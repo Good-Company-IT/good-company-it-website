@@ -156,7 +156,7 @@ const ContactSection = () => {
             {/* Top Section - Hero with geometric background */}
             <motion.section
                 variants={sectionVariants}
-                className="relative min-h-[60vh] lg:min-h-[70vh] flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 overflow-hidden"
+                className="relative h-screen max-h-[640px] flex flex-col items-center justify-center text-center px-4 sm:px-6 lg:px-8 overflow-hidden"
                 style={{
                     background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 50%, #7c2d12 100%)'
                 }}
@@ -212,7 +212,7 @@ const ContactSection = () => {
             {/* Bottom Section - Form with dark background */}
             <motion.section
                 variants={sectionVariants}
-                className="relative min-h-screen bg-slate-900 px-4 sm:px-6 lg:px-8 py-12 lg:py-20"
+                className="relative h-[1750px] sm:h-[1400px] lg:max-h-[1000px] bg-slate-900 px-4 sm:px-6 lg:px-8 py-12 lg:py-20"
             >
                 {/* SVG Background Pattern */}
                 <div
