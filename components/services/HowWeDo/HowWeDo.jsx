@@ -384,7 +384,7 @@ const HowWeDo = () => {
     return (
         <motion.section 
             ref={sectionRef}
-            className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 min-h-screen pb-12 pt-96 sm:pt-80 md:pt-80 lg:pt-56 xl:pt-44 overflow-hidden"
+            className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 h-screen lg:h-[1050px] overflow-hidden"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
@@ -492,10 +492,12 @@ const HowWeDo = () => {
                 />
             </motion.svg>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                {/* Header */}
+            {/* Content Container - Flexbox layout for desktop height control */}
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full lg:h-full flex flex-col">
+                
+                {/* Header - Flexible spacing for mobile, controlled for desktop */}
                 <motion.div 
-                    className="text-center mb-8 sm:mb-12 lg:mb-16"
+                    className="text-center pt-80 sm:pt-80 md:pt-80 lg:pt-36 xl:pt-40 pb-8 flex-shrink-0"
                     variants={headerVariants}
                 >
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4">
@@ -506,203 +508,207 @@ const HowWeDo = () => {
                     </h2>
                 </motion.div>
 
-                {/* Mobile Version - Horizontal Scroll */}
-                {isMobile ? (
-                    <motion.div 
-                        className="w-full"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, delay: 0.3 }}
-                    >
-                        {/* Scroll Container */}
-                        <div 
-                            ref={scrollContainerRef}
-                            className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
-                            style={{ 
-                                scrollbarWidth: 'none',
-                                msOverflowStyle: 'none',
-                                WebkitOverflowScrolling: 'touch'
-                            }}
-                            onScroll={handleScroll}
-                        >
-                            {slides.map((slide, index) => (
-                                <div key={slide.id} className="snap-center" style={{ minWidth: '85vw' }}>
-                                    <MobileCard slide={slide} index={index} />
-                                </div>
-                            ))}
-                        </div>
+                {/* Main Content - Flex grow for desktop, natural flow for mobile */}
+                <div className="flex-1 lg:flex lg:flex-col lg:justify-center pb-12 lg:pb-8">
 
-                        {/* Scroll Hint */}
+                    {/* Mobile Version - Horizontal Scroll */}
+                    {isMobile ? (
                         <motion.div 
-                            className="text-center mt-4"
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 1, delay: 1 }}
-                        >
-                            <p className="text-white/70 text-sm">← Swipe to explore services →</p>
-                        </motion.div>
-
-                        {/* Dots Indicator */}
-                        <motion.div 
-                            className="flex justify-center mt-6 space-x-2"
-                            initial={{ opacity: 0, y: 20 }}
+                            className="w-full"
+                            initial={{ opacity: 0, y: 50 }}
                             animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.8 }}
+                            transition={{ duration: 0.8, delay: 0.3 }}
                         >
-                            {slides.map((_, index) => (
-                                <motion.div
-                                    key={index}
-                                    className={`w-2 h-2 rounded-full ${
-                                        index === activeSlide
-                                            ? 'bg-white'
-                                            : 'bg-white/50'
-                                    }`}
-                                    variants={dotVariants}
-                                    animate={index === activeSlide ? "active" : "inactive"}
-                                />
-                            ))}
-                        </motion.div>
-                    </motion.div>
-                ) : (
-                    /* Desktop Version - Original Slider */
-                    <motion.div 
-                        className="relative"
-                        initial={{ opacity: 0, scale: 0.95 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.8, delay: 0.4 }}
-                    >
-                        {/* Navigation Buttons */}
-                        <motion.button
-                            onClick={prevSlide}
-                            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange rounded-full flex items-center justify-center shadow-lg"
-                            aria-label="Previous slide"
-                            variants={buttonVariants}
-                            initial="rest"
-                            whileHover="hover"
-                            whileTap="tap"
-                        >
-                            <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                            </svg>
-                        </motion.button>
-
-                        <motion.button
-                            onClick={nextSlide}
-                            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange rounded-full flex items-center justify-center shadow-lg"
-                            aria-label="Next slide"
-                            variants={buttonVariants}
-                            initial="rest"
-                            whileHover="hover"
-                            whileTap="tap"
-                        >
-                            <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </motion.button>
-
-                        {/* Card Container */}
-                        <div className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:w-[1200px] mx-auto">
-                            <motion.div 
-                                className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
-                                whileHover={{ 
-                                    scale: 1.02,
-                                    boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                            {/* Scroll Container */}
+                            <div 
+                                ref={scrollContainerRef}
+                                className="flex gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory pb-4"
+                                style={{ 
+                                    scrollbarWidth: 'none',
+                                    msOverflowStyle: 'none',
+                                    WebkitOverflowScrolling: 'touch'
                                 }}
-                                transition={{ duration: 0.3 }}
+                                onScroll={handleScroll}
                             >
-                                <AnimatePresence mode="wait" custom={direction}>
-                                    <motion.div
-                                        key={activeSlide}
-                                        custom={direction}
-                                        variants={slideVariants}
-                                        initial="enter"
-                                        animate="center"
-                                        exit="exit"
-                                        className="grid grid-cols-1 lg:grid-cols-2 h-[750px] sm:h-[800px] md:h-[850px] lg:h-[650px]"
-                                    >
-                                        {/* Image Section */}
-                                        <motion.div 
-                                            className="relative bg-gray-100 overflow-hidden order-2 lg:order-1 h-48 sm:h-64 md:h-80 lg:h-full"
-                                            variants={imageVariants}
-                                            initial="hidden"
-                                            animate="visible"
-                                        >
-                                            <img
-                                                src={slides[activeSlide].image}
-                                                alt={slides[activeSlide].title}
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </motion.div>
+                                {slides.map((slide, index) => (
+                                    <div key={slide.id} className="snap-center" style={{ minWidth: '85vw' }}>
+                                        <MobileCard slide={slide} index={index} />
+                                    </div>
+                                ))}
+                            </div>
 
-                                        {/* Content Section */}
-                                        <motion.div 
-                                            className="p-6 sm:p-8 md:p-10 lg:p-12 flex flex-col justify-center order-1 lg:order-2 flex-1 lg:h-full overflow-y-auto"
-                                            variants={contentVariants}
-                                            initial="hidden"
-                                            animate="visible"
-                                        >
-                                            <div className="py-6 sm:py-8 md:py-10 lg:py-8">
-                                                <motion.div 
-                                                    className="flex gap-x-2 sm:gap-x-3 md:gap-x-4 items-start sm:items-center mb-4 sm:mb-6 text-primary-blue"
-                                                    variants={featureVariants}
-                                                >
-                                                    <GoShieldCheck className='w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 mt-1 sm:mt-0' />
-                                                    <h3 className="text-lg sm:text-xl md:text-2xl font-bold leading-tight">
-                                                        {slides[activeSlide].title}
-                                                    </h3>
-                                                </motion.div>
-
-                                                <motion.p 
-                                                    className="text-text-dark text-sm sm:text-base leading-relaxed mb-6 sm:mb-8"
-                                                    variants={featureVariants}
-                                                >
-                                                    {slides[activeSlide].description}
-                                                </motion.p>
-
-                                                <motion.div className="space-y-2 sm:space-y-3">
-                                                    {slides[activeSlide].features.map((feature, index) => (
-                                                        <motion.div 
-                                                            key={index} 
-                                                            className="flex gap-x-2 sm:gap-x-3 md:gap-x-4 items-start"
-                                                            variants={featureVariants}
-                                                        >
-                                                            <BiCheckCircle className='text-primary-blue h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0 mt-0.5 sm:mt-0' />
-                                                            <span className="text-text-dark text-xs sm:text-sm md:text-base leading-relaxed">{feature}</span>
-                                                        </motion.div>
-                                                    ))}
-                                                </motion.div>
-                                            </div>
-                                        </motion.div>
-                                    </motion.div>
-                                </AnimatePresence>
+                            {/* Scroll Hint */}
+                            <motion.div 
+                                className="text-center mt-4"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 1, delay: 1 }}
+                            >
+                                <p className="text-white/70 text-sm">← Swipe to explore services →</p>
                             </motion.div>
-                        </div>
 
-                        {/* Dots Indicator */}
-                        <motion.div 
-                            className="flex justify-center mt-6 sm:mt-8 space-x-2"
-                            initial={{ opacity: 0, y: 30 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.6, delay: 0.6 }}
-                        >
-                            {slides.map((_, index) => (
-                                <motion.button
-                                    key={index}
-                                    onClick={() => goToSlide(index)}
-                                    className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
-                                        index === activeSlide
-                                            ? 'bg-white'
-                                            : 'bg-white/50'
-                                    }`}
-                                    aria-label={`Go to slide ${index + 1}`}
-                                    variants={dotVariants}
-                                    animate={index === activeSlide ? "active" : "inactive"}
-                                    whileHover={{ scale: 1.2 }}
-                                />
-                            ))}
+                            {/* Dots Indicator */}
+                            <motion.div 
+                                className="flex justify-center mt-6 space-x-2"
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.8 }}
+                            >
+                                {slides.map((_, index) => (
+                                    <motion.div
+                                        key={index}
+                                        className={`w-2 h-2 rounded-full ${
+                                            index === activeSlide
+                                                ? 'bg-white'
+                                                : 'bg-white/50'
+                                        }`}
+                                        variants={dotVariants}
+                                        animate={index === activeSlide ? "active" : "inactive"}
+                                    />
+                                ))}
+                            </motion.div>
                         </motion.div>
-                    </motion.div>
-                )}
+                    ) : (
+                        /* Desktop Version - Original Slider */
+                        <motion.div 
+                            className="relative lg:flex-1 lg:flex lg:flex-col lg:justify-center lg:max-h-[750px]"
+                            initial={{ opacity: 0, scale: 0.95 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.8, delay: 0.4 }}
+                        >
+                            {/* Navigation Buttons */}
+                            <motion.button
+                                onClick={prevSlide}
+                                className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange rounded-full flex items-center justify-center shadow-lg"
+                                aria-label="Previous slide"
+                                variants={buttonVariants}
+                                initial="rest"
+                                whileHover="hover"
+                                whileTap="tap"
+                            >
+                                <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                                </svg>
+                            </motion.button>
+
+                            <motion.button
+                                onClick={nextSlide}
+                                className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-primary-orange rounded-full flex items-center justify-center shadow-lg"
+                                aria-label="Next slide"
+                                variants={buttonVariants}
+                                initial="rest"
+                                whileHover="hover"
+                                whileTap="tap"
+                            >
+                                <svg className="w-5 h-5 md:w-6 md:h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                                </svg>
+                            </motion.button>
+
+                            {/* Card Container */}
+                            <div className="w-full max-w-sm sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-6xl 2xl:w-[1200px] mx-auto">
+                                <motion.div 
+                                    className="bg-white rounded-2xl sm:rounded-3xl shadow-2xl overflow-hidden"
+                                    whileHover={{ 
+                                        scale: 1.02,
+                                        boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)"
+                                    }}
+                                    transition={{ duration: 0.3 }}
+                                >
+                                    <AnimatePresence mode="wait" custom={direction}>
+                                        <motion.div
+                                            key={activeSlide}
+                                            custom={direction}
+                                            variants={slideVariants}
+                                            initial="enter"
+                                            animate="center"
+                                            exit="exit"
+                                            className="grid grid-cols-1 lg:grid-cols-2 h-[750px] sm:h-[800px] md:h-[850px] lg:h-[600px] xl:h-[650px]"
+                                        >
+                                            {/* Image Section */}
+                                            <motion.div 
+                                                className="relative bg-gray-100 overflow-hidden order-2 lg:order-1 h-48 sm:h-64 md:h-80 lg:h-full"
+                                                variants={imageVariants}
+                                                initial="hidden"
+                                                animate="visible"
+                                            >
+                                                <img
+                                                    src={slides[activeSlide].image}
+                                                    alt={slides[activeSlide].title}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </motion.div>
+
+                                            {/* Content Section */}
+                                            <motion.div 
+                                                className="p-6 sm:p-8 md:p-10 lg:p-8 xl:p-10 flex flex-col justify-center order-1 lg:order-2 flex-1 lg:h-full overflow-y-auto"
+                                                variants={contentVariants}
+                                                initial="hidden"
+                                                animate="visible"
+                                            >
+                                                <div className="py-4 lg:py-6">
+                                                    <motion.div 
+                                                        className="flex gap-x-2 sm:gap-x-3 md:gap-x-4 items-start sm:items-center mb-4 sm:mb-6 text-primary-blue"
+                                                        variants={featureVariants}
+                                                    >
+                                                        <GoShieldCheck className='w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0 mt-1 sm:mt-0' />
+                                                        <h3 className="text-lg sm:text-xl md:text-2xl font-bold leading-tight">
+                                                            {slides[activeSlide].title}
+                                                        </h3>
+                                                    </motion.div>
+
+                                                    <motion.p 
+                                                        className="text-text-dark text-sm sm:text-base leading-relaxed mb-6 sm:mb-8"
+                                                        variants={featureVariants}
+                                                    >
+                                                        {slides[activeSlide].description}
+                                                    </motion.p>
+
+                                                    <motion.div className="space-y-2 sm:space-y-3">
+                                                        {slides[activeSlide].features.map((feature, index) => (
+                                                            <motion.div 
+                                                                key={index} 
+                                                                className="flex gap-x-2 sm:gap-x-3 md:gap-x-4 items-start"
+                                                                variants={featureVariants}
+                                                            >
+                                                                <BiCheckCircle className='text-primary-blue h-5 w-5 sm:h-6 sm:w-6 flex-shrink-0 mt-0.5 sm:mt-0' />
+                                                                <span className="text-text-dark text-xs sm:text-sm md:text-base leading-relaxed">{feature}</span>
+                                                            </motion.div>
+                                                        ))}
+                                                    </motion.div>
+                                                </div>
+                                            </motion.div>
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </motion.div>
+                            </div>
+
+                            {/* Dots Indicator */}
+                            <motion.div 
+                                className="flex justify-center mt-6 sm:mt-8 lg:mt-6 space-x-2 flex-shrink-0"
+                                initial={{ opacity: 0, y: 30 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6, delay: 0.6 }}
+                            >
+                                {slides.map((_, index) => (
+                                    <motion.button
+                                        key={index}
+                                        onClick={() => goToSlide(index)}
+                                        className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full ${
+                                            index === activeSlide
+                                                ? 'bg-white'
+                                                : 'bg-white/50'
+                                        }`}
+                                        aria-label={`Go to slide ${index + 1}`}
+                                        variants={dotVariants}
+                                        animate={index === activeSlide ? "active" : "inactive"}
+                                        whileHover={{ scale: 1.2 }}
+                                    />
+                                ))}
+                            </motion.div>
+                        </motion.div>
+                    )}
+                </div>
             </div>
         </motion.section>
     );

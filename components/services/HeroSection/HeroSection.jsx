@@ -33,7 +33,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative min-h-screen bg-black text-white overflow-hidden">
+      <section className="relative h-screen lg:h-[1050px] bg-black text-white overflow-hidden">
         {/* Background SVG Container */}
         <div className="absolute inset-0">
           <div className="absolute inset-0">
@@ -46,8 +46,8 @@ const HeroSection = () => {
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 w-full pb-64 sm:pb-60 md:pb-52 lg:pb-36 xl:pb-24 px-12 mx-auto">
-          <div className="flex flex-col justify-center min-h-screen sm:px-24 py-20">
+        <div className="relative max-w-[1440px] z-10 w-full pb-[500px] sm:pb-60 md:pb-52 lg:pb-36 xl:pb-24 px-12 mx-auto">
+          <div className="flex flex-col justify-start lg:justify-center min-h-screen sm:px-24 py-20">
             <motion.div 
               ref={contentRef}
               className="max-w-5xl"

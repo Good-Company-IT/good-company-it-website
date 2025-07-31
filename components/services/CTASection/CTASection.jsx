@@ -122,7 +122,7 @@ const CTASection = () => {
                             <motion.div
                                 variants={itemVariants}
                             >
-                                <Button className="w-full sm:w-auto">
+                                <Button href={"/contact"} className="w-full sm:w-auto">
                                     Get in Touch with Us
                                 </Button>
                             </motion.div>
