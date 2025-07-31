@@ -2,7 +2,6 @@
 
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Button } from "@/components/common/Buttons/Button";
 
 const OurCommunity = () => {
     const sectionRef = useRef(null);
@@ -90,9 +89,9 @@ const OurCommunity = () => {
                         >
                             At Good Company, we not only support organizations that are making a difference, we also create our own initiatives and foundations when we see a need that isn&apos;t being met.
                         </motion.p>
-                        <Button href={"#our-projects"} className="max-w-48">
+                        <button className="max-w-48 px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-orange-600 transition-colors">
                             See Our Projects
-                        </Button>
+                        </button>
                     </div>
 
                     {/* Right Side - Image Collage Layout */}
@@ -100,8 +99,8 @@ const OurCommunity = () => {
                         variants={textVariants}
                         className="relative w-full h-[500px] lg:h-[600px]"
                     >
-                        {/* Left Image */}
-                        <div className="absolute left-0 top-0 w-[45%] h-full">
+                        {/* Left Image - Reduced width */}
+                        <div className="absolute left-0 top-0 w-[35%] h-full">
                             <div className="w-full h-full rounded-3xl overflow-hidden">
                                 <img
                                     src="/imgs/community/ourCommunity/bubbles.png"
@@ -111,8 +110,8 @@ const OurCommunity = () => {
                             </div>
                         </div>
 
-                        {/* Center Video with Logo */}
-                        <div className="absolute left-[30%] top-[15%] w-[50%] h-[70%] z-10">
+                        {/* Center Video with Logo - Adjusted position */}
+                        <div className="absolute left-[25%] top-[15%] w-[45%] h-[70%] z-10">
                             <div className="relative w-full h-full rounded-2xl overflow-hidden">
                                 <video
                                     className="w-full h-full object-cover"
@@ -137,8 +136,8 @@ const OurCommunity = () => {
                             </div>
                         </div>
 
-                        {/* Right Image */}
-                        <div className="absolute right-0 bottom-0 w-[45%] h-[75%]">
+                        {/* Right Image - Increased width */}
+                        <div className="absolute right-0 bottom-0 w-[55%] h-[75%]">
                             <div className="w-full h-full rounded-3xl overflow-hidden shadow-lg">
                                 <img
                                     src="/imgs/community/ourCommunity/happyGirl.png"
