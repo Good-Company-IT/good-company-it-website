@@ -289,7 +289,7 @@ function LandingSection() {
                       transition: { duration: 0.3, ease: gentleEase } 
                     }}
                   >
-                    PROTECT I.T
+                    PROTECT IT
                   </motion.span>
                 </motion.h2>
               </div>
