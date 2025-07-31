@@ -44,7 +44,7 @@ const OurProcess = () => {
   const activeStepData = steps.find(step => step.id === activeStep);
 
   return (
-    <section className="relative h-screen lg:h-[900px] overflow-hidden">
+    <section className="relative h-[1400px] sm:h-[1200px] md:h-[1400px] lg:h-[900px] overflow-hidden">
       {/* Background Gradient */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
