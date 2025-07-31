@@ -384,7 +384,7 @@ const HowWeDo = () => {
     return (
         <motion.section 
             ref={sectionRef}
-            className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 h-screen lg:h-[1050px] overflow-hidden"
+            className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 h-[1200px] sm:h-[1100px] md:h-[1400px] lg:h-[1050px] overflow-hidden"
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
