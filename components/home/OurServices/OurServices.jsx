@@ -126,6 +126,7 @@ const OurServices = () => {
           <Button
             onClick={handleViewAllServices}
             appearance="primary"
+            className='w-full sm:w-auto text-center px-auto'
           >
             View all Services
           </Button>
