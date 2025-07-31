@@ -33,7 +33,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative min-h-screen bg-black text-white overflow-hidden">
+      <section className="relative lg:h-[1000px] bg-black text-white overflow-hidden">
         {/* Background SVG Container */}
         <div className="absolute inset-0">
           <div className="absolute inset-0">
@@ -46,22 +46,22 @@ const HeroSection = () => {
         </div>
 
         {/* Content Container */}
-        <div className="relative z-10 w-full pb-64 sm:pb-60 md:pb-52 lg:pb-36 xl:pb-24 px-12 mx-auto">
-          <div className="flex flex-col justify-center min-h-screen sm:px-24 py-20">
+        <div className="relative mx-auto max-w-[1440px] z-10 w-full h-full lg:h-full">
+          <div className="h-full lg:h-full flex flex-col justify-center px-6 sm:px-12 lg:px-16 xl:px-24 py-16 sm:py-20 lg:py-24">
             <motion.div 
               ref={contentRef}
-              className="max-w-5xl"
+              className="max-w-5xl mx-auto lg:mx-0"
               variants={fadeVariants}
               initial="hidden"
               animate={isInView ? "visible" : "hidden"}
             >
               {/* Services Badge */}
               <motion.div 
-                className="inline-block mb-8"
+                className="inline-block mb-6 sm:mb-8"
                 variants={itemVariants}
               >
                 <span
-                  className="inline-flex items-center px-8 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity"
+                  className="inline-flex items-center px-6 sm:px-8 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity"
                   style={{
                     borderRadius: '200px',
                     border: '1px solid #DBDDFB',
@@ -74,13 +74,13 @@ const HeroSection = () => {
 
               {/* Main Heading */}
               <motion.div 
-                className="space-y-2 mb-8"
+                className="space-y-2 mb-6 sm:mb-8"
                 variants={itemVariants}
               >
-                <h1 className="text-4xl sm:text-5xl max-w-xl font-medium leading-tight">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl max-w-xl font-medium leading-tight">
                   <span className="text-white">We Partner. We Teach. We Built. </span>
                   <span
-                    className="text-5xl sm:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400"
+                    className="text-4xl sm:text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400"
                   >
                     We Stay
                   </span>
