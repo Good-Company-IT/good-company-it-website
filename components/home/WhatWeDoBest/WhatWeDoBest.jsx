@@ -2,14 +2,15 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { FaCheckCircle, FaRegArrowAltCircleRight } from "react-icons/fa";
+import { FaRegArrowAltCircleRight } from "react-icons/fa";
 import { GoShieldCheck } from "react-icons/go";
 import { CiCircleCheck } from "react-icons/ci";
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/common/Buttons/Button";
+import MobileServicesSection from "./MobileServicesSection"; // Import the mobile component
 
-// AnimatedBlock component included inline
+// AnimatedBlock component for desktop
 function AnimatedBlock({
     children,
     delay = 0,
@@ -135,9 +136,18 @@ function ServicesSection() {
     const [isInStickyMode, setIsInStickyMode] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
     const [exitInProgress, setExitInProgress] = useState(false);
+    const [hasBeenViewed, setHasBeenViewed] = useState(false);
+    const [lastViewedService, setLastViewedService] = useState(0);
+    const [entryDirection, setEntryDirection] = useState(null);
     const sectionRef = useRef(null);
     const containerRef = useRef(null);
     const isScrollingRef = useRef(false);
+    const lastScrollY = useRef(0);
+
+    // Initialize scroll position tracking
+    useEffect(() => {
+        lastScrollY.current = window.scrollY;
+    }, []);
 
     // Check if mobile
     useEffect(() => {
@@ -157,89 +167,96 @@ function ServicesSection() {
         setExitInProgress(true);
         isScrollingRef.current = true;
 
-        // Single smooth fade-out animation
         if (containerRef.current) {
-            containerRef.current.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            containerRef.current.style.transition = 'opacity 0.4s ease-out, transform 0.4s ease-out';
             containerRef.current.style.opacity = '0';
-            containerRef.current.style.transform = 'scale(0.95)';
+            containerRef.current.style.transform = 'scale(0.98)';
         }
 
-        // Clean exit after animation completes
         setTimeout(() => {
             setIsInStickyMode(false);
             setExitInProgress(false);
 
-            // Reset styles
             if (containerRef.current) {
                 containerRef.current.style.transition = '';
                 containerRef.current.style.opacity = '1';
                 containerRef.current.style.transform = 'scale(1)';
             }
 
-            // Continue natural scroll
             setTimeout(() => {
                 isScrollingRef.current = false;
-                window.scrollBy(0, deltaY * 1.5);
-            }, 100);
-        }, 600);
+                window.scrollBy(0, deltaY * 1.0);
+            }, 50);
+        }, 400);
     };
 
+    // Main scroll logic for desktop
     useEffect(() => {
-        // Skip sticky behavior on mobile
         if (isMobile) return;
 
         let scrollBuffer = 0;
-        const SCROLL_THRESHOLD = 120;
-        const SECTION_TRIGGER_OFFSET = 150;
+        const SCROLL_THRESHOLD = 150;
+        const EXIT_THRESHOLD = 300;
+        const SECTION_TRIGGER_OFFSET = 120;
 
         const handleWheel = (e) => {
             if (!sectionRef.current || exitInProgress) return;
 
             const sectionRect = sectionRef.current.getBoundingClientRect();
             const windowHeight = window.innerHeight;
-
             const sectionTop = sectionRect.top;
             const sectionBottom = sectionRect.bottom;
+            
             const isWellIntoSection = sectionTop <= -SECTION_TRIGGER_OFFSET && sectionBottom >= windowHeight + SECTION_TRIGGER_OFFSET;
 
             if (isWellIntoSection && !isScrollingRef.current) {
                 e.preventDefault();
 
+                if (!hasBeenViewed) {
+                    setHasBeenViewed(true);
+                }
+
                 scrollBuffer += Math.abs(e.deltaY);
+                const scrollDirection = e.deltaY > 0 ? 'down' : 'up';
 
-                if (scrollBuffer >= SCROLL_THRESHOLD) {
-                    const scrollDirection = e.deltaY > 0 ? 'down' : 'up';
-
-                    if (scrollDirection === 'down') {
-                        if (activeService < servicesData.length - 1) {
-                            setActiveService(prev => prev + 1);
+                if (scrollDirection === 'down') {
+                    if (activeService < servicesData.length - 1) {
+                        if (scrollBuffer >= SCROLL_THRESHOLD) {
+                            const nextService = activeService + 1;
+                            setActiveService(nextService);
+                            setLastViewedService(nextService);
                             scrollBuffer = 0;
                             isScrollingRef.current = true;
                             setTimeout(() => {
                                 isScrollingRef.current = false;
-                            }, 600);
-                        } else {
-                            // Clean exit for last service
+                            }, 700);
+                        }
+                    } else {
+                        if (scrollBuffer >= EXIT_THRESHOLD) {
                             scrollBuffer = 0;
                             handleSectionExit(e.deltaY);
                         }
-                    } else {
-                        if (activeService > 0) {
-                            setActiveService(prev => prev - 1);
+                    }
+                } else {
+                    if (activeService > 0) {
+                        if (scrollBuffer >= SCROLL_THRESHOLD) {
+                            const prevService = activeService - 1;
+                            setActiveService(prevService);
                             scrollBuffer = 0;
                             isScrollingRef.current = true;
                             setTimeout(() => {
                                 isScrollingRef.current = false;
-                            }, 600);
-                        } else {
-                            // Clean exit for first service
+                            }, 700);
+                        }
+                    } else {
+                        if (scrollBuffer >= EXIT_THRESHOLD) {
                             scrollBuffer = 0;
                             handleSectionExit(e.deltaY);
                         }
                     }
                 }
             } else if (!isWellIntoSection) {
-                scrollBuffer = 0;
+                scrollBuffer = Math.max(0, scrollBuffer - 30);
             }
         };
 
@@ -248,20 +265,36 @@ function ServicesSection() {
 
             const sectionRect = sectionRef.current.getBoundingClientRect();
             const windowHeight = window.innerHeight;
+            const currentScrollY = window.scrollY;
 
-            const topThreshold = -50;
-            const bottomThreshold = windowHeight + 50;
+            const topThreshold = -80;
+            const bottomThreshold = windowHeight + 80;
+            const shouldBeSticky = sectionRect.top <= topThreshold && sectionRect.bottom >= bottomThreshold;
 
-            if (sectionRect.top <= topThreshold && sectionRect.bottom >= bottomThreshold) {
+            if (shouldBeSticky) {
                 if (!isInStickyMode) {
                     setIsInStickyMode(true);
+                    
+                    const scrollDirection = currentScrollY > lastScrollY.current ? 'from-above' : 'from-below';
+                    setEntryDirection(scrollDirection);
+                    
+                    if (hasBeenViewed) {
+                        if (scrollDirection === 'from-above') {
+                            setActiveService(0);
+                        } else {
+                            setActiveService(lastViewedService);
+                        }
+                    } else {
+                        setActiveService(0);
+                    }
+                    
                     if (containerRef.current) {
                         containerRef.current.style.opacity = '1';
                         containerRef.current.style.transform = 'scale(1)';
                     }
                 }
             } else {
-                if (sectionRect.top > 100 || sectionRect.bottom < windowHeight - 100) {
+                if (sectionRect.top > 150 || sectionRect.bottom < windowHeight - 150) {
                     if (isInStickyMode) {
                         setIsInStickyMode(false);
                         scrollBuffer = 0;
@@ -273,6 +306,8 @@ function ServicesSection() {
                     }
                 }
             }
+
+            lastScrollY.current = currentScrollY;
         };
 
         window.addEventListener('wheel', handleWheel, { passive: false });
@@ -284,19 +319,23 @@ function ServicesSection() {
             window.removeEventListener('wheel', handleWheel);
             window.removeEventListener('scroll', handleScroll);
         };
-    }, [activeService, isInStickyMode, exitInProgress, isMobile]);
+    }, [activeService, isInStickyMode, exitInProgress, isMobile, hasBeenViewed, lastViewedService]);
 
     const handleServiceClick = (index) => {
+        if (isScrollingRef.current || exitInProgress) return;
+        
         setActiveService(index);
-        // Prevent scroll interference when clicking
+        setLastViewedService(Math.max(index, lastViewedService));
+        
         isScrollingRef.current = true;
         setTimeout(() => {
             isScrollingRef.current = false;
-        }, 1000); // Longer delay to prevent conflicts
+        }, 800);
     };
 
+    // Animation variants
     const contentVariants = {
-        hidden: { opacity: 0, y: 20 },
+        hidden: { opacity: 0, y: 30 },
         visible: {
             opacity: 1,
             y: 0,
@@ -304,8 +343,8 @@ function ServicesSection() {
         },
         exit: {
             opacity: 0,
-            y: -20,
-            transition: { duration: 0.3 }
+            y: -30,
+            transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
         }
     };
 
@@ -319,31 +358,33 @@ function ServicesSection() {
         exit: {
             opacity: 0,
             scale: 0.95,
-            transition: { duration: 0.3 }
+            transition: { duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }
         }
     };
 
     const listItemVariants = {
         inactive: {
-            opacity: 0.6,
+            opacity: 0.5,
             x: 0,
-            transition: { duration: 0.3 }
+            scale: 0.98,
+            transition: { duration: 0.25 }
         },
         active: {
             opacity: 1,
-            x: 10,
-            transition: { duration: 0.3 }
+            x: 8,
+            scale: 1,
+            transition: { duration: 0.3, ease: "easeOut" }
         }
     };
 
     return (
         <section
             ref={sectionRef}
-            className={`relative ${isMobile ? 'min-h-auto' : 'min-h-[500vh]'} py-16`}
+            className={`relative ${isMobile ? 'max-h-auto' : 'min-h-[2200px] h-[320vh]'} ${isMobile ? 'min-h-auto' : ''} py-8 sm:py-12 md:py-16`}
         >
             {/* Fixed radial gradient background */}
             <div
-                className="fixed inset-0 w-full h-full -z-10"
+                className="absolute inset-0 w-full h-full -z-10"
                 style={{
                     background: `radial-gradient(circle at center 120%, 
             #00B2F9 0%, 
@@ -360,78 +401,10 @@ function ServicesSection() {
           )`
                 }}
             />
+            
             {isMobile ? (
-                // Mobile Layout - All content in columns
-                <div className="relative">
-                    <div className="absolute inset-0">
-                        <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
-                        <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-                    </div>
-
-                    <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10">
-                        {/* Mobile Header */}
-                        <AnimatedBlock delay={0.2} className="text-center mb-16">
-                            <h2 className="text-2xl sm:text-3xl font-bold text-white mb-6">
-                                What we do{" "}
-                                <span className="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
-                                    BEST
-                                </span>
-                            </h2>
-                            <p className="text-xs sm:text-sm text-white leading-relaxed">
-                                We know that there isn't one solution that fits every business, and that technological/
-                                security challenges change over time. That's why we work alongside your team to build
-                                out the projects you need, when you need them. Here's how we do it:
-                            </p>
-                        </AnimatedBlock>
-
-                        {/* Mobile Services List */}
-                        <div className="space-y-6">
-                            {servicesData.map((service, index) => (
-                                <AnimatedBlock
-                                    key={service.id}
-                                    delay={0.2 + (index * 0.1)}
-                                    className="bg-slate-800/30 backdrop-blur-sm rounded-2xl border border-slate-700/50 overflow-hidden"
-                                >
-                                    <div className="flex flex-col sm:flex-row">
-                                        {/* Image Section */}
-                                        <div className="relative w-full sm:w-1/3 h-48 sm:h-auto bg-slate-700/20 flex items-center justify-center">
-                                            <div className="relative w-full h-full max-w-xs">
-                                                <Image
-                                                    src={service.image}
-                                                    alt={service.category}
-                                                    fill
-                                                    className="object-fill"
-                                                    sizes="(max-width: 640px) 100vw, 33vw"
-                                                />
-                                            </div>
-                                        </div>
-
-                                        {/* Content Section */}
-                                        <div className="flex-1 space-y-4 px-6 py-6">
-                                            <div className="flex items-start gap-3">
-                                                <FaCheckCircle className="w-5 h-5 text-primary-blue flex-shrink-0 mt-1" />
-                                                <div className="space-y-3">
-                                                    <h3 className="text-lg sm:text-xl font-bold text-white leading-tight">
-                                                        {service.category}
-                                                    </h3>
-                                                    <p className="text-gray-300 text-sm leading-relaxed">
-                                                        {service.description}
-                                                    </p>
-                                                    <p className="text-gray-400 text-xs leading-relaxed">
-                                                        {service.additionalInfo}
-                                                    </p>
-                                                </div>
-                                            </div>
-                                                <Button className="text-sm sm:text-base" href={"/"}>
-                                                    Learn More
-                                                </Button>
-                                        </div>
-                                    </div>
-                                </AnimatedBlock>
-                            ))}
-                        </div>
-                    </div>
-                </div>
+                // Mobile Layout - Now using separate component
+                <MobileServicesSection servicesData={servicesData} />
             ) : (
                 // Desktop Layout - Sticky behavior
                 <div
@@ -444,10 +417,10 @@ function ServicesSection() {
                         <div className="absolute bottom-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
                     </div>
 
-                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex flex-col justify-center py-8">
 
-                        <AnimatedBlock delay={0.2} className="text-center mb-12 md:mb-16">
-                            <h2 className="text-4xl sm:text-5xl font-bold text-white mb-6 md:mb-8">
+                        <AnimatedBlock delay={0.2} className="text-center mb-8 md:mb-12">
+                            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 md:mb-6">
                                 What we do{" "}
                                 <span className="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                                     BEST
@@ -460,30 +433,32 @@ function ServicesSection() {
                             </p>
                         </AnimatedBlock>
 
-                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center flex-1">
+                        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center flex-1">
 
-                            <div className="lg:col-span-4 space-y-6">
+                            <div className="lg:col-span-4 space-y-4">
                                 <AnimatedBlock delay={0.4} direction="left">
-                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary-blue mb-6 md:mb-8">
+                                    <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary-blue mb-4 md:mb-6">
                                         Here's How
                                     </h3>
 
-                                    <div className="space-y-3 md:space-y-4">
+                                    <div className="space-y-2 md:space-y-3">
                                         {servicesData.map((service, index) => (
                                             <motion.div
                                                 key={service.id}
                                                 variants={listItemVariants}
                                                 animate={index === activeService ? "active" : "inactive"}
-                                                className="flex items-center gap-3 md:gap-4 cursor-pointer group p-2 md:p-3 rounded-lg transition-all duration-300"
+                                                className="flex items-center gap-3 cursor-pointer group p-2 rounded-lg transition-all duration-200"
                                                 onClick={() => handleServiceClick(index)}
-                                                whileHover={{ x: 5 }}
+                                                whileHover={{ x: 12, scale: 1.02 }}
+                                                whileTap={{ scale: 0.98 }}
                                             >
                                                 <motion.div
                                                     animate={{
-                                                        scale: index === activeService ? 1.2 : 1,
-                                                        color: index === activeService ? "#60A5FA" : "#9CA3AF"
+                                                        scale: index === activeService ? 1.15 : 1,
+                                                        color: index === activeService ? "#60A5FA" : "#9CA3AF",
+                                                        rotate: index === activeService ? 90 : 0
                                                     }}
-                                                    transition={{ duration: 0.3 }}
+                                                    transition={{ duration: 0.3, ease: "easeOut" }}
                                                 >
                                                     <FaRegArrowAltCircleRight className="text-primary-blue w-4 h-4 md:w-5 md:h-5 flex-shrink-0" />
                                                 </motion.div>
@@ -502,16 +477,13 @@ function ServicesSection() {
 
                             <div className="lg:col-span-4 relative">
                                 <AnimatedBlock delay={0.6}>
-                                    {/* Vertical line above image */}
-                                    <div className="absolute left-1/2 -top-48 w-[2.5px] h-44 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
+                                    <div className="absolute left-1/2 -top-32 w-[2.5px] h-28 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
+                                    <div className="absolute left-1/2 -bottom-40 w-[2px] h-32 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
 
-                                    {/* Vertical line below image */}
-                                    <div className="absolute left-1/2 -bottom-56 w-[2px] h-44 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
-
-                                    <div className="relative h-56 sm:h-60 md:h-72 rounded-xl overflow-hidden mx-auto max-w-md lg:max-w-none">
-                                        <AnimatePresence mode="wait">
+                                    <div className="relative h-48 sm:h-56 md:h-64 rounded-xl overflow-hidden mx-auto max-w-md lg:max-w-none">
+                                        <AnimatePresence mode="wait" initial={false}>
                                             <motion.div
-                                                key={activeService}
+                                                key={`image-${activeService}`}
                                                 variants={imageVariants}
                                                 initial="hidden"
                                                 animate="visible"
@@ -534,23 +506,30 @@ function ServicesSection() {
 
                             <div className="lg:col-span-4">
                                 <AnimatedBlock delay={0.8} direction="right">
-                                    <AnimatePresence mode="wait">
+                                    <AnimatePresence mode="wait" initial={false}>
                                         <motion.div
-                                            key={activeService}
+                                            key={`content-${activeService}`}
                                             variants={contentVariants}
                                             initial="hidden"
                                             animate="visible"
                                             exit="exit"
-                                            className="space-y-4 md:space-y-6"
+                                            className="space-y-3 md:space-y-4"
                                         >
-                                            <div className="flex items-center gap-3 md:gap-4">
+                                            <div className="flex items-center gap-3">
                                                 <motion.div
-                                                    animate={{ rotate: [0, 360] }}
-                                                    transition={{ duration: 0.6, delay: 0.2 }}
+                                                    animate={{ 
+                                                        rotate: [0, 360],
+                                                        scale: [1, 1.1, 1]
+                                                    }}
+                                                    transition={{ 
+                                                        duration: 0.6, 
+                                                        delay: 0.1,
+                                                        ease: "easeOut"
+                                                    }}
                                                 >
-                                                    <GoShieldCheck className="w-6 h-6 md:w-14 md:h-14 text-primary-blue flex-shrink-0" />
+                                                    <GoShieldCheck className="w-6 h-6 md:w-10 md:h-10 lg:w-12 lg:h-12 text-primary-blue flex-shrink-0" />
                                                 </motion.div>
-                                                <h4 className="text-xl sm:text-2xl md:text-3xl font-bold text-primary-blue leading-tight">
+                                                <h4 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold text-primary-blue leading-tight">
                                                     {servicesData[activeService].category}
                                                 </h4>
                                             </div>
@@ -560,13 +539,13 @@ function ServicesSection() {
                                             </p>
 
                                             <span className="flex flex-row items-center gap-3">
-                                                <CiCircleCheck className="w-9 h-9 text-white flex-shrink-0" />
+                                                <CiCircleCheck className="w-6 h-6 md:w-8 md:h-8 text-white flex-shrink-0" />
                                                 <p className="text-white text-sm sm:text-base md:text-lg leading-relaxed">
                                                     {servicesData[activeService].additionalInfo}
                                                 </p>
                                             </span>
 
-                                            <div className="pt-2 md:pt-4">
+                                            <div className="pt-2 md:pt-3">
                                                 <Link href="/learn-more">
                                                     <Button>
                                                         Learn More

@@ -41,14 +41,7 @@ const SpaceBackground = () => (
 const TechSolutionsBento = () => {
     return (
         <div className="relative px-3 sm:px-12 md:px-24 py-14 md:pb-20">
-      <div className="absolute inset-0 w-full h-full -z-10" />
-      {/* SVG Background */}
-      <div 
-        className="absolute top-0 left-0 right-0 h-32 md:h-40 lg:h-48 -z-5"
-        style={{
-          background: 'linear-gradient(to bottom, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 40%, rgba(0, 0, 0, 0.3) 70%, transparent 100%)'
-        }}
-      />
+            <div className="absolute inset-0 w-full h-full -z-10" />
             <div className="max-w-[1440px] mx-auto">
                 {/* Header */}
                 <div className="text-center my-16">
@@ -113,6 +106,20 @@ const TechSolutionsBento = () => {
                     </div>
                 </div>
             </div>
+
+                        <div
+                className="-z-10 absolute inset-0 bg-cover bg-center bg-no-repeat"
+                style={{
+                    backgroundImage: "url('/imgs/backgrounds/radialBlue.svg')",
+                }}
+            />
+
+            <div
+                className="-z-10 absolute inset-0 bg-cover bg-center bg-no-repeat opacity-50"
+                style={{
+                    backgroundImage: "url('/imgs/texture2.svg')",
+                }}
+            />
         </div>
     );
 };
