@@ -1,32 +1,6 @@
-import { FaFacebookF, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import SocialMediaIcons from "@/components/common/SocialMediaIcons/SocialMediaIcons";
 import ValuesSelector from "./ValuesSelector";
 import { Button } from "@/components/common/Buttons/Button";
-
-const SocialMedia = () => {
-    const socialLinks = [
-        { icon: FaInstagram, href: '#', color: 'hover:bg-secondary-orange' },
-        { icon: FaFacebookF, href: '#', color: 'hover:bg-secondary-orange' },
-        { icon: FaTwitter, href: '#', color: 'hover:bg-secondary-orange' },
-        { icon: FaLinkedin, href: '#', color: 'hover:bg-secondary-orange' }
-    ];
-
-    return (
-        <div className="mt-8">
-            <h3 className="text-white text-lg font-medium mb-4">Follow Us</h3>
-            <div className="flex justify-end gap-3">
-                {socialLinks.map((social, index) => (
-                    <a
-                        key={index}
-                        href={social.href}
-                        className={`w-12 h-12 rounded-full bg-primary-orange flex items-center justify-center text-white transition-all duration-200 ${social.color} hover:scale-110`}
-                    >
-                        <social.icon size={20} />
-                    </a>
-                ))}
-            </div>
-        </div>
-    );
-};
 
 // Background SVG component
 const SpaceBackground = () => (
@@ -93,7 +67,7 @@ const TechSolutionsBento = () => {
                                     <p className="text-white text-sm md:text-base lg:text-lg mb-6 max-w-[380px] ml-auto">
                                         We combine technical expertise with Business IQ to help you scale securely, operate smarter, and stay focused on growing your business.
                                     </p>
-                                    <SocialMedia />
+                                    <SocialMediaIcons />
                                 </div>
                             </div>
                         </div>

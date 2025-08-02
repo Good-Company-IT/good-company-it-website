@@ -4,7 +4,59 @@ import React from 'react';
 import Image from 'next/image';
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { BsInstagram, BsLinkedin, BsTwitterX, BsFacebook } from 'react-icons/bs';
+import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedin } from 'react-icons/fa';
+
+const SocialMediaIcons = ({divClass = "justify-start"}) => {
+    const socialLinks = [
+        { 
+            icon: FaInstagram, 
+            href: 'https://www.instagram.com/goodcompanyit', 
+            hoverBg: 'hover:bg-gradient-to-r hover:from-purple-500 hover:via-pink-500 hover:to-orange-400',
+            name: 'Instagram'
+        },
+        { 
+            icon: FaFacebookF, 
+            href: 'https://www.facebook.com/goodcompanyit', 
+            hoverBg: 'hover:bg-blue-600',
+            name: 'Facebook'
+        },
+        { 
+            icon: FaTwitter, 
+            href: 'https://twitter.com/goodcompanyit', 
+            hoverBg: 'hover:bg-black',
+            name: 'Twitter'
+        },
+        { 
+            icon: FaLinkedin, 
+            href: 'https://www.linkedin.com/company/goodcompanyit', 
+            hoverBg: 'hover:bg-blue-700',
+            name: 'LinkedIn'
+        }
+    ];
+
+    return (
+        <div className="flex space-x-4">
+            {socialLinks.map((social, index) => (
+                <motion.a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center text-white transition-all duration-300 ${social.hoverBg} hover:scale-110 hover:shadow-lg`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    whileInView={{ opacity: 1, scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1, duration: 0.4 }}
+                    aria-label={`Follow us on ${social.name}`}
+                >
+                    <social.icon size={20} />
+                </motion.a>
+            ))}
+        </div>
+    );
+};
 
 const Footer = ({ locale, translations }) => {
     // Default fallbacks - Always use English
@@ -14,13 +66,6 @@ const Footer = ({ locale, translations }) => {
         about: "About",
         allRightsReserved: "All rights reserved"
     };
-
-    const socialLinks = [
-        { href: 'https://www.instagram.com/goodcompanyit', Icon: BsInstagram, alt: 'Instagram' },
-        { href: 'https://www.facebook.com/goodcompanyit', Icon: BsFacebook, alt: 'Facebook' },
-        { href: 'https://twitter.com/goodcompanyit', Icon: BsTwitterX, alt: 'Twitter' },
-        { href: 'https://www.linkedin.com/company/goodcompanyit', Icon: BsLinkedin, alt: 'LinkedIn' }
-    ];
 
     // Navigation sections matching the image layout
     const navigationSections = [
@@ -82,24 +127,6 @@ const Footer = ({ locale, translations }) => {
         }
     };
 
-    const socialVariants = {
-        hidden: { opacity: 0, scale: 0.8 },
-        visible: {
-            opacity: 1,
-            scale: 1,
-            transition: {
-                duration: 0.4,
-                ease: "easeOut"
-            }
-        },
-        hover: {
-            scale: 1.1,
-            transition: {
-                duration: 0.2
-            }
-        }
-    };
-
     return (
         <motion.footer 
             className="relative bg-slate-900 text-white overflow-hidden"
@@ -149,23 +176,7 @@ const Footer = ({ locale, translations }) => {
                             >
                                 Follow Us
                             </motion.h3>
-                            <div className="flex space-x-4">
-                                {socialLinks.map(({ href, Icon, alt }, index) => (
-                                    <motion.a
-                                        key={alt}
-                                        href={href}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="w-12 h-12 bg-orange-500 hover:bg-orange-600 rounded-full flex items-center justify-center transition-colors duration-200"
-                                        variants={socialVariants}
-                                        whileHover="hover"
-                                        custom={index}
-                                        aria-label={`Follow us on ${alt}`}
-                                    >
-                                        <Icon className="h-5 w-5 text-white" />
-                                    </motion.a>
-                                ))}
-                            </div>
+                            <SocialMediaIcons />
                         </div>
                     </motion.div>
 
