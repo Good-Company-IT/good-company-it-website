@@ -45,6 +45,13 @@ const QuotesSection = ({
       quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
       author: "Name, Company",
       size: "normal"
+    },
+    {
+      id: 8,
+      image: "/imgs/weBuild/3.png",
+      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
+      author: "Name, Company",
+      size: "normal"
     }
   ];
 
@@ -65,6 +72,13 @@ const QuotesSection = ({
     },
     {
       id: 6,
+      image: "/imgs/weBuild/6.png",
+      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore, ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.",
+      author: "Name, Company",
+      size: "large"
+    },
+    {
+      id: 7,
       image: "/imgs/weBuild/6.png",
       quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore, ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.",
       author: "Name, Company",
