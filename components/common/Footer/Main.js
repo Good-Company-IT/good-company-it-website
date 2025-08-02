@@ -239,7 +239,7 @@ const Footer = ({ locale, translations }) => {
                 transition={{ duration: 0.8, delay: 0.3 }}
             >
                 <Image 
-                    src="/GoCo.svg" 
+                    src="/imgs/GoCo.svg" 
                     alt="Good Company Logo" 
                     width={1600} 
                     height={400} 

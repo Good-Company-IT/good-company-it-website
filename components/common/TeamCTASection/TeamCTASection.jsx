@@ -101,7 +101,7 @@ const TeamCTASection = ({socialMedia = true, imageSrc="/imgs/about/teamCTA.png",
                         className="flex-1 lg:flex-[2] flex flex-col justify-center"
                         variants={itemVariants}
                     >
-                        <div className="rounded-[22px] border border-[#DBDDFB] bg-gradient-to-br from-white/15 via-[#040B59]/35 to-[#010425]/35 backdrop-blur-md p-8 lg:p-10 h-full flex flex-col justify-center">
+                        <div className="rounded-[22px] border-[0.5px] border-[#DBDDFB] bg-gradient-to-br from-white/15 via-[#040B59]/35 to-[#010425]/35 backdrop-blur-md p-8 lg:p-10 h-full flex flex-col justify-center">
                             <motion.h2
                                 className="text-xl sm:text-2xl font-bold text-white mb-6"
                                 variants={itemVariants}
