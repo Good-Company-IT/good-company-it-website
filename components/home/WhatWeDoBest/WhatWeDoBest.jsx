@@ -206,7 +206,7 @@ function ServicesSection() {
             const windowHeight = window.innerHeight;
             const sectionTop = sectionRect.top;
             const sectionBottom = sectionRect.bottom;
-            
+
             const isWellIntoSection = sectionTop <= -SECTION_TRIGGER_OFFSET && sectionBottom >= windowHeight + SECTION_TRIGGER_OFFSET;
 
             if (isWellIntoSection && !isScrollingRef.current) {
@@ -274,10 +274,10 @@ function ServicesSection() {
             if (shouldBeSticky) {
                 if (!isInStickyMode) {
                     setIsInStickyMode(true);
-                    
+
                     const scrollDirection = currentScrollY > lastScrollY.current ? 'from-above' : 'from-below';
                     setEntryDirection(scrollDirection);
-                    
+
                     if (hasBeenViewed) {
                         if (scrollDirection === 'from-above') {
                             setActiveService(0);
@@ -287,7 +287,7 @@ function ServicesSection() {
                     } else {
                         setActiveService(0);
                     }
-                    
+
                     if (containerRef.current) {
                         containerRef.current.style.opacity = '1';
                         containerRef.current.style.transform = 'scale(1)';
@@ -323,10 +323,10 @@ function ServicesSection() {
 
     const handleServiceClick = (index) => {
         if (isScrollingRef.current || exitInProgress) return;
-        
+
         setActiveService(index);
         setLastViewedService(Math.max(index, lastViewedService));
-        
+
         isScrollingRef.current = true;
         setTimeout(() => {
             isScrollingRef.current = false;
@@ -401,7 +401,7 @@ function ServicesSection() {
           )`
                 }}
             />
-            
+
             {isMobile ? (
                 // Mobile Layout - Now using separate component
                 <MobileServicesSection servicesData={servicesData} />
@@ -475,34 +475,34 @@ function ServicesSection() {
                                 </AnimatedBlock>
                             </div>
 
-                            <div className="lg:col-span-4 relative">
-                                <AnimatedBlock delay={0.6}>
-                                    <div className="absolute left-1/2 -top-32 w-[2.5px] h-28 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
-                                    <div className="absolute left-1/2 -bottom-40 w-[2px] h-32 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
+<div className="lg:col-span-4 relative rounded-3xl overflow-hidden">
+    <AnimatedBlock delay={0.6}>
+        <div className="absolute left-1/2 -top-32 w-[2.5px] h-28 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
+        <div className="absolute left-1/2 -bottom-40 w-[2px] h-32 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
 
-                                    <div className="relative h-48 sm:h-56 md:h-64 rounded-xl overflow-hidden mx-auto max-w-md lg:max-w-none">
-                                        <AnimatePresence mode="wait" initial={false}>
-                                            <motion.div
-                                                key={`image-${activeService}`}
-                                                variants={imageVariants}
-                                                initial="hidden"
-                                                animate="visible"
-                                                exit="exit"
-                                                className="absolute inset-0"
-                                            >
-                                                <Image
-                                                    src={servicesData[activeService].image}
-                                                    alt={servicesData[activeService].category}
-                                                    fill
-                                                    className="object-cover rounded-xl"
-                                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                                    priority={activeService === 0}
-                                                />
-                                            </motion.div>
-                                        </AnimatePresence>
-                                    </div>
-                                </AnimatedBlock>
-                            </div>
+        <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 rounded-3xl overflow-hidden mx-auto max-w-md lg:max-w-none">
+            <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                    key={`image-${activeService}`}
+                    variants={imageVariants}
+                    initial="hidden"
+                    animate="visible"
+                    exit="exit"
+                    className="absolute inset-0 rounded-[32px] overflow-hidden"
+                >
+                    <Image
+                        src={servicesData[activeService].image}
+                        alt={servicesData[activeService].category}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        priority={activeService === 0}
+                    />
+                </motion.div>
+            </AnimatePresence>
+        </div>
+    </AnimatedBlock>
+</div>
 
                             <div className="lg:col-span-4">
                                 <AnimatedBlock delay={0.8} direction="right">
@@ -517,12 +517,12 @@ function ServicesSection() {
                                         >
                                             <div className="flex items-center gap-3">
                                                 <motion.div
-                                                    animate={{ 
+                                                    animate={{
                                                         rotate: [0, 360],
                                                         scale: [1, 1.1, 1]
                                                     }}
-                                                    transition={{ 
-                                                        duration: 0.6, 
+                                                    transition={{
+                                                        duration: 0.6,
                                                         delay: 0.1,
                                                         ease: "easeOut"
                                                     }}
