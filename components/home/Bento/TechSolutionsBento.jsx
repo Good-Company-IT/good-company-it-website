@@ -43,7 +43,7 @@ const TechSolutionsBento = () => {
 
                             {/* Main Content */}
                             <div className="flex-1">
-                                <p className="text-white/90 text-sm md:text-base lg:text-lg leading-relaxed mb-6 max-w-md">
+                                <p className="text-white/90 text-sm md:text-base leading-relaxed mb-6 max-w-md">
                                     To be in Good Company means you have an IT partner that has your back. Whether you're just getting started, or looking to expand securely. It means you have a dedicated IT and PM team that wants to see you reach success.
                                 </p>
 
@@ -64,7 +64,7 @@ const TechSolutionsBento = () => {
                                 </div>
 
                                 <div className="text-right">
-                                    <p className="text-white text-sm md:text-base lg:text-lg mb-6 max-w-[380px] ml-auto">
+                                    <p className="text-white text-sm md:text-base mb-6 max-w-[380px] ml-auto">
                                         We combine technical expertise with Business IQ to help you scale securely, operate smarter, and stay focused on growing your business.
                                     </p>
                                     <SocialMediaIcons />
