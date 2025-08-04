@@ -44,7 +44,7 @@ const OurProcess = () => {
   const activeStepData = steps.find(step => step.id === activeStep);
 
   return (
-    <section className="relative h-[1400px] sm:h-[1200px] md:h-[1400px] lg:h-[900px] overflow-hidden">
+    <section className="relative py-5 h-[1200px] sm:h-[1200px] md:h-[1400px] lg:h-[900px] overflow-hidden">
       {/* Background Gradient */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
@@ -81,6 +81,40 @@ const OurProcess = () => {
                   xmlns="http://www.w3.org/2000/svg"
                   preserveAspectRatio="xMidYMid meet"
                 >
+                  {/* Base Ground Line */}
+                  <line
+                    x1="100"
+                    y1="750"
+                    x2="1500"
+                    y2="750"
+                    stroke="rgba(255,255,255,0.3)"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  
+                  {/* Base Ground Shadow/Depth */}
+                  <line
+                    x1="100"
+                    y1="755"
+                    x2="1500"
+                    y2="755"
+                    stroke="rgba(0,0,0,0.2)"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                  />
+
+                  {/* Connection Points on Base */}
+                  <circle cx="150" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="280" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="410" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="540" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="670" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="930" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="1060" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="1190" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="1320" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+                  <circle cx="1450" cy="750" r="3" fill="rgba(255,255,255,0.4)" />
+
                   {/* Review & Check-ins Arc - Outermost */}
                   <path
                     d="M 150 750 A 650 650 0 0 1 1450 750"
@@ -266,6 +300,40 @@ const OurProcess = () => {
                     xmlns="http://www.w3.org/2000/svg"
                     preserveAspectRatio="xMidYMid meet"
                   >
+                    {/* Base Ground Line for Tablet */}
+                    <line
+                      x1="100"
+                      y1="750"
+                      x2="1500"
+                      y2="750"
+                      stroke="rgba(255,255,255,0.3)"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                    
+                    {/* Base Ground Shadow/Depth for Tablet */}
+                    <line
+                      x1="100"
+                      y1="753"
+                      x2="1500"
+                      y2="753"
+                      stroke="rgba(0,0,0,0.2)"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                    />
+
+                    {/* Connection Points on Base for Tablet */}
+                    <circle cx="150" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="280" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="410" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="540" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="670" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="930" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="1060" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="1190" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="1320" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+                    <circle cx="1450" cy="750" r="2" fill="rgba(255,255,255,0.4)" />
+
                     {/* Same arcs with adjusted styling for tablet */}
                     <path
                       d="M 150 750 A 650 650 0 0 1 1450 750"
@@ -320,15 +388,15 @@ const OurProcess = () => {
             </div>
 
             {/* Process Cards Grid - Natural height for mobile/tablet */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 px-4 sm:px-0">
               {steps.map((step) => (
                 <div
                   key={step.id}
                   className={`
                     rounded-xl p-5 sm:p-6 transition-all duration-300 cursor-pointer
                     ${activeStep === step.id
-                      ? 'bg-gradient-to-tr from-[#AA2A1D] via-[#FF4300] to-[#FF8C62] shadow-lg shadow-orange-500/25 transform scale-105'
-                      : 'bg-gradient-to-br from-white/10 via-blue-900/10 to-slate-900/10 hover:from-white/15 hover:via-blue-900/15 hover:to-slate-900/15 border border-white/10 hover:border-orange-400/30'
+                      ? 'bg-gradient-to-tr from-[#AA2A1D] via-[#FF4300] to-[#FF8C62] shadow-lg shadow-orange-500/25 transform scale-[1.02] sm:scale-105'
+                      : 'bg-gradient-to-br from-white/10 via-blue-900/10 to-slate-900/10 hover:from-white/15 hover:via-blue-900/15 hover:to-slate-900/15 border border-white/10 hover:border-orange-400/30 hover:scale-[1.01] sm:hover:scale-102'
                     }
                   `}
                   onClick={() => handleStepClick(step.id)}
