@@ -84,7 +84,7 @@ const HeroSection = () => {
                 <motion.img
                     src="/imgs/about/heroGood.svg"
                     alt="GOCO Background"
-                    className="w-full h-full max-w-4xl lg:max-w-5xl xl:max-w-6xl object-contain"
+                    className="w-full h-full max-w-6xl lg:max-w-7xl object-contain"
                     animate={{
                         rotate: [0, 0.5, 0],
                         scale: [1, 1.02, 1]
