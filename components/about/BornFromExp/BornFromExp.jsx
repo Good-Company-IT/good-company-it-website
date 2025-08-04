@@ -71,7 +71,7 @@ const BornFromExp = () => {
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-start"
+          className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 items-center"
         >
           {/* Left Side - Title and Description */}
           <div className="space-y-6 lg:space-y-8">
