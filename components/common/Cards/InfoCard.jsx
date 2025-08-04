@@ -45,7 +45,7 @@ function InfoCard({ info, isActive, variant = "primary" }) {
         iconTextColor: "text-primary-blue",
         titleColor: "text-text-dark",
         descriptionColor: "text-text-dark",
-        bgColor: "border border-[#DBDDFB]"
+        bgColor: "bg-white border border-[#DBDDFB]"
       };
     }
     
