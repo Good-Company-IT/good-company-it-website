@@ -132,7 +132,7 @@ const BornFromExp = () => {
                                     variants={cardVariants}
                                     className="flex justify-center"
                                 >
-                                    <InfoCard 
+                                    <InfoCard
                                         variant="fourth" 
                                         info={{ ...info, index }} 
                                         isActive={true}
