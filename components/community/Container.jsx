@@ -21,6 +21,11 @@ const OurProjects = dynamic(() => import("./OurProjects/OurProjects"), {
     ssr: true
 });
 
+const Purpose = dynamic(() => import("./Purpose/Purpose"), {
+    loading: () => <MinimalLoader />,
+    ssr: true
+});
+
 export default function Container({ locale, translations, mainLang }) {
 
   return (
@@ -28,6 +33,7 @@ export default function Container({ locale, translations, mainLang }) {
       <HeroSection /> 
       <OurCommunity />
       <OurProjects />
+      <Purpose/>
     </>
   );
 }
