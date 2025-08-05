@@ -31,7 +31,7 @@ function Navbar() {
 
   const linksStyle = {
     desktop: `hover:text-primary-orange cursor-pointer font-normal py-2 transition-all duration-200 flex items-center gap-1`,
-    mobile: `cursor-pointer font-normal px-4 py-3 text-lg hover:text-black hover:bg-gray-50 transition-all duration-200 rounded-md block w-full text-left`,
+    mobile: `cursor-pointer font-normal px-4 py-3 text-lg hover:text-primary-orange hover:bg-gray-900 transition-all duration-200 rounded-md block w-full text-left`,
   };
 
   // Navigation data structure - simplified to just links
@@ -259,7 +259,7 @@ function Navbar() {
               stiffness: 150,
               damping: 18
             }}
-            className="lg:hidden fixed top-16 left-0 right-0 bg-white border-t border-gray-200 shadow-lg z-50 max-h-screen overflow-y-auto"
+            className="lg:hidden fixed top-16 left-0 right-0 bg-black border-t border-gray-800 shadow-2xl z-50 max-h-screen overflow-y-auto"
           >
             <motion.div
               className="px-6 py-6 space-y-2"
@@ -291,7 +291,9 @@ function Navbar() {
                     <Link
                       href={item.href}
                       className={`${linksStyle.mobile} ${
-                        isActive ? 'text-primary-orange bg-orange-50' : 'text-text-dark'
+                        isActive 
+                          ? 'text-primary-orange bg-gray-900 border-l-4 border-primary-orange' 
+                          : 'text-white'
                       }`}
                       onClick={handleCloseMenu}
                     >
