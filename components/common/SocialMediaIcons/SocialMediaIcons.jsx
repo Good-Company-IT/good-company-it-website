@@ -1,4 +1,5 @@
-import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedin } from 'react-icons/fa';
+import { FaInstagram, FaFacebookF, FaLinkedin } from 'react-icons/fa';
+import { FaSquareXTwitter } from "react-icons/fa6";
 import { motion } from 'framer-motion';
 
 const SocialMediaIcons = ({divClass = "justify-end"}) => {
@@ -16,7 +17,7 @@ const SocialMediaIcons = ({divClass = "justify-end"}) => {
             name: 'Facebook'
         },
         { 
-            icon: FaTwitter, 
+            icon: FaSquareXTwitter, 
             href: '#', 
             hoverBg: 'hover:bg-black',
             name: 'Twitter'
