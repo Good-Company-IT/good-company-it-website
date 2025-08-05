@@ -65,7 +65,7 @@ const OurCommunity = () => {
                     backgroundImage: "url('/imgs/why/texture.png')",
                 }}
             />
-            <div className="relative z-20 max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="relative z-20 max-w-[1550px] mx-auto px-4">
                 <motion.div
                     variants={containerVariants}
                     initial="hidden"
@@ -89,6 +89,12 @@ const OurCommunity = () => {
                         >
                             At Good Company, we not only support organizations that are making a difference, we also create our own initiatives and foundations when we see a need that isn&apos;t being met.
                         </motion.p>
+                        <motion.p
+                            variants={textVariants}
+                            className="text-text-dark text-sm sm:text-base leading-relaxed max-w-lg"
+                        >
+                        Whether it's starting a project from the ground up or partnering with existing ones, our goal is the same: lasting, human-centered impact.
+                        </motion.p>
                         <button className="max-w-48 px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-orange-600 transition-colors">
                             See Our Projects
                         </button>
@@ -97,7 +103,7 @@ const OurCommunity = () => {
                     {/* Right Side - Image Collage Layout */}
                     <motion.div
                         variants={textVariants}
-                        className="relative w-full h-[500px] lg:h-[600px]"
+                        className="relative w-full h-[500px]"
                     >
                         {/* Left Image - Reduced width */}
                         <div className="absolute left-0 top-0 w-[35%] h-full">
@@ -111,7 +117,7 @@ const OurCommunity = () => {
                         </div>
 
                         {/* Center Video with Logo - Adjusted position */}
-                        <div className="absolute left-[25%] top-[15%] w-[45%] h-[70%] z-10">
+                        <div className="absolute left-[25%] top-[15%] w-[40%] h-[70%] z-10">
                             <div className="relative w-full h-full rounded-2xl overflow-hidden">
                                 <video
                                     className="w-full h-full object-cover"
@@ -124,15 +130,6 @@ const OurCommunity = () => {
                                 >
                                     <source src="/imgs/community/ourCommunity/marc-video.mp4" type="video/mp4" />
                                 </video>
-
-                                {/* Logo Circle - Top Right */}
-                                <div className="absolute -top-4 -right-4 w-16 h-16 lg:w-20 lg:h-20 bg-white rounded-full flex items-center justify-center z-20">
-                                    <img
-                                        src="/imgs/community/ourCommunity/daguaLogo.svg"
-                                        alt="Project Dagua Logo"
-                                        className="w-10 h-10 lg:w-12 lg:h-12 object-contain"
-                                    />
-                                </div>
                             </div>
                         </div>
 
