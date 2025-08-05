@@ -1,6 +1,5 @@
 'use client';
 
-import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
 
 
@@ -40,16 +39,6 @@ const WeBuild = dynamic(() => import("./WeBuild/QuotesSection"), {
 });
 
 const OurServices = dynamic(() => import("./OurServices/OurServices"), {
-  loading: () => <MinimalLoader />,
-  ssr: true
-});
-
-const TeamSection = dynamic(() => import("../about/TeamSection/TeamSection"), {
-  loading: () => <MinimalLoader />,
-  ssr: true
-});
-
-const WhyItMatters = dynamic(() => import("../about/WhyItMatters/WhyItMatters"), {
   loading: () => <MinimalLoader />,
   ssr: true
 });

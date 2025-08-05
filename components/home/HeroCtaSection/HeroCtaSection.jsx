@@ -180,7 +180,7 @@ function HeroCTA({
   return (
     <section 
       ref={sectionRef}
-      className={`relative h-screen max-h-[1200px] flex items-center justify-center overflow-hidden bg-black ${className}`}
+      className={`relative h-screen max-h-[600px] sm:h-screen sm:max-h-[800px] flex items-center justify-center overflow-hidden bg-black ${className}`}
       {...props}
     >
       {/* Background */}
