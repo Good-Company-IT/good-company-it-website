@@ -134,21 +134,22 @@ const TeamSection = () => {
     );
   }
 
-  // Desktop Layout - Using Grid Structure as Guide
+  // Desktop Layout - Using Grid Structure as Guide (MODERATELY SMALLER VERSION)
   return (
-    <section className="relative bg-white px-5 py-20 lg:py-24 overflow-hidden">
-      <div className={`mx-auto px-8 max-w-[1400px]`}>
+    <section className="relative bg-white px-5 pl-32 py-16 lg:py-20 overflow-hidden">
+      <div className={`mx-auto px-6 max-w-[1300px] flex justify-center`}>
+        <div className="w-full max-w-[1200px]">
 
-        {/* 4x3 Grid Layout */}
-        <div className="grid grid-cols-4 grid-rows-3 gap-8 min-h-[600px] lg:min-h-[700px]">
+        {/* 4x3 Grid Layout - Moderately reduced size */}
+        <div className="grid grid-cols-4 grid-rows-3 gap-6 lg:gap-7 min-h-[520px] lg:min-h-[580px]">
 
           {/* Row 1, Col 1 - "Who's Behind Good Company?" */}
           <div className="col-span-1 row-span-1 flex flex-col justify-center">
-            <div className="text-right mr-6">
-              <p className={`text-text-dark mb-3 ${isLargeScreen ? 'text-xl' : 'text-base'}`}>
+            <div className="text-right mr-5">
+              <p className={`text-text-dark mb-2 ${isLargeScreen ? 'text-xl' : 'text-base'}`}>
                 Who's Behind
               </p>
-              <h2 className={`font-bold leading-tight ${isLargeScreen ? 'text-3xl' : 'text-2xl lg:text-3xl'}`}>
+              <h2 className={`font-bold leading-tight ${isLargeScreen ? 'text-2xl' : 'text-xl lg:text-2xl'}`}>
                 <span className="text-primary-orange">Go</span><span className="text-text-dark">od</span>{' '}
                 <span className="text-primary-orange">Co</span><span className="text-text-dark">mpany?</span>
               </h2>
@@ -157,18 +158,17 @@ const TeamSection = () => {
 
           {/* Row 1, Col 2 - First team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
-              isMobile ? 'w-48 h-48' :
-                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-              }`}>
+            <div className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${
+              isLargeScreen ? 'w-[260px] h-[260px]' : 'w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64'
+            }`}>
               <img
                 src={teamMembers[0].image}
                 alt={teamMembers[0].name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
-                <h3 className="text-xl font-bold mb-2">{teamMembers[0].name}</h3>
+              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-6 text-white">
+                <h3 className="text-lg font-bold mb-2">{teamMembers[0].name}</h3>
                 <span className="bg-white text-primary-orange px-3 py-1 rounded-full text-sm font-medium">
                   {teamMembers[0].role}
                 </span>
@@ -177,21 +177,21 @@ const TeamSection = () => {
           </div>
 
           {/* Row 1-2, Col 3-4 - Complete "We Work TOGETHER We Innovate TOGETHER" block with description */}
-          <div className="col-span-2 row-span-2 ml-8 flex flex-col justify-center">
+          <div className="col-span-2 row-span-2 ml-6 flex flex-col justify-center">
             <div className="text-left">
-              <h3 className={`font-medium leading-tight mb-2 ${isLargeScreen ? 'text-6xl' : 'text-4xl lg:text-5xl'}`}>
+              <h3 className={`font-medium leading-tight mb-2 ${isLargeScreen ? 'text-5xl' : 'text-3xl lg:text-4xl'}`}>
                 <span className="text-gray-900">We Work</span>
               </h3>
-              <h3 className={`font-bold leading-tight mb-6 ${isLargeScreen ? 'text-6xl' : 'text-4xl lg:text-5xl'}`}>
+              <h3 className={`font-bold leading-tight mb-4 ${isLargeScreen ? 'text-5xl' : 'text-3xl lg:text-4xl'}`}>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">TOGETHER</span>
               </h3>
-              <h4 className={`font-medium leading-tight mb-6 ${isLargeScreen ? 'text-6xl' : 'text-4xl lg:text-5xl'}`}>
+              <h4 className={`font-medium leading-tight mb-4 ${isLargeScreen ? 'text-5xl' : 'text-3xl lg:text-4xl'}`}>
                 <span className="text-gray-900">We Innovate</span>
               </h4>
-              <h4 className={`font-bold leading-tight mb-8 ${isLargeScreen ? 'text-6xl' : 'text-4xl lg:text-5xl'}`}>
+              <h4 className={`font-bold leading-tight mb-6 ${isLargeScreen ? 'text-5xl' : 'text-3xl lg:text-4xl'}`}>
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-900 to-primary-blue">TOGETHER</span>
               </h4>
-              <p className={`text-text-dark leading-relaxed ${isLargeScreen ? 'text-xl' : 'text-lg'}`}>
+              <p className={`text-text-dark leading-relaxed ${isLargeScreen ? 'text-lg' : 'text-base lg:text-lg'}`}>
                 We're operators, engineers, and ex-startup folks<br />
                 who've been on the ground.{' '}
                 <span className="font-semibold text-gray-900">
@@ -204,18 +204,17 @@ const TeamSection = () => {
 
           {/* Row 2, Col 1 - Second team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
-              isMobile ? 'w-48 h-48' :
-                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-              }`}>
+            <div className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${
+              isLargeScreen ? 'w-[260px] h-[260px]' : 'w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64'
+            }`}>
               <img
                 src={teamMembers[1].image}
                 alt={teamMembers[1].name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
-                <h3 className="text-xl font-bold mb-2">{teamMembers[1].name}</h3>
+              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-6 text-white">
+                <h3 className="text-lg font-bold mb-2">{teamMembers[1].name}</h3>
                 <span className="bg-white text-primary-orange px-3 py-1 rounded-full text-sm font-medium">
                   {teamMembers[1].role}
                 </span>
@@ -225,18 +224,17 @@ const TeamSection = () => {
 
           {/* Row 2, Col 2 - Third team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
-              isMobile ? 'w-48 h-48' :
-                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-              }`}>
+            <div className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${
+              isLargeScreen ? 'w-[260px] h-[260px]' : 'w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64'
+            }`}>
               <img
                 src={teamMembers[2].image}
                 alt={teamMembers[2].name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary-blue/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
-                <h3 className="text-xl font-bold mb-2">{teamMembers[2].name}</h3>
+              <div className="absolute inset-0 bg-primary-blue/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-6 text-white">
+                <h3 className="text-lg font-bold mb-2">{teamMembers[2].name}</h3>
                 <span className="bg-white text-primary-blue px-3 py-1 rounded-full text-sm font-medium">
                   {teamMembers[2].role}
                 </span>
@@ -244,17 +242,16 @@ const TeamSection = () => {
             </div>
           </div>
 
-
-
           {/* Row 3, Col 1 - CTA section */}
           <div className="col-span-1 row-span-1 flex flex-col justify-center items-end">
             <div className="text-right">
-              <p className={`text-text-dark leading-relaxed mb-6 ${isLargeScreen ? 'text-base' : 'text-sm'}`}>
+              <p className={`text-text-dark leading-relaxed mb-4 ${isLargeScreen ? 'text-base' : 'text-sm'}`}>
                 we're here to make it<br />
                 easier for you.
               </p>
               <Button
                 onClick={handleGetInTouch}
+                className="text-sm px-4 py-2"
               >
                 Get in Touch with Us
               </Button>
@@ -263,18 +260,17 @@ const TeamSection = () => {
 
           {/* Row 3, Col 2 - Fourth team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
-              isMobile ? 'w-48 h-48' :
-                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-              }`}>
+            <div className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${
+              isLargeScreen ? 'w-[260px] h-[260px]' : 'w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64'
+            }`}>
               <img
                 src={teamMembers[3].image}
                 alt={teamMembers[3].name}
                 className="w-full h-full object-cover transition-transform duration-300"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
-                <h3 className="text-xl font-bold mb-2">{teamMembers[3].name}</h3>
+              <div className="absolute inset-0 bg-primary-orange/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-6 text-white">
+                <h3 className="text-lg font-bold mb-2">{teamMembers[3].name}</h3>
                 <span className="bg-white text-primary-orange px-3 py-1 rounded-full text-sm font-medium">
                   {teamMembers[3].role}
                 </span>
@@ -284,18 +280,17 @@ const TeamSection = () => {
 
           {/* Row 3, Col 3 - Fifth team member photo */}
           <div className="col-span-1 row-span-1 flex items-center justify-center">
-            <div className={`relative rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${isLargeScreen ? 'w-[340px] h-[340px]' :
-              isMobile ? 'w-48 h-48' :
-                'w-64 h-64 lg:w-80 lg:h-80 xl:w-[340px] xl:h-[340px]'
-              }`}>
+            <div className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${
+              isLargeScreen ? 'w-[260px] h-[260px]' : 'w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64'
+            }`}>
               <img
                 src={teamMembers[4].image}
                 alt={teamMembers[4].name}
                 className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-primary-blue/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-8 text-white">
-                <h3 className="text-xl font-bold mb-2">{teamMembers[4].name}</h3>
+              <div className="absolute inset-0 bg-primary-blue/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-6 text-white">
+                <h3 className="text-lg font-bold mb-2">{teamMembers[4].name}</h3>
                 <span className="bg-white text-primary-blue px-3 py-1 rounded-full text-sm font-medium">
                   {teamMembers[4].role}
                 </span>
@@ -306,19 +301,16 @@ const TeamSection = () => {
           {/* Row 3, Col 4 - "You're in Good Company" */}
           <div className="col-span-1 row-span-1 flex flex-col justify-center">
             <div className="text-left">
-              <p className={`text-text-dark ${isLargeScreen ? 'text-xl' : 'text-lg'}`}>
+              <p className={`text-text-dark ${isLargeScreen ? 'text-lg' : 'text-base'}`}>
                 You're in
               </p>
-              <span className="text-orange-500 font-semibold text-lg lg:text-xl">Good Company</span>
+              <span className="text-orange-500 font-semibold text-base lg:text-lg">Good Company</span>
             </div>
           </div>
 
         </div>
+        </div>
       </div>
-
-      {/* Decorative background elements */}
-      <div className="absolute top-20 left-10 w-24 h-24 bg-orange-100 rounded-full blur-xl opacity-30" />
-      <div className="absolute bottom-20 right-10 w-32 h-32 bg-blue-100 rounded-full blur-xl opacity-30" />
     </section>
   );
 };
