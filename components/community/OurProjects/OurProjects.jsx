@@ -41,7 +41,7 @@ const OurProjects = () => {
             />
 
             <div className="mx-auto">
-            <h1 className="text-white text-4xl sm:text-5xl py-12 text-center relative">Our <span className="font-bold text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400">Projects</span></h1>
+            <h1 className="text-white text-3xl sm:text-4xl mb-12 text-center relative">Our <span className="font-bold text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400">Projects</span></h1>
             <SlidesCarousel variant="colorful" slides={slides} />
             </div>
         </section>

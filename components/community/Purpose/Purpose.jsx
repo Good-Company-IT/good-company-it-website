@@ -71,7 +71,7 @@ const Purpose = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative py-28 sm:pb-44 overflow-hidden"
+            className="relative py-16 sm:pb-44 overflow-hidden"
         >
 
             <div
@@ -92,7 +92,7 @@ const Purpose = () => {
                         variants={textVariants}
                         className="text-center"
                     >
-                        <h2 className="text-text-dark text-4xl sm:text-5xl py-12 text-center relative">Inspiring Others for a <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400">Great Purpose</span></h2>
+                        <h2 className="text-text-dark text-3xl sm:text-4xl text-center relative">Inspiring Others for a <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400">Great Purpose</span></h2>
                     </motion.div>
 
                     {/* Testimonials Grid */}

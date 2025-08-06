@@ -78,10 +78,11 @@ const BornFromExp = () => {
             <motion.div variants={textVariants} className="space-y-4">
               <h2 className="text-3xl sm:text-4xl font-regular text-text-dark leading-tight">
                 Born from Experience.
-              </h2>
-              <h3 className="text-3xl sm:text-4xl font-semibold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
+                <br/>
+              <span className="text-3xl sm:text-4xl font-semibold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
                 Built on Purpose.
-              </h3>
+              </span>
+              </h2>
             </motion.div>
 
             <motion.p 
