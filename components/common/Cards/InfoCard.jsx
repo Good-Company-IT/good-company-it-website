@@ -71,7 +71,7 @@ function InfoCard({ info, isActive, variant = "primary" }) {
     }
 
     if (variant === "fourth") {
-      return `w-[280px] h-[250px]
+      return `w-full h-[200px]
               sm:w-[280px] sm:h-[270px] 
               md:w-[300px] md:h-[280px]
               lg:w-[310px] lg:h-[290px]

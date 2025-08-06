@@ -95,12 +95,13 @@ const BornFromExp = () => {
                     {/* Left Side - Title and Description (smaller on XL) */}
                     <div className="xl:col-span-5 space-y-6 lg:space-y-8">
                         <motion.div className="space-y-4">
-                            <h2 className="text-3xl sm:text-4xl font-bold text-text-dark leading-tight">
+                            <h2 className="text-3xl sm:text-4xl font-normal text-text-dark leading-tight">
                                 What Makes Us
-                            </h2>
-                            <h3 className="text-3xl sm:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
+                            <br/>
+                            <span className="text-4xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
                                 Different
-                            </h3>
+                            </span>
+                            </h2>
                         </motion.div>
 
                         <motion.p
