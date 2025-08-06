@@ -136,7 +136,7 @@ function MobileServicesSection({ servicesData }) {
                                     </div>
                                     
                                     {/* Content area */}
-                                    <div className="space-y-4 flex-1">
+                                    <div className="flex flex-col gap-y-6">
                                         {/* Title Section */}
                                         <div className="space-y-3">
                                             <h3 className="text-xl font-bold text-white leading-tight">
@@ -156,9 +156,9 @@ function MobileServicesSection({ servicesData }) {
                                         </p>
                                         
                                         {/* Additional info */}
-                                        <div className="flex items-start gap-3 pt-2">
+                                        <div className="flex items-start gap-3 mb-2">
                                             <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0" />
-                                            <p className="text-gray-400 text-xs leading-relaxed">
+                                            <p className="text-gray-400 text-sm leading-relaxed">
                                                 {service.additionalInfo}
                                             </p>
                                         </div>
