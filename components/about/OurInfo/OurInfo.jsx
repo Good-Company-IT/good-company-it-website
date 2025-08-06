@@ -128,7 +128,7 @@ const OurInfo = () => {
   return (
     <section
       ref={sectionRef}
-      className={`relative py-56 sm:py-60 lg:py-64 xl:py-72 overflow-hidden ${getSectionSpacing()}`}
+      className={`relative pt-56 pb-16 sm:py-60 lg:py-64 xl:py-72 overflow-hidden ${getSectionSpacing()}`}
     >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
@@ -144,7 +144,7 @@ const OurInfo = () => {
 
       <div className={`${getContainerClasses()} relative z-10`}>
         {/* Main Content Container */}
-        <div className="flex flex-col space-y-12 lg:space-y-16">
+        <div className="flex flex-col lg:space-y-16">
 
           {/* Our Mission Section */}
           <motion.div

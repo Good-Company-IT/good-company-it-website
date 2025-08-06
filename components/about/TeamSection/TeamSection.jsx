@@ -136,7 +136,7 @@ const TeamSection = () => {
 
   // Desktop Layout - Using Grid Structure as Guide (MODERATELY SMALLER VERSION)
   return (
-    <section className="relative bg-white px-5 pl-32 py-16 lg:py-20 overflow-hidden">
+    <section className="relative bg-white px-5 pl-32 py-12 lg:py-20 overflow-hidden">
       <div className={`mx-auto px-6 max-w-[1300px] flex justify-center`}>
         <div className="w-full max-w-[1200px]">
 

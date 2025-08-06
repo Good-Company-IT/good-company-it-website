@@ -79,7 +79,7 @@ function WhyItMatters() {
     };
 
     return (
-        <section className="relative lg:max-h-screen py-32 md:py-44 overflow-hidden">
+        <section className="relative lg:max-h-screen py-12 sm:py-16 md:py-44 overflow-hidden">
             {/* Overlay Image */}
             <div
                 className="absolute inset-0 bg-cover bg-center bg-no-repeat"
