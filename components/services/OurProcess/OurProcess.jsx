@@ -44,7 +44,7 @@ const OurProcess = () => {
   const activeStepData = steps.find(step => step.id === activeStep);
 
   return (
-    <section className="relative py-5 h-[1200px] sm:h-[1200px] md:h-[1400px] lg:h-[900px] overflow-hidden">
+    <section className="relative py-5 h-[1300px] sm:h-[1200px] md:h-[1400px] lg:h-[900px] overflow-hidden">
       {/* Background Gradient */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
@@ -404,7 +404,7 @@ const OurProcess = () => {
                   <h3 className="text-lg sm:text-xl font-bold text-white mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-white/90 text-sm sm:text-base leading-relaxed">
+                  <p className="text-white/90 text-xs sm:text-sm md:text-base leading-relaxed">
                     {step.description}
                   </p>
                 </div>

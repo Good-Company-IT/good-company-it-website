@@ -423,7 +423,7 @@ const QuotesSection = ({
         <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 md:px-8">
           {/* Center Content First on Mobile */}
           <div className="text-center mb-12 md:mb-16">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-text-dark mb-6 leading-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-4xl font-bold text-text-dark mb-6 leading-tight">
               {renderTitle()}
             </h2>
 

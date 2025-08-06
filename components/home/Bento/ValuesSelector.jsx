@@ -233,7 +233,7 @@ function ValuesSelector() {
             {/* Mobile/Tablet Version (below 1024px) */}
             <div className="lg:hidden w-full">
                 {/* Title */}
-                <h3 className="text-white text-xl font-semibold mb-6 text-center">Our Core Values</h3>
+                <h3 className="text-white text-2xl font-semibold mb-6 text-center">Our Core Values</h3>
                 
                 {/* Horizontal Scrollable Cards */}
                 <div className="overflow-x-auto pb-4">

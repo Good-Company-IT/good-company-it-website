@@ -19,7 +19,7 @@ const TechSolutionsBento = () => {
             <div className="max-w-[1440px] mx-auto">
                 {/* Header */}
                 <div className="text-center my-16">
-                    <h1 className="text-xl md:text-2xl lg:text-3xl font-medium text-white mb-4">
+                    <h1 className="text-2xl md:text-3xl font-medium text-white mb-4">
                         Tech solutions for businesses that need{' '}
                         <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange">more than just IT support</span>
                     </h1>

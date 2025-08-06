@@ -150,7 +150,7 @@ function TestimonialCarousel() {
                 {/* Optional: Section Title for Mobile */}
                 <div className="text-center mb-6 sm:mb-8 px-4 sm:hidden">
                     <h2 className="text-white text-xl font-bold mb-2">What Our Clients Say</h2>
-                    <p className="text-white/70 text-sm">Real feedback from satisfied customers</p>
+                    <p className="text-white/70 text-base">Real feedback from satisfied customers</p>
                 </div>
 
                 {/* Carousel Container */}

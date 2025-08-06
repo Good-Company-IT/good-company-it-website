@@ -78,7 +78,7 @@ function MobileServicesSection({ servicesData }) {
             <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 h-full">
                 {/* Mobile Header */}
                 <AnimatedBlock delay={0.2} className="text-center mb-8 sm:mb-12">
-                    <h2 className="text-2xl sm:text-3xl font-bold text-white mb-4 sm:mb-6">
+                    <h2 className="text-3xl sm:text-4xl font-bold text-white mb-4 sm:mb-6">
                         What we do{" "}
                         <span className="inline-block bg-gradient-to-r from-orange-400 to-orange-600 bg-clip-text text-transparent">
                             BEST

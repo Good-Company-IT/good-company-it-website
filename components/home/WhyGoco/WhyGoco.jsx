@@ -116,14 +116,13 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
           >
             {/* Heading */}
             <div className="space-y-1 sm:space-y-2 md:space-y-3">
-              <h2 className="text-xl xs:text-2xl sm:text-3xl md:text-4xl font-regular text-gray-900 leading-[1.1] sm:leading-tight">
+              <h2 className="text-2xl md:text-4xl font-regular text-gray-900 leading-[1.1] sm:leading-tight">
                 {title}
+                <br/>
+              <span className="text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
+                  {" "}{titleHightlight}
+              </span>
               </h2>
-              <h3 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
-                <span>
-                  {titleHightlight}
-                </span>
-              </h3>
             </div>
 
             {/* Subtitle */}

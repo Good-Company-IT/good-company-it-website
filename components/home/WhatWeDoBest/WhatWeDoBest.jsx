@@ -475,34 +475,34 @@ function ServicesSection() {
                                 </AnimatedBlock>
                             </div>
 
-<div className="lg:col-span-4 relative rounded-3xl overflow-hidden">
-    <AnimatedBlock delay={0.6}>
-        <div className="absolute left-1/2 -top-32 w-[2.5px] h-28 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
-        <div className="absolute left-1/2 -bottom-40 w-[2px] h-32 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
+                            <div className="lg:col-span-4 relative rounded-3xl overflow-hidden">
+                                <AnimatedBlock delay={0.6}>
+                                    <div className="absolute left-1/2 -top-32 w-[2.5px] h-28 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
+                                    <div className="absolute left-1/2 -bottom-40 w-[2px] h-32 bg-primary-orange transform -translate-x-1/2 hidden lg:block" />
 
-        <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 rounded-3xl overflow-hidden mx-auto max-w-md lg:max-w-none">
-            <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                    key={`image-${activeService}`}
-                    variants={imageVariants}
-                    initial="hidden"
-                    animate="visible"
-                    exit="exit"
-                    className="absolute inset-0 rounded-[32px] overflow-hidden"
-                >
-                    <Image
-                        src={servicesData[activeService].image}
-                        alt={servicesData[activeService].category}
-                        fill
-                        className="object-cover"
-                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                        priority={activeService === 0}
-                    />
-                </motion.div>
-            </AnimatePresence>
-        </div>
-    </AnimatedBlock>
-</div>
+                                    <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 rounded-3xl overflow-hidden mx-auto max-w-md lg:max-w-none">
+                                        <AnimatePresence mode="wait" initial={false}>
+                                            <motion.div
+                                                key={`image-${activeService}`}
+                                                variants={imageVariants}
+                                                initial="hidden"
+                                                animate="visible"
+                                                exit="exit"
+                                                className="absolute inset-0 rounded-[32px] overflow-hidden"
+                                            >
+                                                <Image
+                                                    src={servicesData[activeService].image}
+                                                    alt={servicesData[activeService].category}
+                                                    fill
+                                                    className="object-cover"
+                                                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                                    priority={activeService === 0}
+                                                />
+                                            </motion.div>
+                                        </AnimatePresence>
+                                    </div>
+                                </AnimatedBlock>
+                            </div>
 
                             <div className="lg:col-span-4">
                                 <AnimatedBlock delay={0.8} direction="right">
