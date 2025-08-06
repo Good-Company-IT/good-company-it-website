@@ -177,7 +177,7 @@ function LandingSection() {
   };
 
   return (
-    <section className="relative h-[1300px] text-white overflow-hidden">
+    <section className="relative h-[1300px] text-white overflow-hidden py-12">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <motion.video

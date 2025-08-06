@@ -14,11 +14,11 @@ const SpaceBackground = () => (
 
 const TechSolutionsBento = () => {
     return (
-        <div className="relative px-3 sm:px-12 md:px-24 py-14 md:pb-20">
+        <div className="relative px-3 sm:px-12 md:px-24 py-12 md:pb-20">
             <div className="absolute inset-0 w-full h-full -z-10" />
             <div className="max-w-[1440px] mx-auto">
                 {/* Header */}
-                <div className="text-center my-16">
+                <div className="text-center">
                     <h1 className="text-2xl md:text-3xl font-medium text-white mb-4">
                         Tech solutions for businesses that need{' '}
                         <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange">more than just IT support</span>
@@ -26,7 +26,7 @@ const TechSolutionsBento = () => {
                 </div>
 
                 {/* Bento Grid */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[600px] my-12">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-auto lg:h-[600px] mt-12 sm:my-12">
                     {/* Left Large Box */}
                     <div className="lg:col-span-2 relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-800/50 to-blue-900/50 backdrop-blur-sm border border-white/10">
                         <SpaceBackground />

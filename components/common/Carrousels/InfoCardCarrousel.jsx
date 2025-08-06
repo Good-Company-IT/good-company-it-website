@@ -252,7 +252,7 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
         /* MOBILE VERSION - Custom Card with Variant Support */
         <div className="w-full">
           {/* Single Card with Swipe Animation */}
-          <div className="relative h-96 overflow-hidden">
+          <div className="relative h-[350px] sm:h-72 overflow-hidden">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -278,7 +278,7 @@ function InfoCardCarousel({ infoData, variant = "primary", buttonsOnTop = false 
           </div>
 
           {/* Enhanced Dot Indicators with Variant Support */}
-          <div className="flex justify-center items-center gap-3 mt-6 px-4">
+          <div className="flex justify-center items-center gap-3 px-4">
             {infoData.map((_, index) => (
               <button
                 key={index}

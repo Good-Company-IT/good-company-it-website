@@ -68,7 +68,7 @@ function AnimatedBlock({
 
 function MobileServicesSection({ servicesData }) {
     return (
-        <div className="relative h-full">
+        <div className="relative h-full py-12">
             {/* Background decorative elements */}
             <div className="absolute inset-0">
                 <div className="absolute top-1/4 right-1/4 w-64 h-64 sm:w-96 sm:h-96 bg-blue-500/10 rounded-full blur-3xl" />

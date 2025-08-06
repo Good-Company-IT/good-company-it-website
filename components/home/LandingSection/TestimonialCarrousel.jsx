@@ -145,7 +145,7 @@ function TestimonialCarousel() {
     }
 
      return (
-        <section className="py-8 sm:py-12 md:py-16 overflow-hidde">
+        <section className="py-0 sm:py-12 md:py-16 overflow-hidde">
             <div className="max-w-full">
                 {/* Optional: Section Title for Mobile */}
                 <div className="text-center mb-6 sm:mb-8 px-4 sm:hidden">
