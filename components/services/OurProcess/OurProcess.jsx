@@ -44,7 +44,7 @@ const OurProcess = () => {
   const activeStepData = steps.find(step => step.id === activeStep);
 
   return (
-    <section className="relative py-5 h-[1300px] sm:h-[1200px] md:h-[1400px] lg:h-[900px] overflow-hidden">
+    <section className="relative py-8 sm:py-12 lg:py-16 min-h-screen lg:h-[900px] overflow-hidden">
       {/* Background Gradient */}
       <div
         className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
@@ -53,21 +53,21 @@ const OurProcess = () => {
         }}
       />
 
-      {/* Content Container - Flexbox for better space distribution */}
+      {/* Content Container */}
       <div className="relative z-10 max-w-[1440px] mx-auto px-4 sm:px-6 h-full lg:h-full flex flex-col">
 
-        {/* Header - Reduced spacing */}
-        <div className="text-center pt-12 pb-8 lg:pt-16 lg:pb-12 flex-shrink-0">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4 lg:mb-6">
+        {/* Header */}
+        <div className="text-center py-6 sm:py-8 lg:py-12 flex-shrink-0">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 sm:mb-4 lg:mb-6">
             Our <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">PROCESS</span>
           </h2>
-          <p className="text-white text-sm sm:text-base lg:text-lg max-w-4xl mx-auto leading-relaxed">
+          <p className="text-white text-sm sm:text-base lg:text-lg max-w-4xl mx-auto leading-relaxed px-2">
             From discovery to delivery and beyond, our structured process ensures your project stays on track, on budget, and exceeds expectations every step of the way.
           </p>
         </div>
 
-        {/* Main Content - Flex grow to fill remaining space on desktop, natural flow on mobile */}
-        <div className="flex-1 lg:flex lg:flex-col lg:justify-center pb-12 lg:pb-0">
+        {/* Main Content */}
+        <div className="flex-1 lg:flex lg:flex-col lg:justify-center pb-6 sm:pb-8 lg:pb-0">
           
           {/* Desktop Layout - Flex Row */}
           <div className="hidden lg:flex items-center gap-8 xl:gap-12 h-full max-h-[500px]">
@@ -291,9 +291,9 @@ const OurProcess = () => {
           <div className="lg:hidden">
             
             {/* Process Visualization for Tablet */}
-            <div className="hidden md:flex justify-center mb-12 flex-shrink-0">
+            <div className="hidden md:flex justify-center mb-8 flex-shrink-0">
               <div className="relative w-full max-w-4xl">
-                <div className="relative h-[350px]">
+                <div className="relative h-[280px] sm:h-[320px]">
                   <svg
                     className="absolute inset-0 w-full h-full"
                     viewBox="0 0 1600 800"
@@ -387,13 +387,13 @@ const OurProcess = () => {
               </div>
             </div>
 
-            {/* Process Cards Grid - Natural height for mobile/tablet */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 px-4 sm:px-0">
+            {/* Process Cards Grid - Content-based height */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 px-2 sm:px-0">
               {steps.map((step) => (
                 <div
                   key={step.id}
                   className={`
-                    rounded-xl p-5 sm:p-6 transition-all duration-300 cursor-pointer
+                    rounded-lg sm:rounded-xl p-4 sm:p-5 md:p-6 transition-all duration-300 cursor-pointer
                     ${activeStep === step.id
                       ? 'bg-gradient-to-tr from-[#AA2A1D] via-[#FF4300] to-[#FF8C62] shadow-lg shadow-orange-500/25 transform scale-[1.02] sm:scale-105'
                       : 'bg-gradient-to-br from-white/10 via-blue-900/10 to-slate-900/10 hover:from-white/15 hover:via-blue-900/15 hover:to-slate-900/15 border border-white/10 hover:border-orange-400/30 hover:scale-[1.01] sm:hover:scale-102'
@@ -401,10 +401,10 @@ const OurProcess = () => {
                   `}
                   onClick={() => handleStepClick(step.id)}
                 >
-                  <h3 className="text-lg sm:text-xl font-bold text-white mb-3">
+                  <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2 sm:mb-3">
                     {step.title}
                   </h3>
-                  <p className="text-white/90 text-xs sm:text-sm md:text-base leading-relaxed">
+                  <p className="text-white/90 text-xs sm:text-sm leading-relaxed">
                     {step.description}
                   </p>
                 </div>
