@@ -177,7 +177,7 @@ function LandingSection() {
   };
 
   return (
-    <section className="relative h-[1300px] text-white overflow-hidden py-12">
+    <section className="relative h-[950px] sm:h-[1300px] text-white overflow-hidden space-y-6 py-12">
       {/* Video Background */}
       <div className="absolute inset-0 z-0">
         <motion.video
@@ -243,13 +243,13 @@ function LandingSection() {
 
       {/* Main Content Container */}
       <motion.div
-        className="relative z-30 h-full max-w-[1440px] mx-auto px-4 sm:px-6 flex flex-col"
+        className="relative z-30 h-full max-w-[1440px] mx-auto px-4 sm:px-6 flex flex-col gap-y-6"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded ? "visible" : "hidden"}
       >
         {/* Hero Content - Takes most of the space */}
-        <div className="flex-1 flex flex-col md:flex-row justify-evenly md:justify-around items-center py-6 sm:py-8 md:py-12 lg:py-16">
+        <div className="sm:flex-1 flex flex-col md:flex-row justify-evenly md:justify-around items-center py-6 sm:py-8 md:py-12 lg:py-16">
 
           {/* Left Content */}
           <div className="space-y-4 sm:space-y-6 lg:space-y-8 max-w-2xl">
