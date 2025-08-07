@@ -4,59 +4,7 @@ import React from 'react';
 import Image from 'next/image';
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedin } from 'react-icons/fa';
-
-const SocialMediaIcons = ({divClass = "justify-start"}) => {
-    const socialLinks = [
-        { 
-            icon: FaInstagram, 
-            href: 'https://www.instagram.com/goodcompanyit', 
-            hoverBg: 'hover:bg-gradient-to-r hover:from-purple-500 hover:via-pink-500 hover:to-orange-400',
-            name: 'Instagram'
-        },
-        { 
-            icon: FaFacebookF, 
-            href: 'https://www.facebook.com/goodcompanyit', 
-            hoverBg: 'hover:bg-blue-600',
-            name: 'Facebook'
-        },
-        { 
-            icon: FaTwitter, 
-            href: 'https://twitter.com/goodcompanyit', 
-            hoverBg: 'hover:bg-black',
-            name: 'Twitter'
-        },
-        { 
-            icon: FaLinkedin, 
-            href: 'https://www.linkedin.com/company/goodcompanyit', 
-            hoverBg: 'hover:bg-blue-700',
-            name: 'LinkedIn'
-        }
-    ];
-
-    return (
-        <div className="flex space-x-4">
-            {socialLinks.map((social, index) => (
-                <motion.a
-                    key={index}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`w-12 h-12 rounded-full bg-orange-500 flex items-center justify-center text-white transition-all duration-300 ${social.hoverBg} hover:scale-110 hover:shadow-lg`}
-                    whileHover={{ scale: 1.1 }}
-                    whileTap={{ scale: 0.95 }}
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1, duration: 0.4 }}
-                    aria-label={`Follow us on ${social.name}`}
-                >
-                    <social.icon size={20} />
-                </motion.a>
-            ))}
-        </div>
-    );
-};
+import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
 const Footer = ({ locale, translations }) => {
     // Default fallbacks - Always use English
@@ -169,15 +117,7 @@ const Footer = ({ locale, translations }) => {
                         </div>
 
                         {/* Follow Us Section */}
-                        <div className="flex flex-col">
-                            <motion.h3 
-                                className="text-lg font-semibold mb-4 text-gray-300"
-                                variants={itemVariants}
-                            >
-                                Follow Us
-                            </motion.h3>
-                            <SocialMediaIcons />
-                        </div>
+                            <SocialMediaIcons divClass='justify-start' />
                     </motion.div>
 
                     {/* Right Side - Navigation Sections */}

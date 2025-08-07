@@ -1,30 +1,30 @@
-import { FaInstagram, FaFacebookF, FaLinkedin } from 'react-icons/fa';
-import { FaSquareXTwitter } from "react-icons/fa6";
+import { FaInstagram, FaLinkedinIn, FaTiktok } from 'react-icons/fa';
+import { FaXTwitter } from "react-icons/fa6";
 import { motion } from 'framer-motion';
 
 const SocialMediaIcons = ({divClass = "justify-end"}) => {
     const socialLinks = [
         { 
             icon: FaInstagram, 
-            href: '#', 
+            href: 'https://www.instagram.com/goodcompanyit?igsh=endxemxmcHFyNnZj', 
             hoverBg: 'hover:bg-gradient-to-r hover:from-purple-500 hover:via-pink-500 hover:to-orange-400',
             name: 'Instagram'
         },
         { 
-            icon: FaFacebookF, 
-            href: '#', 
-            hoverBg: 'hover:bg-blue-600',
-            name: 'Facebook'
+            icon: FaTiktok, 
+            href: 'https://www.tiktok.com/@good.company.it?_t=ZS-8ydjYTx59rc&_r=1', 
+            hoverBg: 'hover:bg-gray-900',
+            name: 'TikTok'
         },
         { 
-            icon: FaSquareXTwitter, 
-            href: '#', 
+            icon: FaXTwitter, 
+            href: 'https://x.com/goodcoompanyit', 
             hoverBg: 'hover:bg-black',
             name: 'Twitter'
         },
         { 
-            icon: FaLinkedin, 
-            href: '#', 
+            icon: FaLinkedinIn, 
+            href: 'https://www.linkedin.com/company/good-company-it-consulting/about/', 
             hoverBg: 'hover:bg-blue-700',
             name: 'LinkedIn'
         }
