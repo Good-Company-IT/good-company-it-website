@@ -38,6 +38,8 @@ const SocialMediaIcons = ({divClass = "justify-end"}) => {
                     <motion.a
                         key={index}
                         href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className={`w-12 h-12 rounded-full bg-primary-orange flex items-center justify-center text-white transition-all duration-300 ${social.hoverBg} hover:scale-110 hover:shadow-lg`}
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
