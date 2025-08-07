@@ -10,7 +10,7 @@ const Footer = ({ locale, translations }) => {
     // Default fallbacks - Always use English
     const defaults = {
         services: "Services",
-        resources: "Resources", 
+        community: "Community", 
         about: "About",
         allRightsReserved: "All rights reserved"
     };
@@ -20,33 +20,25 @@ const Footer = ({ locale, translations }) => {
         {
             title: "Home",
             links: [
-                { label: "Section here", href: "/" },
-                { label: "Section here", href: "/" },
-                { label: "Section here", href: "/" }
+                { label: "Home", href: "/" }
             ]
         },
         {
             title: defaults.services,
             links: [
-                { label: "Section here", href: "/" },
-                { label: "Section here", href: "/" },
-                { label: "Section here", href: "/" }
+                { label: "Services", href: "/services" }
             ]
         },
         {
             title: defaults.about,
             links: [
-                { label: "Section here", href: "/" },
-                { label: "Section here", href: "/" },
-                { label: "Section here", href: "/" }
+                { label: "About us", href: "/" }
             ]
         },
         {
-            title: defaults.resources,
+            title: defaults.community,
             links: [
-                { label: "Section here", href: "/" },
-                { label: "Section here", href: "/" },
-                { label: "Section here", href: "/" }
+                { label: "Community", href: "/community" }
             ]
         }
     ];
