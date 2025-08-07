@@ -56,7 +56,7 @@ const OurCommunity = () => {
     return (
         <section
             ref={sectionRef}
-            className="relative z-10 overflow-hidden bg-white lg:px-24 py-16 sm:py-60 lg:py-64 xl:py-72"
+            className="relative z-10 overflow-hidden bg-white lg:px-24 py-16 sm:py-48"
         >
             {/* Overlay Image - Now behind content */}
             <div
@@ -77,10 +77,10 @@ const OurCommunity = () => {
                         <motion.div variants={textVariants} className="space-y-4">
                             <h2 className="text-3xl sm:text-4xl font-regular text-text-dark leading-tight">
                                 We believe in shared vision, shared effort, and
+                                <span className="h-20 xl:h-11 text-3xl sm:text-4xl font-semibold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
+                                    {" "}Long term transformation.
+                                </span>
                             </h2>
-                            <h3 className="h-20 xl:h-11 text-3xl sm:text-4xl font-semibold leading-tight text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
-                                Long term transformation.
-                            </h3>
                         </motion.div>
 
                         <motion.p
@@ -93,7 +93,7 @@ const OurCommunity = () => {
                             variants={textVariants}
                             className="text-text-dark text-sm sm:text-base leading-relaxed max-w-lg"
                         >
-                        Whether it's starting a project from the ground up or partnering with existing ones, our goal is the same: lasting, human-centered impact.
+                            Whether it's starting a project from the ground up or partnering with existing ones, our goal is the same: lasting, human-centered impact.
                         </motion.p>
                         <button className="max-w-48 px-6 py-3 bg-primary-orange text-white rounded-lg hover:bg-orange-600 transition-colors">
                             See Our Projects

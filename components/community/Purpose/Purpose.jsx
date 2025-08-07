@@ -96,7 +96,7 @@ const Purpose = () => {
                     </motion.div>
 
                     {/* Testimonials Grid */}
-                    <div className="pt86 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 lg:items-stretch">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 xl:gap-16 lg:items-stretch">
                         {testimonials.map((testimonial, index) => (
                             <motion.div
                                 key={testimonial.id}
