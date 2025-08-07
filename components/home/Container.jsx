@@ -38,6 +38,11 @@ const WeBuild = dynamic(() => import("./WeBuild/QuotesSection"), {
   ssr: true
 });
 
+const WhyItMatters = dynamic(() => import("../about/WhyItMatters/WhyItMatters"), {
+  loading: () => <MinimalLoader />,
+  ssr: true
+});
+
 const OurServices = dynamic(() => import("./OurServices/OurServices"), {
   loading: () => <MinimalLoader />,
   ssr: true
@@ -54,6 +59,7 @@ export default function Container({ locale, translations, mainLang }) {
       <WhatWeDoBest />
       <OurServices />
       <WeBuild />
+      <WhyItMatters/>
       <HeroCTA
         headings={[
           { text: "We deliver", style: "normal" },

@@ -57,7 +57,7 @@ export default function Container({ locale, translations, mainLang }) {
       <div className='relative'>
         <HeroSection />
         {/* TeamCTASection positioned to overlap bottom of Hero and top of BornFromExp */}
-        <div className='absolute bottom-20 left-0 right-0 transform translate-y-1/2 z-20 px-4'>
+        <div className='absolute bottom-20 left-0 right-0 transform translate-y-1/2 z-20 px-4 hidden lg:block'>
           <TeamCTASection 
             socialMedia={true} 
             title="Who We Are"
@@ -65,7 +65,7 @@ export default function Container({ locale, translations, mainLang }) {
         </div>
       </div>
       {/* Add top padding to BornFromExp to account for overlapping content */}
-      <div className='pt-36 sm:pt-24 md:pt-14 lg:pt-0'>
+      <div className=''>
         <BornFromExp />
       </div>
       <div className='relative w-full'>

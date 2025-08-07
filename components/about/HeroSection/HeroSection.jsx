@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import TeamCTASection from '@/components/common/TeamCTASection/TeamCTASection';
 
 const HeroSection = () => {
     // Animation variants for staggered text
@@ -15,8 +16,8 @@ const HeroSection = () => {
     };
 
     const textVariants = {
-        hidden: { 
-            opacity: 0, 
+        hidden: {
+            opacity: 0,
             y: 30,
             scale: 0.9
         },
@@ -58,7 +59,7 @@ const HeroSection = () => {
 
     // Gradient text animation
     const gradientVariants = {
-        hidden: { 
+        hidden: {
             opacity: 0,
             backgroundPosition: "200% 0"
         },
@@ -73,9 +74,9 @@ const HeroSection = () => {
     };
 
     return (
-        <section className="relative h-screen max-h-[1000px] flex items-start lg:items-center justify-center pt-16 sm:pt-20 md:pt-24 lg:pt-0 overflow-hidden bg-black">
+        <section className="relative h-screen max-h-[1000px] flex flex-col items-start lg:items-center justify-center py-10 sm:py-20 md:py-24 lg:pt-0 overflow-hidden bg-black">
             {/* Background GOCO SVG */}
-            <motion.div 
+            <motion.div
                 className="absolute inset-0 flex items-center justify-center z-0"
                 variants={backgroundVariants}
                 initial="hidden"
@@ -99,7 +100,7 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Background Ellipse Overlay SVG */}
-            <motion.div 
+            <motion.div
                 className="absolute inset-0 z-0"
                 variants={overlayVariants}
                 initial="hidden"
@@ -113,23 +114,23 @@ const HeroSection = () => {
             </motion.div>
 
             {/* Main Content */}
-            <motion.div 
+            <motion.div
                 className="relative z-10 text-center px-4 sm:px-6 lg:px-8 mx-auto mt-12 sm:mt-16 md:mt-20 lg:mt-0"
                 variants={containerVariants}
                 initial="hidden"
                 animate="visible"
             >
-                <motion.h1 
+                <motion.h1
                     className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal leading-tight space-x-4"
                     variants={textVariants}
                 >
-                    <motion.span 
+                    <motion.span
                         className="text-white inline-block"
                         variants={textVariants}
                     >
                         Reliable
                     </motion.span>
-                    
+
                     <motion.span
                         className="font-bold inline-block"
                         style={{
@@ -142,14 +143,14 @@ const HeroSection = () => {
                     >
                         TECH.
                     </motion.span>
-                    
-                    <motion.span 
+
+                    <motion.span
                         className="text-white inline-block"
                         variants={textVariants}
                     >
                         Real
                     </motion.span>
-                    
+
                     <motion.span
                         className="font-bold inline-block"
                         style={{
@@ -164,6 +165,13 @@ const HeroSection = () => {
                     </motion.span>
                 </motion.h1>
             </motion.div>
+
+            <div className='lg:hidden'>
+                <TeamCTASection
+                    socialMedia={true}
+                    title="Who We Are"
+                    text="We offer I.T. consulting that goes beyond solving technical issues. Our focus is on helping companies grow with clarity, structure, and long-term support. That means not just fixing what's broken, but helping improve the way things run." />
+            </div>
 
             {/* Floating particles effect */}
             <div className="absolute inset-0 pointer-events-none">

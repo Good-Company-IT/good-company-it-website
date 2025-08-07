@@ -90,7 +90,7 @@ const TeamCTASection = ({socialMedia = true, imageSrc="/imgs/about/teamCTA.png",
                             <motion.div
                                 variants={itemVariants}
                             >
-                                <Button className="w-full text-sm sm:text-base sm:w-auto">
+                                <Button href="/contact" className="w-full text-sm sm:text-base sm:w-auto">
                                     Get in Touch with Us
                                 </Button>
                             </motion.div>
