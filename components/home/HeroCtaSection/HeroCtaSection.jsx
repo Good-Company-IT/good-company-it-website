@@ -25,6 +25,10 @@ const animations = {
     hidden: { opacity: 0, y: 30 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.4 } }
   },
+  descriptionSentence: {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] } }
+  },
   button: {
     hidden: { opacity: 0, y: 30, scale: 0.9 },
     visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94], delay: 0.6 } }
@@ -137,6 +141,7 @@ const backgrounds = {
 function HeroCTA({
   headings = [],
   description = null,
+  descriptions = null, // New prop for multiple descriptions
   cta = { text: "Get Started", href: "#" },
   backgroundType = "starfield",
   videoSrc = null,
@@ -177,6 +182,9 @@ function HeroCTA({
     );
   };
 
+  // Use descriptions array if provided, otherwise fall back to single description
+  const descriptionContent = descriptions || (description ? [description] : null);
+
   return (
     <section 
       ref={sectionRef}
@@ -204,12 +212,21 @@ function HeroCTA({
           {headings.map(renderHeading)}
         </div>
 
-        {/* Description */}
-        {description && (
-          <motion.div variants={animations.description} className="mb-8 sm:mb-12">
-            <p className="text-base sm:text-lg md:text-xl text-gray-300 leading-relaxed max-w-4xl mx-auto">
-              {description}
-            </p>
+        {/* Description(s) */}
+        {descriptionContent && (
+          <motion.div 
+            variants={animations.description} 
+            className="mb-8 sm:mb-12 space-y-4 sm:space-y-6"
+          >
+            {descriptionContent.map((desc, index) => (
+              <motion.p
+                key={index}
+                variants={animations.descriptionSentence}
+                className="text-base sm:text-lg md:text-xl text-white leading-relaxed max-w-xl mx-auto"
+              >
+                {desc}
+              </motion.p>
+            ))}
           </motion.div>
         )}
 

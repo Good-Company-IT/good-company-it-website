@@ -75,7 +75,10 @@ export default function Container({ locale, translations, mainLang }) {
                     { text: "You Have a Dream.", style: "mixed-gradient", highlight: "Dream" },
                     { text: "We'll Protect It.", style: "mixed-blue-gradient", highlight: "Protect" }
                 ]}
-                description="You're building something that matters, and you shouldn't have to worry about tech slowing you down. We're here to make sure your infrastructure, data, and team are protected every step of the way."
+                descriptions={[
+                    "You're building something that matters, and you shouldn't have to worry about tech slowing you down.",
+                    "We're here to make sure your infrastructure, data, and team are protected every step of the way."
+                ]}
                 cta={{ text: "Get in Touch", href: "/contact" }}
                 backgroundType="video"
                 videoSrc={"/imgs/backgroundCTA.mp4"}
