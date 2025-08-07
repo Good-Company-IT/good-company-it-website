@@ -22,7 +22,7 @@ const QuoteCard = ({
   };
 
   const getLineHeight = () => {
-    return 'h-8 xs:h-12 sm:h-16 md:h-20 lg:h-60';
+    return 'h-8 xs:h-12 sm:h-16 md:h-20 lg:h-40';
   };
 
   return (
