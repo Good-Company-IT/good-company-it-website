@@ -140,7 +140,7 @@ const BornFromExp = () => {
           </motion.h4>
 
           <motion.div variants={buttonVariants}>
-            <Button appearance="primary">
+            <Button appearance="primary" href={"/contact"}>
               Get in Touch with Us
             </Button>
           </motion.div>
