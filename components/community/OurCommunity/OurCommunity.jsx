@@ -117,7 +117,8 @@ const OurCommunity = () => {
                         </div>
 
                         {/* Center Video with Logo - Adjusted position */}
-                        <div className="absolute left-[25%] top-[15%] w-[40%] h-[70%] z-10">
+                        <div // Increased video width and height on mobile
+                            className="absolute left-[20%] sm:left-[22%] lg:left-[25%] top-[10%] sm:top-[12%] lg:top-[15%] w-[50%] sm:w-[45%] lg:w-[40%] h-[75%] sm:h-[72%] lg:h-[70%] z-10">
                             <div className="relative w-full h-full rounded-2xl overflow-hidden">
                                 <video
                                     className="w-full h-full object-cover"
