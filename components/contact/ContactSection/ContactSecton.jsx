@@ -249,7 +249,7 @@ const ContactSection = () => {
                             </motion.div>
 
                             <div className="space-y-6">
-                                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-tight">
+                                <h3 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-normal" style={{ lineHeight: '1.3' }}>
                                     We believe great IT starts with{" "}
                                     <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
                                         clear communication.
