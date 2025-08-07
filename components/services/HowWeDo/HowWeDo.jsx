@@ -271,7 +271,7 @@ const HowWeDo = () => {
   return (
     <motion.section 
       ref={sectionRef}
-      className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 h-[1200px] sm:h-[1100px] md:h-[1400px] lg:h-[1050px] overflow-hidden"
+      className="relative bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 h-full lg:h-[1050px] overflow-hidden"
       variants={animations.container}
       initial="hidden"
       animate={isInView ? "visible" : "hidden"}
@@ -379,7 +379,7 @@ const BackgroundElements = () => (
 // Header component
 const Header = () => (
   <motion.div 
-    className="text-center pt-80 sm:pt-80 md:pt-80 lg:pt-36 xl:pt-40 pb-8 flex-shrink-0"
+    className="text-center pt-12 sm:pt-16 lg:pt-44 pb-8 lg:pb-0 flex-shrink-0"
     variants={animations.header}
   >
     <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4">

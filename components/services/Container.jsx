@@ -51,7 +51,7 @@ export default function Container({ locale, translations, mainLang }) {
         <>
             <div className='relative'>
                 <HeroSection />
-                <div className='absolute bottom-20 left-0 right-0 transform translate-y-1/2 z-20 px-4'>
+                <div className='absolute bottom-20 left-0 right-0 transform translate-y-1/2 z-20 px-4 hidden lg:block'>
                     <TeamCTASection
                         socialMedia={false}
                         imageSrc='/imgs/services/teamWork.png'

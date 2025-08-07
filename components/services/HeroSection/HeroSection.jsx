@@ -2,6 +2,7 @@
 
 import React, { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
+import TeamCTASection from '@/components/common/TeamCTASection/TeamCTASection';
 
 const HeroSection = () => {
   const contentRef = useRef(null);
@@ -33,7 +34,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <section className="relative h-screen lg:h-[1050px] bg-black text-white overflow-hidden">
+      <section className="relative h-full max-h-[1150px] sm:max-h-[1150px] md:max-h-[1250px] lg:h-[750px] pt-16 bg-black text-white overflow-hidden">
         {/* Background SVG Container */}
         <div className="absolute inset-0">
           <div className="absolute inset-0">
@@ -46,9 +47,9 @@ const HeroSection = () => {
         </div>
 
         {/* Content Container */}
-        <div className="relative max-w-[1440px] z-10 w-full pb-[500px] sm:pb-60 md:pb-52 lg:pb-36 xl:pb-24 px-12 mx-auto">
-          <div className="flex flex-col justify-start lg:justify-center min-h-screen sm:px-24 py-20">
-            <motion.div 
+        <div className="relative max-w-[1440px] z-10 w-full py-12 sm:py-20 px-4 sm:px-6 lg:px-24 mx-auto">
+          <div className="flex flex-col justify-start lg:justify-center">
+            <motion.div
               ref={contentRef}
               className="max-w-5xl"
               variants={fadeVariants}
@@ -56,7 +57,7 @@ const HeroSection = () => {
               animate={isInView ? "visible" : "hidden"}
             >
               {/* Services Badge */}
-              <motion.div 
+              <motion.div
                 className="inline-block mb-8"
                 variants={itemVariants}
               >
@@ -73,7 +74,7 @@ const HeroSection = () => {
               </motion.div>
 
               {/* Main Heading */}
-              <motion.div 
+              <motion.div
                 className="space-y-2 mb-8"
                 variants={itemVariants}
               >
@@ -88,7 +89,7 @@ const HeroSection = () => {
               </motion.div>
 
               {/* Description */}
-              <motion.div 
+              <motion.div
                 className="max-w-lg"
                 variants={itemVariants}
               >
@@ -98,6 +99,15 @@ const HeroSection = () => {
               </motion.div>
 
             </motion.div>
+            <div className='lg:hidden'>
+              <TeamCTASection
+                socialMedia={false}
+                imageSrc='/imgs/services/teamWork.png'
+                title="At Good Company,"
+                titleHighlight={true}
+                titleHighlightText="We Get It"
+                text="Growing businesses don’t just need someone to fix tech issues when things break. You need a real partner who helps you stay ahead of problems, optimize your processes, and keep your team running smoothly without breaking the bank." />
+            </div>
           </div>
         </div>
       </section>
