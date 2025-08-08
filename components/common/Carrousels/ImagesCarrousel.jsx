@@ -21,37 +21,13 @@ const ImageCarousel = () => {
       id: 3,
       src: "/imgs/about/3.png",
       alt: "Business presentation",
-      size: "tall"
+      size: "wide"
     },
     {
       id: 4,
       src: "/imgs/about/4.png",
       alt: "Team collaboration",
-      size: "wide"
-    },
-    {
-      id: 5,
-      src: "/imgs/about/5.png",
-      alt: "Office environment",
       size: "tall"
-    },
-    {
-      id: 6,
-      src: "/imgs/about/6.png",
-      alt: "Professional man",
-      size: "wide"
-    },
-    {
-      id: 7,
-      src: "/imgs/about/7.png",
-      alt: "Creative workspace",
-      size: "tall"
-    },
-    {
-      id: 8,
-      src: "/imgs/about/8.png",
-      alt: "Team discussion",
-      size: "wide"
     }
   ];
 
@@ -78,7 +54,7 @@ const ImageCarousel = () => {
                   src={images[(currentIndex - 1 + images.length) % images.length].src}
                   alt={images[(currentIndex - 1 + images.length) % images.length].alt}
                   className={`
-                    object-cover transition-all duration-700 ease-in-out filter grayscale
+                    object-cover transition-all duration-700 ease-in-out
                     ${images[(currentIndex - 1 + images.length) % images.length].size === 'tall' 
                       ? 'w-[320px] h-[350px] lg:w-[460px] lg:h-[490px]' 
                       : 'w-[320px] h-[280px] lg:w-[460px] lg:h-[400px]'
@@ -96,7 +72,7 @@ const ImageCarousel = () => {
                   src={images[currentIndex].src}
                   alt={images[currentIndex].alt}
                   className={`
-                    object-cover transition-all duration-700 ease-in-out filter-none
+                    object-cover transition-all duration-700 ease-in-out
                     ${images[currentIndex].size === 'tall' 
                       ? 'w-[280px] h-[300px] md:w-[360px] md:h-[390px] lg:w-[460px] lg:h-[490px]' 
                       : 'w-[280px] h-[240px] md:w-[360px] md:h-[320px] lg:w-[460px] lg:h-[400px]'
@@ -113,7 +89,7 @@ const ImageCarousel = () => {
                   src={images[(currentIndex + 1) % images.length].src}
                   alt={images[(currentIndex + 1) % images.length].alt}
                   className={`
-                    object-cover transition-all duration-700 ease-in-out filter grayscale
+                    object-cover transition-all duration-700 ease-in-out
                     ${images[(currentIndex + 1) % images.length].size === 'tall' 
                       ? 'w-[320px] h-[350px] lg:w-[460px] lg:h-[490px]' 
                       : 'w-[320px] h-[280px] lg:w-[460px] lg:h-[400px]'
