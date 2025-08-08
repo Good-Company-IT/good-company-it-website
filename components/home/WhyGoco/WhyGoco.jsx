@@ -88,15 +88,7 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage: "url('/imgs/why/background.png')", 
-        }}
-      />
-
-      {/* Overlay Image */}
-      <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: "url('/imgs/why/texture.png')",
+          backgroundImage: "url('/imgs/team/teamComplete.png')", 
         }}
       />
       

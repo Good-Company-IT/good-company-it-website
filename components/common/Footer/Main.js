@@ -7,10 +7,12 @@ import { motion } from "framer-motion";
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 
 const Footer = ({ locale, translations }) => {
+
+    const year = new Date().getFullYear();
     // Default fallbacks - Always use English
     const defaults = {
         services: "Services",
-        community: "Community", 
+        community: "Community",
         about: "About",
         allRightsReserved: "All rights reserved"
     };
@@ -68,7 +70,7 @@ const Footer = ({ locale, translations }) => {
     };
 
     return (
-        <motion.footer 
+        <motion.footer
             className="relative bg-slate-900 text-white overflow-hidden"
             initial="hidden"
             whileInView="visible"
@@ -99,7 +101,7 @@ const Footer = ({ locale, translations }) => {
                 {/* Main Content Section */}
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 mb-16">
                     {/* Left Side - Logo and Social */}
-                    <motion.div 
+                    <motion.div
                         className="flex flex-col space-y-8"
                         variants={itemVariants}
                     >
@@ -109,13 +111,13 @@ const Footer = ({ locale, translations }) => {
                         </div>
 
                         {/* Follow Us Section */}
-                            <SocialMediaIcons divClass='justify-start' />
+                        <SocialMediaIcons divClass='justify-start' />
                     </motion.div>
 
                     {/* Right Side - Navigation Sections */}
                     <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 lg:gap-8">
                         {navigationSections.map((section, sectionIndex) => (
-                            <motion.div 
+                            <motion.div
                                 key={section.title}
                                 variants={itemVariants}
                                 custom={sectionIndex}
@@ -125,18 +127,18 @@ const Footer = ({ locale, translations }) => {
                                 </h4>
                                 <ul className="space-y-3">
                                     {section.links.map((link, linkIndex) => (
-                                        <motion.li 
+                                        <motion.li
                                             key={linkIndex}
                                             initial={{ opacity: 0, x: -10 }}
                                             whileInView={{ opacity: 1, x: 0 }}
                                             viewport={{ once: true }}
-                                            transition={{ 
+                                            transition={{
                                                 delay: sectionIndex * 0.1 + linkIndex * 0.05,
-                                                duration: 0.4 
+                                                duration: 0.4
                                             }}
                                         >
-                                            <Link 
-                                                href={link.href} 
+                                            <Link
+                                                href={link.href}
                                                 className="text-gray-400 hover:text-white transition-colors duration-200 text-sm block"
                                             >
                                                 {link.label}
@@ -150,31 +152,31 @@ const Footer = ({ locale, translations }) => {
                 </div>
 
                 {/* Copyright Section */}
-                <motion.div 
+                <motion.div
                     className="border-t border-gray-700 pt-8 pb-0"
                     variants={itemVariants}
                 >
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                         <p className="text-gray-400 text-sm">
-                            © Good Company IT® Inc. {defaults.allRightsReserved}.
+                            © Good Company IT® Inc. {defaults.allRightsReserved}. {year}
                         </p>
                     </div>
                 </motion.div>
             </div>
 
             {/* Large Company Logo at the very bottom */}
-            <motion.div 
+            <motion.div
                 className="relative w-full"
                 initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.8, delay: 0.3 }}
             >
-                <Image 
-                    src="/imgs/GoCo.svg" 
-                    alt="Good Company Logo" 
-                    width={1600} 
-                    height={400} 
+                <Image
+                    src="/imgs/GoCo.svg"
+                    alt="Good Company Logo"
+                    width={1600}
+                    height={400}
                     className="w-full h-auto"
                 />
             </motion.div>
