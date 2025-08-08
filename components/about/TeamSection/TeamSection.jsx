@@ -38,7 +38,8 @@ const TeamSection = () => {
       id: 3,
       name: "Carolina Camargo",
       role: "Project Coordinator",
-      image: "/imgs/team/member3.jpg"
+      image: "/imgs/team/member3.jpg",
+      imagePosition: "object-[center_0%]" // Custom positioning for Carolina
     },
     {
       id: 4,
@@ -62,38 +63,53 @@ const TeamSection = () => {
   };
 
   // Improved image component with better optimization
-  const TeamMemberImage = ({ member, overlayColor = "primary-orange" }) => (
-    <div className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${
-      isLargeScreen ? 'w-[260px] h-[260px]' : 'w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64'
-    }`}>
-      <img
-        src={member.image}
-        alt={member.name}
-        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
-        loading="lazy"
-        style={{
-          imageRendering: 'auto', // Better image rendering
-          backfaceVisibility: 'hidden', // Prevents rendering issues
-          transform: 'translateZ(0)', // Hardware acceleration
-        }}
-        onError={(e) => {
-          console.log(`Image failed to load for ${member.name}:`, member.image);
-          // You can set a fallback image here if needed
-          // e.target.src = '/imgs/team/placeholder.jpg';
-        }}
-        onLoad={(e) => {
-          // Ensure image is properly loaded
-          e.target.style.opacity = '1';
-        }}
-      />
-      <div className={`absolute inset-0 bg-${overlayColor}/60 bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-6 text-white`}>
-        <h3 className="text-lg font-bold mb-2">{member.name}</h3>
-        <span className={`bg-white text-${overlayColor} px-3 py-1 rounded-full text-sm font-medium`}>
-          {member.role}
-        </span>
+  const TeamMemberImage = ({ member, overlayColor = "primary-orange" }) => {
+    // Define overlay colors properly for Tailwind
+    const overlayClasses = {
+      'primary-orange': 'bg-orange-500/60',
+      'primary-blue': 'bg-primary-blue/60'
+    };
+    
+    const textClasses = {
+      'primary-orange': 'text-orange-500',
+      'primary-blue': 'text-primary-blue/60'
+    };
+
+    return (
+      <div className={`relative rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 group ${
+        isLargeScreen ? 'w-[260px] h-[260px]' : 'w-48 h-48 lg:w-56 lg:h-56 xl:w-64 xl:h-64'
+      }`}>
+        <img
+          src={member.image}
+          alt={member.name}
+          className={`w-full h-full object-cover hover:scale-105 transition-transform duration-300 ${
+            member.imagePosition || 'object-center'
+          }`}
+          loading="lazy"
+          style={{
+            imageRendering: 'auto', // Better image rendering
+            backfaceVisibility: 'hidden', // Prevents rendering issues
+            transform: 'translateZ(0)', // Hardware acceleration
+          }}
+          onError={(e) => {
+            console.log(`Image failed to load for ${member.name}:`, member.image);
+            // You can set a fallback image here if needed
+            // e.target.src = '/imgs/team/placeholder.jpg';
+          }}
+          onLoad={(e) => {
+            // Ensure image is properly loaded
+            e.target.style.opacity = '1';
+          }}
+        />
+        <div className={`absolute inset-0 ${overlayClasses[overlayColor] || overlayClasses['primary-orange']} opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end items-start p-6 text-white`}>
+          <h3 className="text-lg font-bold mb-2">{member.name}</h3>
+          <span className={`bg-white ${textClasses[overlayColor] || textClasses['primary-orange']} px-3 py-1 rounded-full text-sm font-medium`}>
+            {member.role}
+          </span>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // Mobile/Tablet Layout
   if (isMobile || isTablet) {
@@ -154,7 +170,9 @@ const TeamSection = () => {
                     <img
                       src={member.image}
                       alt={member.name}
-                      className="w-full h-full object-cover"
+                      className={`w-full h-full object-cover ${
+                        member.imagePosition || 'object-center'
+                      }`}
                       loading="lazy"
                       style={{
                         imageRendering: 'auto',
