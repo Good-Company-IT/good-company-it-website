@@ -35,43 +35,43 @@ const BASE_QUOTES = {
     {
       id: 1,
       image: "/imgs/weBuild/1.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
+      quote: "Julian Ussa has been such a big help. Everytime I have any sort of technical problem, he is always there to work things out with me.",
+      author: "Ana Esaa",
       size: "normal"
     },
     {
       id: 2,
       image: "/imgs/weBuild/2.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore, ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.",
-      author: "Name, Company",
+      quote: "Amazing company to work with! I worked with Julian, he was very patient with all my questions and showed my options to select from. Love working with a team like this.",
+      author: "Viky Salazar",
       size: "large"
     },
     {
       id: 3,
       image: "/imgs/weBuild/3.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
+      quote: "If anyone’s looking for reliable, friendly, and efficient IT support, I can’t recommend Good Company IT enough!",
+      author: "ON-Demand Trading Compliance",
       size: "normal"
     },
     {
       id: 8,
-      image: "/imgs/weBuild/3.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
+      image: "/imgs/weBuild/1.png",
+      quote: "Julian Ussa has been such a big help. Everytime I have any sort of technical problem, he is always there to work things out with me.",
+      author: "Ana Esaa",
       size: "normal"
     },
     {
       id: 9,
-      image: "/imgs/weBuild/1.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
+      image: "/imgs/weBuild/3.png",
+      quote: "If anyone’s looking for reliable, friendly, and efficient IT support, I can’t recommend Good Company IT enough!",
+      author: "ON-Demand Trading Compliance",
       size: "normal"
     },
     {
       id: 10,
       image: "/imgs/weBuild/2.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
+      quote: "Amazing company to work with! I worked with Julian, he was very patient with all my questions and showed my options to select from. Love working with a team like this.",
+      author: "Viky Salazar",
       size: "large"
     }
   ],
@@ -79,44 +79,44 @@ const BASE_QUOTES = {
     {
       id: 4,
       image: "/imgs/weBuild/4.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
+      quote: "Julian Ussa is always super helpful and resolves my issues quickly. Thanks Julian!",
+      author: "Bryce James",
       size: "normal"
     },
     {
       id: 5,
       image: "/imgs/weBuild/5.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
+      quote: "The team explained everything very well and were super helpful. They are easy to work with and great communicators.",
+      author: "Skyler Perry",
       size: "normal"
     },
     {
       id: 6,
       image: "/imgs/weBuild/6.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore, ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.",
-      author: "Name, Company",
+      quote: "Amazing! Julian from Good Company IT is an incredible support for any IT issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company IT!",
+      author: "Allysa Hoffman",
       size: "large"
     },
     {
       id: 7,
-      image: "/imgs/weBuild/6.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore, ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo.",
-      author: "Name, Company",
-      size: "large"
+      image: "/imgs/weBuild/4.png",
+      quote: "Julian Ussa is always super helpful and resolves my issues quickly. Thanks Julian!",
+      author: "Bryce James",
+      size: "normal"
     },
     {
       id: 11,
-      image: "/imgs/weBuild/4.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
+      image: "/imgs/weBuild/5.png",
+      quote: "The team explained everything very well and were super helpful. They are easy to work with and great communicators.",
+      author: "Skyler Perry",
       size: "normal"
     },
     {
       id: 12,
-      image: "/imgs/weBuild/5.png",
-      quote: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.",
-      author: "Name, Company",
-      size: "normal"
+      image: "/imgs/weBuild/6.png",
+      quote: "Amazing! Julian from Good Company IT is an incredible support for any IT issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company IT!",
+      author: "Allysa Hoffman",
+      size: "large"
     }
   ]
 };
