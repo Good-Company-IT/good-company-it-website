@@ -134,6 +134,7 @@ const TeamSection = () => {
               <Button
                 onClick={handleGetInTouch}
                 className=''
+                href={"/contact"}
               >
                 Get in Touch with Us
               </Button>
@@ -267,6 +268,7 @@ const TeamSection = () => {
               <Button
                 onClick={handleGetInTouch}
                 className="text-sm px-4 py-2"
+                href={"/contact"}
               >
                 Get in Touch with Us
               </Button>
