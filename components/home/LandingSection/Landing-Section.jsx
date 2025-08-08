@@ -307,17 +307,9 @@ function LandingSection() {
             </div>
 
             {/* CTA Button */}
-            <motion.div 
-              variants={buttonVariants}
-              whileHover="hover"
-              whileTap="tap"
-            >
-              <Link href="/contact">
-                <Button appearance="primary">
+                <Button appearance="primary" className="w-56" href={"/contact"}>
                   Get in Touch with Us
                 </Button>
-              </Link>
-            </motion.div>
           </div>
 
           {/* Right Content - Logo/Image */}

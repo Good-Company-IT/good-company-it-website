@@ -11,36 +11,51 @@ const Footer = ({ locale, translations }) => {
     const year = new Date().getFullYear();
     // Default fallbacks - Always use English
     const defaults = {
-        services: "Services",
-        community: "Community",
-        about: "About",
+        services: "IT Services",
+        community: "Community Work",
+        about: "About Us",
+        home: "Home",
+        blog: "Blog",
+        contact: "Contact Us",
         allRightsReserved: "All rights reserved"
     };
 
     // Navigation sections matching the image layout
     const navigationSections = [
         {
-            title: "Home",
+            title: defaults.home,
             links: [
                 { label: "Home", href: "/" }
             ]
         },
         {
-            title: defaults.services,
+            title: defaults.about,
             links: [
-                { label: "Services", href: "/services" }
+                { label: "About Us", href: "/about" }
             ]
         },
         {
-            title: defaults.about,
+            title: defaults.services,
             links: [
-                { label: "About us", href: "/" }
+                { label: "IT Services", href: "/services" }
+            ]
+        },
+        {
+            title: defaults.blog,
+            links: [
+                { label: "Blog", href: "/blog" }
             ]
         },
         {
             title: defaults.community,
             links: [
-                { label: "Community", href: "/community" }
+                { label: "Community Work", href: "/community" }
+            ]
+        },
+        {
+            title: defaults.contact,
+            links: [
+                { label: "Contact Us", href: "/contact" }
             ]
         }
     ];
@@ -114,40 +129,29 @@ const Footer = ({ locale, translations }) => {
                         <SocialMediaIcons divClass='justify-start' />
                     </motion.div>
 
-                    {/* Right Side - Navigation Sections */}
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6 lg:gap-8">
-                        {navigationSections.map((section, sectionIndex) => (
-                            <motion.div
-                                key={section.title}
-                                variants={itemVariants}
-                                custom={sectionIndex}
-                            >
-                                <h4 className="text-lg font-semibold mb-6 text-white">
-                                    {section.title}
-                                </h4>
-                                <ul className="space-y-3">
-                                    {section.links.map((link, linkIndex) => (
-                                        <motion.li
-                                            key={linkIndex}
-                                            initial={{ opacity: 0, x: -10 }}
-                                            whileInView={{ opacity: 1, x: 0 }}
-                                            viewport={{ once: true }}
-                                            transition={{
-                                                delay: sectionIndex * 0.1 + linkIndex * 0.05,
-                                                duration: 0.4
-                                            }}
-                                        >
-                                            <Link
-                                                href={link.href}
-                                                className="text-gray-400 hover:text-white transition-colors duration-200 text-sm block"
-                                            >
-                                                {link.label}
-                                            </Link>
-                                        </motion.li>
-                                    ))}
-                                </ul>
-                            </motion.div>
-                        ))}
+                    {/* Right Side - Navigation Sections with Orange Line */}
+                    <div className="relative">
+                        {/* Orange vertical line on the right */}
+                        <div className="absolute top-0 right-0 w-1 h-full rounded-lg bg-gradient-to-b from-orange-400 to-primary-orange"></div>
+                        
+                        {/* Navigation Grid */}
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6 lg:gap-8 pr-10">
+                            {navigationSections.map((section, sectionIndex) => (
+                                <motion.div
+                                    key={section.title}
+                                    variants={itemVariants}
+                                    custom={sectionIndex}
+                                    className="flex flex-col"
+                                >
+                                    <Link
+                                        href={section.links[0].href}
+                                        className="text-base font-medium text-right mb-6 text-white hover:text-orange-400 transition-colors duration-200"
+                                    >
+                                        {section.title}
+                                    </Link>
+                                </motion.div>
+                            ))}
+                        </div>
                     </div>
                 </div>
 
