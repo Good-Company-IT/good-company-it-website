@@ -6,6 +6,7 @@ const icons = {
   arrowRight: FiArrowRight,
 }
 
+
 export const Button = ({
   type = 'button',
   className = '',
