@@ -116,11 +116,7 @@ const OurServices = () => {
               Services
             </span>
           </h2>
-          
-          <p className={`text-white ${getSubtitleClasses()}`}>
-            Lorem ipsum dolor sit amet consectetur adipiscing elit natoque aptent,
-            fermentum nunc curae porta sodales rutrum egestas fermentum.
-          </p>
+
         {/* View All Services Button */}
         <div className="flex justify-end mt-12 lg:mt-16">
           <Button
