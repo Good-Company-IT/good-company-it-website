@@ -47,7 +47,7 @@ const TechSolutionsBento = () => {
                                     To be in Good Company means you have an IT partner that has your back. Whether you're just getting started, or looking to expand securely. It means you have a dedicated IT and PM team that wants to see you reach success.
                                 </p>
 
-                                <Button>
+                                <Button className="w-36" href={"/about"}>
                                     Learn More
                                 </Button>
                             </div>
