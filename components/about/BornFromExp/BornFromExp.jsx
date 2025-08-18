@@ -57,7 +57,7 @@ const BornFromExp = () => {
   return (
     <section 
       ref={sectionRef}
-      className="relative z-10 overflow-hidden bg-white lg:px-24 pb-40 md:pb-48 lg:pb-72 py-20 sm:py-16 lg:p-44"
+      className="relative z-10 overflow-hidden bg-white lg:px-24 pb-40 md:pb-48 lg:pb-44 py-20 sm:py-16 lg:p-44"
     >
         {/* Overlay Image - Now behind content */}
       <div 

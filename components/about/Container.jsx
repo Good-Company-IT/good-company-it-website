@@ -65,15 +65,15 @@ export default function Container({ locale, translations, mainLang }) {
         </div>
       </div>
       {/* Add top padding to BornFromExp to account for overlapping content */}
-      <div className=''>
         <BornFromExp />
+      <div className=''>
+      <WhyItMatters />
       </div>
       <div className='relative w-full'>
         <ImagesContainer />
       </div>
       <OurInfo />
       <TeamSection />
-      <WhyItMatters />
       <HeroCTA
         headings={[
           { text: "Let's Build SMARTER, Together", style: "mixed-gradient", highlight: "SMARTER" }
