@@ -107,7 +107,7 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
             variants={itemVariants}
           >
             {/* Heading */}
-            <div className="space-y-1 sm:space-y-2 md:space-y-3">
+            <div className="space-y-1 flex flex-col items-center md:items-start sm:space-y-2 md:space-y-3">
               <h2 className="text-2xl md:text-4xl font-regular text-gray-900 leading-[1.1] sm:leading-tight">
                 {title}
                 <br/>
@@ -118,12 +118,12 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
             </div>
 
             {/* Subtitle */}
-            <p className="text-sm sm:text-base md:text-lg lg:text-xl text-text-dark leading-relaxed max-w-none sm:max-w-lg">
+            <p className="text-sm text-center md:text-left sm:text-base md:text-lg lg:text-xl text-text-dark leading-relaxed max-w-none sm:max-w-lg">
               {subtitle}
             </p>
 
             {/* CTA Button */}
-            <div className="pt-1 sm:pt-2">
+            <div className="pt-1  sm:pt-2">
               <Link href="/contact">
                 <Button appearance="primary">
                     Contact Us
