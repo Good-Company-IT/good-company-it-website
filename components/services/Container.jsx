@@ -73,7 +73,7 @@ export default function Container({ locale, translations, mainLang }) {
             <HeroCTA
                 headings={[
                     { text: "You Have a Dream.", style: "mixed-gradient", highlight: "Dream" },
-                    { text: "We'll Protect It.", style: "mixed-blue-gradient", highlight: "Protect" }
+                    { text: "We'll Protect I.T.", style: "mixed-blue-gradient", highlight: "Protect I.T." }
                 ]}
                 descriptions={[
                     "You're building something that matters, and you shouldn't have to worry about tech slowing you down.",
