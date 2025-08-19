@@ -6,7 +6,6 @@ const icons = {
   arrowRight: FiArrowRight,
 }
 
-
 export const Button = ({
   type = 'button',
   className = '',
@@ -39,7 +38,7 @@ export const Button = ({
   // If href is provided, render as Link
   if (href) {
     return (
-      <Link href={href} className={`${appearances[appearance]} ${className} flex items-center gap-2`}>
+      <Link href={href} className={`${appearances[appearance]} ${className} inline-flex items-center justify-center gap-2`}>
         {buttonContent}
       </Link>
     );
@@ -51,7 +50,7 @@ export const Button = ({
       type={type}
       onClick={onClick}
       disabled={disabled}
-      className={`${appearances[appearance]} ${className} flex items-center gap-2`}
+      className={`${appearances[appearance]} ${className} inline-flex items-center justify-center gap-2`}
     >
       {buttonContent}
     </button>
