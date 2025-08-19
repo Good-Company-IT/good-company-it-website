@@ -123,12 +123,10 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
             </p>
 
             {/* CTA Button */}
-            <div className="pt-1  sm:pt-2">
-              <Link href="/contact">
-                <Button appearance="primary">
+            <div className="w-full sm:max-w-40 pt-1  sm:pt-2">
+                <Button href="/contact" className="w-full" appearance="primary">
                     Contact Us
                 </Button>
-              </Link>
             </div>
           </motion.div>
 
