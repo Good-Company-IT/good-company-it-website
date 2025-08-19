@@ -45,13 +45,15 @@ const TeamSection = () => {
       id: 4,
       name: "Laura Forero",
       role: "Designer",
-      image: "/imgs/team/member4.JPG" // Note: This has .JPG extension
+      image: "/imgs/team/member4.JPG", // Note: This has .JPG extension
+      imagePosition: "object-[center_25%]"
     },
     {
       id: 5,
       name: "Diego Lopez",
       role: "Consultant",
-      image: "/imgs/team/member5.jpg"
+      image: "/imgs/team/member5.jpg",
+      imagePosition: "object-[center_0%]"
     }
   ];
 
