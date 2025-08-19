@@ -58,13 +58,13 @@ const Purpose = () => {
             id: 1,
             name: "Daniela Ramos",
             image: "/imgs/community/purpose1.png",
-            quote: "Project Dagua ha sido una bendición en todas sus ramas, la conocí hace aproximadamente 10 años. Nos da la oportunidad de compartir con niños e inculcarles el amor a Dios sobre todo, el amor por la pintura y que tengan tiempo de calidad, mis niños han hecho parte de Project Dagua desde hace 10 años y les encanta."
+            quote: "Project Dagua has been a blessing in all its branches, I've known it for approximately 10 years. It gives us the opportunity to share with children and instill in them the love of God above all, the love for painting and to have quality time. My children have been part of Project Dagua for 10 years and they love it."
         },
         {
             id: 2,
             name: "Paula Borrero",
             image: "/imgs/community/purpose2.png",
-            quote: "Para mí, Project Dagua es una oportunidad para aprender, crecer y conectar con todas las personas de la comunidad que hacen parte de este proyecto, especialmente ha sido muy significativo compartir y conocer diferentes historias de vida que nos enseñan a conectar desde la gratitud, amor por el otro y por lo que somos."
+            quote: "For me, Project Dagua is an opportunity to learn, grow and connect with all the people in the community who are part of this project. It has been especially meaningful to share and learn about different life stories that teach us to connect through gratitude, love for others and for who we are."
         }
     ];
 
@@ -124,7 +124,7 @@ const Purpose = () => {
                                             <path d="M29.0559 0.438775C28.9068 1.35541 29.2587 5.50094 29.0559 5.69018C28.9247 5.81437 26.4847 5.69018 25.4705 5.94447C21.4019 6.94981 18.1029 10.3739 16.6532 14.1528C34.2461 18.4816 30.8217 43.822 11.6659 41.2081C6.71436 40.534 1.41682 35.3121 0.730769 30.4215C-1.44671 14.8979 13.2528 -0.40689 29.0559 0.438775Z" fill="#34C8FF" />
                                         </svg>
                                     </div>
-                                    
+
                                     {/* Quote text - takes up available space */}
                                     <div className="mb-6 mt-8 sm:mt-10 flex-1">
                                         <p className="text-text-dark text-sm sm:text-base leading-relaxed text-left">
