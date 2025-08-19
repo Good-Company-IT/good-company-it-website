@@ -81,7 +81,10 @@ function WorkingWithUs({ title, titleHightlight, subtitle }) {
   };
 
   return (
-    <section ref={sectionRef} className="relative max-h-[800px] h-[800px] overflow-hidden">
+    <section 
+      ref={sectionRef} 
+      className="relative min-h-[600px] md:min-h-[700px] lg:min-h-[800px] lg:max-h-[800px] lg:h-[800px] overflow-hidden"
+    >
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
@@ -92,24 +95,24 @@ function WorkingWithUs({ title, titleHightlight, subtitle }) {
       
       {/* Content Container */}
       <motion.div
-        className="relative z-10 w-full h-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 flex items-center"
+        className="relative z-10 w-full h-full max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 flex items-center"
         variants={containerVariants}
         initial="hidden"
         animate={isLoaded && isInView ? "visible" : "hidden"}
       >
-        <div className="w-full h-full grid xl:grid-cols-12 gap-8 md:gap-12 px-0 lg:px-14 items-center">
+        <div className="w-full h-full grid grid-cols-1 xl:grid-cols-12 gap-6 sm:gap-8 md:gap-12 px-0 lg:px-14 items-center">
           
           {/* Left Content */}
           <motion.div 
-            className="xl:col-span-5 flex flex-col justify-center space-y-6 lg:space-y-8"
+            className="xl:col-span-5 flex flex-col justify-center space-y-4 sm:space-y-6 lg:space-y-8 text-center xl:text-left"
             variants={textVariants}
           >
             {/* Heading */}
-            <div className="space-y-2 flex flex-col items-center md:items-start">
-              <h2 className="text-2xl md:text-4xl font-regular text-gray-900 leading-[1.1] sm:leading-tight">
+            <div className="space-y-2 flex flex-col items-center xl:items-start">
+              <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-regular text-gray-900 leading-tight">
                 {title}
                 <br/>
-                <span className="text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-[1.1] sm:leading-tight">
+                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-primary-orange font-bold leading-tight">
                   {" "}{titleHightlight}
                 </span>
               </h2>
@@ -118,13 +121,13 @@ function WorkingWithUs({ title, titleHightlight, subtitle }) {
             {/* Subtitle */}
             <motion.p 
               variants={textVariants}
-              className="text-sm text-center md:text-left sm:text-base md:text-lg lg:text-xl text-text-dark leading-relaxed max-w-lg"
+              className="text-sm sm:text-base md:text-lg lg:text-xl text-text-dark leading-relaxed max-w-lg mx-auto xl:mx-0"
             >
               {subtitle}
             </motion.p>
 
             {/* CTA Button */}
-            <motion.div variants={textVariants} className="pt-2">
+            <motion.div variants={textVariants} className="pt-2 flex justify-center xl:justify-start">
               <Link href="/contact">
                 <Button appearance="primary">
                   Contact Us
@@ -134,22 +137,29 @@ function WorkingWithUs({ title, titleHightlight, subtitle }) {
           </motion.div>
 
           {/* Right Content - InfoCards Grid */}
-          <div className="xl:col-span-7">
+          <div className="xl:col-span-7 w-full">
             <motion.div 
-              className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-6 max-w-4xl mx-auto xl:mx-0"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-5 sm:gap-6 lg:gap-8 max-w-6xl mx-auto xl:mx-0"
               variants={containerVariants}
             >
               {infoData.map((info, index) => (
                 <motion.div
                   key={info.title}
                   variants={cardVariants}
-                  className="flex justify-center"
+                  className="flex justify-center w-full"
                 >
-                  <InfoCard
-                    variant="fourth" 
-                    info={{ ...info, index }} 
-                    isActive={true}
-                  />
+                  <div className="w-full max-w-lg sm:max-w-none">
+                    <div className="[&_h3]:!text-sm [&_h3]:sm:!text-base [&_h3]:!font-semibold [&_p]:!text-xs [&_p]:sm:!text-sm [&_p]:!leading-relaxed min-h-[200px] sm:min-h-[240px] lg:min-h-[260px]">
+                      <InfoCard
+                        variant="fourth" 
+                        info={{ 
+                          ...info, 
+                          index
+                        }} 
+                        isActive={true}
+                      />
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </motion.div>
