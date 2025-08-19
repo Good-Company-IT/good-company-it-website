@@ -49,7 +49,7 @@ const BASE_QUOTES = {
     {
       id: 3,
       image: "/imgs/weBuild/3.png",
-      quote: "If anyone’s looking for reliable, friendly, and efficient IT support, I can’t recommend Good Company IT enough!",
+      quote: "If anyone's looking for reliable, friendly, and efficient IT support, I can't recommend Good Company IT enough!",
       author: "ON-Demand Trading Compliance",
       size: "normal"
     },
@@ -63,7 +63,7 @@ const BASE_QUOTES = {
     {
       id: 9,
       image: "/imgs/weBuild/3.png",
-      quote: "If anyone’s looking for reliable, friendly, and efficient IT support, I can’t recommend Good Company IT enough!",
+      quote: "If anyone's looking for reliable, friendly, and efficient IT support, I can't recommend Good Company IT enough!",
       author: "ON-Demand Trading Compliance",
       size: "normal"
     },
@@ -121,6 +121,64 @@ const BASE_QUOTES = {
   ]
 };
 
+// Original unique quotes without duplicates
+const ORIGINAL_QUOTES = {
+  left: [
+    {
+      id: 1,
+      image: "/imgs/weBuild/1.png",
+      quote: "Julian Ussa has been such a big help. Everytime I have any sort of technical problem, he is always there to work things out with me.",
+      author: "Ana Esaa",
+      size: "normal"
+    },
+    {
+      id: 2,
+      image: "/imgs/weBuild/2.png",
+      quote: "Amazing company to work with! I worked with Julian, he was very patient with all my questions and showed my options to select from. Love working with a team like this.",
+      author: "Viky Salazar",
+      size: "large"
+    },
+    {
+      id: 3,
+      image: "/imgs/weBuild/3.png",
+      quote: "If anyone's looking for reliable, friendly, and efficient IT support, I can't recommend Good Company IT enough!",
+      author: "ON-Demand Trading Compliance",
+      size: "normal"
+    }
+  ],
+  right: [
+    {
+      id: 4,
+      image: "/imgs/weBuild/4.png",
+      quote: "Julian Ussa is always super helpful and resolves my issues quickly. Thanks Julian!",
+      author: "Bryce James",
+      size: "normal"
+    },
+    {
+      id: 5,
+      image: "/imgs/weBuild/5.png",
+      quote: "The team explained everything very well and were super helpful. They are easy to work with and great communicators.",
+      author: "Skyler Perry",
+      size: "normal"
+    },
+    {
+      id: 6,
+      image: "/imgs/weBuild/6.png",
+      quote: "Amazing! Julian from Good Company IT is an incredible support for any IT issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company IT!",
+      author: "Allysa Hoffman",
+      size: "large"
+    }
+  ]
+};
+
+// Combine and shuffle quotes for mobile display
+const getMobileQuotes = () => {
+  const allOriginal = [...ORIGINAL_QUOTES.left, ...ORIGINAL_QUOTES.right];
+  
+  // Shuffle the array for better visual distribution
+  return allOriginal.sort(() => Math.random() - 0.5);
+};
+
 // Utility functions
 const getScreenType = () => {
   if (typeof window === 'undefined') return 'desktop';
@@ -139,7 +197,7 @@ const getScreenType = () => {
 const getScreenConfig = (screenType) => {
   const configs = {
     mobile: { multiplier: 1, maxTransform: 0, heightMultiplier: 0, sectionHeight: 'auto' },
-    tablet: { multiplier: 1, maxTransform: 0, heightMultiplier: 0, sectionHeight: '250vh' },
+    tablet: { multiplier: 1, maxTransform: 0, heightMultiplier: 0, sectionHeight: 'auto' },
     desktop: { multiplier: 1.2, maxTransform: 600, heightMultiplier: 0.8, sectionHeight: '380vh' },
     lg: { multiplier: 1.6, maxTransform: 700, heightMultiplier: 0.9, sectionHeight: '420vh' },
     xl: { multiplier: 2.0, maxTransform: 800, heightMultiplier: 1.0, sectionHeight: '450vh' },
@@ -432,6 +490,8 @@ const QuotesSection = ({
 
   // Mobile/Tablet Layout
   if (screenType === 'mobile' || screenType === 'tablet') {
+    const mobileQuotes = getMobileQuotes();
+    
     return (
       <div ref={sectionRef} className="relative bg-[#F3F5F9] overflow-hidden py-12 md:py-16">
         <div
@@ -461,22 +521,13 @@ const QuotesSection = ({
             </Button>
           </div>
 
-          {/* Quote Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-            <div>
-              {BASE_QUOTES.left.map(quote => (
-                <div key={quote.id} className="flex justify-center">
-                  <QuoteCard {...quote} />
-                </div>
-              ))}
-            </div>
-            <div>
-              {BASE_QUOTES.right.map(quote => (
-                <div key={quote.id} className="flex justify-center">
-                  <QuoteCard {...quote} />
-                </div>
-              ))}
-            </div>
+          {/* Quote Cards Grid - Original Unique Quotes Only */}
+          <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">
+            {mobileQuotes.map(quote => (
+              <div key={quote.id} className="flex justify-center">
+                <QuoteCard {...quote} />
+              </div>
+            ))}
           </div>
         </div>
       </div>
