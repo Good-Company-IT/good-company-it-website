@@ -13,7 +13,7 @@ const ContactSection = dynamic(() => import("./ContactSection/ContactSecton"), {
   ssr: true
 });
 
-const WorkingWithUs = dynamic(() => import("../home/WhyGoco/WhyGoco"), {
+const WorkingWithUs = dynamic(() => import("./WorkingWithUs/WorkingWithUs"), {
   loading: () => <MinimalLoader />,
   ssr: true
 });
