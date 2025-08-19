@@ -95,7 +95,7 @@ const SlidesCarousel = ({ slides, variant = 'default' }) => {
                     <img
                         src={slide.image}
                         alt={slide.title}
-                        className={`w-full h-full object-cover ${variant === 'default' ? 'grayscale' : ''}`}
+                        className={`w-full h-full object-cover object-[center_20%] ${variant === 'default' ? 'grayscale' : ''}`}
                     />
                 </div>
             )}
@@ -220,7 +220,7 @@ const SlidesCarousel = ({ slides, variant = 'default' }) => {
                                         <img
                                             src={slides[activeSlide].image}
                                             alt={slides[activeSlide].title}
-                                            className={`w-full h-full object-cover transition-all duration-300 ease-in-out ${variant === 'default' ? 'grayscale' : ''}`}
+                                            className={`w-full h-full object-cover object-[center_20%] transition-all duration-300 ease-in-out ${variant === 'default' ? 'grayscale' : ''}`}
                                         />
                                     </div>
                                 )}

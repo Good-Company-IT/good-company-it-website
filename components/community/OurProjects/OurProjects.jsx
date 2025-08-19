@@ -1,5 +1,6 @@
 import SlidesCarousel from "@/components/common/Carrousels/SlidesCarrousel";
 
+
 const slides = [
     {
         id: 1,
