@@ -209,7 +209,7 @@ const TeamSection = () => {
           {/* Row 1, Col 1 - "Who's Behind Good Company?" */}
           <div className="col-span-1 row-span-1 flex flex-col justify-center">
             <div className="text-right mr-5">
-              <p className={`text-text-dark font-medium mb-2 ${isLargeScreen ? 'text-xl' : 'text-lg'}`}>
+              <p className={`text-text-dark font-medium mb-2 ${isLargeScreen ? 'text-2xl' : 'text-xl'}`}>
                 Who's Behind
               </p>
               <h2 className={`font-bold leading-tight ${isLargeScreen ? 'text-2xl' : 'text-xl lg:text-2xl'}`}>
