@@ -166,10 +166,10 @@ const TeamSection = () => {
               </p>
             </div>
 
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6 sm:gap-8">
               {teamMembers.map((member) => (
                 <div key={member.id} className="text-center">
-                  <div className="w-32 h-32 xs:w-40 xs:h-40 sm:w-44 sm:h-44 mx-auto mb-2 rounded-lg overflow-hidden shadow-md">
+                  <div className="w-40 h-40 xs:w-48 xs:h-48 sm:w-52 sm:h-52 mx-auto mb-3 rounded-lg overflow-hidden shadow-md">
                     <img
                       src={member.image}
                       alt={member.name}
@@ -187,7 +187,8 @@ const TeamSection = () => {
                       }}
                     />
                   </div>
-                  <p className="text-xs text-text-dark">{member.name}</p>
+                  <h4 className="text-sm font-semibold text-primary-orange mb-1">{member.name}</h4>
+                  <p className="text-xs text-primary-orange font-medium">{member.role}</p>
                 </div>
               ))}
             </div>
