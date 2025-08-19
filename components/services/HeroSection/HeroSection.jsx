@@ -44,6 +44,12 @@ const HeroSection = () => {
               className="w-full h-full object-cover"
             />
           </div>
+          
+          {/* Dark Overlay for Better Text Readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-black/30"></div>
+          
+          {/* Additional focused overlay for text area */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent"></div>
         </div>
 
         {/* Content Container */}
@@ -62,11 +68,11 @@ const HeroSection = () => {
                 variants={itemVariants}
               >
                 <span
-                  className="inline-flex items-center px-8 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity"
+                  className="inline-flex items-center px-8 py-2 text-sm font-medium text-white hover:opacity-80 transition-opacity backdrop-blur-sm"
                   style={{
                     borderRadius: '200px',
                     border: '1px solid #DBDDFB',
-                    background: 'linear-gradient(238deg, rgba(255, 255, 255, 0.15) -9.79%, rgba(4, 11, 89, 0.15) 61.45%, rgba(1, 4, 37, 0.15) 130.31%)'
+                    background: 'linear-gradient(238deg, rgba(255, 255, 255, 0.20) -9.79%, rgba(4, 11, 89, 0.20) 61.45%, rgba(1, 4, 37, 0.20) 130.31%)'
                   }}
                 >
                   Services
@@ -79,9 +85,9 @@ const HeroSection = () => {
                 variants={itemVariants}
               >
                 <h1 className="text-4xl sm:text-5xl font-medium leading-tight">
-                  <span className="text-white block">You Don't Have to</span>
+                  <span className="text-white block drop-shadow-lg">You Don't Have to</span>
                   <span
-                    className="block font-bold text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400"
+                    className="block font-bold text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400 drop-shadow-lg"
                   >
                     Do IT Alone.
                   </span>
@@ -93,7 +99,7 @@ const HeroSection = () => {
                 className="max-w-lg"
                 variants={itemVariants}
               >
-                <p className="text-base sm:text-lg text-white leading-relaxed">
+                <p className="text-base sm:text-lg text-white leading-relaxed drop-shadow-md">
                   From cybersecurity to day-to-day IT support, our services are built to protect your team, your data, and your business.
                 </p>
               </motion.div>
@@ -106,7 +112,7 @@ const HeroSection = () => {
                 title="At Good Company,"
                 titleHighlight={true}
                 titleHighlightText="We Get It"
-                text="Growing businesses don’t just need someone to fix tech issues when things break. You need a real partner who helps you stay ahead of problems, optimize your processes, and keep your team running smoothly without breaking the bank." />
+                text="Growing businesses don't just need someone to fix tech issues when things break. You need a real partner who helps you stay ahead of problems, optimize your processes, and keep your team running smoothly without breaking the bank." />
             </div>
           </div>
         </div>
