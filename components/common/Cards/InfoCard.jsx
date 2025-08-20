@@ -11,6 +11,7 @@ import {
   FaHeart,
 } from "react-icons/fa";
 
+
 // InfoCard Component - Fully Responsive & Optimized with Variant Support
 function InfoCard({ info, isActive, variant = "primary" }) {
 
