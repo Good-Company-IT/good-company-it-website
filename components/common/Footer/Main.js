@@ -5,7 +5,7 @@ import Image from 'next/image';
 import Link from "next/link";
 import { motion } from "framer-motion";
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
-import gocoImg from "./assets/GoCo.svg";
+import gocoImg from "./assets/GoCO_copy.svg";
 
 const Footer = ({ locale, translations }) => {
 
