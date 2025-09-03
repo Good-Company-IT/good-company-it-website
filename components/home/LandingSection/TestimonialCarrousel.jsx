@@ -16,22 +16,22 @@ function TestimonialCarousel() {
     const testimonials = React.useMemo(() => [
         {
             name: "Andrew Castillo",
-            quote: "“Highly recommend Good Company IT for anyone needing top-notch tech support. Huge thanks to Julian Ussa for the outstanding work”",
+            quote: "“Highly recommend Good Company I.T. for anyone needing top-notch tech support. Huge thanks to Julian Ussa for the outstanding work”",
             hasAvatar: true,
         },
         {
             name: "Trellanie Vernon",
-            quote: "Their team provided exceptional customer service and quickly resolved my IT issue.",
+            quote: "Their team provided exceptional customer service and quickly resolved my I.T. issue.",
             hasAvatar: true,
         },
         {
             name: "Fabian Ramos",
-            quote: "Excellent service and support! Julian from Good Company IT is the best- very helpful, patient, and dedicated to resolving any IT issues",
+            quote: "Excellent service and support! Julian from Good Company I.T. is the best- very helpful, patient, and dedicated to resolving any I.T. issues",
             hasAvatar: true,
         },
         {
             name: "On-Demand Trading Compliance",
-            quote: "From start to finish, the team at Good Company IT is extremely responsive, knowledgeable, and incredibly patient.",
+            quote: "From start to finish, the team at Good Company I.T. is extremely responsive, knowledgeable, and incredibly patient.",
             hasAvatar: true,
         },
         {

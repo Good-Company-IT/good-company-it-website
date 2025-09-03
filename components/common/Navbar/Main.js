@@ -37,7 +37,7 @@ function Navbar() {
   // Navigation data structure - simplified to just links
   const navigationItems = [
     {
-      label: "IT Services",
+      label: "I.T. Services",
       href: "/services"
     },
     {

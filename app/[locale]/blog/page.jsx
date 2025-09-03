@@ -14,7 +14,7 @@ const metadata_en = {
   metadataBase: new URL('https://www.zeenti.com'),
   title: "Zeenti - Digital Excellence & Innovation - Zeenti Digital Consulting LLC.",
   description: "Transform your business with Zeenti Digital Consulting LLC. Expert web development, mobile apps, digital strategy, and cloud solutions. Innovative consulting for modern businesses.",
-  keywords: "digital consulting, web development, mobile applications, digital strategy, cloud solutions, IT consulting, business transformation, technology consulting, digital innovation",
+  keywords: "digital consulting, web development, mobile applications, digital strategy, cloud solutions, I.T. consulting, business transformation, technology consulting, digital innovation",
   language: "en",
   subject: "Digital Consulting Services",
   coverage: "Global",

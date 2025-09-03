@@ -121,7 +121,7 @@ function WhyItMatters() {
 
                         {/* Subtitle */}
                         <p className="text-sm sm:text-base text-white leading-relaxed max-w-lg">
-                            At Good Company IT, trust is built on results. Our clients choose us because we combine deep technical expertise with a proactive, human -centered approach.
+                            At Good Company I.T., trust is built on results. Our clients choose us because we combine deep technical expertise with a proactive, human -centered approach.
                         </p>
 
                         {/* CTA Button */}

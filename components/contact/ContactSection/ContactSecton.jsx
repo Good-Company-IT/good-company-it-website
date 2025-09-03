@@ -250,7 +250,7 @@ const ContactSection = () => {
 
                             <div className="space-y-6">
                                 <h3 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-white leading-normal" style={{ lineHeight: '1.3' }}>
-                                    We believe great IT starts with{" "}
+                                    We believe great I.T. starts with{" "}
                                     <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
                                         clear communication.
                                     </span>
@@ -383,7 +383,7 @@ const ContactSection = () => {
                                     <p className="text-slate-900 font-medium mb-4">What services are you interested in?</p>
                                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                         {[
-                                            "IT Security & Compliance",
+                                            "I.T. Security & Compliance",
                                             "Remote Support",
                                             "Cloud Support & Consulting",
                                             "Employee Onboarding/Offboarding",

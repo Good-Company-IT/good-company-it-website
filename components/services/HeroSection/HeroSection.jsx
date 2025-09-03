@@ -89,7 +89,7 @@ const HeroSection = () => {
                   <span
                     className="block font-bold text-5xl sm:text-6xl text-transparent bg-clip-text bg-gradient-to-tr from-primary-orange to-orange-400 drop-shadow-lg"
                   >
-                    Do IT Alone.
+                    Do I.T. Alone.
                   </span>
                 </h1>
               </motion.div>
@@ -100,7 +100,7 @@ const HeroSection = () => {
                 variants={itemVariants}
               >
                 <p className="text-base sm:text-lg text-white leading-relaxed drop-shadow-md">
-                  From cybersecurity to day-to-day IT support, our services are built to protect your team, your data, and your business.
+                  From cybersecurity to day-to-day I.T. support, our services are built to protect your team, your data, and your business.
                 </p>
               </motion.div>
 

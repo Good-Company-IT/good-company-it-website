@@ -49,7 +49,7 @@ const BASE_QUOTES = {
     {
       id: 3,
       image: "/imgs/weBuild/3.png",
-      quote: "If anyone's looking for reliable, friendly, and efficient IT support, I can't recommend Good Company IT enough!",
+      quote: "If anyone's looking for reliable, friendly, and efficient I.T. support, I can't recommend Good Company I.T. enough!",
       author: "ON-Demand Trading Compliance",
       size: "normal"
     },
@@ -63,7 +63,7 @@ const BASE_QUOTES = {
     {
       id: 9,
       image: "/imgs/weBuild/3.png",
-      quote: "If anyone's looking for reliable, friendly, and efficient IT support, I can't recommend Good Company IT enough!",
+      quote: "If anyone's looking for reliable, friendly, and efficient I.T. support, I can't recommend Good Company I.T. enough!",
       author: "ON-Demand Trading Compliance",
       size: "normal"
     },
@@ -93,7 +93,7 @@ const BASE_QUOTES = {
     {
       id: 6,
       image: "/imgs/weBuild/6.png",
-      quote: "Amazing! Julian from Good Company IT is an incredible support for any IT issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company IT!",
+      quote: "Amazing! Julian from Good Company I.T. is an incredible support for any I.T. issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company I.T.!",
       author: "Allysa Hoffman",
       size: "large"
     },
@@ -114,7 +114,7 @@ const BASE_QUOTES = {
     {
       id: 12,
       image: "/imgs/weBuild/6.png",
-      quote: "Amazing! Julian from Good Company IT is an incredible support for any IT issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company IT!",
+      quote: "Amazing! Julian from Good Company I.T. is an incredible support for any I.T. issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company I.T.!",
       author: "Allysa Hoffman",
       size: "large"
     }
@@ -141,7 +141,7 @@ const ORIGINAL_QUOTES = {
     {
       id: 3,
       image: "/imgs/weBuild/3.png",
-      quote: "If anyone's looking for reliable, friendly, and efficient IT support, I can't recommend Good Company IT enough!",
+      quote: "If anyone's looking for reliable, friendly, and efficient I.T. support, I can't recommend Good Company I.T. enough!",
       author: "ON-Demand Trading Compliance",
       size: "normal"
     }
@@ -164,7 +164,7 @@ const ORIGINAL_QUOTES = {
     {
       id: 6,
       image: "/imgs/weBuild/6.png",
-      quote: "Amazing! Julian from Good Company IT is an incredible support for any IT issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company IT!",
+      quote: "Amazing! Julian from Good Company I.T. is an incredible support for any I.T. issue. He is prompt, patient, and extremely helpful + knowledgeable. I HIGHLY recommend Good Company I.T.!",
       author: "Allysa Hoffman",
       size: "large"
     }
@@ -310,7 +310,7 @@ const calculateTransforms = (scrollProgress, screenType) => {
 
 // Main component
 const QuotesSection = ({
-  centerTitle = "We don't just build IT systems, we build relationships.",
+  centerTitle = "We don't just build I.T. systems, we build relationships.",
   centerTitleHighlight = "we build relationships.",
   centerDescription = "Our clients trust us because we show up, solve problems, and deliver results that make their day-to-day easier and their growth more secure.",
   centerDescriptionHighlight = "we show up, solve problems, and deliver results",

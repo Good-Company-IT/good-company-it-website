@@ -5,13 +5,14 @@ import Image from 'next/image';
 import Link from "next/link";
 import { motion } from "framer-motion";
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
+import gocoImg from "./assets/GoCo.svg";
 
 const Footer = ({ locale, translations }) => {
 
     const year = new Date().getFullYear();
     // Default fallbacks - Always use English
     const defaults = {
-        services: "IT Services",
+        services: "I.T. Services",
         community: "Community Work",
         about: "About Us",
         home: "Home",
@@ -37,7 +38,7 @@ const Footer = ({ locale, translations }) => {
         {
             title: defaults.services,
             links: [
-                { label: "IT Services", href: "/services" }
+                { label: "I.T. Services", href: "/services" }
             ]
         },
         {
@@ -162,7 +163,7 @@ const Footer = ({ locale, translations }) => {
                 >
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                         <p className="text-gray-400 text-sm">
-                            © Good Company IT® Inc. {defaults.allRightsReserved}. {year}
+                            © Good Company I.T.® Inc. {defaults.allRightsReserved}. {year}
                         </p>
                     </div>
                 </motion.div>
@@ -177,7 +178,7 @@ const Footer = ({ locale, translations }) => {
                 transition={{ duration: 0.8, delay: 0.3 }}
             >
                 <Image
-                    src="/imgs/GoCo.svg"
+                    src={gocoImg}
                     alt="Good Company Logo"
                     width={1600}
                     height={400}

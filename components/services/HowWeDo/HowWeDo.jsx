@@ -136,7 +136,7 @@ const slidesData = [
       "Ticket-Based & Project-Based Requests",
       "Strategic Technology Planning",
       "Weekly/Biweekly Check-ins",
-      "IT Roadmapping & Forecasting"
+      "I.T. Roadmapping & Forecasting"
     ]
   },
   {
@@ -159,7 +159,7 @@ const slidesData = [
     description: "We help align your systems with regulatory standards like HIPAA, SOC 2, ISO 27001, and GDPR — turning complex frameworks into clear, actionable processes that protect your business.",
     image: "/imgs/services/howWeDo/compliance.png",
     features: [
-      "IT Security & Compliance Consulting",
+      "I.T. Security & Compliance Consulting",
       "Policy Mapping",
       "Log Documentation",
       "Risk & Gap Assessments",
@@ -385,7 +385,7 @@ const Header = () => (
     <h2 className="text-3xl sm:text-4xl md:text-5xl font-normal text-white mb-4">
       Here's how we do{' '}
       <span className="font-bold text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
-        IT
+        I.T.
       </span>
     </h2>
   </motion.div>
