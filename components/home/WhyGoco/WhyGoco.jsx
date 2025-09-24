@@ -86,11 +86,36 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
     <section className="relative max-h-[800px] h-[800px] overflow-hidden">
       {/* Background Image */}
       <div 
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-no-repeat"
         style={{
-          backgroundImage: "url('/imgs/team/teamComplete.png')", 
+          backgroundImage: "url('/imgs/team/teamComplete.png')",
+          backgroundPosition: "center 20%"
         }}
       />
+      
+      {/* Media query styles for different screen sizes */}
+      <style jsx>{`
+        @media (min-width: 768px) {
+          .absolute.inset-0 {
+            background-position: center 15% !important;
+          }
+        }
+        @media (min-width: 1024px) {
+          .absolute.inset-0 {
+            background-position: center 10% !important;
+          }
+        }
+        @media (min-width: 1280px) {
+          .absolute.inset-0 {
+            background-position: center 8% !important;
+          }
+        }
+        @media (min-width: 1536px) {
+          .absolute.inset-0 {
+            background-position: center 5% !important;
+          }
+        }
+      `}</style>
       
       {/* Content Container */}
       <motion.div
