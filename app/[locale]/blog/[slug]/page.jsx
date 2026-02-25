@@ -99,7 +99,7 @@ export default function BlogDetail({ params }) {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
           <button
             onClick={() => router.back()}
-            className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 transition-colors"
+            className="inline-flex items-center gap-2 text-gray-200 hover:text-white transition-colors"
           >
             <FiArrowLeft className="w-4 h-4" />
             Back to Blog
@@ -152,8 +152,10 @@ export default function BlogDetail({ params }) {
             )}
 
             {/* Title */}
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight mb-6">
-              {blog.title}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
+                {blog.title}
+              </span>
             </h1>
 
             {/* Meta Information */}

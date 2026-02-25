@@ -2,6 +2,29 @@
 const STRAPI_API_URL = 'http://localhost:1337/api';
 const STRAPI_TOKEN = 'bdd0aa7259a9a8c9754fdf0c760e37b10d2b72c4e214c3e412419901990603d01524956fe5b232931ece70f348f07d87347703aba5e4ebe073e08b0a0252eea98e5ec5a7158b027277ed6bf8b9694a6bb2fb6b67942d8a223e3b208373573fdeabacd215fa94a41c345b646dabb51b23b48a7690b479f0813175c922855b7185';
 
+// mock blog disconnected from CMS
+const MOCK_BLOG = {
+  id: 'mock-1',
+  slug: 'cybersecurity-it',
+  title: 'Cybersecurity & I.T.: Safeguarding Your Digital World',
+  description: 'An essential guide to why cybersecurity and information technology are critical for every modern business.',
+  author: 'GoCo Team',
+  date: '2026-02-24',
+  readTime: '6 min read',
+  tags: ['cybersecurity', 'IT', 'security'],
+  category: 'Security',
+  image: 'https://images.unsplash.com/photo-1569887199258-055b08e2e94e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',
+  featured: false,
+  content: `### Cybersecurity matters
+
+In today's interconnected landscape, protecting your data and infrastructure is not a luxury—it's a necessity. 
+
+Good Company offers insights into best practices for securing networks, training employees, and choosing the right tools. 
+
+
+disconnected from CMS mock post content here...`,
+};
+
 // API Headers
 const headers = {
   'Authorization': `Bearer ${STRAPI_TOKEN}`,
@@ -33,7 +56,8 @@ export const fetchBlogData = async () => {
     // Check if data.data exists and is an array
     if (!data.data || !Array.isArray(data.data)) {
       console.warn('⚠️ Unexpected data structure from Strapi:', data);
-      return [];
+      // still return mock if nothing else
+      return [MOCK_BLOG];
     }
     
     // Transform Strapi data to match your existing structure
@@ -68,11 +92,14 @@ export const fetchBlogData = async () => {
     });
 
     console.log('🎉 Final blog data array:', blogData);
-    return blogData;
+    // merge mock blog at front if not already present
+    const combined = [MOCK_BLOG, ...blogData.filter(b => b.slug !== MOCK_BLOG.slug)];
+    console.log('🎉 Combined array with mock:', combined);
+    return combined;
   } catch (error) {
     console.error('❌ Error fetching blog data:', error);
-    console.log('🔄 Returning empty array instead of fallback data');
-    return [];
+    console.log('🔄 Returning mock blog instead of empty array');
+    return [MOCK_BLOG];
   }
 };
 
@@ -205,6 +232,12 @@ export const tags = [];
 export const getBlogBySlug = async (slug) => {
   try {
     console.log(`🔍 Fetching blog with slug: ${slug}`);
+    
+    // check mock first
+    if (slug === MOCK_BLOG.slug) {
+      console.log('🧪 Returning mock blog for slug', slug);
+      return MOCK_BLOG;
+    }
     
     // Search for blog by slug field first, then fallback to documentId
     const response = await fetch(`${STRAPI_API_URL}/blogs?filters[slug][$eq]=${slug}&populate=*`, {

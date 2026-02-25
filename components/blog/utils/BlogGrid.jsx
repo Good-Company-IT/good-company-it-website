@@ -89,8 +89,11 @@ const BlogCard = ({ blog, index }) => {
             variants={hoverVariants}
             initial="rest"
             whileHover="hover"
-            className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 cursor-pointer"
+            className="overflow-hidden h-full rounded-2xl transition-shadow duration-300 cursor-pointer"
           >
+            {/* gradient outline wrapper */}
+            <div className="h-full bg-gradient-cards p-0.5 rounded-2xl">
+              <div className="h-full bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
             {/* Image Container */}
             <div className="relative overflow-hidden">
               <motion.div variants={imageVariants}>
@@ -218,7 +221,9 @@ const BlogCard = ({ blog, index }) => {
                   <FiArrowRight className="w-4 h-4" />
                 </motion.div>
               </motion.div>
-            </div>
+            </div>  {/* close content container */}
+            </div>  {/* close inner white card */}
+          </div>    {/* close gradient wrapper */}
           </motion.div>
         </Link>
       </motion.article>
@@ -239,8 +244,10 @@ const BlogCard = ({ blog, index }) => {
           variants={hoverVariants}
           initial="rest"
           whileHover="hover"
-          className="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden h-full hover:shadow-lg transition-shadow duration-300 flex flex-col cursor-pointer"
+          className="overflow-hidden h-full rounded-2xl transition-shadow duration-300 cursor-pointer"
         >
+          <div className="h-full bg-gradient-cards p-0.5 rounded-2xl">
+            <div className="h-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300">
           {/* Image Container */}
           <div className="relative overflow-hidden flex-shrink-0">
             <motion.div variants={imageVariants}>
@@ -355,6 +362,8 @@ const BlogCard = ({ blog, index }) => {
                   <FiArrowRight className="w-3 h-3" />
                 </motion.div>
               </div>
+            </div>  {/* close inner white card */}
+          </div>    {/* close gradient wrapper */}
             </motion.div>
           </div>
         </motion.div>
