@@ -362,11 +362,11 @@ const BlogCard = ({ blog, index }) => {
                   <FiArrowRight className="w-3 h-3" />
                 </motion.div>
               </div>
-            </div>  {/* close inner white card */}
-          </div>    {/* close gradient wrapper */}
-            </motion.div>
-          </div>
-        </motion.div>
+            </motion.div>  {/* close meta info */}
+          </div>  {/* close content container */}
+        </div>  {/* close white card */}
+      </div>    {/* close gradient wrapper */}
+    </motion.div>  {/* close hover wrapper */}
       </Link>
     </motion.article>
   );
