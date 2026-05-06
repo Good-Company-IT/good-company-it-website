@@ -115,27 +115,7 @@ export default async function Home({ params }) {
   // Await params before destructuring
   const { locale } = await params;
   
-  const { t, resources } = await initTranslations(locale, i18nNameSpaces);
-
-  // Organize all translations
-  const allTranslations = {
-    homeTranslations: {
-      titleOne: t('home:title_one'),
-      titleTwo: t('home:title_two'),
-      description: t('home:description'),
-      cta: t('home:cta'),
-      webDevelopment: t('home:webDevelopment'),
-      mobileApps: t('home:mobileApps'),
-      digitalStrategy: t('home:digitalStrategy'),
-      cloudSolutions: t('home:cloudSolutions'),
-      projectsDelivered: t('home:projectsDelivered'),
-      clientSatisfaction: t('home:clientSatisfaction'),
-      supportAvailable: t('home:supportAvailable')
-    }
-  };
-
-  // When you have us-UK or es-MX, you want to use the main language for translations
-  const mainLang = locale.split('-')[0];
+  const { resources } = await initTranslations(locale, i18nNameSpaces);
 
   return (
     <>
