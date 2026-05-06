@@ -11,91 +11,85 @@ import Main from "@/components/blog/Main";
 const i18nNameSpaces = ["home", "navbar", "footer", "common"];
 
 const metadata_en = {
-  metadataBase: new URL('https://www.zeenti.com'),
-  title: "Zeenti - Digital Excellence & Innovation - Zeenti Digital Consulting LLC.",
-  description: "Transform your business with Zeenti Digital Consulting LLC. Expert web development, mobile apps, digital strategy, and cloud solutions. Innovative consulting for modern businesses.",
-  keywords: "digital consulting, web development, mobile applications, digital strategy, cloud solutions, I.T. consulting, business transformation, technology consulting, digital innovation",
+  metadataBase: new URL('https://www.goodcompanyit.com'),
+  title: "Blog - IT & Cybersecurity Insights | Good Company IT",
+  description: "Practical guides, security tips, and expert advice to help startups and growing businesses build a strong IT foundation and stay protected against modern cyber threats.",
+  keywords: "IT support, cybersecurity, managed IT services, small business IT, cybersecurity tips, IT consulting, cloud solutions, compliance, data protection",
   language: "en",
-  subject: "Digital Consulting Services",
+  subject: "IT & Cybersecurity Blog",
   coverage: "Global",
   robots: "index, follow",
-  author: "Zeenti Digital Consulting",
-  publisher: "Zeenti Digital Consulting LLC",
+  author: "Good Company IT",
+  publisher: "Good Company IT",
   og: {
     type: "website",
-    title: "Zeenti Digital Consulting - Transform Your Business Digitally",
-    description: "Expert digital consulting services including web development, mobile apps, and digital strategy. Transform your business with innovative technology solutions.",
-    site_name: "Zeenti Digital Consulting",
-    url: "https://www.zeenti.com/en/"
+    title: "IT & Cybersecurity Insights | Good Company IT Blog",
+    description: "Practical guides, security tips, and expert advice to help startups and growing businesses build a strong IT foundation.",
+    site_name: "Good Company IT",
+    url: "https://www.goodcompanyit.com/en/blog"
   },
   alternates: {
-    canonical: "https://www.zeenti.com/en",
+    canonical: "https://www.goodcompanyit.com/en/blog",
     languages: {
-      'en': '/en',
-      'es': '/es',
-      'fr': '/fr'
+      'en': '/en/blog',
+      'es': '/es/blog',
+      'fr': '/fr/blog'
     }
   }
 };
 
 const metadata_es = {
-  metadataBase: new URL('https://www.zeenti.com'),
-  title: "Zeenti - Excelencia Digital e Innovación - Zeenti Digital Consulting LLC.",
-  description: "Transforma tu negocio con Zeenti Digital Consulting LLC. Desarrollo web experto, aplicaciones móviles, estrategia digital y soluciones en la nube. Consultoría innovadora para empresas modernas.",
-  keywords: "consultoría digital, desarrollo web, aplicaciones móviles, estrategia digital, soluciones en la nube, consultoría de TI, transformación empresarial, consultoría tecnológica, innovación digital",
+  metadataBase: new URL('https://www.goodcompanyit.com'),
+  title: "Blog - Tecnología y Ciberseguridad | Good Company IT",
+  description: "Guías prácticas, consejos de seguridad y asesoramiento experto para ayudar a startups y empresas en crecimiento a construir una base sólida de TI y protegerse contra las amenazas cibernéticas modernas.",
+  keywords: "soporte IT, ciberseguridad, servicios IT gestionados, IT para pequeñas empresas, consejos de ciberseguridad, consultoría IT, soluciones en la nube, cumplimiento, protección de datos",
   language: "es",
-  subject: "Servicios de Consultoría Digital",
+  subject: "Blog de TI y Ciberseguridad",
   coverage: "Global",
   robots: "index, follow",
-  author: "Zeenti Digital Consulting",
-  publisher: "Zeenti Digital Consulting LLC",
+  author: "Good Company IT",
+  publisher: "Good Company IT",
   og: {
     type: "website",
-    title: "Zeenti Digital Consulting - Transforma Tu Negocio Digitalmente",
-    description: "Servicios expertos de consultoría digital incluyendo desarrollo web, aplicaciones móviles y estrategia digital. Transforma tu negocio con soluciones tecnológicas innovadoras.",
-    site_name: "Zeenti Digital Consulting",
-    url: "https://www.zeenti.com/es/"
+    title: "Tecnología y Ciberseguridad | Blog de Good Company IT",
+    description: "Guías prácticas, consejos de seguridad y asesoramiento experto para startups y empresas en crecimiento.",
+    site_name: "Good Company IT",
+    url: "https://www.goodcompanyit.com/es/blog"
   },
   alternates: {
-    canonical: "https://www.zeenti.com/es",
+    canonical: "https://www.goodcompanyit.com/es/blog",
     languages: {
-      'en': '/en',
-      'es': '/es',
-      'fr': '/fr'
-    },
-    openGraph: {
-      images: {}
+      'en': '/en/blog',
+      'es': '/es/blog',
+      'fr': '/fr/blog'
     }
   }
 };
 
 const metadata_fr = {
-  metadataBase: new URL('https://www.zeenti.com'),
-  title: "Zeenti - Excellence Numérique et Innovation - Zeenti Digital Consulting LLC.",
-  description: "Transformez votre entreprise avec Zeenti Digital Consulting LLC. Développement web expert, applications mobiles, stratégie numérique et solutions cloud. Conseil innovant pour les entreprises modernes.",
-  keywords: "conseil numérique, développement web, applications mobiles, stratégie numérique, solutions cloud, conseil en TI, transformation d'entreprise, conseil technologique, innovation numérique",
+  metadataBase: new URL('https://www.goodcompanyit.com'),
+  title: "Blog - IT & Cybersécurité | Good Company IT",
+  description: "Guides pratiques, conseils en sécurité et expertise pour aider les startups et entreprises en croissance à bâtir une infrastructure IT solide et se protéger contre les cybermenaces modernes.",
+  keywords: "support IT, cybersécurité, services IT gérés, IT pour PME, conseils cybersécurité, conseil IT, solutions cloud, conformité, protection des données",
   language: "fr",
-  subject: "Services de Conseil Numérique",
+  subject: "Blog IT et Cybersécurité",
   coverage: "Global",
   robots: "index, follow",
-  author: "Zeenti Digital Consulting",
-  publisher: "Zeenti Digital Consulting LLC",
+  author: "Good Company IT",
+  publisher: "Good Company IT",
   og: {
     type: "website",
-    title: "Zeenti Digital Consulting - Transformez Votre Entreprise Numériquement",
-    description: "Services experts de conseil numérique incluant le développement web, les applications mobiles et la stratégie numérique. Transformez votre entreprise avec des solutions technologiques innovantes.",
-    site_name: "Zeenti Digital Consulting",
-    url: "https://www.zeenti.com/fr/"
+    title: "IT & Cybersécurité | Blog Good Company IT",
+    description: "Guides pratiques, conseils en sécurité et expertise pour startups et entreprises en croissance.",
+    site_name: "Good Company IT",
+    url: "https://www.goodcompanyit.com/fr/blog"
   },
   alternates: {
-    canonical: "https://www.zeenti.com/fr",
+    canonical: "https://www.goodcompanyit.com/fr/blog",
     languages: {
-      'en': '/en',
-      'es': '/es',
-      'fr': '/fr'
-    },
-    openGraph: {
-      images: {}
+      'en': '/en/blog',
+      'es': '/es/blog',
+      'fr': '/fr/blog'
     }
   }
 };
