@@ -16,12 +16,20 @@ const CookieConsentHandler = dynamic(
   { ssr: false }
 );
 
+const CyberAssessmentPopUp = dynamic(
+  () => import('@/components/common/PopUp/CyberAssessmentPopUp'),
+  { ssr: false }
+);
+
 export default function ClientOnlyWrapper({ couponTranslations, cookieTranslations, locale }) {
   return (
     <>
       {/* Promotions Banner*/}
       {/* <MainBanner translations={couponTranslations} locale={locale} /> */}
-      
+
+      {/* Cyber Assessment Lead Magnet Pop-up */}
+      <CyberAssessmentPopUp />
+
       {/* Cookie Consent Handler */}
       <CookieConsentHandler translations={cookieTranslations} />
     </>
