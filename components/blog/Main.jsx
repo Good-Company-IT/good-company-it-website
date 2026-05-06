@@ -5,7 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiTrendingUp, FiGrid, FiList } from 'react-icons/fi';
 import BlogGrid from './utils/BlogGrid.jsx';
 import BlogFilter from './utils/BlogFilter.jsx';
-import { fetchBlogData, fetchAuthors, fetchCategories, fetchTags } from './utils/data.js'; // Import all fetch functions
+import LeadMagnet from './LeadMagnet.jsx';
+import { fetchBlogData } from './utils/data.js';
 import { FaSortAmountDown } from "react-icons/fa";
 
 const Main = () => {
@@ -32,23 +33,16 @@ const Main = () => {
       setIsLoading(true);
       
       try {
-        // Fetch all data in parallel
-        const [blogData, authors, categories, tags] = await Promise.all([
-          fetchBlogData(),
-          fetchAuthors(),
-          fetchCategories(),
-          fetchTags()
-        ]);
-        
-        console.log('✅ Main component: Blogs loaded successfully:', blogData);
-        console.log('✅ Main component: Authors loaded:', authors);
-        console.log('✅ Main component: Categories loaded:', categories);
-        console.log('✅ Main component: Tags loaded:', tags);
-        
+        const blogData = await fetchBlogData();
+
+        const uniqueAuthors = [...new Set(blogData.map(b => b.author))].filter(a => a && a !== 'Unknown Author');
+        const uniqueCategories = [...new Set(blogData.map(b => b.category))].filter(c => c);
+        const uniqueTags = [...new Set(blogData.flatMap(b => b.tags))].filter(t => t);
+
         setBlogs(blogData);
-        setAvailableAuthors(authors);
-        setAvailableCategories(categories);
-        setAvailableTags(tags);
+        setAvailableAuthors(uniqueAuthors);
+        setAvailableCategories(uniqueCategories);
+        setAvailableTags(uniqueTags);
       } catch (error) {
         console.error('❌ Main component: Error loading data:', error);
         setBlogs([]);
@@ -205,11 +199,11 @@ const Main = () => {
         <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
           <h1 className="text-4xl md:text-6xl font-bold leading-tight">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary-orange to-orange-400">
-              Our Blog
+              IT & Cybersecurity Insights
             </span>
           </h1>
           <p className="mt-4 text-lg md:text-xl max-w-2xl text-gray-200">
-            Discover insights, case studies, and growth strategies from the world of creator partnerships and influencer marketing.
+            Practical guides, security tips, and expert advice to help startups and growing businesses build a strong IT foundation and stay protected against modern cyber threats.
           </p>
         </div>
       </div>
@@ -218,8 +212,11 @@ const Main = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-28">
           
 
+        {/* Lead Magnet */}
+        <LeadMagnet />
+
         {/* Filter Component */}
-        <BlogFilter 
+        <BlogFilter
           onFilterChange={setFilters} 
           filters={filters}
           availableAuthors={availableAuthors}

@@ -13,7 +13,7 @@ const MOCK_BLOG = {
   readTime: '6 min read',
   tags: ['cybersecurity', 'IT', 'security'],
   category: 'Security',
-  image: 'https://images.unsplash.com/photo-1569887199258-055b08e2e94e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=60',
+  image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=60',
   featured: false,
   content: `### Cybersecurity matters
 
@@ -82,7 +82,7 @@ export const fetchBlogData = async () => {
           ? `${STRAPI_API_URL.replace('/api', '')}${blogData.image.data.attributes.url}`
           : blogData.image?.url 
           ? `${STRAPI_API_URL.replace('/api', '')}${blogData.image.url}`
-          : `https://images.unsplash.com/photo-${1522202176988 + index}?w=400&h=250&fit=crop`,
+          : `https://picsum.photos/seed/${index + 1}/800/400`,
         featured: index === 0 || index === 3,
         content: blogData.content || 'Full article content here...'
       };
@@ -296,7 +296,7 @@ export const getBlogBySlug = async (slug) => {
         ? `${STRAPI_API_URL.replace('/api', '')}${blogData.image.data.attributes.url}`
         : blogData.image?.url 
         ? `${STRAPI_API_URL.replace('/api', '')}${blogData.image.url}`
-        : 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=250&fit=crop',
+        : 'https://picsum.photos/seed/blog/800/400',
       featured: false,
       content: blogData.content || 'Full article content here...'
     };

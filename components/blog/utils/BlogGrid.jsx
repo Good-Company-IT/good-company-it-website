@@ -1,9 +1,12 @@
+"use client"
+
 import Link from 'next/link';
+import { useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FiClock, 
-  FiUser, 
-  FiTag, 
+import {
+  FiClock,
+  FiUser,
+  FiTag,
   FiArrowRight,
   FiCalendar,
   FiBookmark,
@@ -11,6 +14,8 @@ import {
 } from 'react-icons/fi';
 
 const BlogCard = ({ blog, index }) => {
+  const params = useParams();
+  const locale = params?.locale || 'en';
   const cardVariants = {
     hidden: { 
       opacity: 0, 
@@ -84,7 +89,7 @@ const BlogCard = ({ blog, index }) => {
         exit="exit"
         className="group md:col-span-2 lg:col-span-2"
       >
-        <Link href={`/blog/${blogSlug}`} className="block h-full">
+        <Link href={`/${locale}/blog/${blogSlug}`} className="block h-full">
           <motion.div
             variants={hoverVariants}
             initial="rest"
@@ -239,7 +244,7 @@ const BlogCard = ({ blog, index }) => {
       exit="exit"
       className="group"
     >
-      <Link href={`/blog/${blogSlug}`} className="block h-full">
+      <Link href={`/${locale}/blog/${blogSlug}`} className="block h-full">
         <motion.div
           variants={hoverVariants}
           initial="rest"
