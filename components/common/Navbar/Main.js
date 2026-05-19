@@ -47,6 +47,11 @@ function Navbar() {
     {
       label: "Community Work",
       href: "/community"
+    },
+    {
+      label: "Blog",
+      href: "https://www.goodcompanyit.com/en/blog",
+      external: true
     }
   ];
 
@@ -196,6 +201,7 @@ function Navbar() {
                     className={`${linksStyle.desktop} ${
                       isActive ? 'text-primary-orange' : 'text-white'
                     }`}
+                    {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   >
                     <motion.span
                       whileHover={{ scale: 1.05 }}
@@ -291,11 +297,12 @@ function Navbar() {
                     <Link
                       href={item.href}
                       className={`${linksStyle.mobile} ${
-                        isActive 
-                          ? 'text-primary-orange bg-gray-900 border-l-4 border-primary-orange' 
+                        isActive
+                          ? 'text-primary-orange bg-gray-900 border-l-4 border-primary-orange'
                           : 'text-white'
                       }`}
                       onClick={handleCloseMenu}
+                      {...(item.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                     >
                       {item.label}
                     </Link>
