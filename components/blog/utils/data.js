@@ -370,6 +370,176 @@ Because in modern IT environments, security and performance are not defined by w
 *You're in Good Company.*`,
 };
 
+const MOCK_BLOG_41 = {
+  id: 'mock-41',
+  slug: 'how-to-recognize-prevent-phishing-attacks',
+  title: 'How to Recognize and Prevent Phishing Attacks to Strengthen Your Security',
+  description: 'Phishing attacks are evolving and harder to detect. Learn how to recognize phishing attempts, protect your team, and build a security-first culture.',
+  author: 'GoCo Team',
+  date: '2026-06-15',
+  readTime: '9 min read',
+  tags: ['Phishing', 'Cybersecurity', 'IT Security', 'Social Engineering'],
+  category: 'Security',
+  image: '/imgs/blog/41.jpg',
+  featured: false,
+  content: `Phishing attacks are no longer just cleverly disguised emails from a mysterious "Nigerian prince." They've evolved becoming more sophisticated and harder to detect. Plus their impacts are increasingly damaging. And worse yet it only takes one mistake to compromise an entire network. Are you confident your team can spot a phishing attempt before it's too late?
+
+Today's threat landscape and the specific tactics attackers use to engage in social engineering are critical to identify. Let's learn how businesses can strengthen their security posture to avoid falling victim.
+
+## The Psychology Behind Phishing
+
+Phishing can take on many different faces. Malicious actors leverage several factors surrounding our human psychology to engage in social engineering. Whether in the office or remote working, phishing attacks bank on factors like:
+
+- Employees being too busy to spot the details in a forged email
+- The trust we have in reading a familiar name on an email
+- The urgency that we feel to respond to a person in authority
+- The hype we feel if we are receiving a benefit or having to submit information to get "perks from work"
+
+It's one of the most common and successful forms of security breaches because it exploits human behavior, not technology. Understanding the psychology behind these attacks is vital in recognizing and avoiding them.
+
+### So What is Phishing?
+
+When malicious actors impersonate legitimate organizations or individuals in order to trick users into providing sensitive information, such as login credentials, credit card numbers, or access to a company's internal systems.
+
+### Why Phishing is a Major Threat to Security
+
+Phishing is the gateway to more serious IT Services issues like ransomware attacks, credential theft, and data breaches. According to industry research, over 90% of successful cyberattacks begin with a phishing email.
+
+Security tools like firewalls and antivirus software can't fully protect against phishing because attackers rely on manipulating users. That's why awareness and education are critical layers in any cybersecurity strategy.
+
+## Types of Phishing Attacks
+
+### Email Phishing
+
+The most common method. An attacker sends an email pretending to be a trusted source—often a bank, coworker, or vendor—with a link to a malicious site.
+
+### Spear Phishing
+
+This is a highly targeted form of phishing aimed at specific individuals or departments within an organization, often crafted using personal information.
+
+### Whaling
+
+Aimed at high-profile executives, whaling attacks attempt to steal credentials or authorize fraudulent wire transfers by impersonating other C-level executives or board members.
+
+### Smishing & Vishing
+
+Smishing uses SMS messages to lure victims.
+
+Vishing uses phone calls to impersonate authority figures (like IT support or government agencies).
+
+### Clone Phishing
+
+In this method, attackers clone a legitimate email that the victim has received and change the link or attachment to something malicious.
+
+## Red Flags to Spot Phishing Attempts
+
+### Unfamiliar Sender or Domain
+
+Emails coming from a domain that looks "almost" correct — like amaz0n.com instead of amazon.com.
+
+### Poor Spelling and Grammar
+
+While attackers are getting better, many phishing attempts still contain obvious grammar or spelling mistakes.
+
+### Suspicious Attachments or Links
+
+Never open unexpected attachments or click links in unsolicited messages. Hover over links to inspect the URL before clicking.
+
+### Requests for Sensitive Information
+
+Legitimate companies don't ask for passwords or sensitive data over email or text.
+
+### Urgent or Threatening Language
+
+Be cautious of messages that pressure you into immediate action. That's a classic phishing strategy.
+
+## How to Mitigate Phishing Attacks and Reduce Their Impact
+
+### Employee Training
+
+Ongoing IT Services training is essential. Users should undergo periodic phishing simulations and training on recognizing suspicious content.
+
+### Multi-Factor Authentication (MFA)
+
+MFA adds an additional layer of protection, making it significantly harder for attackers to gain access even if credentials are stolen.
+
+### Advanced Email Filtering
+
+Use IT tools that scan and filter out suspicious messages before they reach inboxes. This includes sandboxing attachments and blocking known malicious URLs.
+
+### Endpoint Detection and Response (EDR)
+
+An effective security setup includes real-time monitoring of endpoints for suspicious behavior.
+
+### Role-Based Access Control (RBAC)
+
+Limit access to sensitive systems or data based on the employee's role. This reduces the potential damage if an account is compromised.
+
+## What to Do If You Suspect a Phishing Attack
+
+### Don't Click or Reply
+
+If you suspect an email is a phishing attempt, don't interact with it.
+
+### Report It Immediately
+
+Alert your internal IT Services or security team so they can investigate and, if necessary, warn other employees.
+
+### Run a Security Scan
+
+Ensure the affected system is scanned for malware or unauthorized access.
+
+### Change Credentials
+
+If there's even a chance credentials were compromised, update passwords immediately and enable MFA.
+
+## The Cost of Ignoring Phishing Awareness
+
+Phishing is not just an inconvenience. It's a security risk that can result in:
+
+- Financial loss due to fraud or wire transfers.
+- Loss of customer trust.
+- Regulatory penalties (especially under GDPR or HIPAA).
+- Operational downtime.
+
+Investing in user awareness and IT Services can prevent far more costly consequences.
+
+## Building a Phishing-Resistant Culture
+
+Creating a security-first culture takes more than tools. It requires leadership buy-in and consistent messaging. Here's how to start:
+
+- Include phishing awareness in onboarding.
+- Recognize employees who report phishing attempts.
+- Conduct quarterly simulations.
+- Make reporting suspicious activity easy and encouraged.
+
+## Managed IT Services for Phishing Protection
+
+If you lack internal expertise, working with a managed IT Services provider can significantly reduce your risk. These providers offer:
+
+- 24/7 monitoring
+- Email filtering
+- Employee training programs
+- Incident response planning
+- Ongoing compliance support
+
+Their expertise in network security and emerging threats keeps your organization one step ahead.
+
+## Security Is Everyone's Responsibility
+
+Phishing isn't going away. If anything, it's becoming more dangerous. With generative AI and access to real-time personal data from social platforms, attackers can craft messages that are nearly impossible to distinguish from the real thing.
+
+But knowledge is your greatest defense.
+
+Security awareness, paired with the right IT services, tools, and policies, can dramatically reduce your exposure. The most important step? Start now. Build a culture where every employee feels empowered to be the first line of defense.
+
+Need help strengthening your phishing defenses? A managed IT Services partner can assess your current posture and create a protection plan tailored to your organization.
+
+Let's protect your future, one email at a time.
+
+*You're in Good Company.*`,
+};
+
 // API Headers
 const headers = {
   'Authorization': `Bearer ${STRAPI_TOKEN}`,
@@ -437,7 +607,7 @@ export const fetchBlogData = async () => {
 
     console.log('🎉 Final blog data array:', blogData);
     // merge mock blogs at front if not already present
-    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40];
+    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41];
     const staticSlugs = new Set(staticBlogs.map(b => b.slug));
     const combined = [...staticBlogs, ...blogData.filter(b => !staticSlugs.has(b.slug))];
     console.log('🎉 Combined array with mock:', combined);
@@ -445,7 +615,7 @@ export const fetchBlogData = async () => {
   } catch (error) {
     console.error('❌ Error fetching blog data:', error);
     console.log('🔄 Returning mock blogs instead of empty array');
-    return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40];
+    return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41];
   }
 };
 
@@ -580,7 +750,7 @@ export const getBlogBySlug = async (slug) => {
     console.log(`🔍 Fetching blog with slug: ${slug}`);
     
     // check static blogs first
-    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40];
+    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41];
     const staticMatch = staticBlogs.find(b => b.slug === slug);
     if (staticMatch) {
       console.log('🧪 Returning static blog for slug', slug);
