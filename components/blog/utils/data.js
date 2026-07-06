@@ -1843,6 +1843,257 @@ Because ultimately, cybersecurity is not just about protecting systems. It is ab
 *You're in Good Company.*`,
 };
 
+const MOCK_BLOG_51 = {
+  id: 'mock-51',
+  slug: 'how-to-secure-microsoft-365-google-workspace',
+  title: 'How to Secure Microsoft 365 and Google Workspace the Right Way',
+  description: 'Secure I.T. with the right Microsoft 365 and Google Workspace protections. Strengthen I.T. security and reduce risk today.',
+  author: 'GoCo Team',
+  date: '2026-07-01',
+  readTime: '7 min read',
+  tags: ['Microsoft 365', 'Google Workspace', 'Cloud Security', 'MFA', 'IT Security'],
+  category: 'Security',
+  image: '/imgs/blog/51.jpg',
+  featured: false,
+  content: `Most businesses believe they are protected because they use Microsoft 365 or Google Workspace. The reality is that simply using these platforms does not automatically make your environment secure.
+
+Here is the challenge: cybercriminals know that Microsoft 365 and Google Workspace are the backbone of modern business operations. Email, files, collaboration tools, and sensitive company data all live inside these platforms. A single compromised account can quickly become a business-wide security incident.
+
+The good news? Securing these environments does not have to be complicated. By focusing on the right controls, businesses can significantly reduce risk and create a more resilient technology environment.
+
+## Why Cloud Platforms Need Additional Security
+
+Microsoft 365 and Google Workspace provide powerful built-in security features, but many organizations never fully configure them. Default settings are often designed for convenience, not maximum protection.
+
+As a result, businesses commonly face risks such as:
+
+- Phishing attacks targeting employee accounts
+- Weak or reused passwords
+- Unauthorized access from compromised devices
+- Accidental data sharing
+- Misconfigured permissions and access controls
+
+To truly secure I.T. infrastructure, organizations need a proactive security strategy that goes beyond default configurations.
+
+## Enable Multi-Factor Authentication Everywhere
+
+If there is one security measure every business should implement immediately, it is Multi-Factor Authentication (MFA).
+
+MFA requires users to verify their identity using an additional factor beyond a password, such as an authentication app or security key.
+
+Benefits include:
+
+- Reduced risk of account compromise
+- Protection against stolen credentials
+- Stronger access control for remote workers
+
+Even if a password is exposed, MFA creates an additional barrier that attackers must overcome.
+
+## Strengthen Identity and Access Management
+
+Not every employee needs access to every system.
+
+A core principle of modern I.T. security is least-privilege access. Users should only have the permissions required to perform their roles.
+
+![Secure IT identity and access management](/imgs/blog/51a.jpg)
+
+Best practices include:
+
+- Regularly reviewing user permissions
+- Removing inactive accounts immediately
+- Limiting administrator privileges
+- Creating role-based access controls
+
+Proper identity management reduces the potential impact of both external attacks and internal mistakes.
+
+## Protect Email Against Advanced Threats
+
+Email remains one of the most common entry points for cyberattacks.
+
+Microsoft 365 and Google Workspace offer security tools that help identify malicious messages, suspicious links, and dangerous attachments. These protections should be fully configured and continuously monitored.
+
+Organizations should also:
+
+- Implement anti-phishing policies
+- Train employees to recognize suspicious emails
+- Review email security reports regularly
+- Block high-risk file types when appropriate
+
+Technology is essential, but user awareness remains a critical layer of defense.
+
+## Secure Company Data and File Sharing
+
+Collaboration is a major advantage of cloud platforms, but unrestricted sharing can create serious security risks.
+
+Businesses should establish clear controls for:
+
+- External file sharing
+- Sensitive document access
+- Data retention policies
+- Backup and recovery procedures
+
+Monitoring how information is shared helps prevent accidental exposure and supports compliance requirements.
+
+## Monitor Activity and Respond Quickly
+
+Security is not a one-time project. Continuous monitoring is essential.
+
+Both Microsoft 365 and Google Workspace provide activity logs and security dashboards that help identify unusual behavior, including:
+
+- Suspicious login attempts
+- Access from unexpected locations
+- Unauthorized file downloads
+- Privilege escalation activities
+
+The faster threats are detected, the faster they can be contained.
+
+## The Right Way to Secure I.T.
+
+Securing Microsoft 365 and Google Workspace requires more than turning on a few settings. It demands a strategic approach that combines technology, security policies, user awareness, and ongoing monitoring.
+
+Organizations that invest in proactive I.T. security gain more than protection from cyber threats. They create a stronger foundation for growth, productivity, and business continuity.
+
+At GoCo, we help businesses secure I.T. environments, strengthen security controls, and optimize technology platforms so teams can focus on growth with confidence. The right security strategy is not just about preventing problems — it's about enabling your business to operate securely and efficiently every day.
+
+*You're in Good Company.*`,
+};
+
+const MOCK_BLOG_52 = {
+  id: 'mock-52',
+  slug: 'why-it-visibility-matters-you-cant-protect-what-you-cant-see',
+  title: "Why I.T. Visibility Matters: You Can't Protect What You Can't See",
+  description: 'I.T. Visibility helps businesses strengthen I.T. security, reduce blind spots, and protect critical technology assets.',
+  author: 'GoCo Team',
+  date: '2026-07-01',
+  readTime: '8 min read',
+  tags: ['IT Visibility', 'Cybersecurity', 'Shadow IT', 'Compliance', 'IT Security'],
+  category: 'Security',
+  image: '/imgs/blog/52.jpg',
+  featured: false,
+  content: `What if your biggest cybersecurity risk isn't a sophisticated hacker, but an unknown device, unmanaged application, or forgotten user account already connected to your network?
+
+Most businesses invest in security tools, firewalls, and antivirus solutions. Yet many still struggle with security incidents because they lack something fundamental: I.T. visibility.
+
+The truth is simple. You cannot secure assets you don't know exist. Before organizations can strengthen security, improve compliance, or reduce risk, they need complete visibility into their technology environment.
+
+## What Is I.T. Visibility?
+
+I.T. visibility is the ability to identify, monitor, and understand every component of your technology ecosystem.
+
+This includes:
+
+- Devices connected to the network
+- User accounts and permissions
+- Cloud applications and services
+- Servers and infrastructure
+- Software installations
+- Data storage locations
+- Security events and system activity
+
+When businesses have complete I.T. visibility, they gain a clear picture of what exists, how it is being used, and where potential risks may be hiding.
+
+Without that visibility, security teams are often operating with dangerous blind spots.
+
+## The Security Risks of Poor Visibility
+
+Modern I.T. environments are more complex than ever. Employees work remotely, cloud platforms are widely adopted, and new applications are introduced regularly.
+
+As environments grow, so do hidden risks.
+
+### Shadow I.T.
+
+Employees often adopt software without approval from the I.T. department. While these tools may improve productivity, they can create security vulnerabilities if they are not properly managed.
+
+### Unmanaged Devices
+
+Personal laptops, smartphones, and tablets may access company resources without adequate security controls, increasing exposure to cyber threats.
+
+### Forgotten Accounts
+
+Former employees, inactive accounts, and outdated credentials can remain active for months if not monitored properly.
+
+### Vulnerable Software
+
+Applications that have not been updated or patched can become entry points for attackers.
+
+Without visibility, these risks can remain undetected until they cause significant damage.
+
+## Why I.T. Visibility Improves Security
+
+![IT visibility monitoring dashboard](/imgs/blog/52a.jpg)
+
+Visibility is the foundation of every effective cybersecurity strategy.
+
+When organizations understand their environment, they can:
+
+### Detect Threats Faster
+
+Security teams can identify unusual activity before it escalates into a major incident.
+
+Examples include:
+
+- Suspicious login attempts
+- Unauthorized devices
+- Unusual file access patterns
+- Unexpected network traffic
+
+Early detection allows businesses to respond quickly and minimize impact.
+
+### Strengthen Access Control
+
+Knowing who has access to systems and data makes it easier to enforce least-privilege policies and eliminate unnecessary permissions.
+
+This reduces opportunities for both insider threats and external attackers.
+
+### Improve Vulnerability Management
+
+You cannot patch what you cannot see.
+
+Complete I.T. visibility helps organizations identify outdated software, unsupported devices, and misconfigured systems before attackers exploit them.
+
+## I.T. Visibility Supports Compliance
+
+Many businesses must comply with security and data protection frameworks such as HIPAA, SOC 2, GDPR, or industry-specific regulations.
+
+A key requirement across these standards is understanding where sensitive data resides and who can access it.
+
+I.T. visibility helps organizations:
+
+- Maintain accurate asset inventories
+- Track user activity
+- Monitor access permissions
+- Generate audit-ready reports
+
+Strong visibility simplifies compliance efforts while reducing operational risk.
+
+## Building Better I.T. Visibility
+
+Improving visibility requires more than periodic audits.
+
+Organizations should implement:
+
+- Continuous network monitoring
+- Asset discovery tools
+- Endpoint management solutions
+- Cloud security monitoring
+- Centralized logging and reporting
+- Regular access reviews
+
+The goal is to create a real-time view of the entire technology environment, not just a snapshot taken once or twice a year.
+
+## Visibility Is the First Step Toward Better Security
+
+Many organizations focus on buying more security tools when the real challenge is understanding their existing environment.
+
+I.T. visibility provides the foundation needed to make informed security decisions, reduce vulnerabilities, and respond to threats with confidence.
+
+At GoCo, we help businesses gain complete visibility across their I.T. infrastructure, cloud environments, and security systems. By eliminating blind spots and improving operational awareness, organizations can build stronger security programs and make technology a strategic advantage.
+
+Because when it comes to cybersecurity, the most dangerous risks are often the ones you cannot see.
+
+*You're in Good Company.*`,
+};
+
 // API Headers
 const headers = {
   'Authorization': `Bearer ${STRAPI_TOKEN}`,
@@ -1874,7 +2125,7 @@ export const fetchBlogData = async () => {
     // Check if data.data exists and is an array
     if (!data.data || !Array.isArray(data.data)) {
       console.warn('⚠️ Unexpected data structure from Strapi:', data);
-      return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50];
+      return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52];
     }
 
     // Transform Strapi data to match your existing structure
@@ -1910,7 +2161,7 @@ export const fetchBlogData = async () => {
 
     console.log('🎉 Final blog data array:', blogData);
     // merge mock blogs at front if not already present
-    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50];
+    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52];
     const staticSlugs = new Set(staticBlogs.map(b => b.slug));
     const combined = [...staticBlogs, ...blogData.filter(b => !staticSlugs.has(b.slug))];
     console.log('🎉 Combined array with mock:', combined);
@@ -1918,7 +2169,7 @@ export const fetchBlogData = async () => {
   } catch (error) {
     console.error('❌ Error fetching blog data:', error);
     console.log('🔄 Returning mock blogs instead of empty array');
-    return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50];
+    return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52];
   }
 };
 
@@ -2053,7 +2304,7 @@ export const getBlogBySlug = async (slug) => {
     console.log(`🔍 Fetching blog with slug: ${slug}`);
     
     // check static blogs first
-    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50];
+    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52];
     const staticMatch = staticBlogs.find(b => b.slug === slug);
     if (staticMatch) {
       console.log('🧪 Returning static blog for slug', slug);
