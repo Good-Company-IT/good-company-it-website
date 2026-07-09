@@ -2219,6 +2219,423 @@ At GoCo, we help SMBs build practical, effective Zero-Trust roadmaps that secure
 *You're in Good Company.*`,
 };
 
+const MOCK_BLOG_54 = {
+  id: 'mock-54',
+  slug: 'how-much-do-managed-it-services-cost-small-businesses',
+  title: 'How Much Do Managed IT Services Cost for Small Businesses?',
+  description: 'Learn how much managed IT services cost for small businesses. Explore pricing models, key cost factors, and how to budget for IT support with confidence.',
+  author: 'GoCo Team',
+  date: '2026-07-09',
+  readTime: '5 min read',
+  tags: ['Managed IT Services', 'IT Costs', 'Small Business', 'IT Budget', 'Technology'],
+  category: 'Managed IT',
+  image: '/imgs/blog/54.jpg',
+  featured: false,
+  content: `Your small business is growing, your team is thriving, and most likely, your operations rely heavily on technology. But what happens when all of a sudden your network goes down, a team member falls for a phishing email, or your client data is suddenly at risk? In moments like these, every small business owner asks the same question:
+
+"Isn't there an affordable way to keep all this under control?"
+
+That's where managed IT services come in. But for many small business owners, the big question isn't what these services do—it's how much they cost.
+
+Managed IT service pricing depends on factors like the size of your team, the complexity of your systems, the type of support you need, and your security requirements. In this article, we'll break down the cost factors for managed IT services, explain different pricing models, and help you understand what to expect when budgeting IT support for your small business.
+
+## Why Small Businesses Turn to Managed IT Services
+
+Before diving into costs, let's clarify why small businesses are increasingly investing in IT services.
+
+Technology is now the backbone of every business. Even a 10-person company relies on:
+
+- Cloud platforms like Google Workspace or Microsoft 365.
+- Secure networks for remote and hybrid work.
+- Software integrations for sales, HR, and operations.
+- Data protection and compliance with regulations like GDPR or HIPAA.
+
+While a small business might get by with break/fix IT support—calling someone only when things go wrong—this approach is risky and unpredictable.
+
+Managed IT services solve this by providing:
+
+- Proactive monitoring to prevent issues before they escalate.
+- Cybersecurity protection against threats like phishing and ransomware.
+- Ongoing support for your team through help desks or remote troubleshooting.
+- Scalability as your business grows, without the cost of a full in-house IT team.
+
+In other words: Managed IT services turn technology from a daily stressor into a reliable business asset.
+
+## Factors That Affect the Cost of Managed IT Services
+
+Managed IT services pricing can vary significantly. Understanding the factors that drive cost will help you set realistic expectations.
+
+### 1. Number of Users and Devices
+
+Most managed IT service providers price their plans based on per user or per device.
+
+- **Per-user pricing** covers everything an employee uses: laptop, phone, email account, and cloud access.
+- **Per-device pricing** charges for each machine, which can be more cost-effective if employees use multiple devices.
+
+Example: A 10-person team with one device each will cost less than a team of 10 where each employee uses a laptop, phone, and tablet that all need support.
+
+### 2. Level of IT Support Needed
+
+Not every business needs the same depth of service.
+
+- **Basic Plans:** Include help desk support, software updates, and basic monitoring.
+- **Mid-Tier Plans:** Add cybersecurity measures, backups, and cloud management.
+- **Advanced Plans:** Include full network management, 24/7 monitoring, compliance support, and strategic IT planning.
+
+The more critical IT is to your daily operations, the higher the investment. For example, an e-commerce business handling sensitive customer data will need more robust support than a small marketing agency.
+
+### 3. Security and Compliance Requirements
+
+If your business deals with financial data, health records, or client-sensitive information, your security needs will be higher.
+
+- Services like firewall management, intrusion detection, and security audits increase the overall cost.
+- Compliance with HIPAA, GDPR, or SOC 2 requires continuous monitoring, which is usually part of advanced packages.
+
+### 4. Cloud Services and Remote Workforce
+
+Remote and hybrid work increases IT complexity. Managing cloud environments like Microsoft Azure, AWS, or Google Cloud requires specialized expertise.
+
+- Cloud storage, backup solutions, and access management all add to the scope of managed services.
+- Supporting remote teams often involves VPN setup, endpoint protection, and device onboarding.
+
+### 5. Onsite vs. Remote Support
+
+Most small businesses can operate with remote support, which is more affordable. However, if your company needs onsite visits for server maintenance or hardware troubleshooting, expect to pay an additional fee per visit or choose a plan that includes scheduled onsite support.
+
+## Why Managed IT Services Are Worth the Investment
+
+Small businesses sometimes hesitate at the monthly cost, but the value outweighs the expense. Consider:
+
+- **Downtime Costs Money:** Even one day of lost productivity can exceed the monthly fee for managed IT services.
+- **Cybersecurity Is Non-Negotiable:** A single data breach could cost thousands—or even end a small business.
+- **Predictable IT Costs:** Fixed monthly fees prevent surprise expenses from sudden breakdowns.
+- **Scalability for Growth:** As your team expands, your IT services grow with you.
+
+Think of managed IT services as insurance and optimization combined—they protect your business and help it run more efficiently.
+
+## Budgeting for IT Services with Confidence
+
+So, how much do managed IT services cost for small businesses?
+
+- Most pay $100–$200 per user/month or $1,000–$3,000/month total, depending on their setup.
+- Costs increase with security, compliance, and cloud management needs.
+- A reliable provider helps you customize your plan so you only pay for what you need.
+
+Investing in managed IT services is less about spending money and more about having peace of mind. It ensures that your technology supports your growth, instead of slowing you down or putting you at risk.
+
+*You're in Good Company.*`,
+};
+
+const MOCK_BLOG_55 = {
+  id: 'mock-55',
+  slug: 'ai-driven-phishing-hackers-exploit-personalization-fight-back',
+  title: 'AI-Driven Phishing: How Hackers Exploit Personalization—and How Your Business Can Fight Back',
+  description: 'AI-driven phishing is smarter and harder to detect. Learn how hackers exploit AI personalization and what your SMB can do to fight back.',
+  author: 'GoCo Team',
+  date: '2026-07-09',
+  readTime: '8 min read',
+  tags: ['Phishing', 'AI Security', 'Cybersecurity', 'SMB', 'Email Security'],
+  category: 'Security',
+  image: '/imgs/blog/55.jpg',
+  featured: false,
+  content: `Picture this: You open your inbox on a busy Monday morning. There's an email from your "finance director" asking you to review an invoice, something you do every week. The tone feels right. The signature looks real. The grammar? Perfect.
+
+You click.
+
+And just like that, your credentials and your company data are in the hands of a hacker using AI-generated phishing tactics that mimic real people better than ever before.
+
+This isn't the "Nigerian prince" scam your spam filter catches. This is a new generation of phishing powered by artificial intelligence—faster, more personalized, and nearly impossible to spot with the naked eye.
+
+So, the question is: how do you protect your business when the attacks are smarter than ever? Let's break it down.
+
+## What Is AI-Driven Phishing?
+
+Phishing is the practice of tricking users into revealing sensitive information—passwords, financial data, or access credentials—through deceptive communication (usually email).
+
+Traditionally, these attacks were easy to spot: poor grammar, odd email domains, or generic messages sent in bulk. But AI has changed the game.
+
+AI-driven phishing uses machine learning, natural language processing (NLP), and automation to:
+
+- Craft hyper-personalized emails using public and breached data.
+- Mimic the tone, writing style, and even email signatures of trusted contacts.
+- Send large volumes of unique, believable messages automatically.
+
+Think of it as phishing 2.0—targeted spear-phishing on autopilot.
+
+## The Rise of AI in Cybercrime
+
+Hackers have always followed technology trends, and AI is no exception. Tools like ChatGPT, deep learning text generators, and voice synthesis have made it incredibly easy to replicate legitimate communication patterns.
+
+According to multiple cybersecurity reports, phishing remains the #1 cause of data breaches worldwide, and AI is accelerating its success rate. Why? Because AI allows attackers to:
+
+- Analyze and imitate company communication styles.
+- Create realistic language models.
+- Automate and scale attacks at unprecedented speed.
+
+The barrier to entry for sophisticated phishing has never been lower.
+
+## Why AI Makes Phishing So Effective
+
+Traditional security filters were built to catch pattern-based threats—known malicious domains, suspicious attachments, or common spam phrases. AI-driven phishing, however, breaks those patterns. Here's how:
+
+- **Hyper-Personalization:** Attackers now have access to huge data sets—social media, company websites, breach databases. AI uses that data to generate emails that sound like they came directly from your CEO or a client you trust.
+- **Language Precision:** Machine learning models trained on legitimate communication can generate text that perfectly mimics professional tone and syntax, making detection difficult.
+- **Voice and Video Deepfakes:** With AI voice cloning and deepfake tools, phishing isn't just limited to emails. Hackers can leave voicemails, conduct fake video calls, or even impersonate executives in live meetings.
+- **Real-Time Adaptation:** AI systems can analyze failed attempts and adjust instantly. If a phishing email doesn't get past a spam filter, the system tweaks the content until it does.
+- **Scale and Speed:** What once took weeks for hackers to research and write can now be done in seconds, and thousands of personalized attacks are launched automatically.
+
+## Real-World Scenarios: How AI Phishing Works
+
+### Case 1: The "Invoice" Trap
+
+A cybercriminal scrapes your finance team's email patterns and past invoices from a breached mailbox. Using AI, they craft a new invoice request with perfect formatting and tone. You click the link to "review," and it downloads a malicious script that captures your credentials.
+
+### Case 2: The "Voice of Your CEO"
+
+Using samples from a public webinar, hackers generate a synthetic voice message asking your HR team to "urgently process a payment." The message sounds authentic—and because it's AI-generated, it bypasses standard fraud filters.
+
+### Case 3: Chat-Based Phishing (AI Chatbots)
+
+Phishing bots posing as customer support agents engage with your employees via Slack or Teams, gradually convincing them to share credentials or MFA codes.
+
+Each of these tactics uses AI to mimic trust—the one element every business relies on.
+
+## The Technical Side: Why Traditional Security Fails
+
+Many businesses still rely on basic security controls: spam filters, antivirus tools, and firewall protection. While these are necessary, they're no longer enough. AI-driven phishing doesn't just rely on malicious links—it manipulates context and behavior.
+
+- It uses legitimate domains (compromised accounts).
+- It leverages AI-generated text that avoids spam trigger words.
+- It sends attachments disguised as routine files (.pdf, .xls, .docx) that are clean until opened.
+
+Traditional tools can't detect intent—they only detect signatures. That's where modern Zero-Trust and behavioral security frameworks come in.
+
+## The AI Arms Race: Security Tools Fighting Back
+
+Luckily, AI isn't only in the attackers' toolbox. Cybersecurity teams now use defensive AI to detect phishing in real time. Here's how modern IT security is evolving to counter AI phishing:
+
+**1. Behavioral Analysis:** AI-driven security tools (like EDR and SIEM systems) monitor user behavior patterns—who logs in, from where, at what time, and what they access. If an anomaly appears, the system flags or blocks access automatically.
+
+**2. Natural Language Processing (NLP) Detection:** Security platforms are now trained to understand the linguistic nuances of phishing messages—tone, urgency, structure—and can detect subtle manipulation patterns even in grammatically correct emails.
+
+**3. Identity and Access Management (IAM):** By enforcing multi-factor authentication (MFA) and least-privilege access, Zero-Trust environments limit what damage can be done if a phishing attack succeeds.
+
+**4. DNS and Email Authentication (SPF, DKIM, DMARC):** AI phishing often spoofs domains. Email authentication protocols ensure every message truly originates from the sender's domain—stopping impersonation at the source.
+
+**5. Automated Threat Response:** With Security Orchestration, Automation, and Response (SOAR) tools, suspicious emails can be quarantined and analyzed without human intervention, drastically reducing risk exposure.
+
+## Why SMBs Are at Greater Risk
+
+Small and mid-sized businesses (SMBs) are often the prime targets of AI phishing for one reason: limited resources. Many don't have full-time IT security staff, let alone advanced AI defense tools. Attackers know this—and they exploit it.
+
+Some common challenges SMBs face:
+
+- Overworked teams responding to dozens of "urgent" emails daily.
+- Lack of phishing simulation training.
+- No centralized visibility over all communication channels.
+- Using multiple unmanaged SaaS platforms.
+
+The result? A perfect storm for AI phishing success.
+
+## Building Your Anti-Phishing Defense: Step by Step
+
+It's not enough to install a security tool; you need a layered defense combining people, process, and technology.
+
+### Step 1: Build a Human Firewall
+
+Train your employees to identify red flags:
+
+- Unexpected requests for credentials or payment.
+- Slightly altered email domains (e.g., g00gle.com).
+- Unusual urgency or emotional language.
+
+Run phishing simulations regularly. Awareness is still your first line of defense.
+
+### Step 2: Implement Zero-Trust Architecture
+
+Assume every request could be malicious. Use continuous verification and segment internal networks. Even if one account is compromised, Zero-Trust prevents it from spreading laterally.
+
+### Step 3: Strengthen Email Authentication
+
+Activate SPF, DKIM, and DMARC for your domains. These ensure messages can't be easily spoofed.
+
+### Step 4: Enforce MFA and Password Hygiene
+
+MFA stops over 99% of credential-based attacks. Combine it with password managers to enforce complexity without hurting productivity.
+
+### Step 5: Leverage AI-Powered Security Solutions
+
+Adopt endpoint and email protection platforms that use AI to detect contextual phishing patterns—not just keywords.
+
+### Step 6: Partner With an MSP or Cybersecurity Team
+
+Outsourcing IT security gives SMBs access to enterprise-grade tools, compliance expertise, and 24/7 monitoring—without the cost of a full in-house team.
+
+## The Compliance Angle: Phishing and Regulatory Risk
+
+For regulated industries (finance, healthcare, legal), phishing isn't just a security threat; it's a compliance violation waiting to happen. Under frameworks like SOC 2, HIPAA, and ISO 27001, organizations are required to demonstrate data integrity and access control.
+
+A successful phishing attack often results in:
+
+- Unauthorized data access.
+- Breach of confidentiality agreements.
+- Fines or loss of certification.
+
+Implementing AI-aware phishing defenses directly supports compliance goals.
+
+## The Business Case for Anti-Phishing Investment
+
+You can't measure cybersecurity ROI like marketing spend—but you can calculate the cost of a breach. Consider this:
+
+- The average cost of a phishing-related breach for SMBs now exceeds $130,000.
+- 60% of affected businesses shut down within six months of a major cyberattack.
+
+Investing in proactive security—AI-driven detection, training, and MSP support—isn't an expense. It's an insurance policy for continuity and trust.
+
+## Future Trends: Where AI Phishing Is Headed
+
+We're only at the beginning of this transformation. Expect the next wave to include:
+
+- AI-powered chat phishing integrated into messaging apps.
+- Synthetic identities combining real and fake data to evade detection.
+- Context-aware attacks that exploit specific company events (like funding rounds or product launches).
+
+As attackers get smarter, defenses must evolve—not react.
+
+![AI-driven phishing defense strategies for SMBs](/imgs/blog/55a.jpg)
+
+## Phishing Is Evolving, So Should You
+
+AI-driven phishing isn't a future risk—it's happening now. Your employees are the new perimeter. Your data is the new currency. And trust—digital trust—is the new security.
+
+Building an AI-resilient security framework isn't optional; it's the foundation of doing business in 2025.
+
+GoCo helps SMBs implement intelligent security measures that prevent, detect, and respond to phishing attacks before damage is done. Let's protect your people, your data, and your reputation.
+
+*You're in Good Company.*`,
+};
+
+const MOCK_BLOG_56 = {
+  id: 'mock-56',
+  slug: 'audit-tech-saas-get-most-from-technology-budget',
+  title: 'Audit Tech SaaS: How to Get the Most From Your Technology Budget',
+  description: 'Audit your SaaS stack to eliminate waste and maximize your technology budget. Discover how a structured software audit improves security and operational efficiency.',
+  author: 'GoCo Team',
+  date: '2026-07-09',
+  readTime: '6 min read',
+  tags: ['SaaS', 'Technology Audit', 'IT Budget', 'Software Management', 'Cost Optimization'],
+  category: 'IT Strategy',
+  image: '/imgs/blog/56.jpg',
+  featured: false,
+  content: `What if your company isn't spending too much on software? What if you're simply paying for tools that no longer create value?
+
+As businesses grow, their technology stack grows with them. New platforms are added to solve immediate needs, teams adopt specialized applications, and subscriptions quietly renew month after month. Over time, many organizations lose visibility into what they're paying for.
+
+A SaaS audit isn't just about reducing software costs. It's about ensuring every application supports your business, strengthens security, and contributes to operational efficiency. Here's how to audit your SaaS environment and maximize your technology budget without compromising productivity.
+
+## Why Every Business Should Audit Its SaaS Stack
+
+Most organizations don't intentionally overspend on software. It happens gradually.
+
+A department purchases a project management tool. Marketing subscribes to another platform. Sales adopts a CRM add-on. Operations implements a reporting solution. Individually, each decision makes sense. Collectively, they often create unnecessary complexity.
+
+A structured SaaS audit helps answer important business questions:
+
+- Which applications are actively being used?
+- Are multiple tools solving the same problem?
+- Who owns each subscription?
+- Are licenses assigned to former employees?
+- Does every platform meet your security requirements?
+
+These questions affect more than your budget—they directly impact operational performance and risk.
+
+## Step 1: Build a Complete Software Inventory
+
+Start by creating a centralized inventory of every SaaS application your organization uses. Include:
+
+- Application name
+- Business owner
+- Department
+- Number of licenses
+- Monthly or annual cost
+- Renewal date
+- Business purpose
+
+Many organizations discover software they didn't even know existed. Visibility is the foundation of effective I.T. governance.
+
+## Step 2: Measure Actual Usage
+
+A subscription isn't valuable simply because you're paying for it. Review usage data whenever possible. Ask questions such as:
+
+- Is the application being used regularly?
+- Are all purchased licenses assigned?
+- Are advanced features actually being utilized?
+- Could a lower pricing tier meet current needs?
+
+Unused licenses and underutilized applications are among the easiest opportunities to reduce technology spending.
+
+## Step 3: Identify Redundant Applications
+
+One of the most common findings during a SaaS audit is duplication. For example:
+
+- Two project management platforms.
+- Multiple file-sharing applications.
+- Several communication tools.
+- Different password managers across departments.
+
+Standardizing your technology stack reduces licensing costs, simplifies user training, and improves operational consistency. Sometimes eliminating one redundant platform creates more value than negotiating a discount.
+
+## Step 4: Review Security and Access
+
+Every SaaS application introduces potential security risk. An effective audit should include:
+
+- Multi-Factor Authentication (MFA) enabled.
+- Role-based access controls.
+- Single Sign-On (SSO) availability.
+- User permissions reviewed regularly.
+- Former employees removed immediately.
+
+Software that no one manages becomes a security liability. Security should be evaluated alongside cost—not after it.
+
+## Step 5: Evaluate Business Value
+
+Every application should answer one simple question: What business problem does this solve today?
+
+Technology that no longer supports current business objectives creates unnecessary complexity. Consider whether each platform:
+
+- Improves productivity.
+- Supports collaboration.
+- Strengthens compliance.
+- Enhances customer experience.
+- Enables business growth.
+
+If the answer isn't clear, the investment deserves another look.
+
+![SaaS audit for technology budget optimization](/imgs/blog/56a.jpg)
+
+## Make SaaS Audits Part of Your I.T. Strategy
+
+A SaaS audit shouldn't be treated as a one-time cost-cutting exercise. It should become part of your ongoing I.T. governance process. Conducting regular reviews helps organizations:
+
+- Reduce unnecessary software expenses.
+- Improve visibility across the technology environment.
+- Strengthen security controls.
+- Simplify vendor management.
+- Support better business decisions.
+
+The goal isn't to own fewer tools. The goal is to own the right tools.
+
+## Technology Should Create Clarity, Not Complexity
+
+Growing organizations don't struggle because they have too much technology. They struggle when technology evolves faster than governance.
+
+An effective SaaS audit helps align software investments with business priorities, strengthens security, and ensures every application contributes to operational success.
+
+At GoCo, we believe technology should support the way your business operates—not complicate it. Because the best technology investments aren't measured by how many tools you own. They're measured by how effectively those tools help your organization grow.
+
+*You're in Good Company.*`,
+};
+
 // API Headers
 const headers = {
   'Authorization': `Bearer ${STRAPI_TOKEN}`,
@@ -2250,7 +2667,7 @@ export const fetchBlogData = async () => {
     // Check if data.data exists and is an array
     if (!data.data || !Array.isArray(data.data)) {
       console.warn('⚠️ Unexpected data structure from Strapi:', data);
-      return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53];
+      return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56];
     }
 
     // Transform Strapi data to match your existing structure
@@ -2286,7 +2703,7 @@ export const fetchBlogData = async () => {
 
     console.log('🎉 Final blog data array:', blogData);
     // merge mock blogs at front if not already present
-    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53];
+    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56];
     const staticSlugs = new Set(staticBlogs.map(b => b.slug));
     const combined = [...staticBlogs, ...blogData.filter(b => !staticSlugs.has(b.slug))];
     console.log('🎉 Combined array with mock:', combined);
@@ -2294,7 +2711,7 @@ export const fetchBlogData = async () => {
   } catch (error) {
     console.error('❌ Error fetching blog data:', error);
     console.log('🔄 Returning mock blogs instead of empty array');
-    return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53];
+    return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56];
   }
 };
 
@@ -2429,7 +2846,7 @@ export const getBlogBySlug = async (slug) => {
     console.log(`🔍 Fetching blog with slug: ${slug}`);
     
     // check static blogs first
-    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53];
+    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56];
     const staticMatch = staticBlogs.find(b => b.slug === slug);
     if (staticMatch) {
       console.log('🧪 Returning static blog for slug', slug);
