@@ -50,8 +50,7 @@ function Navbar() {
     },
     {
       label: "Blog",
-      href: "https://www.goodcompanyit.com/en/blog",
-      external: true
+      href: "/blog"
     }
   ];
 
