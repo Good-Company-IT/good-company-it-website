@@ -3,27 +3,7 @@ const STRAPI_API_URL = 'http://localhost:1337/api';
 const STRAPI_TOKEN = 'bdd0aa7259a9a8c9754fdf0c760e37b10d2b72c4e214c3e412419901990603d01524956fe5b232931ece70f348f07d87347703aba5e4ebe073e08b0a0252eea98e5ec5a7158b027277ed6bf8b9694a6bb2fb6b67942d8a223e3b208373573fdeabacd215fa94a41c345b646dabb51b23b48a7690b479f0813175c922855b7185';
 
 // mock blog disconnected from CMS
-const MOCK_BLOG = {
-  id: 'mock-1',
-  slug: 'cybersecurity-it',
-  title: 'Cybersecurity & I.T.: Safeguarding Your Digital World',
-  description: 'An essential guide to why cybersecurity and information technology are critical for every modern business.',
-  author: 'GoCo Team',
-  date: '2026-02-24',
-  readTime: '6 min read',
-  tags: ['cybersecurity', 'IT', 'security'],
-  category: 'Security',
-  image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=800&q=60',
-  featured: false,
-  content: `### Cybersecurity matters
 
-In today's interconnected landscape, protecting your data and infrastructure is not a luxury—it's a necessity.
-
-Good Company offers insights into best practices for securing networks, training employees, and choosing the right tools.
-
-
-disconnected from CMS mock post content here...`,
-};
 
 const MOCK_BLOG_39 = {
   id: 'mock-39',
@@ -3006,7 +2986,7 @@ export const fetchBlogData = async () => {
     // Check if data.data exists and is an array
     if (!data.data || !Array.isArray(data.data)) {
       console.warn('⚠️ Unexpected data structure from Strapi:', data);
-      return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56, MOCK_BLOG_57, MOCK_BLOG_58];
+      return [MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56, MOCK_BLOG_57, MOCK_BLOG_58];
     }
 
     // Transform Strapi data to match your existing structure
@@ -3042,7 +3022,7 @@ export const fetchBlogData = async () => {
 
     console.log('🎉 Final blog data array:', blogData);
     // merge mock blogs at front if not already present
-    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56, MOCK_BLOG_57, MOCK_BLOG_58];
+    const staticBlogs = [MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56, MOCK_BLOG_57, MOCK_BLOG_58];
     const staticSlugs = new Set(staticBlogs.map(b => b.slug));
     const combined = [...staticBlogs, ...blogData.filter(b => !staticSlugs.has(b.slug))];
     console.log('🎉 Combined array with mock:', combined);
@@ -3050,7 +3030,7 @@ export const fetchBlogData = async () => {
   } catch (error) {
     console.error('❌ Error fetching blog data:', error);
     console.log('🔄 Returning mock blogs instead of empty array');
-    return [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56, MOCK_BLOG_57, MOCK_BLOG_58];
+    return [MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56, MOCK_BLOG_57, MOCK_BLOG_58];
   }
 };
 
@@ -3185,7 +3165,7 @@ export const getBlogBySlug = async (slug) => {
     console.log(`🔍 Fetching blog with slug: ${slug}`);
     
     // check static blogs first
-    const staticBlogs = [MOCK_BLOG, MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56, MOCK_BLOG_57, MOCK_BLOG_58];
+    const staticBlogs = [MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_41, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_49, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_54, MOCK_BLOG_55, MOCK_BLOG_56, MOCK_BLOG_57, MOCK_BLOG_58];
     const staticMatch = staticBlogs.find(b => b.slug === slug);
     if (staticMatch) {
       console.log('🧪 Returning static blog for slug', slug);
