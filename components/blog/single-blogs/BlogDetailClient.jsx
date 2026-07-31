@@ -10,24 +10,27 @@ import rehypeHighlight from 'rehype-highlight';
 import { getBlogBySlug } from "@/components/blog/utils/data"
 import 'highlight.js/styles/github-dark.css';
 
-export default function BlogDetailClient({ slug }) {
-  const [blog, setBlog] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
+export default function BlogDetailClient({ slug, initialBlog }) {
+  const [blog, setBlog] = useState(initialBlog || null);
+  const [isLoading, setIsLoading] = useState(!initialBlog);
   const [error, setError] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
+    // Already have the data from the server (new file-based blogs) — no fetch needed.
+    if (initialBlog) return;
+
     const loadBlog = async () => {
       try {
         console.log('🚀 Loading blog with slug:', slug);
         setIsLoading(true);
         const blogData = await getBlogBySlug(slug);
-        
+
         if (!blogData) {
           setError('Blog not found');
           return;
         }
-        
+
         setBlog(blogData);
         console.log('✅ Blog loaded:', blogData);
       } catch (err) {
@@ -41,7 +44,7 @@ export default function BlogDetailClient({ slug }) {
     if (slug) {
       loadBlog();
     }
-  }, [slug]);
+  }, [slug, initialBlog]);
 
   if (isLoading) {
     return (
