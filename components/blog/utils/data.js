@@ -5,166 +5,7 @@ const STRAPI_TOKEN = 'bdd0aa7259a9a8c9754fdf0c760e37b10d2b72c4e214c3e41241990199
 // mock blog disconnected from CMS
 
 
-const MOCK_BLOG_39 = {
-  id: 'mock-39',
-  slug: 'it-monitoring-ultimate-guide-prevent-downtime',
-  title: 'IT Monitoring Explained: How Proactive Monitoring Prevents Downtime and Data Loss',
-  description: 'IT Monitoring helps prevent downtime and data loss. Learn proactive monitoring strategies to protect your IT systems.',
-  author: 'GoCo Team',
-  date: '2026-04-09',
-  readTime: '7 min read',
-  tags: ['IT Monitoring', 'Downtime Prevention', 'IT Operations'],
-  category: 'IT Operations',
-  image: '/imgs/blog/39.png',
-  featured: false,
-  content: `## What IT Monitoring Actually Means
 
-IT Monitoring is the continuous observation of systems, devices, networks, and applications to detect issues before they impact operations. It provides visibility into:
-
-- System performance
-- Device health
-- Network activity
-- Security events
-
-The goal is simple: Identify problems early — before they become disruptions.
-
-## Reactive vs. Proactive IT Environments
-
-In many organizations, IT operates reactively:
-
-- An issue occurs
-- A user reports it
-- The team investigates and resolves it
-
-This model depends on failure.
-
-Proactive IT Monitoring changes that dynamic:
-
-- Systems generate alerts
-- Anomalies are detected in real time
-- Issues are addressed before users notice them
-
-The difference is not just speed. It's control.
-
-## How Proactive Monitoring Prevents Downtime
-
-Downtime rarely happens without warning. There are usually signals:
-
-- Increased CPU usage
-- Memory leaks
-- Network latency
-- Failed login attempts
-- Unusual system behavior
-
-Without monitoring, these signals are invisible. With IT Monitoring, they become actionable.
-
-For example:
-
-- A server reaching capacity can be addressed before it crashes
-- A failing device can be replaced before it stops working
-- A misconfigured system can be corrected before it disrupts operations
-
-Monitoring turns potential failures into manageable events.
-
-## How IT Monitoring Reduces Data Loss
-
-Data loss is often the result of:
-
-- System failures
-- Unauthorized access
-- Lack of backups
-- Delayed response to incidents
-
-IT Monitoring plays a critical role in preventing these scenarios by:
-
-- Tracking backup status and failures
-- Detecting unusual access patterns
-- Identifying system anomalies that could compromise data integrity
-- Alerting teams to issues in real time
-
-The key is timing. The sooner an issue is detected, the lower the impact.
-
-## Key Components of Effective IT Monitoring
-
-### 1. Endpoint Monitoring
-
-Every device connected to your environment represents a potential risk. Monitoring includes:
-
-- Device health
-- Patch status
-- Security posture
-
-Unmanaged endpoints are one of the most common sources of failure.
-
-### 2. Network Monitoring
-
-Network performance affects everything. Monitoring focuses on:
-
-- Connectivity
-- Latency
-- Traffic patterns
-
-Issues at this level can impact multiple systems simultaneously.
-
-### 3. Security Monitoring
-
-Not all issues are operational. Some are threats.
-
-Monitoring helps detect:
-
-- Suspicious login attempts
-- Unauthorized access
-- Anomalous behavior
-
-This is where IT and security intersect.
-
-### 4. Alerting and Response
-
-Monitoring without response is incomplete. Effective systems include:
-
-- Real-time alerts
-- Defined escalation paths
-- Clear ownership of incidents
-
-Detection is only valuable if action follows.
-
-## Common Mistakes in IT Monitoring
-
-- Monitoring too little (limited visibility)
-- Monitoring too much (alert fatigue)
-- Ignoring alerts or lacking response processes
-- Treating monitoring as a tool, not a system
-
-Effective IT Monitoring requires balance, structure, and clear processes.
-
-## Why Monitoring Is Critical for Growing Companies
-
-As organizations grow, complexity increases:
-
-- More users
-- More systems
-- More integrations
-
-Each new component adds potential points of failure. Without IT Monitoring, visibility decreases as complexity increases.
-
-This creates an environment where issues are discovered too late. Monitoring ensures that growth does not compromise stability.
-
-IT Monitoring is not about watching systems. It's about understanding them.
-
-It provides the visibility needed to:
-
-- Prevent downtime
-- Protect data
-- Maintain operational continuity
-
-In modern IT environments, the question is no longer: "Can we fix issues when they happen?"
-
-It becomes: "Can we detect them before they impact the business?"
-
-Because the most effective IT environments are not the ones that respond quickly. They are the ones who rarely need to respond at all.
-
-*You're in Good Company.*`,
-};
 
 const MOCK_BLOG_40 = {
   id: 'mock-40',
@@ -2173,7 +2014,7 @@ export const fetchBlogData = async () => {
     // Check if data.data exists and is an array
     if (!data.data || !Array.isArray(data.data)) {
       console.warn('⚠️ Unexpected data structure from Strapi:', data);
-      return [MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_56, MOCK_BLOG_57];
+      return [MOCK_BLOG_40, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_56, MOCK_BLOG_57];
     }
 
     // Transform Strapi data to match your existing structure
@@ -2209,7 +2050,7 @@ export const fetchBlogData = async () => {
 
     console.log('🎉 Final blog data array:', blogData);
     // merge mock blogs at front if not already present
-    const staticBlogs = [MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_56, MOCK_BLOG_57];
+    const staticBlogs = [MOCK_BLOG_40, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_56, MOCK_BLOG_57];
     const staticSlugs = new Set(staticBlogs.map(b => b.slug));
     const combined = [...staticBlogs, ...blogData.filter(b => !staticSlugs.has(b.slug))];
     console.log('🎉 Combined array with mock:', combined);
@@ -2217,7 +2058,7 @@ export const fetchBlogData = async () => {
   } catch (error) {
     console.error('❌ Error fetching blog data:', error);
     console.log('🔄 Returning mock blogs instead of empty array');
-    return [MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_56, MOCK_BLOG_57];
+    return [MOCK_BLOG_40, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_56, MOCK_BLOG_57];
   }
 };
 
@@ -2352,7 +2193,7 @@ export const getBlogBySlug = async (slug) => {
     console.log(`🔍 Fetching blog with slug: ${slug}`);
     
     // check static blogs first
-    const staticBlogs = [MOCK_BLOG_39, MOCK_BLOG_40, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_56, MOCK_BLOG_57];
+    const staticBlogs = [MOCK_BLOG_40, MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_45, MOCK_BLOG_46, MOCK_BLOG_47, MOCK_BLOG_48, MOCK_BLOG_50, MOCK_BLOG_51, MOCK_BLOG_52, MOCK_BLOG_53, MOCK_BLOG_56, MOCK_BLOG_57];
     const staticMatch = staticBlogs.find(b => b.slug === slug);
     if (staticMatch) {
       console.log('🧪 Returning static blog for slug', slug);
