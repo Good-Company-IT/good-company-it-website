@@ -7,7 +7,7 @@ category: Cybersecurity
 author: GoCo Team
 date: '2026-06-24'
 readTime: 6 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1786986393/dwhix8y5kulqnvvirlgj.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1786987357/ow3ukfvbcwodzhgbzm1r.webp
 imageAlt: 'Network Security Protection: How to Secure Growth'
 featured: false
 ---
