@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { useParams } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -9,13 +10,14 @@ import {
   FiTag,
   FiArrowRight,
   FiCalendar,
-  FiBookmark,
-  FiShare2
+  FiShare2,
+  FiCheck
 } from 'react-icons/fi';
 
 const BlogCard = ({ blog, index }) => {
   const params = useParams();
   const locale = params?.locale || 'en';
+  const [copied, setCopied] = useState(false);
   const cardVariants = {
     hidden: { 
       opacity: 0, 
@@ -76,8 +78,31 @@ const BlogCard = ({ blog, index }) => {
 
   // Handle cases where slug might not exist
   const blogSlug = blog.slug || blog.documentId || `blog-${blog.id}`;
-  
+
   console.log('🔗 Blog card using slug:', blogSlug, 'for blog:', blog.title);
+
+  const handleShare = async (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const url = `${window.location.origin}/${locale}/blog/${blogSlug}`;
+
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: blog.title, text: blog.description, url });
+      } catch (err) {
+        // User cancelled the native share sheet — nothing to do.
+      }
+      return;
+    }
+
+    try {
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // Clipboard access denied — nothing more we can do here.
+    }
+  };
 
   if (blog.featured) {
     // Featured card layout (large horizontal)
@@ -133,26 +158,11 @@ const BlogCard = ({ blog, index }) => {
                 <motion.button
                   whileHover={{ scale: 1.1 }}
                   whileTap={{ scale: 0.9 }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    // Handle bookmark logic here
-                  }}
+                  onClick={handleShare}
+                  title={copied ? 'Enlace copiado' : 'Compartir'}
                   className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
                 >
-                  <FiBookmark className="w-4 h-4 text-gray-600" />
-                </motion.button>
-                <motion.button
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.9 }}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    // Handle share logic here
-                  }}
-                  className="p-2 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
-                >
-                  <FiShare2 className="w-4 h-4 text-gray-600" />
+                  {copied ? <FiCheck className="w-4 h-4 text-green-600" /> : <FiShare2 className="w-4 h-4 text-gray-600" />}
                 </motion.button>
               </div>
             </div>
@@ -275,26 +285,11 @@ const BlogCard = ({ blog, index }) => {
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  // Handle bookmark logic here
-                }}
+                onClick={handleShare}
+                title={copied ? 'Enlace copiado' : 'Compartir'}
                 className="p-1.5 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
               >
-                <FiBookmark className="w-3 h-3 text-gray-600" />
-              </motion.button>
-              <motion.button
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                onClick={(e) => {
-                  e.preventDefault();
-                  e.stopPropagation();
-                  // Handle share logic here
-                }}
-                className="p-1.5 bg-white/90 backdrop-blur-sm rounded-full hover:bg-white transition-colors"
-              >
-                <FiShare2 className="w-3 h-3 text-gray-600" />
+                {copied ? <FiCheck className="w-3 h-3 text-green-600" /> : <FiShare2 className="w-3 h-3 text-gray-600" />}
               </motion.button>
             </div>
           </div>
