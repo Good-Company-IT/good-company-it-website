@@ -7,7 +7,7 @@ category: Cybersecurity
 author: GoCo Team
 date: '2026-06-24'
 readTime: 8 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1786987405/nqnt6hccofd7tmrs6de1.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1786988299/mj44res12sz4rdisetkz.webp
 imageAlt: 'Cloud Misconfigurations: Top Compliance Risks'
 featured: false
 ---
