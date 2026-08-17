@@ -582,141 +582,7 @@ It's not just about preventing attacks. It's about enabling your business to ope
 
 
 
-const MOCK_BLOG_52 = {
-  id: 'mock-52',
-  slug: 'why-it-visibility-matters-you-cant-protect-what-you-cant-see',
-  title: "Why I.T. Visibility Matters: You Can't Protect What You Can't See",
-  description: 'I.T. Visibility helps businesses strengthen I.T. security, reduce blind spots, and protect critical technology assets.',
-  author: 'GoCo Team',
-  date: '2026-07-01',
-  readTime: '8 min read',
-  tags: ['IT Visibility', 'Cybersecurity', 'Shadow IT', 'Compliance', 'IT Security'],
-  category: 'Security',
-  image: '/imgs/blog/52.jpg',
-  featured: false,
-  content: `What if your biggest cybersecurity risk isn't a sophisticated hacker, but an unknown device, unmanaged application, or forgotten user account already connected to your network?
 
-Most businesses invest in security tools, firewalls, and antivirus solutions. Yet many still struggle with security incidents because they lack something fundamental: I.T. visibility.
-
-The truth is simple. You cannot secure assets you don't know exist. Before organizations can strengthen security, improve compliance, or reduce risk, they need complete visibility into their technology environment.
-
-## What Is I.T. Visibility?
-
-I.T. visibility is the ability to identify, monitor, and understand every component of your technology ecosystem.
-
-This includes:
-
-- Devices connected to the network
-- User accounts and permissions
-- Cloud applications and services
-- Servers and infrastructure
-- Software installations
-- Data storage locations
-- Security events and system activity
-
-When businesses have complete I.T. visibility, they gain a clear picture of what exists, how it is being used, and where potential risks may be hiding.
-
-Without that visibility, security teams are often operating with dangerous blind spots.
-
-## The Security Risks of Poor Visibility
-
-Modern I.T. environments are more complex than ever. Employees work remotely, cloud platforms are widely adopted, and new applications are introduced regularly.
-
-As environments grow, so do hidden risks.
-
-### Shadow I.T.
-
-Employees often adopt software without approval from the I.T. department. While these tools may improve productivity, they can create security vulnerabilities if they are not properly managed.
-
-### Unmanaged Devices
-
-Personal laptops, smartphones, and tablets may access company resources without adequate security controls, increasing exposure to cyber threats.
-
-### Forgotten Accounts
-
-Former employees, inactive accounts, and outdated credentials can remain active for months if not monitored properly.
-
-### Vulnerable Software
-
-Applications that have not been updated or patched can become entry points for attackers.
-
-Without visibility, these risks can remain undetected until they cause significant damage.
-
-## Why I.T. Visibility Improves Security
-
-![IT visibility monitoring dashboard](/imgs/blog/52a.jpg)
-
-Visibility is the foundation of every effective cybersecurity strategy.
-
-When organizations understand their environment, they can:
-
-### Detect Threats Faster
-
-Security teams can identify unusual activity before it escalates into a major incident.
-
-Examples include:
-
-- Suspicious login attempts
-- Unauthorized devices
-- Unusual file access patterns
-- Unexpected network traffic
-
-Early detection allows businesses to respond quickly and minimize impact.
-
-### Strengthen Access Control
-
-Knowing who has access to systems and data makes it easier to enforce least-privilege policies and eliminate unnecessary permissions.
-
-This reduces opportunities for both insider threats and external attackers.
-
-### Improve Vulnerability Management
-
-You cannot patch what you cannot see.
-
-Complete I.T. visibility helps organizations identify outdated software, unsupported devices, and misconfigured systems before attackers exploit them.
-
-## I.T. Visibility Supports Compliance
-
-Many businesses must comply with security and data protection frameworks such as HIPAA, SOC 2, GDPR, or industry-specific regulations.
-
-A key requirement across these standards is understanding where sensitive data resides and who can access it.
-
-I.T. visibility helps organizations:
-
-- Maintain accurate asset inventories
-- Track user activity
-- Monitor access permissions
-- Generate audit-ready reports
-
-Strong visibility simplifies compliance efforts while reducing operational risk.
-
-## Building Better I.T. Visibility
-
-Improving visibility requires more than periodic audits.
-
-Organizations should implement:
-
-- Continuous network monitoring
-- Asset discovery tools
-- Endpoint management solutions
-- Cloud security monitoring
-- Centralized logging and reporting
-- Regular access reviews
-
-The goal is to create a real-time view of the entire technology environment, not just a snapshot taken once or twice a year.
-
-## Visibility Is the First Step Toward Better Security
-
-Many organizations focus on buying more security tools when the real challenge is understanding their existing environment.
-
-I.T. visibility provides the foundation needed to make informed security decisions, reduce vulnerabilities, and respond to threats with confidence.
-
-At GoCo, we help businesses gain complete visibility across their I.T. infrastructure, cloud environments, and security systems. By eliminating blind spots and improving operational awareness, organizations can build stronger security programs and make technology a strategic advantage.
-
-Because when it comes to cybersecurity, the most dangerous risks are often the ones you cannot see.
-
-*You're in Good Company.*`,
-};
 
 
 
@@ -880,7 +746,7 @@ export const fetchBlogData = async () => {
     // Check if data.data exists and is an array
     if (!data.data || !Array.isArray(data.data)) {
       console.warn('⚠️ Unexpected data structure from Strapi:', data);
-      return [MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_47, MOCK_BLOG_52, MOCK_BLOG_56];
+      return [MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_47, MOCK_BLOG_56];
     }
 
     // Transform Strapi data to match your existing structure
@@ -916,7 +782,7 @@ export const fetchBlogData = async () => {
 
     console.log('🎉 Final blog data array:', blogData);
     // merge mock blogs at front if not already present
-    const staticBlogs = [MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_47, MOCK_BLOG_52, MOCK_BLOG_56];
+    const staticBlogs = [MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_47, MOCK_BLOG_56];
     const staticSlugs = new Set(staticBlogs.map(b => b.slug));
     const combined = [...staticBlogs, ...blogData.filter(b => !staticSlugs.has(b.slug))];
     console.log('🎉 Combined array with mock:', combined);
@@ -924,7 +790,7 @@ export const fetchBlogData = async () => {
   } catch (error) {
     console.error('❌ Error fetching blog data:', error);
     console.log('🔄 Returning mock blogs instead of empty array');
-    return [MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_47, MOCK_BLOG_52, MOCK_BLOG_56];
+    return [MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_47, MOCK_BLOG_56];
   }
 };
 
@@ -1059,7 +925,7 @@ export const getBlogBySlug = async (slug) => {
     console.log(`🔍 Fetching blog with slug: ${slug}`);
     
     // check static blogs first
-    const staticBlogs = [MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_47, MOCK_BLOG_52, MOCK_BLOG_56];
+    const staticBlogs = [MOCK_BLOG_42, MOCK_BLOG_43, MOCK_BLOG_44, MOCK_BLOG_47, MOCK_BLOG_56];
     const staticMatch = staticBlogs.find(b => b.slug === slug);
     if (staticMatch) {
       console.log('🧪 Returning static blog for slug', slug);
