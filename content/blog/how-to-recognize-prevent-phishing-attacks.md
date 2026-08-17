@@ -7,7 +7,7 @@ category: Cybersecurity
 author: GoCo Team
 date: '2026-06-17'
 readTime: 6 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1786146859/kknpxwmgidq2cles5scq.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1786987282/wrc2ke6mjfzoyenilvbh.webp
 imageAlt: 'Phishing Attacks: Ultimate Prevention Guide'
 featured: false
 ---
@@ -139,7 +139,7 @@ Need help strengthening your phishing defenses? A Managed IT Services partner ca
 
 **The best way to stop phishing attacks is to prepare before they happen. Let’s protect your future, one email at a time.**
 
-![Phishing Attacks: Conclusion: Security Is Everyone’s Responsibility](https://res.cloudinary.com/hxsmbfka/image/upload/v1786146860/k9ouxo7brk3nynplb76h.webp)
+![Phishing Attacks: Conclusion: Security Is Everyone’s Responsibility](https://res.cloudinary.com/hxsmbfka/image/upload/v1786987285/qujqaqcao0xbtfp7mfpl.webp)
 
 Explore our latest [LinkedIn articles](https://www.linkedin.com/company/good-company-it-consulting/), where we share practical insights on Managed I.T. Services, cybersecurity, governance, operational excellence, and the strategies helping businesses reduce risk and scale with confidence.
 
