@@ -7,7 +7,7 @@ category: Cybersecurity
 author: GoCo Team
 date: '2026-06-24'
 readTime: 4 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1786988953/kinmz0ueoyqpj7f5ylym.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1786990216/lfruvjhbgo4zyla4zi0z.webp
 imageAlt: 'Cybersecurity Audit: Ultimate Preparation Guide'
 featured: false
 ---
