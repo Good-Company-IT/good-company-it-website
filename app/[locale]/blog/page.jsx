@@ -1,4 +1,7 @@
 //Functions
+import fs from "fs";
+import path from "path";
+import matter from "gray-matter";
 import TranslationsProvider from "@/TranslationsProvider";
 import initTranslations from "@/i18n";
 import dynamic from "next/dynamic";
@@ -6,6 +9,36 @@ import Script from "next/script";
 
 // Import Container component
 import Main from "@/components/blog/Main";
+
+const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
+
+// Blogs published through the new pipeline live here as Markdown + front-matter.
+// Read them all and hand them to Main as initialBlogs, merged there with whatever
+// fetchBlogData() (Strapi + any remaining static mocks) returns — mirrors the
+// same file-based pattern already used for the single blog detail page.
+function getAllFileBlogs() {
+  if (!fs.existsSync(CONTENT_DIR)) return [];
+  return fs
+    .readdirSync(CONTENT_DIR)
+    .filter((file) => file.endsWith(".md"))
+    .map((file) => {
+      const raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf8");
+      const { data } = matter(raw);
+      return {
+        id: data.slug,
+        slug: data.slug,
+        title: data.title,
+        description: data.description,
+        author: data.author,
+        date: data.date,
+        readTime: data.readTime,
+        category: data.category,
+        tags: data.category ? [data.category] : [],
+        image: data.image,
+        featured: data.featured || false,
+      };
+    });
+}
 
 //Different namespaces
 const i18nNameSpaces = ["home", "navbar", "footer", "common"];
@@ -116,6 +149,7 @@ export default async function Home({ params }) {
   const { locale } = await params;
   
   const { resources } = await initTranslations(locale, i18nNameSpaces);
+  const fileBlogs = getAllFileBlogs();
 
   return (
     <>
@@ -124,9 +158,7 @@ export default async function Home({ params }) {
         locale={locale}
         namespaces={i18nNameSpaces}
       >
-        <Main 
- 
-        />
+        <Main initialBlogs={fileBlogs} />
       </TranslationsProvider>
     </>
   );

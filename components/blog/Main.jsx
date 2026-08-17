@@ -9,7 +9,7 @@ import LeadMagnet from './LeadMagnet.jsx';
 import { fetchBlogData } from './utils/data.js';
 import { FaSortAmountDown } from "react-icons/fa";
 
-const Main = () => {
+const Main = ({ initialBlogs = [] }) => {
   const [filters, setFilters] = useState({
     search: '',
     datePeriod: '',
@@ -33,7 +33,9 @@ const Main = () => {
       setIsLoading(true);
       
       try {
-        const blogData = await fetchBlogData();
+        const remoteBlogs = await fetchBlogData();
+        const fileSlugs = new Set(initialBlogs.map(b => b.slug));
+        const blogData = [...initialBlogs, ...remoteBlogs.filter(b => !fileSlugs.has(b.slug))];
 
         const uniqueAuthors = [...new Set(blogData.map(b => b.author))].filter(a => a && a !== 'Unknown Author');
         const uniqueCategories = [...new Set(blogData.map(b => b.category))].filter(c => c);
