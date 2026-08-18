@@ -7,7 +7,7 @@ category: Managed IT Services
 author: GoCo Team
 date: '2026-07-09'
 readTime: 5 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1787079141/v1dinztjihjgqhhe9egh.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1787080404/xlg5rvuu1cbz4jqeb2tl.webp
 imageAlt: 'Managed IT Services Cost: Ultimate Guide'
 featured: false
 ---
