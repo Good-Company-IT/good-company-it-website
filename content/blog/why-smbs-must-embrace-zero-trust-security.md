@@ -7,7 +7,7 @@ category: Cybersecurity
 author: GoCo Team
 date: '2026-07-07'
 readTime: 6 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1787079159/ref4mndou5zbsvgvbyvn.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1787080422/btehh5ptlvejkb5by0zq.webp
 imageAlt: 'Zero-Trust Security: How to Protect SMBs'
 featured: false
 ---
@@ -157,7 +157,7 @@ Let’s build a Zero-Trust roadmap for your business, one that secures your oper
 
 If you found this article helpful, be sure to visit our latest piece on our [Blog](https://www.goodcompanyit.com/en/blog) for more insights.
 
-![Zero-Trust Security: Your Next Step Toward Zero-Trust](https://res.cloudinary.com/hxsmbfka/image/upload/v1787079160/l5etonhagryu7xg9zpe1.webp)
+![Zero-Trust Security: Your Next Step Toward Zero-Trust](https://res.cloudinary.com/hxsmbfka/image/upload/v1787080423/medhpgf7djqkraieh5cu.webp)
 
 Technology decisions shouldn't be based on trends, they should support better business outcomes.
 
