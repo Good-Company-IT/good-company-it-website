@@ -116,12 +116,12 @@ export default function BlogDetailClient({ slug, initialBlog }) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              className="mb-8 rounded-2xl overflow-hidden shadow-lg"
+              className="mb-8 rounded-2xl overflow-hidden shadow-lg flex justify-center bg-gray-50"
             >
               <img
                 src={blog.image}
                 alt={blog.title}
-                className="w-full h-64 md:h-80 object-cover"
+                className="h-64 md:h-80 w-auto max-w-full object-contain"
               />
             </motion.div>
           )}
