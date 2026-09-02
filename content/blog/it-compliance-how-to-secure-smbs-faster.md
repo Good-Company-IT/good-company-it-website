@@ -5,9 +5,9 @@ description: IT Compliance helps SMBs meet security standards with scalable comp
 keyword: IT Compliance
 category: 'Compliance '
 author: GoCo Team
-date: '2026-08-19'
+date: '2026-09-02'
 readTime: 8 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1787148573/gxidnrnewhvue0dlwyfl.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1788365728/rf7yxieeiocrknktxl8v.webp
 imageAlt: 'IT Compliance: How to Secure SMBs Faster'
 featured: false
 ---
