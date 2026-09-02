@@ -8,6 +8,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import { getBlogBySlug } from "@/components/blog/utils/data"
+import BlogCoverImage from "@/components/blog/utils/BlogCoverImage"
 import 'highlight.js/styles/github-dark.css';
 
 export default function BlogDetailClient({ slug, initialBlog }) {
@@ -116,13 +117,9 @@ export default function BlogDetailClient({ slug, initialBlog }) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              className="mb-8 rounded-2xl overflow-hidden shadow-lg flex justify-center bg-gray-50"
+              className="mb-8 rounded-2xl overflow-hidden shadow-lg"
             >
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="h-64 md:h-80 w-auto max-w-full object-contain"
-              />
+              <BlogCoverImage src={blog.image} alt={blog.title} heightClassName="h-64 md:h-80" />
             </motion.div>
           )}
 

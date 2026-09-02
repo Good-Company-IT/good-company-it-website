@@ -13,6 +13,7 @@ import {
   FiShare2,
   FiCheck
 } from 'react-icons/fi';
+import BlogCoverImage from './BlogCoverImage';
 
 const BlogCard = ({ blog, index }) => {
   const params = useParams();
@@ -125,13 +126,9 @@ const BlogCard = ({ blog, index }) => {
             <div className="h-full bg-gradient-cards p-0.5 rounded-2xl">
               <div className="h-full bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
             {/* Image Container */}
-            <div className="relative overflow-hidden flex justify-center bg-gray-50">
+            <div className="relative overflow-hidden">
               <motion.div variants={imageVariants}>
-                <img
-                  src={blog.image}
-                  alt={blog.title}
-                  className="h-64 md:h-80 w-auto max-w-full object-contain"
-                />
+                <BlogCoverImage src={blog.image} alt={blog.title} heightClassName="h-64 md:h-80" />
               </motion.div>
 
               {/* Overlay with Category */}
@@ -264,13 +261,9 @@ const BlogCard = ({ blog, index }) => {
           <div className="h-full bg-gradient-cards p-0.5 rounded-2xl">
             <div className="h-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300">
           {/* Image Container */}
-          <div className="relative overflow-hidden flex-shrink-0 flex justify-center bg-gray-50">
+          <div className="relative overflow-hidden flex-shrink-0">
             <motion.div variants={imageVariants}>
-              <img
-                src={blog.image}
-                alt={blog.title}
-                className="h-48 w-auto max-w-full object-contain"
-              />
+              <BlogCoverImage src={blog.image} alt={blog.title} heightClassName="h-48" />
             </motion.div>
             
             {/* Overlay with Category */}
