@@ -125,12 +125,12 @@ const BlogCard = ({ blog, index }) => {
             <div className="h-full bg-gradient-cards p-0.5 rounded-2xl">
               <div className="h-full bg-white rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300">
             {/* Image Container */}
-            <div className="relative overflow-hidden bg-gray-100">
+            <div className="relative overflow-hidden">
               <motion.div variants={imageVariants}>
                 <img
                   src={blog.image}
                   alt={blog.title}
-                  className="w-full h-64 md:h-80 object-contain"
+                  className="w-full h-64 md:h-80 object-cover"
                 />
               </motion.div>
 
@@ -264,12 +264,12 @@ const BlogCard = ({ blog, index }) => {
           <div className="h-full bg-gradient-cards p-0.5 rounded-2xl">
             <div className="h-full bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden flex flex-col hover:shadow-lg transition-shadow duration-300">
           {/* Image Container */}
-          <div className="relative overflow-hidden flex-shrink-0 bg-gray-100">
+          <div className="relative overflow-hidden flex-shrink-0">
             <motion.div variants={imageVariants}>
               <img
                 src={blog.image}
                 alt={blog.title}
-                className="w-full h-48 object-contain"
+                className="w-full h-48 object-cover"
               />
             </motion.div>
             
