@@ -116,12 +116,12 @@ export default function BlogDetailClient({ slug, initialBlog }) {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.6 }}
-              className="mb-8 rounded-2xl overflow-hidden shadow-lg bg-gray-100"
+              className="mb-8 rounded-2xl overflow-hidden shadow-lg"
             >
               <img
                 src={blog.image}
                 alt={blog.title}
-                className="w-full h-64 md:h-80 object-contain"
+                className="w-full h-64 md:h-80 object-cover"
               />
             </motion.div>
           )}
@@ -208,8 +208,7 @@ export default function BlogDetailClient({ slug, initialBlog }) {
               prose-blockquote:border-l-4 prose-blockquote:border-blue-500 prose-blockquote:bg-blue-50 prose-blockquote:px-4 prose-blockquote:py-2 prose-blockquote:rounded-r
               prose-ul:list-none prose-ul:pl-0 prose-ol:list-none prose-ol:pl-0
               prose-li:text-gray-700 prose-li:mb-2
-              prose-table:border-collapse prose-th:border prose-th:border-gray-300 prose-th:bg-gray-50 prose-th:px-4 prose-th:py-2
-              prose-td:border prose-td:border-gray-300 prose-td:px-4 prose-td:py-2
+              prose-table:my-0
               prose-img:rounded-lg prose-img:shadow-md"
           >
             <ReactMarkdown
@@ -251,6 +250,33 @@ export default function BlogDetailClient({ slug, initialBlog }) {
                   <blockquote className="border-l-4 border-blue-500 bg-blue-50 px-4 py-2 rounded-r my-6">
                     {children}
                   </blockquote>
+                ),
+                // No boring boxed grid — a colored header rule, hairline row
+                // dividers instead of vertical lines, subtle zebra striping,
+                // and smaller text than the surrounding article copy.
+                table: ({ children }) => (
+                  <div className="overflow-x-auto my-6 rounded-lg border border-gray-100">
+                    <table className="w-full border-collapse text-sm">
+                      {children}
+                    </table>
+                  </div>
+                ),
+                thead: ({ children }) => <thead>{children}</thead>,
+                tbody: ({ children }) => <tbody>{children}</tbody>,
+                tr: ({ children }) => (
+                  <tr className="border-b border-gray-100 last:border-b-0 even:bg-gray-50/60">
+                    {children}
+                  </tr>
+                ),
+                th: ({ children }) => (
+                  <th className="text-left text-xs font-semibold uppercase tracking-wide text-gray-500 py-3 px-4 border-b-2 border-primary-orange whitespace-nowrap">
+                    {children}
+                  </th>
+                ),
+                td: ({ children }) => (
+                  <td className="text-sm text-gray-700 py-3 px-4 align-top">
+                    {children}
+                  </td>
                 ),
                 code: ({ inline, children }) => {
                   if (inline) {
