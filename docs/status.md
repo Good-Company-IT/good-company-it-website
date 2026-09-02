@@ -1,28 +1,33 @@
 # Status — Site Changes from the SEO Automation Project
 
-## Live on `main` today
+## Live on `main` — SEO republish project (complete)
 
-- ✅ **Blog nav link fixed** (`e4c9b09`) — was hardcoded as an external absolute URL with `target="_blank"`, forcing it to open in a new tab even though the blog is served by this same site. Now a normal internal link (`href="/blog"`), consistent with the rest of the nav.
-- ✅ **Disconnected test mock blog removed** (`5a35522`) — "Cybersecurity & I.T.: Safeguarding Your Digital World" was the very first test entry from early in the project, had no real metadata, and was never an official post. Removed from `components/blog/utils/data.js`.
+- ✅ **Server-side blog metadata** (`486d8f0`, cherry-picked to `main` as `e08bf96`) — `app/[locale]/blog/[slug]/page.jsx` is an async Server Component:
+  - `generateMetadata({ params })` reads `content/blog/{slug}.md` (front-matter via `gray-matter`) and returns real per-post `title`, `description`, canonical URL, and OpenGraph/Twitter metadata.
+  - **The bug this fixed**: every blog post used to inherit the same generic site-wide metadata — Google indexed every post identically, and social shares (Facebook/LinkedIn/Twitter, which don't run JS) showed a generic card regardless of which article was shared.
+  - `BlogDetailClient.jsx` accepts an `initialBlog` prop from the server; falls back to its own client fetch only for a post with no content file yet.
+  - **Verified on the live site**: `Ctrl+U` on a real published post shows the real `<title>`, `<meta name="description">`, canonical link, and full Open Graph/Twitter tags.
+- ✅ **All 20 of the originally-live blog posts migrated** from hardcoded `MOCK_BLOG_N` objects in `data.js` to `content/blog/{slug}.md` files, each with real metadata and corrected content (missing H2 structure, missing conclusions, keyword placement — see the tool repo's `docs/pending.md` for the full per-post history). Confirmed live and file-verified against the real repo.
+- ✅ **Blog listing page fixed to read the new content files** (`a408df1`) — found right after the above went live: the `/blog` grid page (`Main.jsx` / `data.js`'s `fetchBlogData()`) only ever read Strapi + a handful of hardcoded static entries, never `content/blog/*.md`. Once the 20 posts' static entries were removed by the migration, they became reachable by direct URL but invisible in the listing. `app/[locale]/blog/page.jsx` now also reads every file in `content/blog/` and passes it to `Main` as `initialBlogs`, merged client-side with whatever `fetchBlogData()` still returns.
+- ✅ **`removeMockBlogEntry` (tool-side) fixed for the last-surviving-reference case** — as the static fallback arrays in `data.js` emptied out post by post, the regex that strips a `MOCK_BLOG_N` reference couldn't handle it being the *sole* remaining array element (no comma to anchor on). Fixed in the tool repo; mentioned here because it blocked site commits, not because the fix lives in this repo.
+- ✅ **Blog card Share button wired up, Bookmark removed** (`f359e52`, `components/blog/utils/BlogGrid.jsx`) — both were unimplemented placeholders (`// Handle bookmark/share logic here`, no-ops). Share now calls `navigator.share()` where supported (native OS share sheet — verified on Windows/Edge), falling back to copying the URL with a brief checkmark-icon confirmation. Bookmark removed — low value for a B2B site with no login/reading-list feature; kept as a future idea if repurposed (e.g. "email me this article" for lead capture) rather than left as a dead button.
+- ✅ **Blog nav link fixed** (`e4c9b09`) — was hardcoded as an external absolute URL with `target="_blank"`; now a normal internal link.
+- ✅ **Disconnected test mock blog removed** (`5a35522`) — first-ever test entry, no real metadata, never an official post.
+- ✅ **Categories assigned** for the original 20 (`Cybersecurity` / `Managed IT Services` / `IT Operations`) and for a second batch of new posts (`Compliance`, `Cyber Resilience` added — see tool repo's `docs/pending.md` for the per-post reasoning). Category isn't inferred by any code — it's a Sheet column copied straight into front-matter; assignment is a manual, content-read judgment call, not automated (team explicitly declined an API-cost-per-call classifier).
+- ✅ **Blog #1 re-published solo** (`25f838e`) to fix a heading-structure issue found after the fact — used the tool's targeted-republish mode (`node src/republishLiveBlogs.js 1`) to update just that one post without touching the other 19.
 
-## Built and verified, but only on the `test/blog-automation-webapp` branch — not yet on `main`
+## Known issues found during this project — resolved
 
-- ✅ **Server-side blog metadata (fixes a real SEO bug)** (`486d8f0`) — `app/[locale]/blog/[slug]/page.jsx` is now an async Server Component:
-  - `generateMetadata({ params })` reads `content/blog/{slug}.md` (front-matter via `gray-matter`) and returns real per-blog `title`, `description`, canonical URL, OpenGraph, and Twitter card metadata.
-  - **The bug this fixes**: previously, every blog post shared the site's generic metadata — Google indexed every post with the same title/description, and social shares (Facebook/LinkedIn/Twitter, which don't execute JS) showed a generic card for every article regardless of which one was shared.
-  - **Backward compatible by design**: a blog with no `content/blog/{slug}.md` file yet returns `{}` from `generateMetadata`, silently inheriting the old generic metadata — i.e., today's behavior is the fallback, nothing breaks for unmigrated posts.
-  - `components/blog/single-blogs/BlogDetailClient.jsx` now accepts an `initialBlog` prop; if the server already loaded the data, it skips its own client-side fetch entirely. If not (post not migrated), it falls back to its original `getBlogBySlug()` fetch from `data.js` — unchanged behavior.
-  - Verified on a local dev server: correct metadata + body content for a migrated post; byte-for-byte identical behavior to before for a non-migrated one.
-  - Adds `gray-matter` as a dependency.
-- ✅ **Two blog posts migrated to the new content-file system**: `content/blog/cloud-misconfigurations-compliance-data-risk.md` (#13, commit `9f3499a`) and `content/blog/supply-chain-attacks-target-small-businesses.md` (#14, commit `f608352`). Their corresponding `MOCK_BLOG_N` hardcoded entries were removed from `data.js` in the same commits — old and new data never coexist for a migrated post.
+- ~~Missing per-post metadata~~ — fixed (see above).
+- ~~20 of 21 originally-live posts missing a real conclusion section~~ — traced to the old manual publishing process losing content during conversion (not missing from the source `.docx` files); fixed automatically as each post migrated through the new pipeline.
+- ~~Oversized images committed to the repo (some 15–20MB)~~ — resolved per migrated post: hosted on Cloudinary, auto-compressed to well under 200KB.
+- **Flagged, still not fixed (explicit decision, unchanged)**: `components/blog/utils/data.js` has a hardcoded Strapi API token in plaintext, pointing at an unreachable `localhost:1337`. Left alone — not a current priority. See "Planned cleanup" in `pending.md`.
 
-## Known issues found during this project
+## Rebranding — new initiative, just started
 
-- **Fixed** (see above): missing per-post metadata.
-- **Root-caused, being fixed via migration (external tool)**: 20 of the 21 originally-live blog posts are missing a real conclusion section — traced to the old manual publishing process losing content during conversion, not to the source documents (the original `.docx` files do contain real conclusions). Gets fixed automatically as each post is migrated through the new pipeline.
-- **Flagged, not fixed (explicit decision)**: `components/blog/utils/data.js` has a hardcoded Strapi API token in plaintext, pointing at `localhost:1337` (which is unreachable in production — Strapi is effectively dead code today; the static `MOCK_BLOG_N` array is what actually serves content). Left alone since Strapi isn't a current priority.
-- **Resolves automatically per migrated post**: several images already committed to this repo are far above a reasonable size (some 15–20MB) — each gets replaced with a Cloudinary-hosted, compressed (1200×630 WebP, well under 200KB) version as its post is migrated.
+- **Favicon/app icon updated** (new "GC" logo) — the only visual change applied so far. See `pending.md` for the full plan and what's still waiting on assets.
+- `rebrand-docs/` folder created at the repo root (gitignored — reference material, not shipped): brand guidelines PDF + the new logo file. See `pending.md`.
 
 ## Ongoing content work
 
-Publishing new posts and migrating/fixing existing ones is handled by a separate tool — see [`Good-Company-IT/goco-seo-blog-tool`](https://github.com/Good-Company-IT/goco-seo-blog-tool). That repo's `docs/pending.md` has the current status of the historical migration (2 of 20 original posts done; 13 blocked on content fixes from the marketing team; 5 unblocked by a recent image-compression fix but not yet re-run).
+New blog posts (beyond the original 20) are published through the same tool, via its web app rather than the batch script — see [`Good-Company-IT/goco-seo-blog-tool`](https://github.com/Good-Company-IT/goco-seo-blog-tool)'s `docs/pending.md` for current status.

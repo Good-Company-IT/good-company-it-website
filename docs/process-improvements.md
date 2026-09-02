@@ -12,7 +12,7 @@ How this codebase's blog system has changed as a result of the SEO automation pr
 
 **Before**: every blog post was a hand-maintained JavaScript object (`MOCK_BLOG_39`, `MOCK_BLOG_40`, ...) inside `components/blog/utils/data.js` — a single file that had grown to 3,000+ lines. Adding or fixing a post meant editing a giant shared file by hand, with no structural validation and easy-to-miss mistakes (which is exactly how 20 of 21 live posts ended up missing their conclusion section — lost during manual editing, not missing from the original source).
 
-**After** (in progress, migrating incrementally): each post is a standalone Markdown file with YAML front-matter in `content/blog/`, generated and validated automatically by the separate publishing tool. A post's old `data.js` entry is removed in the same commit that adds its new file, so a given post's data only ever lives in one place.
+**After** (migration complete — all 20 originally-live posts): each post is a standalone Markdown file with YAML front-matter in `content/blog/`, generated and validated automatically by the separate publishing tool. A post's old `data.js` entry is removed in the same commit that adds its new file, so a given post's data only ever lives in one place. New posts published going forward go straight into this system.
 
 ## Images: from bloating the repo to Cloudinary
 
