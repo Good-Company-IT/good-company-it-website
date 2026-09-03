@@ -7,7 +7,7 @@ category: Cybersecurity
 author: GoCo Team
 date: '2026-08-19'
 readTime: 6 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1787148456/n10a9tljon2ngsvi4qt0.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1788451154/rt7nthuri5kpboeaqdmk.webp
 imageAlt: 'Managed IT Services: Top Cybersecurity Guide'
 featured: false
 ---
