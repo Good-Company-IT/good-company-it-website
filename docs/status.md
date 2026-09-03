@@ -15,6 +15,7 @@
 - ✅ **Disconnected test mock blog removed** (`5a35522`) — first-ever test entry, no real metadata, never an official post.
 - ✅ **Categories assigned** for the original 20 (`Cybersecurity` / `Managed IT Services` / `IT Operations`) and for a second batch of new posts (`Compliance`, `Cyber Resilience` added — see tool repo's `docs/pending.md` for the per-post reasoning). Category isn't inferred by any code — it's a Sheet column copied straight into front-matter; assignment is a manual, content-read judgment call, not automated (team explicitly declined an API-cost-per-call classifier).
 - ✅ **Blog #1 re-published solo** (`25f838e`) to fix a heading-structure issue found after the fact — used the tool's targeted-republish mode (`node src/republishLiveBlogs.js 1`) to update just that one post without touching the other 19.
+- ✅ **Cover/inline image cropping fixed for #17-#20** (`e4457a3` here; see tool repo's `docs/pending.md` for the full saga) — split Cloudinary into two upload presets (`goco_blog_cover` force-crops to a fixed 1200×630 for the banner slot, `goco_blog_aux` never crops, for inline text-heavy graphics). `BlogCoverImage.jsx` extracted as the shared cover-image component (hero + both grid card variants), reverted to a plain full-bleed `object-cover` fill now that the cover always arrives pre-cropped to match. Confirmed live on both images.
 
 ## Known issues found during this project — resolved
 
