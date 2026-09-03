@@ -7,7 +7,7 @@ category: Cybersecurity
 author: GoCo Team
 date: '2026-09-02'
 readTime: 8 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1788389704/ppsfspwb4n1mh20zvvx8.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1788443699/all9rqnbof0gsdm7wp1k.webp
 imageAlt: 'Remote Team Security: Best Ways to Protect Your Team'
 featured: false
 ---
@@ -243,7 +243,7 @@ Because your team deserves to work safely, wherever they are.
 
 You’re in Good Company.
 
-![Remote Team: Empower, Don’t Restrict](https://res.cloudinary.com/hxsmbfka/image/upload/v1788389705/mnlkmpgrt2vrxbracwe4.webp)
+![Remote Team: Empower, Don’t Restrict](https://res.cloudinary.com/hxsmbfka/image/upload/v1788443700/lbfpucfwlgjwllwjvpgk.webp)
 
 Technology decisions shouldn't be based on trends; they should support better business outcomes.
 
