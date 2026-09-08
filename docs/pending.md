@@ -1,5 +1,17 @@
 # Pending — Site Side
 
+## Vercel "Deployment Storage" hitting the 10GB free-tier limit — partially fixed
+
+Vercel emailed that the team hit 100% of the free Hobby tier's Deployment Storage. Diagnosed and confirmed via Vercel's own docs (`vercel.com/docs/deployment-storage`): this metric is build output + static assets, and it accumulates **across every retained deployment**, not just the current production one — so a heavy `public/` folder times dozens of historical deployments adds up fast. The blog cover/inline images (hosted on Cloudinary) never touch this at all — the real cause was dead weight committed straight into the repo's `public/` folder, which Next.js bundles into every single deployment.
+
+**Fixed (`fe15cec`)**: `public/imgs/blog/{39,40,41,42,43,44a,47,50}.{jpg,png}` (~76MB) were leftover local cover images from before the Cloudinary migration — confirmed zero references anywhere in the code (the `MOCK_BLOG_N` entries that used them were already removed). `public/imgs/community/ourCommunity/marc-video.MOV` (84MB) was an unused raw duplicate of `marc-video.mp4`, the only one actually referenced. Deleted both — **~160MB removed from every future deployment's output**, no visual change to the site. Didn't touch git history (out of scope, doesn't affect this metric — Deployment Storage is about build output from the current tree, not the `.git` folder size).
+
+**Still needed, dashboard-only (team must do this, no code change)**:
+1. **Set a Deployment Retention Policy** — Team Settings → Security & Privacy → Deployment Retention Policy (or per-project: Project Settings → Security). Shorter retention for Preview/Pre-Production deployments (e.g. 7-14 days) and a reasonable Production window (e.g. 30-90 days) directly reduces how many old deployments' output stays billed against the 10GB, without any code change.
+2. **Check Usage → Deployment Storage → Projects** after a few days to confirm the number trends down following both the retention change and the asset removal above.
+
+**Possible follow-up, not done (needs visual QA first)**: several *in-use* SVGs are suspiciously huge for vector files — `public/imgs/services/background.svg` (19MB), `contact/linesBackground.svg` (12MB), `services/heroBack.svg` (11MB), `community/background.svg` (6.4MB), `texture.svg` (5MB) — likely SVGs with a base64-embedded raster image inside rather than real vector paths. Converting these to properly compressed WebP/PNG (or real vectors) could shave another ~50MB off every deployment, but needs a visual check first since it changes actual served assets. `team/member3.jpg` (8.7MB) and `team/member4.JPG` (2.7MB) are also candidates for basic compression. Not urgent given the fix above already cut the bundle roughly in half.
+
 ## SEO republish project: done
 
 All work tracked here previously (merging the test-branch metadata fix, migrating the 13 content-blocked posts, the two post-go-live regressions) is complete and live on `main`. See `status.md` for the full list. Nothing outstanding from this project.
