@@ -43,49 +43,15 @@ export default async function Layout({ children, params }) {
 
   const { t, resources } = await initTranslations(locale, i18nNameSpaces);
 
-  // Page Translations
-  const couponTranslations = {
-    off: t('common:coupon_off'),
-    lifetime: t('common:coupon_lifetime'),
-    payout: t('common:coupon_payout'),
-    refund: t('common:coupon_refund'),
-    code: t('common:coupon_use_code'),
-    click: t('common:click'),
-    valid: t('common:valid'),
-    hourGet: t('common:hour_get'),
-    hourDay: t('common:hour_day'),
-    hourOne: t('common:hour_one'),
-    hour24: t('common:hour_24'),
-    hourPayout: t('common:hour_payout'),
-    hourFunded: t('common:hour_funded'),
-    hourNowOffering: t('common:hour_now_offering'),
-    bebold: {
-      bold: t('common:bebold_bold'),
-      with: t('common:bebold_with'),
-      code: t('common:bebold_code'),
-      lifetime: t('common:bebold_lifetime'),
-      payout: t('common:bebold_payout'),
-      valid: t('common:bebold_valid')
-    },
-    community: {
-      for: t('common:community_for'),
-      community: t('common:community_community'),
-      until: t('common:community_until'),
-      code: t('common:community_code')
-    },
-  };
-
   const footerTranslations = {
     products: t('navbar:products'),
     resources: t('navbar:resources'),
     company: t('navbar:company'),
     about: t('navbar:about'),
-    affiliates: t('navbar:affiliates'),
     contact: t('navbar:contact'),
     disclaimer: t('footer:disclaimer'),
     termsLink: t('footer:termsLink'),
     privacyLink: t('footer:privacyLink'),
-    refundLink: t('footer:refundLink'),
   };
 
   const cookieTranslations = {
@@ -125,11 +91,7 @@ export default async function Layout({ children, params }) {
           </main>
 
           {/* Client-only components wrapper */}
-          <ClientOnlyWrapper 
-            couponTranslations={couponTranslations}
-            cookieTranslations={cookieTranslations}
-            locale={locale}
-          />
+          <ClientOnlyWrapper cookieTranslations={cookieTranslations} />
 
           {/* Footer */}
           <FooterLazyLoading locale={locale} translations={footerTranslations} />
