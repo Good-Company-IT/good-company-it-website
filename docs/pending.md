@@ -32,14 +32,13 @@ New test branches are fine to create if needed later — the problem was never h
 5. Submit the new sitemap in Google Search Console and confirm it reads without errors.
 6. Optional, decide then: blog posts are still served under `/es/blog/{slug}` with the same English text and a self-canonical (duplicate content). Point those canonicals at the `/en` version, or `noindex` them.
 
-**Resolved 2026-09-18 — French support claim removed:** `components/contact/WorkingWithUs/WorkingWithUs.jsx` and `components/home/WhyGoco/WhyGoco.jsx` said "Bilingual support (English, Spanish, French)"; French support isn't offered, so both now read "Bilingual support (English, Spanish)" (the body copy underneath already just said "bilingual"). No other mention of French remains in the code or content.
-
 ## Site cleanup 2026-09-18 — French removed, toptiertrader leftovers deleted (done)
 
 Found while reviewing the sitemap: `/fr/about`, `/fr/services`, `/fr/community` and `/fr/contact` returned **HTTP 500 in production** (each page's `generateMetadata` referenced a `metadata_fr` object that was never declared → `ReferenceError`), while "FR" sat in the language switcher. Team decision: French isn't going to happen, so instead of patching it, French was removed entirely (rebuild it later if ever needed):
 - Deleted `locales/fr/`; `i18nConfig.js` locales now `['en', 'es']`; removed FR from `LanguageChanger.js`, the `if (locale === "fr")` branches in about/services/community/contact, `metadata_fr` and the `'fr'` alternates in `blog/page.jsx`, and the `lang_fr` translation keys.
 - **`next.config.mjs` redirects `/fr/:path*` → `/en/:path*` (permanent).** `/fr/blog` and `/fr/blog/{slug}` had been returning 200, so they may be indexed; this sends them to the English page instead of a 404. Remove the redirect if French ever returns.
 - Verified locally (dev server): `/en/*` and `/es/*` all 200, `/fr/*` → 308 → `/en/*`, no errors in the server log.
+- **French support claim removed from the copy:** `components/contact/WorkingWithUs/WorkingWithUs.jsx` and `components/home/WhyGoco/WhyGoco.jsx` said "Bilingual support (English, Spanish, French)"; French support isn't offered, so both now read "Bilingual support (English, Spanish)" (the body copy already just said "bilingual"). No other mention of French remains in the code or content.
 
 Deleted the dead toptiertrader promo code (a June-2025 "buy a challenge" promo for another company; the banner was already commented out and nothing appeared in the live HTML):
 - `components/common/Banner/` (whole folder: `MainBanner`, `JuneSummerPromoBanner`, its images), `components/common/PopUp/PromoPopUp.jsx`, `PopUp/assets/` (two ~1.4MB PNGs) and `PopUp/animations.css` (only that popup used it).
