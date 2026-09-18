@@ -30,7 +30,7 @@ function WhyGoco({ title, titleHightlight, subtitle }) {
       text: "We believe clear communication is just as important as good technology. We communicate before, during and after to ensure you're getting where you need to go."
     },
     {
-      title: "Bilingual support (English, Spanish, French)",
+      title: "Bilingual support (English, Spanish)",
       text: "We've got you covered. We provide full bilingual support across all services, so your entire organization feels heard and included."
     },
     {

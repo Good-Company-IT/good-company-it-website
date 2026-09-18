@@ -32,7 +32,7 @@ New test branches are fine to create if needed later — the problem was never h
 5. Submit the new sitemap in Google Search Console and confirm it reads without errors.
 6. Optional, decide then: blog posts are still served under `/es/blog/{slug}` with the same English text and a self-canonical (duplicate content). Point those canonicals at the `/en` version, or `noindex` them.
 
-**Also decide during the redesign copy pass:** `components/contact/WorkingWithUs/WorkingWithUs.jsx` and `components/home/WhyGoco/WhyGoco.jsx` say "Bilingual support (English, Spanish, French)" — French support isn't offered, and "bilingual" with three languages is inconsistent. Left untouched (it's a marketing claim, not code).
+**Resolved 2026-09-18 — French support claim removed:** `components/contact/WorkingWithUs/WorkingWithUs.jsx` and `components/home/WhyGoco/WhyGoco.jsx` said "Bilingual support (English, Spanish, French)"; French support isn't offered, so both now read "Bilingual support (English, Spanish)" (the body copy underneath already just said "bilingual"). No other mention of French remains in the code or content.
 
 ## Site cleanup 2026-09-18 — French removed, toptiertrader leftovers deleted (done)
 

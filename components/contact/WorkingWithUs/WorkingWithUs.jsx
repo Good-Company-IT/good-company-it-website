@@ -32,7 +32,7 @@ function WorkingWithUs({ title, titleHightlight, subtitle }) {
       text: "Clear communication is as important as good technology. We keep you informed before, during, and after every step."
     },
     {
-      title: "Bilingual support (English, Spanish, French)",
+      title: "Bilingual support (English, Spanish)",
       text: "We've got you covered. We provide full bilingual support across all services, so your entire organization feels heard and included."
     },
   ];
