@@ -20,6 +20,34 @@ New test branches are fine to create if needed later — the problem was never h
 
 **Possible follow-up, not done (needs visual QA first)**: several *in-use* SVGs are suspiciously huge for vector files — `public/imgs/services/background.svg` (19MB), `contact/linesBackground.svg` (12MB), `services/heroBack.svg` (11MB), `community/background.svg` (6.4MB), `texture.svg` (5MB) — likely SVGs with a base64-embedded raster image inside rather than real vector paths. Converting these to properly compressed WebP/PNG (or real vectors) could shave another ~50MB off every deployment, but needs a visual check first since it changes actual served assets. `team/member3.jpg` (8.7MB) and `team/member4.JPG` (2.7MB) are also candidates for basic compression. Not urgent given the fixes above already cut per-deployment output roughly in half and stopped several branches from pinning storage indefinitely.
 
+## Sitemap + robots.txt — deferred to the redesign (planned, not started)
+
+**The problem, confirmed 2026-09-18:** `public/sitemap.xml` (repo and live) lists 63 URLs, **all on `toptiertrader.com`** — a leftover from the project this codebase was cloned from (generated 2024-07 with xml-sitemaps.com, arrived in the "Initial Push"). `public/robots.txt` is also inherited: it disallows `wp-login.php` (WordPress) and has no `Sitemap:` line. Effect: goodcompanyit.com has **no usable sitemap** — none of its pages or ~30 blog posts are listed. Google ignores cross-domain URLs in a sitemap, so it isn't a penalty, just a missed tool (Search Console will flag it, and new posts are discovered only by crawling `/blog`). Team decision: don't patch it now — build the right one as part of the redesign.
+
+**Plan for the redesign** (do all of it together):
+1. `app/sitemap.js` (Next.js metadata route, dynamic): static pages (`/en`, `/en/about`, `/en/services`, `/en/community`, `/en/contact`, `/en/blog`) + one entry per `content/blog/*.md` (`/en/blog/{slug}`, `lastModified` from the front-matter `date`). Every published post then appears automatically, no manual upkeep.
+2. **`/en` URLs only** (team decision — no content is being produced in other languages).
+3. `app/robots.js` with the `Sitemap:` line pointing at it; drop the WordPress `wp-login.php` rule.
+4. Delete `public/sitemap.xml` and `public/robots.txt` (a static file in `public/` would conflict with the dynamic routes).
+5. Submit the new sitemap in Google Search Console and confirm it reads without errors.
+6. Optional, decide then: blog posts are still served under `/es/blog/{slug}` with the same English text and a self-canonical (duplicate content). Point those canonicals at the `/en` version, or `noindex` them.
+
+**Also decide during the redesign copy pass:** `components/contact/WorkingWithUs/WorkingWithUs.jsx` and `components/home/WhyGoco/WhyGoco.jsx` say "Bilingual support (English, Spanish, French)" — French support isn't offered, and "bilingual" with three languages is inconsistent. Left untouched (it's a marketing claim, not code).
+
+## Site cleanup 2026-09-18 — French removed, toptiertrader leftovers deleted (done)
+
+Found while reviewing the sitemap: `/fr/about`, `/fr/services`, `/fr/community` and `/fr/contact` returned **HTTP 500 in production** (each page's `generateMetadata` referenced a `metadata_fr` object that was never declared → `ReferenceError`), while "FR" sat in the language switcher. Team decision: French isn't going to happen, so instead of patching it, French was removed entirely (rebuild it later if ever needed):
+- Deleted `locales/fr/`; `i18nConfig.js` locales now `['en', 'es']`; removed FR from `LanguageChanger.js`, the `if (locale === "fr")` branches in about/services/community/contact, `metadata_fr` and the `'fr'` alternates in `blog/page.jsx`, and the `lang_fr` translation keys.
+- **`next.config.mjs` redirects `/fr/:path*` → `/en/:path*` (permanent).** `/fr/blog` and `/fr/blog/{slug}` had been returning 200, so they may be indexed; this sends them to the English page instead of a 404. Remove the redirect if French ever returns.
+- Verified locally (dev server): `/en/*` and `/es/*` all 200, `/fr/*` → 308 → `/en/*`, no errors in the server log.
+
+Deleted the dead toptiertrader promo code (a June-2025 "buy a challenge" promo for another company; the banner was already commented out and nothing appeared in the live HTML):
+- `components/common/Banner/` (whole folder: `MainBanner`, `JuneSummerPromoBanner`, its images), `components/common/PopUp/PromoPopUp.jsx`, `PopUp/assets/` (two ~1.4MB PNGs) and `PopUp/animations.css` (only that popup used it).
+- `ClientOnlyWrapper.jsx` no longer imports the banner or takes `couponTranslations`/`locale`; `layout.js` no longer builds `couponTranslations`, and no longer passes the footer the toptiertrader-only `affiliates`/`refundLink` keys (the footer never used them).
+- `locales/{en,es}/common.json`: 54 → 4 keys (only the `cookie_*` keys are used; the rest were TopTier Trader copy — payouts, challenges, coupon codes). `navbar.json`: removed `academy`, `affiliates`, `beta`, `challenges`, `competitions`, `cm_*`, `dashboard`, `leaderboards`, `merch`, `rewards`.
+- Every deleted key was checked for zero references in the code first. Still present on purpose: `public/sitemap.xml` (see above) — the only remaining `toptier` string in the repo.
+- Left alone, not toptiertrader: unused "Zeenti Client" template keys in `home.json` and unused IT-consulting keys in `footer.json`.
+
 ## SEO republish project: done
 
 All work tracked here previously (merging the test-branch metadata fix, migrating the 13 content-blocked posts, the two post-go-live regressions) is complete and live on `main`. See `status.md` for the full list. Nothing outstanding from this project.
