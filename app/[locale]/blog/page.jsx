@@ -65,8 +65,7 @@ const metadata_en = {
     canonical: "https://www.goodcompanyit.com/en/blog",
     languages: {
       'en': '/en/blog',
-      'es': '/es/blog',
-      'fr': '/fr/blog'
+      'es': '/es/blog'
     }
   }
 };
@@ -93,36 +92,7 @@ const metadata_es = {
     canonical: "https://www.goodcompanyit.com/es/blog",
     languages: {
       'en': '/en/blog',
-      'es': '/es/blog',
-      'fr': '/fr/blog'
-    }
-  }
-};
-
-const metadata_fr = {
-  metadataBase: new URL('https://www.goodcompanyit.com'),
-  title: "Blog - IT & Cybersécurité | Good Company IT",
-  description: "Guides pratiques, conseils en sécurité et expertise pour aider les startups et entreprises en croissance à bâtir une infrastructure IT solide et se protéger contre les cybermenaces modernes.",
-  keywords: "support IT, cybersécurité, services IT gérés, IT pour PME, conseils cybersécurité, conseil IT, solutions cloud, conformité, protection des données",
-  language: "fr",
-  subject: "Blog IT et Cybersécurité",
-  coverage: "Global",
-  robots: "index, follow",
-  author: "Good Company IT",
-  publisher: "Good Company IT",
-  og: {
-    type: "website",
-    title: "IT & Cybersécurité | Blog Good Company IT",
-    description: "Guides pratiques, conseils en sécurité et expertise pour startups et entreprises en croissance.",
-    site_name: "Good Company IT",
-    url: "https://www.goodcompanyit.com/fr/blog"
-  },
-  alternates: {
-    canonical: "https://www.goodcompanyit.com/fr/blog",
-    languages: {
-      'en': '/en/blog',
-      'es': '/es/blog',
-      'fr': '/fr/blog'
+      'es': '/es/blog'
     }
   }
 };
@@ -137,9 +107,6 @@ export async function generateMetadata({ params }) {
   }
   if (locale === "es") {
     returnedMetadata = metadata_es
-  }
-  if (locale === "fr") {
-    returnedMetadata = metadata_fr
   }
   return returnedMetadata
 }

@@ -55,9 +55,6 @@ export default function LanguageChanger({ isTop, isCouldBeWorse }) {
     if (e === "es-co") {
       return "ES"
     }
-    if (e === "fr") {
-      return "FR"
-    }
   };
  
   // Handles the language change
@@ -99,8 +96,7 @@ export default function LanguageChanger({ isTop, isCouldBeWorse }) {
 
   const languages = [
     { code: "en", name: "EN" },
-    { code: "es", name: "ES" },
-    { code: "fr", name: "FR" }
+    { code: "es", name: "ES" }
   ];
 
   // Spinner component

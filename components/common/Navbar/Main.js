@@ -20,7 +20,7 @@ function Navbar() {
 
   // Helper function to check if a link is active
   const isLinkActive = (href) => {
-    // Handle language prefixes (e.g., /fr, /en, /es)
+    // Handle language prefixes (e.g., /en, /es)
     const pathWithoutLang = path.replace(/^\/[a-z]{2}/, '') || '/';
     
     if (href === '/') {

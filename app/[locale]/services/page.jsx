@@ -75,9 +75,6 @@ export async function generateMetadata({ params }) {
   if (locale === "es") {
     returnedMetadata = metadata_es
   }
-  if (locale === "fr") {
-    returnedMetadata = metadata_fr
-  }
   return returnedMetadata
 }
 
