@@ -7,7 +7,7 @@ category: Cybersecurity
 author: GoCo Team
 date: '2026-09-28'
 readTime: 6 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1790600985/qqjlhmpmzowi61ox2r92.webp
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1790697324/mao2p1gtnmz749tuotx3.webp
 imageAlt: 'Healthcare Cybersecurity Risks: What HIPAA Requires'
 featured: false
 ---
@@ -48,13 +48,19 @@ HHS's Office for Civil Rights has been direct about this: in ransomware settleme
 
 ## Shadow AI, Patient Data, and What to Do Next
 
-![healthcare cybersecurity risks: Shadow AI, Patient Data, and What to Do Next](https://res.cloudinary.com/hxsmbfka/image/upload/v1790600987/knniw4wad2g2183vmvkb.webp)
+![healthcare cybersecurity risks: Shadow AI, Patient Data, and What to Do Next](https://res.cloudinary.com/hxsmbfka/image/upload/v1790697325/cj7jlwqrqignv6xaiksf.webp)
 
 A newer version of the same risk: staff using AI tools with patient information that were never reviewed for HIPAA compliance - pasting notes into a chatbot, summarizing charts with an unapproved tool. Without a written policy governing AI use and the access controls behind it, there's no way to know where that data went or whether the tool itself is a business associate that needed a BAA in the first place. IBM's 2026 data prices a written AI governance policy at roughly $670K in avoided breach cost - one of the more overlooked levers on this list, because it's a risk few practices have thought to ask about yet.
 
 None of these healthcare cybersecurity risks require an exotic defense - MFA, encryption, a tested incident response plan, reviewed vendors, current compliance, real BAAs, a fresh risk analysis, and a policy for how staff use AI. Most of them are things a practice already believes it has handled. The businesses that hold up under a real incident are the ones that checked.
 
-Explore our latest [LinkedIn articles](https://www.linkedin.com/company/good-company-it-consulting/), where we share practical insights on Managed IT Services, cybersecurity, governance, operational excellence, and strategies that help businesses reduce risk and scale with confidence.
+### Do you know which of these gaps your practice has?
+
+Most practices believe MFA, BAAs, and the HIPAA risk analysis are handled, and learn otherwise from an OCR finding or a breach - the most expensive moment to find out. The good news: every item on this list is fixable once someone names it.
+
+In a short meeting, our team will walk through where you stand today, which gaps carry the most risk, and what to fix first. Pick a time that works for you.
+
+[Book your meeting with our team](https://calendar.app.google/MHXb7KrTQjphZFJdA)
 
 Because better decisions start with better understanding.
 
