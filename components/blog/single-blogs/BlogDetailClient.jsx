@@ -11,6 +11,8 @@ import { getBlogBySlug } from "@/components/blog/utils/data"
 import BlogCoverImage from "@/components/blog/utils/BlogCoverImage"
 import 'highlight.js/styles/github-dark.css';
 
+const BOOKING_URL = 'https://calendar.app.google/MHXb7KrTQjphZFJdA';
+
 export default function BlogDetailClient({ slug, initialBlog }) {
   const [blog, setBlog] = useState(initialBlog || null);
   const [isLoading, setIsLoading] = useState(!initialBlog);
@@ -233,8 +235,19 @@ export default function BlogDetailClient({ slug, initialBlog }) {
                     {children}
                   </p>
                 ),
-                a: ({ href, children }) => (
-                  <a 
+                a: ({ href, children }) => href === BOOKING_URL ? (
+                  // The booking link renders as the brand CTA button.
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="not-prose inline-flex items-center gap-2 my-2 px-6 py-3 bg-primary-orange !text-white !no-underline font-semibold rounded-lg shadow-md hover:bg-secondary-orange hover:shadow-lg transition-colors duration-200"
+                  >
+                    <FiCalendar className="w-5 h-5" />
+                    {children}
+                  </a>
+                ) : (
+                  <a
                     href={href}
                     className="text-blue-600 hover:text-blue-700 hover:underline transition-colors duration-200 font-medium"
                     target={href?.startsWith('http') ? '_blank' : '_self'}
