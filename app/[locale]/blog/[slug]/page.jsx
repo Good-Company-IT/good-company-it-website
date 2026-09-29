@@ -17,11 +17,14 @@ function getBlogFromFile(slug) {
 }
 
 export async function generateMetadata({ params }) {
-  const { locale, slug } = await params;
+  const { slug } = await params;
   const blog = getBlogFromFile(slug);
   if (!blog) return {};
 
-  const url = `https://www.goodcompanyit.com/${locale}/blog/${slug}`;
+  // Posts are English-only, so /es/blog/{slug} is a duplicate of the /en one.
+  // Both point their canonical at /en: visitors can still use /es, but search
+  // engines index a single version.
+  const url = `https://www.goodcompanyit.com/en/blog/${slug}`;
 
   return {
     metadataBase: new URL("https://www.goodcompanyit.com"),
