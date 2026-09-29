@@ -6,8 +6,8 @@ keyword: financial services cybersecurity risks
 category: Compliance
 author: GoCo Team
 date: '2026-09-24'
-readTime: 5 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1790285275/y0uwb7euwalmkde0oaii.jpg
+readTime: 6 min read
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1790697304/nagyfwatexf24zpc8mlz.jpg
 imageAlt: 'Financial Services Cybersecurity Risks: What Reg S-P Requires'
 featured: false
 ---
@@ -48,11 +48,17 @@ SEC Regulation S-P requires registered firms to maintain a written incident resp
 
 ## Breach Notice Deadlines: 72 Hours to Vendors, 30 Days to Clients, and What to Do Next
 
-![financial services cybersecurity risks: Breach Notice Deadlines: 72 Hours to Vendors, 30 Days to Clients, and What to Do Next](https://res.cloudinary.com/hxsmbfka/image/upload/v1790285276/gysvtyb0jcq27mmd6mbg.webp)
+![financial services cybersecurity risks: Breach Notice Deadlines: 72 Hours to Vendors, 30 Days to Clients, and What to Do Next](https://res.cloudinary.com/hxsmbfka/image/upload/v1790697306/t63gkahhc6nyvty5oewh.webp)
 
 Notification deadlines are where good intentions run out of time. A vendor contract with a 72-hour breach-notification clause only helps if you actually know to look for it before an incident, not during one. Separately, a written procedure to notify affected clients within 30 days of a breach involving their information turns a chaotic first week into a checklist you can execute under pressure. These financial services cybersecurity risks share a pattern: MFA, encryption, a tested response plan, reviewed vendors, current compliance, a named Qualified Individual, and notification deadlines you've actually planned for, not just read about. The firms that hold up under a real incident are the ones that checked.
 
-Explore our latest [LinkedIn articles](https://www.linkedin.com/company/good-company-it-consulting/), where we share practical insights on Managed IT Services, cybersecurity, governance, operational excellence, and strategies that help businesses reduce risk and scale with confidence.
+### Would your firm's answers hold up if a regulator, or a client, asked tomorrow?
+
+Under Reg S-P, the 72-hour vendor notice and the 30-day client notice start counting whether you are ready or not. Every gap on this list is one you would otherwise discover in the middle of an incident, with the clock already running - and most of them can be closed well before that.
+
+In a short meeting, our team will walk through where you stand today, which gaps carry the most risk, and what to fix first. Pick a time that works for you.
+
+[Book your meeting with our team](https://calendar.app.google/MHXb7KrTQjphZFJdA)
 
 Because better decisions start with better understanding.
 
