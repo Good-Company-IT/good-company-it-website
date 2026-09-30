@@ -5,9 +5,8 @@ import BlogDetailClient from "@/components/blog/single-blogs/BlogDetailClient";
 
 const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
-// Blogs published through the new pipeline live here as Markdown + front-matter.
-// Older blogs not yet migrated have no file here — BlogDetailClient falls back
-// to its existing data.js-based fetch in that case.
+// Blogs published through the pipeline live here as Markdown + front-matter.
+// A slug without a file renders BlogDetailClient's "Blog not found" state.
 function getBlogFromFile(slug) {
   const filePath = path.join(CONTENT_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;

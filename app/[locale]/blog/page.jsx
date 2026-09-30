@@ -13,9 +13,8 @@ import Main from "@/components/blog/Main";
 const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
 // Blogs published through the new pipeline live here as Markdown + front-matter.
-// Read them all and hand them to Main as initialBlogs, merged there with whatever
-// fetchBlogData() (Strapi + any remaining static mocks) returns — mirrors the
-// same file-based pattern already used for the single blog detail page.
+// Read them all and hand them to Main as initialBlogs — the same file-based
+// pattern used by the single blog detail page.
 function getAllFileBlogs() {
   if (!fs.existsSync(CONTENT_DIR)) return [];
   return fs

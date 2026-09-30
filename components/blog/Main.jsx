@@ -6,7 +6,6 @@ import { FiTrendingUp, FiGrid, FiList } from 'react-icons/fi';
 import BlogGrid from './utils/BlogGrid.jsx';
 import BlogFilter from './utils/BlogFilter.jsx';
 import LeadMagnet from './LeadMagnet.jsx';
-import { fetchBlogData } from './utils/data.js';
 import { FaSortAmountDown } from "react-icons/fa";
 
 const Main = ({ initialBlogs = [] }) => {
@@ -26,16 +25,14 @@ const Main = ({ initialBlogs = [] }) => {
   const [availableCategories, setAvailableCategories] = useState([]);
   const [availableTags, setAvailableTags] = useState([]);
 
-  // Fetch blogs from Strapi API
+  // Blogs arrive from the server page (content/blog/*.md) as initialBlogs.
   useEffect(() => {
     const loadBlogs = async () => {
       console.log('🚀 Main component: Starting to load blogs...');
       setIsLoading(true);
       
       try {
-        const remoteBlogs = await fetchBlogData();
-        const fileSlugs = new Set(initialBlogs.map(b => b.slug));
-        const blogData = [...initialBlogs, ...remoteBlogs.filter(b => !fileSlugs.has(b.slug))];
+        const blogData = initialBlogs;
 
         const uniqueAuthors = [...new Set(blogData.map(b => b.author))].filter(a => a && a !== 'Unknown Author');
         const uniqueCategories = [...new Set(blogData.map(b => b.category))].filter(c => c);

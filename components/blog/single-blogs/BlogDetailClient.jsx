@@ -7,47 +7,24 @@ import { useRouter } from 'next/navigation';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
-import { getBlogBySlug } from "@/components/blog/utils/data"
 import BlogCoverImage from "@/components/blog/utils/BlogCoverImage"
 import 'highlight.js/styles/github-dark.css';
 
 const BOOKING_URL = 'https://calendar.app.google/MHXb7KrTQjphZFJdA';
 
-export default function BlogDetailClient({ slug, initialBlog }) {
-  const [blog, setBlog] = useState(initialBlog || null);
+export default function BlogDetailClient({ initialBlog }) {
+  const [blog] = useState(initialBlog || null);
   const [isLoading, setIsLoading] = useState(!initialBlog);
   const [error, setError] = useState(null);
   const router = useRouter();
 
   useEffect(() => {
-    // Already have the data from the server (new file-based blogs) — no fetch needed.
+    // Posts come from content/blog/*.md through the server page. Without one
+    // there is nothing else to load, so show the not-found state.
     if (initialBlog) return;
-
-    const loadBlog = async () => {
-      try {
-        console.log('🚀 Loading blog with slug:', slug);
-        setIsLoading(true);
-        const blogData = await getBlogBySlug(slug);
-
-        if (!blogData) {
-          setError('Blog not found');
-          return;
-        }
-
-        setBlog(blogData);
-        console.log('✅ Blog loaded:', blogData);
-      } catch (err) {
-        console.error('❌ Error loading blog:', err);
-        setError('Failed to load blog');
-      } finally {
-        setIsLoading(false);
-      }
-    };
-
-    if (slug) {
-      loadBlog();
-    }
-  }, [slug, initialBlog]);
+    setError('Blog not found');
+    setIsLoading(false);
+  }, [initialBlog]);
 
   if (isLoading) {
     return (
