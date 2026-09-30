@@ -310,7 +310,7 @@ const Main = ({ initialBlogs = [] }) => {
                 transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
                 className="w-5 h-5 border-2 border-blue-500 border-t-transparent rounded-full"
               ></motion.div>
-              <span>Loading blogs from Strapi...</span>
+              <span>Loading blogs...</span>
             </div>
           </motion.div>
         )}
@@ -324,7 +324,7 @@ const Main = ({ initialBlogs = [] }) => {
           >
             <div className="text-gray-500">
               <p className="text-lg mb-2">No blogs found</p>
-              <p className="text-sm">Check your Strapi API connection or add some blog posts.</p>
+              <p className="text-sm">New articles are on their way. Check back soon.</p>
             </div>
           </motion.div>
         )}
