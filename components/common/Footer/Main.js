@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import SocialMediaIcons from '../SocialMediaIcons/SocialMediaIcons';
 import gocoImg from "./assets/GoCO_copy.svg";
+import { OPEN_SETTINGS_EVENT } from "@/utils/cookies/constants";
 
 const Footer = ({ locale, translations }) => {
 
@@ -163,8 +164,15 @@ const Footer = ({ locale, translations }) => {
                 >
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
                         <p className="text-gray-400 text-sm">
-                            © Good Company I.T.® Inc. {defaults.allRightsReserved}. {year}
+                            © Good Company I.T. Consulting LLC. {defaults.allRightsReserved}. {year}
                         </p>
+                        <button
+                            type="button"
+                            onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}
+                            className="mt-2 md:mt-0 text-gray-400 text-sm underline hover:text-orange-400 transition-colors duration-200"
+                        >
+                            {locale === 'es' ? 'Configuración de cookies' : 'Cookie settings'}
+                        </button>
                     </div>
                 </motion.div>
             </div>

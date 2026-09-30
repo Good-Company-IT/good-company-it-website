@@ -4,6 +4,7 @@ import Script from 'next/script';
 import TranslationsProvider from "@/TranslationsProvider";
 import initTranslations from "@/i18n";
 import { Analytics } from "@vercel/analytics/react";
+import { consentScript } from "@/utils/cookies/consentScript";
 import "@/globals.css";
 
 // Font from Google
@@ -66,19 +67,13 @@ export default async function Layout({ children, params }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       </head>
       <body className={poppins.className}>
-        {/* Google Tag Manager (noscript) */}
-        <noscript>
-          <iframe
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5PDB3BJW"
-            height="0"
-            width="0"
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
+        {/* Cookie consent: sets Consent Mode to "denied" and loads Google tags only after the visitor accepts.
+            Runs before anything else. Do NOT add trackers elsewhere; see docs/compliance.md. */}
+        <Script id="consent-mode" strategy="beforeInteractive">
+          {consentScript}
+        </Script>
         <TranslationsProvider
           resources={resources}
           locale={locale}
@@ -100,29 +95,6 @@ export default async function Layout({ children, params }) {
           <Analytics />
 
         </TranslationsProvider>
-
-        {/* Google Tag Manager */}
-        <Script id="gtm-script" strategy="beforeInteractive">
-          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-5PDB3BJW');`}
-        </Script>
-
-        {/* Google Analytics */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-E7RL326PKG"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-E7RL326PKG');
-          `}
-        </Script>
       </body>
     </html>
   );

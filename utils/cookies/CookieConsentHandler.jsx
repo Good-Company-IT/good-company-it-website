@@ -1,8 +1,8 @@
 'use client';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import Script from 'next/script';
 import { TbCookie } from "react-icons/tb";
+import { CONSENT_STORAGE_KEY, OPEN_SETTINGS_EVENT } from './constants';
 
 const styles = {
   background: 'rgba(0, 0, 0, 0.3)',
@@ -10,36 +10,18 @@ const styles = {
   WebkitBackdropFilter: 'blur(12px)',
 };
 
-const initializeGoogleConsentMode = () => {
-  window.gtag = function () {
-    window.dataLayer = window.dataLayer || [];
-    window.dataLayer.push(arguments);
-  };
-
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'analytics_storage': 'denied',
-    'functionality_storage': 'denied',
-    'personalization_storage': 'denied',
-    'security_storage': 'granted'
-  });
-};
-
-const updateConsentState = (hasConsent) => {
-  if (typeof window.gtag !== 'undefined') {
-    gtag('consent', 'update', {
-      'ad_storage': hasConsent ? 'granted' : 'denied',
-      'analytics_storage': hasConsent ? 'granted' : 'denied',
-      'functionality_storage': hasConsent ? 'granted' : 'denied',
-      'personalization_storage': hasConsent ? 'granted' : 'denied',
-      'security_storage': 'granted'
-    });
-  }
-};
+// Consent defaults (all "denied"), applying a saved "accepted" choice and loading
+// Google tags all happen in utils/cookies/consentScript.js, injected in layout.js.
+// This component only asks the question and reports the answer to that script.
 
 const CookieBanner = ({ onAccept, onDecline, translations }) => {
   return (
-    <div className="fixed mb:max-w-[300px] bottom-0 border-t mb:border-r border-orange-400 rounded-t-xl rounded-r-xl p-6 backdrop-filter backdrop-blur z-50" style={styles}>
+    <div
+      role="dialog"
+      aria-label={translations.title}
+      className="fixed mb:max-w-[300px] bottom-0 border-t mb:border-r border-orange-400 rounded-t-xl rounded-r-xl p-6 backdrop-filter backdrop-blur z-50"
+      style={styles}
+    >
       <div className="max-w-7xl mx-auto flex flex-col items-start justify-between gap-4">
         <div className='flex flex-row items-start'>
           <TbCookie className='text-white w-5 h-5 mt-1 mr-2' />
@@ -50,15 +32,15 @@ const CookieBanner = ({ onAccept, onDecline, translations }) => {
         <div className="flex flex-row gap-4">
           <button
             onClick={onDecline}
-            className="px-4 py-2 bg-transparent  text-slate-300 rounded text-sm"
+            className="px-6 py-2 bg-slate-700 border border-slate-400 text-center text-white rounded text-sm"
           >
-             {translations.decline}
+            {translations.decline}
           </button>
           <button
             onClick={onAccept}
-            className="px-8 py-2 bg-ttorange border border-slate-400 text-center text-white rounded text-sm"
+            className="px-6 py-2 bg-ttorange border border-slate-400 text-center text-white rounded text-sm"
           >
-             {translations.agree}
+            {translations.agree}
           </button>
         </div>
       </div>
@@ -69,20 +51,29 @@ const CookieBanner = ({ onAccept, onDecline, translations }) => {
 
 export default function CookieConsentHandler({ translations }) {
   const [showBanner, setShowBanner] = useState(false);
-  const [hasConsent, setHasConsent] = useState(false);
+  const [openedFromSettings, setOpenedFromSettings] = useState(false);
   const [isTop, setIsTop] = useState(true);
   const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
-    initializeGoogleConsentMode();
-    const savedConsent = localStorage.getItem('cookieConsent');
-    if (savedConsent === null) {
-      setShowBanner(true);
-    } else {
-      const consentValue = savedConsent === 'true';
-      setHasConsent(consentValue);
-      updateConsentState(consentValue);
+    let saved = null;
+    try {
+      saved = localStorage.getItem(CONSENT_STORAGE_KEY);
+    } catch (e) {
+      // Storage blocked: behave as if no choice was saved (nothing loads, banner shows).
     }
+    // Global Privacy Control counts as a refusal, so no question is needed.
+    const gpcEnabled = navigator.globalPrivacyControl === true;
+    if (saved === null && !gpcEnabled) {
+      setShowBanner(true);
+    }
+
+    const openSettings = () => {
+      setOpenedFromSettings(true);
+      setShowBanner(true);
+    };
+    window.addEventListener(OPEN_SETTINGS_EVENT, openSettings);
+    return () => window.removeEventListener(OPEN_SETTINGS_EVENT, openSettings);
   }, []);
 
   useEffect(() => {
@@ -99,7 +90,8 @@ export default function CookieConsentHandler({ translations }) {
   }, []);
 
   useEffect(() => {
-    if (showBanner && isTop) {
+    // Opened from the footer link: show it wherever the visitor is on the page.
+    if (showBanner && (isTop || openedFromSettings)) {
       setShouldRender(true);
     } else {
       const timer = setTimeout(() => {
@@ -107,28 +99,26 @@ export default function CookieConsentHandler({ translations }) {
       }, 300);
       return () => clearTimeout(timer);
     }
-  }, [showBanner, isTop]);
+  }, [showBanner, isTop, openedFromSettings]);
 
-  const handleAccept = () => {
-    localStorage.setItem('cookieConsent', 'true');
+  const saveChoice = (accepted) => {
+    try {
+      localStorage.setItem(CONSENT_STORAGE_KEY, accepted ? 'true' : 'false');
+    } catch (e) {
+      // Storage blocked: the choice still applies for this page view.
+    }
     setShowBanner(false);
-    setHasConsent(true);
-    updateConsentState(true);
-    window.dataLayer?.push({
-      event: 'cookie_consent_update',
-      cookie_consent: 'accepted'
-    });
-  };
-
-  const handleDecline = () => {
-    localStorage.setItem('cookieConsent', 'false');
-    setShowBanner(false);
-    setHasConsent(false);
-    updateConsentState(false);
-    window.dataLayer?.push({
-      event: 'cookie_consent_update',
-      cookie_consent: 'declined'
-    });
+    setOpenedFromSettings(false);
+    if (accepted) {
+      window.gocoConsent?.grant();
+      window.dataLayer?.push({
+        event: 'cookie_consent_update',
+        cookie_consent: 'accepted'
+      });
+    } else {
+      // Clears Google cookies and reloads the page if tags were already loaded.
+      window.gocoConsent?.revoke();
+    }
   };
 
   return (
@@ -142,8 +132,8 @@ export default function CookieConsentHandler({ translations }) {
             className="fixed bottom-0 left-0 right-0 z-50"
           >
             <CookieBanner
-              onAccept={handleAccept}
-              onDecline={handleDecline}
+              onAccept={() => saveChoice(true)}
+              onDecline={() => saveChoice(false)}
               translations={translations}
             />
           </motion.div>
