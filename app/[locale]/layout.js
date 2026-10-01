@@ -16,6 +16,14 @@ const poppins = Poppins({
   variable: '--font-poppins',
 })
 
+// Google Search Console ownership (HTML tag method). Needed because GTM no longer loads before cookie consent,
+// so the GTM verification method cannot be relied on by Googlebot. The token is public by design.
+export const metadata = {
+  verification: {
+    google: 'vn99tIMjX5Uy0rUXGKKXaNIgdO7NduzB-trRQO7OEQQ',
+  },
+};
+
 // Components - Remove ssr: false and use regular imports or SSR-compatible dynamic imports
 const NavbarLazyLoading = dynamic(
   () => import("@/components/common/Navbar/Main"),
