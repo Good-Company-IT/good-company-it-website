@@ -2,8 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { FiArrowRight } from 'react-icons/fi';
-
-const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc0Jz3hwoOhHXoOA8qa5ZDHviWXfth0cU4agYZzz4HwiwRsSg/viewform';
+import { quizUrl } from '@/utils/quiz/quizUrl';
 
 const LEAD_MAGNET = {
   eyebrow:     'Free Assessment',
@@ -102,7 +101,7 @@ const LeadMagnet = () => (
       {/* CTA */}
       <div className="flex-shrink-0">
         <motion.a
-          href={FORM_URL}
+          href={quizUrl('blog_banner')}
           target="_blank"
           rel="noopener noreferrer"
           whileHover={{ scale: 1.04 }}

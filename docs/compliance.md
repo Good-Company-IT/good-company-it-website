@@ -33,10 +33,10 @@ Read this before adding **any** tool, script, embed, form or analytics to the si
 | `_ga`, `_ga_E7RL326PKG` (Google Analytics 4) | Usage statistics | Required |
 | `_gcl_au` (Google Ads, when ads go live) | Ad conversion measurement | Required |
 | `cookieConsent` (local storage) | Remembers the cookie choice | Strictly necessary |
-| `cyberAssessmentPopupDismissed` (local storage) | Remembers the closed pop-up | Preferences |
+| `cyberAssessmentPopupDismissed` (local storage) | Remembers the closed pop-up (30-day pause) or its used button | Preferences |
 | Vercel Analytics | Aggregate page views, cookieless | Not required |
 
-Providers named in the policies: Google (Analytics, Tag Manager, Ads, Forms, Workspace/Sheets), Vercel, Brevo, Lemlist.
+Providers named in the policies: Google (Analytics, Tag Manager, Ads, Workspace/Sheets), Vercel, Brevo, Lemlist.
 
 ## Checklist when adding something new
 
