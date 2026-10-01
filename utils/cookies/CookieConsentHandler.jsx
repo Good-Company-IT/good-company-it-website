@@ -29,7 +29,13 @@ const CookieBanner = ({ onAccept, onDecline, translations }) => {
         </div>
         <div className="text-xs text-white mb-2 pr-2">
           {translations.description}{' '}
-          <a href={translations.privacyHref} className="underline hover:text-orange-300">
+          {/* New tab: the visitor can read the policy and still come back to answer the banner. */}
+          <a
+            href={translations.privacyHref}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-orange-300"
+          >
             {translations.policyLink}
           </a>
         </div>
