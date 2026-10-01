@@ -23,6 +23,7 @@ Read this before adding **any** tool, script, embed, form or analytics to the si
 | Política de Tratamiento de Datos Personales (Spanish, required by Colombian Law 1581 of 2012) | `content/legal/data-processing-policy.es.md` → `/es/politica-de-tratamiento-de-datos` |
 | Legal page layout | `components/legal/LegalDocument.jsx` |
 | Contact form | `components/contact/ContactSection/ContactSecton.jsx` → `app/api/contact/route.js` → a Google Apps Script web app that writes one row to the company CRM Sheet. The script lives in Google (not in this repo). Server-side environment variables (set in Vercel, never committed): `CONTACT_WEBHOOK_URL`, `CONTACT_WEBHOOK_TOKEN` |
+| Cookie-consent record (proof of consent) | `utils/cookies/recordConsent.js` → `app/api/consent/route.js` → the same Google Apps Script as the contact form, which appends one row per decision to a **separate Google Sheet** named `GoCo_Consent_Log` (tab `Consents`; columns `Received_At, Visitor_ID, Decision, Origin, Banner_Version, Policy_Version, GPC, Locale`), owned by the company's marketing Google account. The file's ID is a script property in Google (`CONSENT_SPREADSHEET_ID`), not in this repo. It stores no IP and nothing personal. **Retention: 3 years** from each record — delete older rows once a year. The browser keeps a random id in local storage (`cookieConsentId`) |
 | Consent wording of the contact form | Two checkboxes in `ContactSecton.jsx` (required authorization; separate optional marketing). **Change `CONSENT_TEXT_VERSION` in that file whenever either text changes** — it is stored with every submission as proof of what was accepted |
 | Search Console ownership (HTML tag) | `metadata.verification` in `app/[locale]/layout.js` — keep it |
 
@@ -33,6 +34,7 @@ Read this before adding **any** tool, script, embed, form or analytics to the si
 | `_ga`, `_ga_E7RL326PKG` (Google Analytics 4) | Usage statistics | Required |
 | `_gcl_au` (Google Ads, when ads go live) | Ad conversion measurement | Required |
 | `cookieConsent` (local storage) | Remembers the cookie choice | Strictly necessary |
+| `cookieConsentId` (local storage) | Random id that links a browser's cookie decisions in the consent record | Strictly necessary |
 | `cyberAssessmentPopupDismissed` (local storage) | Remembers the closed pop-up (30-day pause) or its used button | Preferences |
 | Vercel Analytics | Aggregate page views, cookieless | Not required |
 
@@ -44,7 +46,7 @@ Providers named in the policies: Google (Analytics, Tag Manager, Ads, Workspace/
 - [ ] Add it to the cookie table in `content/legal/privacy-policy.en.md` (name, provider, purpose, duration, type) and to the provider lists in both policies.
 - [ ] If it is advertising, the banner may need to separate Analytics from Advertising (the lawyer recommended this once Google Ads goes live).
 - [ ] If it collects personal data, follow rule 7 and update the "data we collect" and "purposes" sections of both policies.
-- [ ] Update the "Last updated" date of the policy that changed.
+- [ ] Update the "Last updated" date of the policy that changed, and `POLICY_VERSION` in `utils/cookies/constants.js` (and `BANNER_VERSION` when the banner text changes): they are stored with every consent decision.
 - [ ] Re-run the verification below.
 
 ## Verification (private window, DevTools open **before** loading the site)
@@ -58,7 +60,7 @@ Providers named in the policies: Google (Analytics, Tag Manager, Ads, Workspace/
 
 ## Known follow-ups
 
-- Server-side record of cookie consent (the lawyer recommends keeping proof beyond the browser's local storage). Until it exists, the policies must not claim it.
+- Once a year, delete the rows of the consent record (`GoCo_Consent_Log`) older than 3 years, as the policies promise.
 - Separate Analytics and Advertising choices in "Cookie settings" when Google Ads goes live.
 - Spanish version of the Privacy & Cookie Policy only if the lawyer asks for it.
 - Process to delete contacts 24 months after the last interaction (the policies promise it).

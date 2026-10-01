@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 import { TbCookie } from "react-icons/tb";
 import { CONSENT_STORAGE_KEY, OPEN_SETTINGS_EVENT } from './constants';
+import { recordConsent, hasVisitorId } from './recordConsent';
 
 const styles = {
   background: 'rgba(0, 0, 0, 0.3)',
@@ -77,6 +78,10 @@ export default function CookieConsentHandler({ translations }) {
     if (saved === null && !gpcEnabled) {
       setShowBanner(true);
     }
+    // Keep proof that we honored the signal, once per browser (the identifier does not exist before this).
+    if (saved === null && gpcEnabled && !hasVisitorId()) {
+      recordConsent('gpc_refusal', 'gpc');
+    }
 
     const openSettings = () => {
       setOpenedFromSettings(true);
@@ -112,6 +117,17 @@ export default function CookieConsentHandler({ translations }) {
   }, [showBanner, isTop, openedFromSettings]);
 
   const saveChoice = (accepted) => {
+    let previous = null;
+    try {
+      previous = localStorage.getItem(CONSENT_STORAGE_KEY);
+    } catch (e) {
+      // Storage blocked: treated as no previous choice.
+    }
+    // Declining after having accepted is a withdrawal. Recorded BEFORE anything that may reload the page.
+    recordConsent(
+      accepted ? 'accepted' : previous === 'true' ? 'withdrawn' : 'declined',
+      openedFromSettings ? 'settings' : 'banner'
+    );
     try {
       localStorage.setItem(CONSENT_STORAGE_KEY, accepted ? 'true' : 'false');
     } catch (e) {
