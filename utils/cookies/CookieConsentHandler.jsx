@@ -28,7 +28,11 @@ const CookieBanner = ({ onAccept, onDecline, translations }) => {
           <p className='text-white text-lg mb:text-xl max-w-[170px] '>{translations.title}</p>
         </div>
         <div className="text-xs text-white mb-2 pr-2">
-          {translations.description}</div>
+          {translations.description}{' '}
+          <a href={translations.privacyHref} className="underline hover:text-orange-300">
+            {translations.policyLink}
+          </a>
+        </div>
         <div className="flex flex-row gap-4">
           <button
             onClick={onDecline}

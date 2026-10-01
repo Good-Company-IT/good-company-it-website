@@ -7,7 +7,10 @@ const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
 // English URLs only: no content is produced in other languages, and the /es
 // blog posts canonicalize to /en (see app/[locale]/blog/[slug]/page.jsx).
-const STATIC_PATHS = ["", "/about", "/services", "/community", "/contact", "/blog"];
+const STATIC_PATHS = ["", "/about", "/services", "/community", "/contact", "/blog", "/privacy"];
+
+// Spanish-only legal document (Colombian data-protection law): its canonical URL is under /es.
+const SPANISH_ONLY_PATHS = ["/es/politica-de-tratamiento-de-datos"];
 
 function getBlogEntries() {
   if (!fs.existsSync(CONTENT_DIR)) return [];
@@ -28,5 +31,6 @@ function getBlogEntries() {
 // Every published post appears automatically; nothing to maintain by hand.
 export default function sitemap() {
   const pages = STATIC_PATHS.map((p) => ({ url: `${BASE_URL}/en${p}` }));
-  return [...pages, ...getBlogEntries()];
+  const spanishOnly = SPANISH_ONLY_PATHS.map((p) => ({ url: `${BASE_URL}${p}` }));
+  return [...pages, ...spanishOnly, ...getBlogEntries()];
 }
