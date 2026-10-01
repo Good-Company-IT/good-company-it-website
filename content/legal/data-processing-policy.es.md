@@ -19,6 +19,7 @@ Esta política se expide en cumplimiento del artículo 15 de la Constitución Po
 
 - **Datos de contacto que usted nos entrega** al escribirnos o usar nuestros formularios: nombre completo, empresa, correo electrónico, teléfono, industria, servicios de interés, mensaje y su decisión de recibir comunicaciones nuestras.
 - **Datos de navegación**, solo si usted acepta las cookies de analítica o publicidad: páginas visitadas, página de origen, ubicación aproximada (país o ciudad), tipo de navegador y dispositivo, y eventos de interacción.
+- **Registro de su elección sobre cookies**: identificador aleatorio guardado en su navegador, fecha y hora, versión de la política y del banner, su decisión (aceptó, rechazó o retiró después) y si se detectó la señal Global Privacy Control. No almacenamos su dirección IP completa ni información que lo identifique personalmente.
 - **Comunicaciones** que usted mantenga con nosotros por correo o llamada.
 
 No solicitamos datos sensibles a través del sitio web. Le pedimos no enviarnos contraseñas ni información sensible.
@@ -91,7 +92,7 @@ Nuestros proveedores y nosotros podemos procesar información en Estados Unidos 
 
 ## 12. Conservación y supresión
 
-Conservamos los datos de contacto el tiempo necesario para las finalidades anteriores y, en todo caso, **hasta veinticuatro (24) meses** después de nuestra última interacción con usted, salvo que la ley exija conservarlos por más tiempo. Pasado ese plazo los suprimimos o anonimizamos. Los datos de analítica se conservan por periodos de **2 meses** (datos de eventos) y **14 meses** (datos de usuario).
+Conservamos los datos de contacto el tiempo necesario para las finalidades anteriores y, en todo caso, **hasta veinticuatro (24) meses** después de nuestra última interacción con usted, salvo que la ley exija conservarlos por más tiempo. Pasado ese plazo los suprimimos o anonimizamos. Los datos de analítica se conservan por periodos de **2 meses** (datos de eventos) y **14 meses** (datos de usuario). El registro de su elección sobre cookies se conserva por **tres (3) años**.
 
 ## 13. Cookies
 

@@ -37,9 +37,12 @@ We ask for your choice with a cookie banner. **Analytics cookies are off by defa
 | `_ga_E7RL326PKG` | Google Analytics | Keeps session state | 2 years | Analytics (consent required) |
 | `_gcl_au` (when Google Ads goes live) | Google Ads | Measures ad conversions | 90 days | Advertising (consent required) |
 | `cookieConsent` (browser local storage) | Good Company | Remembers your cookie choice | Until you clear it | Strictly necessary |
+| `cookieConsentId` (browser local storage) | Good Company | Random identifier that links your cookie decisions to our record of them | Until you clear it | Strictly necessary |
 | `cyberAssessmentPopupDismissed` (browser local storage) | Good Company | Remembers that you closed the assessment pop-up (it is not shown again for 30 days) or used its button | Until you clear it | Preferences |
 
 **Your choices.** You can decline cookies in the banner, change your choice at any time with the "Cookie settings" link in the footer, delete cookies in your browser, or use Google's opt-out add-on (tools.google.com/dlpage/gaoptout). We treat a Global Privacy Control signal from your browser as a refusal of analytics cookies. Declining does not limit your use of the site.
+
+**Record of your choice.** So that we can show that you made a choice, we keep a record of it: a random identifier stored in your browser, the date and time, the version of this policy and of the banner, your decision (accepted, declined or later withdrawn) and whether a Global Privacy Control signal was detected. We do not store your full IP address or any information that identifies you personally. We keep this record for 3 years.
 
 ## 5. Who we share information with
 
@@ -58,7 +61,7 @@ Our service providers, including Google (Google Workspace and Google Sheets, whe
 
 ## 7. Retention
 
-We keep contact information for as long as needed for the purposes above, and in any case no longer than 24 months after our last interaction with you, unless the law requires us to keep it longer. Analytics event data is kept for 2 months and user-level analytics data for 14 months.
+We keep contact information for as long as needed for the purposes above, and in any case no longer than 24 months after our last interaction with you, unless the law requires us to keep it longer. Analytics event data is kept for 2 months and user-level analytics data for 14 months. The record of your cookie choice is kept for 3 years.
 
 ## 8. Security
 
