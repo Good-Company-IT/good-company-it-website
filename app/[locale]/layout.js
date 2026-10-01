@@ -67,7 +67,9 @@ export default async function Layout({ children, params }) {
     title: t('common:cookie_title'),
     description: t('common:cookie_desc'),
     agree: t('common:cookie_agree'),
-    decline: t('common:cookie_decline')
+    decline: t('common:cookie_decline'),
+    policyLink: t('common:cookie_policy_link'),
+    privacyHref: `/${locale}/privacy`,
   }
 
   return (

@@ -5,6 +5,10 @@ import { motion } from "framer-motion";
 import SocialMediaIcons from "@/components/common/SocialMediaIcons/SocialMediaIcons";
 import { Button } from "@/components/common/Buttons/Button";
 
+// Stored with every submission as proof of the wording the visitor accepted.
+// Change this value whenever the text of either consent checkbox below changes.
+const CONSENT_TEXT_VERSION = 'contact-form-2026-10-01';
+
 const ContactSection = () => {
 
     const itemVariants = {
@@ -26,10 +30,13 @@ const ContactSection = () => {
         industry: "",
         services: [],
         message: "",
-        subscribe: false
+        subscribe: false,      // optional marketing consent
+        authorization: false,  // required: authorization to process the data to answer the request
+        website: ""            // honeypot: hidden from people, bots fill it
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [phoneError, setPhoneError] = useState('');
     const [submitStatus, setSubmitStatus] = useState(null); // 'success', 'error', or null
 
     const handleInputChange = (e) => {
@@ -52,11 +59,20 @@ const ContactSection = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Digits, spaces and + ( ) - . only, with 7 to 15 digits (the international phone number range).
+        const phoneDigits = formData.phone.replace(/\D/g, '');
+        if (!/^[0-9+()\-.\s]+$/.test(formData.phone) || phoneDigits.length < 7 || phoneDigits.length > 15) {
+            setPhoneError('Please enter a valid phone number, with 7 to 15 digits.');
+            return;
+        }
+
         setIsSubmitting(true);
         setSubmitStatus(null);
 
         try {
-            const response = await fetch('https://formspree.io/f/xkgzodkr', {
+            // The site's own server route forwards the request to the CRM (see app/api/contact/route.js).
+            const response = await fetch('/api/contact', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -69,16 +85,15 @@ const ContactSection = () => {
                     industry: formData.industry,
                     services: formData.services.join(', '), // Convert array to string
                     message: formData.message,
-                    subscribe: formData.subscribe,
+                    authorization: formData.authorization,
+                    marketingConsent: formData.subscribe,
+                    consentVersion: CONSENT_TEXT_VERSION,
+                    website: formData.website,
                 }),
             });
 
             if (response.ok) {
-                console.log('✅ Form submitted successfully!', {
-                    status: response.status,
-                    statusText: response.statusText,
-                    formData: formData
-                });
+                // Personal data is deliberately not written to the browser console.
                 setSubmitStatus('success');
                 // Reset form after successful submission
                 setFormData({
@@ -89,7 +104,9 @@ const ContactSection = () => {
                     industry: "",
                     services: [],
                     message: "",
-                    subscribe: false
+                    subscribe: false,
+                    authorization: false,
+                    website: ""
                 });
             } else {
                 console.error('❌ Form submission failed:', {
@@ -212,7 +229,7 @@ const ContactSection = () => {
             {/* Bottom Section - Form with dark background */}
             <motion.section
                 variants={sectionVariants}
-                className="relative h-[1750px] sm:h-[1400px] lg:max-h-[1000px] bg-slate-900 px-4 sm:px-6 lg:px-8 py-12 lg:py-20"
+                className="relative min-h-[1750px] sm:min-h-[1400px] lg:min-h-[1000px] bg-slate-900 px-4 sm:px-6 lg:px-8 py-12 lg:py-20"
             >
                 {/* SVG Background Pattern */}
                 <div
@@ -349,11 +366,17 @@ const ContactSection = () => {
                                             name="phone"
                                             placeholder="+57 | Phone number *"
                                             value={formData.phone}
-                                            onChange={handleInputChange}
+                                            onChange={(e) => { setPhoneError(''); handleInputChange(e); }}
+                                            inputMode="tel"
+                                            autoComplete="tel"
+                                            maxLength={25}
                                             className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all duration-200"
                                             required
                                             disabled={isSubmitting}
                                         />
+                                        {phoneError && (
+                                            <p className="mt-2 text-sm text-red-600" role="alert">{phoneError}</p>
+                                        )}
                                     </div>
                                 </div>
 
@@ -395,6 +418,7 @@ const ContactSection = () => {
                                                     type="checkbox"
                                                     name="services"
                                                     value={service}
+                                                    checked={formData.services.includes(service)}
                                                     onChange={handleInputChange}
                                                     className="w-5 h-5 text-orange-500 border-2 border-gray-300 rounded focus:ring-orange-500 focus:ring-2"
                                                     disabled={isSubmitting}
@@ -419,9 +443,48 @@ const ContactSection = () => {
                                     />
                                 </div>
 
-                                {/* Newsletter Subscription */}
-                                <div className="flex flex-col gap-y-5 justify-between sm:flex-row">
-                                    <label className="flex items-start max-w-xs space-x-3 cursor-pointer">
+                                {/* Honeypot: invisible to people (off-screen, skipped by keyboard and screen readers), bots fill it. */}
+                                <div aria-hidden="true" style={{ position: 'absolute', left: '-9999px', width: '1px', height: '1px', overflow: 'hidden' }}>
+                                    <label>
+                                        Website
+                                        <input
+                                            type="text"
+                                            name="website"
+                                            tabIndex={-1}
+                                            autoComplete="off"
+                                            value={formData.website}
+                                            onChange={handleInputChange}
+                                        />
+                                    </label>
+                                </div>
+
+                                {/* Consent: required authorization to answer the request, and a SEPARATE optional marketing consent.
+                                    Neither is pre-ticked. If the wording changes, change CONSENT_TEXT_VERSION at the top of this file. */}
+                                <div className="space-y-3">
+                                    <label className="flex items-start space-x-3 cursor-pointer">
+                                        <input
+                                            type="checkbox"
+                                            name="authorization"
+                                            checked={formData.authorization}
+                                            onChange={handleInputChange}
+                                            className="w-5 h-5 text-orange-500 border-2 border-gray-300 rounded focus:ring-orange-500 focus:ring-2 mt-0.5"
+                                            required
+                                            disabled={isSubmitting}
+                                        />
+                                        <span className="text-sm text-slate-700 leading-relaxed">
+                                            I authorize Good Company I.T. Consulting LLC to process my personal data to answer my request,
+                                            as described in the{' '}
+                                            <a href="/en/privacy" target="_blank" rel="noopener noreferrer" className="underline text-orange-600 hover:text-orange-500">
+                                                Privacy Policy
+                                            </a>{' '}
+                                            and the{' '}
+                                            <a href="/es/politica-de-tratamiento-de-datos" target="_blank" rel="noopener noreferrer" className="underline text-orange-600 hover:text-orange-500">
+                                                Política de Tratamiento de Datos Personales
+                                            </a>. *
+                                        </span>
+                                    </label>
+
+                                    <label className="flex items-start space-x-3 cursor-pointer">
                                         <input
                                             type="checkbox"
                                             name="subscribe"
@@ -431,11 +494,13 @@ const ContactSection = () => {
                                             disabled={isSubmitting}
                                         />
                                         <span className="text-sm text-slate-700 leading-relaxed">
-                                            I would like to subscribe to updates and insights from Good Company.
+                                            (Optional) I would like to receive updates, insights and offers from Good Company by email. I can unsubscribe at any time.
                                         </span>
                                     </label>
+                                </div>
 
-                                    {/* Submit Button */}
+                                {/* Submit Button */}
+                                <div className="flex justify-end">
                                     <Button type="submit" disabled={isSubmitting}>
                                         {isSubmitting ? 'Sending...' : 'Send Message'}
                                     </Button>

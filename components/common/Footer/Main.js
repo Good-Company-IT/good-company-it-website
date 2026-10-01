@@ -166,13 +166,28 @@ const Footer = ({ locale, translations }) => {
                         <p className="text-gray-400 text-sm">
                             © Good Company I.T. Consulting LLC. {defaults.allRightsReserved}. {year}
                         </p>
-                        <button
-                            type="button"
-                            onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}
-                            className="mt-2 md:mt-0 text-gray-400 text-sm underline hover:text-orange-400 transition-colors duration-200"
-                        >
-                            {locale === 'es' ? 'Configuración de cookies' : 'Cookie settings'}
-                        </button>
+                        <div className="mt-2 md:mt-0 flex flex-wrap gap-x-6 gap-y-2">
+                            {/* The privacy policy is published in English only; the data policy is Spanish-only (Colombian law). */}
+                            <Link
+                                href={`/${locale}/privacy`}
+                                className="text-gray-400 text-sm underline hover:text-orange-400 transition-colors duration-200"
+                            >
+                                Privacy Policy
+                            </Link>
+                            <Link
+                                href="/es/politica-de-tratamiento-de-datos"
+                                className="text-gray-400 text-sm underline hover:text-orange-400 transition-colors duration-200"
+                            >
+                                Política de Tratamiento de Datos
+                            </Link>
+                            <button
+                                type="button"
+                                onClick={() => window.dispatchEvent(new Event(OPEN_SETTINGS_EVENT))}
+                                className="text-gray-400 text-sm underline hover:text-orange-400 transition-colors duration-200"
+                            >
+                                {locale === 'es' ? 'Configuración de cookies' : 'Cookie settings'}
+                            </button>
+                        </div>
                     </div>
                 </motion.div>
             </div>
