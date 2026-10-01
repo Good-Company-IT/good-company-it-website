@@ -1,34 +1,111 @@
 "use client"
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoClose } from 'react-icons/io5';
 import { FiArrowRight, FiShield } from 'react-icons/fi';
+import { quizUrl } from '@/utils/quiz/quizUrl';
 
-const FORM_URL = 'https://docs.google.com/forms/d/e/1FAIpQLSc0Jz3hwoOhHXoOA8qa5ZDHviWXfth0cU4agYZzz4HwiwRsSg/viewform';
+// Browser storage (listed in the cookie table of the privacy policy):
+//  - a timestamp  = closed or "Maybe later": do not show again for 30 days
+//  - 'taken'      = clicked "Take the Free Assessment": never show again
+//  - 'true'       = value left by the previous version of this pop-up: starts a 30-day pause
 const STORAGE_KEY = 'cyberAssessmentPopupDismissed';
-const SHOW_DELAY_MS = 4000;
+const TAKEN_VALUE = 'taken';
+const PAUSE_MS = 30 * 24 * 60 * 60 * 1000;
+
+// Computers: show when the cursor leaves through the top of the window (towards the tabs or the close button)
+// or through the left edge (browsers such as Arc keep their tabs in a left sidebar), after the visitor has
+// spent a little time on the page. The right and bottom edges are ignored: the scrollbar sits on the right.
+const DESKTOP_MIN_TIME_MS = 10 * 1000;
+// Phones and tablets have no cursor: show after a short while, once the visitor has scrolled a bit.
+const TOUCH_DELAY_MS = 10 * 1000;
+const TOUCH_MIN_SCROLL_PX = 200;
+// Never interrupt someone reading the legal texts.
+const LEGAL_PATH_PATTERN = /\/(privacy|politica-de-tratamiento-de-datos)(\/|$)/;
+
+const isSuppressed = () => {
+  try {
+    const value = localStorage.getItem(STORAGE_KEY);
+    if (!value) return false;
+    if (value === TAKEN_VALUE) return true;
+    if (value === 'true') {
+      localStorage.setItem(STORAGE_KEY, String(Date.now()));
+      return true;
+    }
+    const dismissedAt = Number(value);
+    return Number.isFinite(dismissedAt) && Date.now() - dismissedAt < PAUSE_MS;
+  } catch (e) {
+    return false; // storage blocked: still shown at most once per page view (see `shown` below)
+  }
+};
 
 const CyberAssessmentPopUp = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const hasScheduled = useRef(false);
+  const pathname = usePathname();
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
-    if (localStorage.getItem(STORAGE_KEY)) return;
-    if (hasScheduled.current) return;
-    hasScheduled.current = true;
+    if (LEGAL_PATH_PATTERN.test(pathname || '')) return;
+    if (isSuppressed()) return;
 
-    const timer = setTimeout(() => setIsVisible(true), SHOW_DELAY_MS);
-    return () => {
-      clearTimeout(timer);
-      hasScheduled.current = false;
+    let shown = false;
+    const show = () => {
+      if (shown || isSuppressed()) return;
+      shown = true;
+      setIsVisible(true);
     };
-  }, []);
+    const startedAt = Date.now();
 
+    if (window.matchMedia('(hover: none)').matches) {
+      // Touch device: wait for time AND some scrolling.
+      let timeElapsed = false;
+      let scrolled = false;
+      const check = () => { if (timeElapsed && scrolled) show(); };
+      const onScroll = () => {
+        if (window.scrollY >= TOUCH_MIN_SCROLL_PX) {
+          scrolled = true;
+          check();
+        }
+      };
+      const timer = setTimeout(() => { timeElapsed = true; check(); }, TOUCH_DELAY_MS);
+      window.addEventListener('scroll', onScroll, { passive: true });
+      return () => {
+        clearTimeout(timer);
+        window.removeEventListener('scroll', onScroll);
+      };
+    }
+
+    const onMouseOut = (event) => {
+      // relatedTarget is null when the cursor leaves the window; clientY <= 0 means it left through the top,
+      // clientX <= 0 through the left edge.
+      const leftThroughTopOrLeft = event.clientY <= 0 || event.clientX <= 0;
+      if (event.relatedTarget === null && leftThroughTopOrLeft && Date.now() - startedAt >= DESKTOP_MIN_TIME_MS) {
+        show();
+      }
+    };
+    document.addEventListener('mouseout', onMouseOut);
+    return () => document.removeEventListener('mouseout', onMouseOut);
+  }, [pathname]);
+
+  const remember = (value) => {
+    try {
+      localStorage.setItem(STORAGE_KEY, value);
+    } catch (e) {
+      // Storage blocked: nothing to remember.
+    }
+  };
+
+  // Close, backdrop click or "Maybe later": pause for 30 days.
   const dismiss = () => {
     setIsVisible(false);
-    localStorage.setItem(STORAGE_KEY, 'true');
+    remember(String(Date.now()));
+  };
+
+  // Clicked the button: the visitor has seen the offer, do not show it again.
+  const takeAssessment = () => {
+    setIsVisible(false);
+    remember(TAKEN_VALUE);
   };
 
   return (
@@ -121,12 +198,12 @@ const CyberAssessmentPopUp = () => {
 
                 {/* CTA */}
                 <motion.a
-                  href={FORM_URL}
+                  href={quizUrl('exit_popup')}
                   target="_blank"
                   rel="noopener noreferrer"
                   whileHover={{ scale: 1.03 }}
                   whileTap={{ scale: 0.97 }}
-                  onClick={dismiss}
+                  onClick={takeAssessment}
                   className="flex items-center justify-center gap-2 w-full px-6 py-3.5 bg-[#FF4E00] hover:bg-[#FF723F] text-white font-semibold rounded-xl transition-colors duration-200 shadow-lg shadow-[#FF4E00]/20"
                 >
                   Take the Free Assessment

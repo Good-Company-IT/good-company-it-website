@@ -10,7 +10,7 @@ Privacy contact: **goco@goodcompanyit.com**
 
 ## 2. Information we collect
 
-**Information you give us.** When you use our contact form, you give us your full name, company name, email address, phone number, industry, the services you are interested in, your message, and whether you want to receive updates from us. When you complete an assessment or request another resource from us, we receive the answers you submit and any contact details you provide. Emails or calls with us also contain the information you share.
+**Information you give us.** When you use our contact form, you give us your full name, company name, email address, phone number, industry, the services you are interested in, your message, and whether you want to receive updates from us. When you complete the assessment on our own quiz application (quiz.goodcompanyit.com) or request another resource from us, we receive the answers you submit and any contact details you provide. Emails or calls with us also contain the information you share.
 
 **Business contact information from other sources.** We may also collect business contact details (name, work email, company, job title) from public sources and professional directories in order to introduce our services to companies that may be interested. You can ask us to stop at any time (see sections 9 and 12).
 
@@ -37,7 +37,7 @@ We ask for your choice with a cookie banner. **Analytics cookies are off by defa
 | `_ga_E7RL326PKG` | Google Analytics | Keeps session state | 2 years | Analytics (consent required) |
 | `_gcl_au` (when Google Ads goes live) | Google Ads | Measures ad conversions | 90 days | Advertising (consent required) |
 | `cookieConsent` (browser local storage) | Good Company | Remembers your cookie choice | Until you clear it | Strictly necessary |
-| `cyberAssessmentPopupDismissed` (browser local storage) | Good Company | Remembers that you closed the assessment pop-up | Until you clear it | Preferences |
+| `cyberAssessmentPopupDismissed` (browser local storage) | Good Company | Remembers that you closed the assessment pop-up (it is not shown again for 30 days) or used its button | Until you clear it | Preferences |
 
 **Your choices.** You can decline cookies in the banner, change your choice at any time with the "Cookie settings" link in the footer, delete cookies in your browser, or use Google's opt-out add-on (tools.google.com/dlpage/gaoptout). We treat a Global Privacy Control signal from your browser as a refusal of analytics cookies. Declining does not limit your use of the site.
 
@@ -45,7 +45,7 @@ We ask for your choice with a cookie banner. **Analytics cookies are off by defa
 
 We do not sell personal information for money. If you consent to advertising cookies, Google may receive information about your visit for advertising measurement and remarketing. You can refuse advertising cookies through the cookie banner or the "Cookie settings" link at any time. Service providers process data on our behalf:
 
-- **Google** (Analytics, Tag Manager and Ads, only after you accept cookies; Forms for assessments).
+- **Google** (Analytics, Tag Manager and Ads, only after you accept cookies).
 - **Vercel** — website hosting and cookieless page-view analytics.
 - **Google Workspace / Google Sheets** — we keep our contact list (CRM) there.
 - **Brevo** and **Lemlist** — sending marketing and outreach emails.
