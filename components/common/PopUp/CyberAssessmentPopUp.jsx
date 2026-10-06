@@ -177,7 +177,7 @@ const CyberAssessmentPopUp = () => {
 
                 {/* Body */}
                 <p className="text-gray-400 text-sm leading-relaxed mb-7">
-                  Most breaches target small businesses — and 60% shut down within 6 months of an attack.
+                  Small businesses are a common target for ransomware and stolen credentials.
                   Take our free 10-minute assessment to uncover your biggest security gaps and get a
                   prioritized action plan before attackers do.
                 </p>
