@@ -50,6 +50,7 @@ No vendemos información personal a cambio de dinero. Si usted consiente las coo
 
 - **Google** (Analytics, Tag Manager y Ads, solo después de que usted acepte las cookies).
 - **Vercel**: alojamiento del sitio web y medición de visitas sin cookies.
+- **Cloudinary**: entrega de las imágenes y los videos que se muestran en el sitio web. Recibe su dirección IP cuando su navegador los carga.
 - **Google Workspace / Google Sheets**: allí guardamos nuestra lista de contactos (CRM).
 - **Brevo** y **Lemlist**: envío de correos de marketing y de contacto comercial.
 

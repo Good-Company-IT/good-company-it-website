@@ -79,6 +79,7 @@ Para operar utilizamos proveedores que tratan datos por nuestra cuenta:
 - **Google** (Google Workspace y Google Sheets, donde guardamos nuestra base de contactos; Google Analytics, Tag Manager y Ads, solo con su autorización).
 - **Brevo** y **Lemlist**, para el envío de correos.
 - **Vercel**, para el alojamiento del sitio web y la medición de visitas sin cookies.
+- **Cloudinary**, para la entrega de las imágenes y los videos del sitio web.
 
 No vendemos sus datos personales. Podremos entregarlos a autoridades cuando la ley lo exija.
 

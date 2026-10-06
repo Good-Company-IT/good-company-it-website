@@ -50,6 +50,7 @@ We do not sell personal information for money. If you consent to advertising coo
 
 - **Google** (Analytics, Tag Manager and Ads, only after you accept cookies).
 - **Vercel** — website hosting and cookieless page-view analytics.
+- **Cloudinary** — delivery of the images and videos shown on the website. It receives your IP address when your browser loads them.
 - **Google Workspace / Google Sheets** — we keep our contact list (CRM) there.
 - **Brevo** and **Lemlist** — sending marketing and outreach emails.
 

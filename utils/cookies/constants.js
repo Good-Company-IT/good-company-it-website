@@ -9,4 +9,4 @@ export const CONSENT_ID_STORAGE_KEY = 'cookieConsentId';
 // Change BANNER_VERSION when the banner text changes and POLICY_VERSION when the privacy policy changes:
 // they are stored with every decision as proof of what the visitor saw.
 export const BANNER_VERSION = 'banner-2026-10-01';
-export const POLICY_VERSION = 'policy-2026-10-06';
+export const POLICY_VERSION = 'policy-2026-10-06-2';

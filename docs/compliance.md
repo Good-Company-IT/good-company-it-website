@@ -41,7 +41,7 @@ Read this before adding **any** tool, script, embed, form or analytics to the si
 | `cyberAssessmentPopupDismissed` (local storage) | Remembers the closed pop-up (30-day pause) or its used button | Preferences |
 | Vercel Analytics | Aggregate page views, cookieless | Not required |
 
-Providers named in the policies: Google (Analytics, Tag Manager, Ads, Workspace/Sheets), Vercel, Brevo, Lemlist.
+Providers named in the policies: Google (Analytics, Tag Manager, Ads, Workspace/Sheets), Vercel, Cloudinary (images and video are requested directly from `res.cloudinary.com` by the visitor's browser, so it receives the IP address), Brevo, Lemlist. The language-choice cookie `NEXT_LOCALE` was **not** observed on the live site (checked 2026-10-06, before consent and after switching language); if it ever appears, add it to the cookie table.
 
 ## Checklist when adding something new
 
