@@ -19,7 +19,10 @@ Read this before adding **any** tool, script, embed, form or analytics to the si
 | Consent logic (defaults, loading Google tags, clearing cookies) | `utils/cookies/consentScript.js`, injected first by `app/[locale]/layout.js` |
 | Banner and "Cookie settings" reopening | `utils/cookies/CookieConsentHandler.jsx`, footer button in `components/common/Footer/Main.js` |
 | Banner text (en/es) | `locales/*/common.json` (`cookie_*` keys) |
-| Privacy & Cookie Policy (English only) | `content/legal/privacy-policy.en.md` → `/en/privacy` |
+| Privacy & Cookie Policy, English | `content/legal/privacy-policy.en.md` → `/en/privacy` |
+| Política de Privacidad y Cookies, Spanish (same content, keep both aligned) | `content/legal/privacy-policy.es.md` → `/es/privacy` (`app/[locale]/privacy/page.jsx` picks the file by locale) |
+| Terms of Service, English | `content/legal/terms-of-service.en.md` → `/en/terms` |
+| Términos y Condiciones, Spanish (applies to users who accept in Spanish; keep aligned with the English) | `content/legal/terms-and-conditions.es.md` → `/es/terminos` |
 | Política de Tratamiento de Datos Personales (Spanish, required by Colombian Law 1581 of 2012) | `content/legal/data-processing-policy.es.md` → `/es/politica-de-tratamiento-de-datos` |
 | Legal page layout | `components/legal/LegalDocument.jsx` |
 | Contact form | `components/contact/ContactSection/ContactSecton.jsx` → `app/api/contact/route.js` → a Google Apps Script web app that writes one row to the company CRM Sheet. The script lives in Google (not in this repo). Server-side environment variables (set in Vercel, never committed): `CONTACT_WEBHOOK_URL`, `CONTACT_WEBHOOK_TOKEN` |
@@ -43,7 +46,7 @@ Providers named in the policies: Google (Analytics, Tag Manager, Ads, Workspace/
 ## Checklist when adding something new
 
 - [ ] Does it set a cookie, use local storage for tracking, or send visitor data to a third party? If yes, it must load only after consent (extend `consentScript.js`, or a consent-aware tag in GTM).
-- [ ] Add it to the cookie table in `content/legal/privacy-policy.en.md` (name, provider, purpose, duration, type) and to the provider lists in both policies.
+- [ ] Add it to the cookie table in **both** `content/legal/privacy-policy.en.md` and `privacy-policy.es.md` (name, provider, purpose, duration, type) and to the provider lists in the policies (privacy EN/ES and the data-processing policy).
 - [ ] If it is advertising, the banner may need to separate Analytics from Advertising (the lawyer recommended this once Google Ads goes live).
 - [ ] If it collects personal data, follow rule 7 and update the "data we collect" and "purposes" sections of both policies.
 - [ ] Update the "Last updated" date of the policy that changed, and `POLICY_VERSION` in `utils/cookies/constants.js` (and `BANNER_VERSION` when the banner text changes): they are stored with every consent decision.
@@ -62,5 +65,6 @@ Providers named in the policies: Google (Analytics, Tag Manager, Ads, Workspace/
 
 - Once a year, delete the rows of the consent record (`GoCo_Consent_Log`) older than 3 years, as the policies promise.
 - Separate Analytics and Advertising choices in "Cookie settings" when Google Ads goes live.
-- Spanish version of the Privacy & Cookie Policy only if the lawyer asks for it.
-- Process to delete contacts 24 months after the last interaction (the policies promise it).
+- **Every legal text exists in two languages** (privacy policy and terms; the data-processing policy is Spanish-only). When one changes, change the other and the "Last updated" date, and bump `POLICY_VERSION`.
+- **Lead magnets (the quiz and any new one)** must ask for acceptance of the Terms with an unticked checkbox (or a clearly visible statement next to the button, with links), separate from the newsletter opt-in, link to the Spanish versions when the visitor is in the Spanish experience, and store the time, the Terms version and the language of the acceptance.
+- **Retention promised in the policies:** contacts up to 24 months after the last interaction; minimal authorization records up to 5 years (solely to demonstrate compliance, never for marketing); analytics 2 months (events) / 14 months (users); cookie-consent record 3 years. The process to delete contacts at 24 months must be built before the first contacts reach that age (2028), and the separate store with the minimal authorization evidence must exist before any contact is deleted.

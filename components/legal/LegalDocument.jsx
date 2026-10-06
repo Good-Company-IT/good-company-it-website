@@ -3,7 +3,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 
-// Same dark background as the other legal pages (components/legal/Privacy.js).
+// Dark background with the site's brand gradient, shared by every legal page.
 const bgImageStyle = {
   backgroundColor: 'hsla(219,45%,7%,1)',
   backgroundImage: `

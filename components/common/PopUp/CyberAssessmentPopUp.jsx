@@ -23,7 +23,7 @@ const DESKTOP_MIN_TIME_MS = 10 * 1000;
 const TOUCH_DELAY_MS = 10 * 1000;
 const TOUCH_MIN_SCROLL_PX = 200;
 // Never interrupt someone reading the legal texts.
-const LEGAL_PATH_PATTERN = /\/(privacy|politica-de-tratamiento-de-datos)(\/|$)/;
+const LEGAL_PATH_PATTERN = /\/(privacy|politica-de-tratamiento-de-datos|terms|terminos)(\/|$)/;
 
 const isSuppressed = () => {
   try {
