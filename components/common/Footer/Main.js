@@ -167,12 +167,18 @@ const Footer = ({ locale, translations }) => {
                             © Good Company I.T. Consulting LLC. {defaults.allRightsReserved}. {year}
                         </p>
                         <div className="mt-2 md:mt-0 flex flex-wrap gap-x-6 gap-y-2">
-                            {/* The privacy policy is published in English only; the data policy is Spanish-only (Colombian law). */}
+                            {/* Privacy and Terms exist in English and Spanish; the data policy is Spanish-only (Colombian law). */}
                             <Link
                                 href={`/${locale}/privacy`}
                                 className="text-gray-400 text-sm underline hover:text-orange-400 transition-colors duration-200"
                             >
-                                Privacy Policy
+                                {locale === 'es' ? 'Política de Privacidad y Cookies' : 'Privacy Policy'}
+                            </Link>
+                            <Link
+                                href={locale === 'es' ? '/es/terminos' : '/en/terms'}
+                                className="text-gray-400 text-sm underline hover:text-orange-400 transition-colors duration-200"
+                            >
+                                {locale === 'es' ? 'Términos y Condiciones' : 'Terms of Service'}
                             </Link>
                             <Link
                                 href="/es/politica-de-tratamiento-de-datos"

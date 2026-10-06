@@ -1,6 +1,6 @@
 # Privacy & Cookie Policy
 
-**Last updated:** October 1, 2026
+**Last updated:** October 6, 2026
 
 ## 1. Who we are
 
@@ -12,7 +12,7 @@ Privacy contact: **goco@goodcompanyit.com**
 
 **Information you give us.** When you use our contact form, you give us your full name, company name, email address, phone number, industry, the services you are interested in, your message, and whether you want to receive updates from us. When you complete the assessment on our own quiz application (quiz.goodcompanyit.com) or request another resource from us, we receive the answers you submit and any contact details you provide. Emails or calls with us also contain the information you share.
 
-**Business contact information from other sources.** We may also collect business contact details (name, work email, company, job title) from public sources and professional directories in order to introduce our services to companies that may be interested. You can ask us to stop at any time (see sections 9 and 12).
+**Business contact information from other sources.** Where the law allows it, we may use business contact details obtained from public sources or professional directories to introduce our services to companies that may be interested. Where those details identify an individual and their processing is subject to Colombian data-protection law, we carry out marketing or outreach activities only when we have the authorization the law requires. You can ask us to stop contacting you at any time (see sections 9 and 12).
 
 **Information collected automatically.** Technical and usage data such as pages visited, referring page, approximate location (country/city level), browser and device type, and interaction events. Cookie-based analytics data is collected only after you accept analytics cookies (section 4). Our hosting provider also measures page views in aggregate without cookies and may keep standard server logs (IP address, request time) for security and operation.
 
@@ -25,7 +25,7 @@ We do not knowingly collect sensitive personal information through this website.
 - To understand how the site is used and improve it (analytics, with your consent for cookie-based tools).
 - To keep the site secure and to comply with legal obligations.
 
-Where the law requires a legal basis, we rely on your consent (analytics cookies, newsletter), steps taken at your request before a contract (enquiries), and our legitimate interest in running and securing the business and contacting business leads.
+Where the law requires a legal basis, we rely on your consent (analytics cookies, newsletter), steps taken at your request before a contract (enquiries), and our legitimate interest in running and securing the business. Where the law requires your authorization for marketing or outreach (for example Colombian law, when the data belongs to an individual), we carry them out only if we have it.
 
 ## 4. Cookies and similar technologies
 
@@ -61,7 +61,10 @@ Our service providers, including Google (Google Workspace and Google Sheets, whe
 
 ## 7. Retention
 
-We keep contact information for as long as needed for the purposes above, and in any case no longer than 24 months after our last interaction with you, unless the law requires us to keep it longer. Analytics event data is kept for 2 months and user-level analytics data for 14 months. The record of your cookie choice is kept for 3 years.
+- **Contact information:** kept for up to 24 months after our last interaction with you, unless a legal or contractual obligation requires us to keep it longer.
+- **Authorization records:** we may keep minimal records of the authorizations you gave, changed or withdrawn for up to five (5) years, solely to demonstrate that we comply with our legal obligations. These records are not used for commercial or marketing purposes.
+- **Analytics data:** event data is kept for 2 months and user-level data for 14 months.
+- **Record of your cookie choice:** kept for 3 years.
 
 ## 8. Security
 
@@ -69,7 +72,7 @@ We use reasonable technical and organizational measures to protect information. 
 
 ## 9. Your rights
 
-Write to **goco@goodcompanyit.com** to access, correct or delete your information, withdraw consent, or unsubscribe from marketing. We will respond within 15 business days.
+Write to **goco@goodcompanyit.com** to access, correct or delete your information, withdraw consent, or unsubscribe from marketing. We will respond within the deadlines set by the applicable law. For Colombia, our [Política de Tratamiento de Datos Personales](/es/politica-de-tratamiento-de-datos) explains the procedures and deadlines.
 
 - **Colombia (Law 1581 of 2012 and its regulations):** you may know, update and rectify your data; request proof of the authorization you gave; be informed of how your data is used; revoke the authorization and request deletion where the law allows; access your data free of charge; and file a complaint with the Superintendencia de Industria y Comercio (SIC). Responsible party: Good Company I.T. Consulting LLC, goco@goodcompanyit.com. Our [Política de Tratamiento de Datos Personales](/es/politica-de-tratamiento-de-datos), in Spanish, gives the full details.
 
@@ -79,7 +82,7 @@ There is no common standard for browsers' "Do Not Track" setting, so we do not r
 
 ## 11. Children
 
-Our website is not directed to children under 13, and we do not knowingly collect their personal information. If you believe a child has sent us data, contact us and we will delete it.
+Our website, assessments and tools are intended for adults and business users. We do not knowingly collect personal information from children or adolescents through them. If you believe a minor has sent us data, contact us and we will delete it.
 
 ## 12. Marketing emails
 

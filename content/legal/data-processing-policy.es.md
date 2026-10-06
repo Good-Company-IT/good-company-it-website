@@ -1,6 +1,6 @@
 # Política de Tratamiento de Datos Personales
 
-**Fecha de entrada en vigor:** 1 de octubre de 2026
+**Fecha de entrada en vigor:** 1 de octubre de 2026 · **Última actualización:** 6 de octubre de 2026
 
 ## 1. Responsable del tratamiento
 
@@ -13,7 +13,7 @@
 
 ## 2. Marco legal
 
-Esta política se expide en cumplimiento del artículo 15 de la Constitución Política de Colombia, la Ley 1581 de 2012, el Decreto 1377 de 2013 (incorporado en el Decreto 1074 de 2015) y demás normas que los modifiquen, complementen o sustituyan. Es complementaria de nuestra [Privacy & Cookie Policy](/en/privacy) (en inglés), publicada en el sitio web, que explica el uso de cookies.
+Esta política se expide en cumplimiento del artículo 15 de la Constitución Política de Colombia, la Ley 1581 de 2012, el Decreto 1377 de 2013 (incorporado en el Decreto 1074 de 2015) y demás normas que los modifiquen, complementen o sustituyan. Es complementaria de nuestra [Política de Privacidad y Cookies](/es/privacy), publicada en el sitio web, que explica el uso de cookies.
 
 ## 3. Datos personales que tratamos
 
@@ -48,7 +48,7 @@ Guardamos, junto con sus datos de contacto, la fecha y hora de su autorización,
 
 ## 6. Datos sensibles y menores de edad
 
-No solicitamos ni buscamos recolectar datos sensibles ni datos personales de niños, niñas o adolescentes. Nuestro sitio web no está dirigido a menores de 18 años. Si usted cree que un menor nos entregó datos, escríbanos y los eliminaremos.
+No solicitamos ni buscamos recolectar datos sensibles ni datos personales de niños, niñas o adolescentes. Nuestro sitio web, nuestras evaluaciones y nuestras herramientas están dirigidos a personas adultas y usuarios empresariales. Si usted cree que un menor nos entregó datos, escríbanos y los eliminaremos.
 
 ## 7. Derechos de los titulares
 
@@ -92,11 +92,14 @@ Nuestros proveedores y nosotros podemos procesar información en Estados Unidos 
 
 ## 12. Conservación y supresión
 
-Conservamos los datos de contacto el tiempo necesario para las finalidades anteriores y, en todo caso, **hasta veinticuatro (24) meses** después de nuestra última interacción con usted, salvo que la ley exija conservarlos por más tiempo. Pasado ese plazo los suprimimos o anonimizamos. Los datos de analítica se conservan por periodos de **2 meses** (datos de eventos) y **14 meses** (datos de usuario). El registro de su elección sobre cookies se conserva por **tres (3) años**.
+- **Datos de contacto:** se conservan hasta **veinticuatro (24) meses** después de nuestra última interacción con usted, salvo que exista una obligación legal o contractual que exija conservarlos por más tiempo. Pasado ese plazo los suprimimos o anonimizamos.
+- **Registros de autorización:** podemos conservar registros mínimos de las autorizaciones otorgadas, modificadas o revocadas durante un período de hasta **cinco (5) años**, exclusivamente para demostrar el cumplimiento de nuestras obligaciones legales. Estos registros no se utilizan con fines comerciales ni de marketing.
+- **Datos de analítica:** los datos de eventos se conservan **2 meses** y los datos de usuario **14 meses**.
+- **Registro de su decisión sobre cookies:** se conserva por **tres (3) años**.
 
 ## 13. Cookies
 
-El uso de cookies y tecnologías similares se explica en nuestra [Privacy & Cookie Policy](/en/privacy) (en inglés).
+El uso de cookies y tecnologías similares se explica en nuestra [Política de Privacidad y Cookies](/es/privacy).
 
 ## 14. Vigencia y modificaciones
 

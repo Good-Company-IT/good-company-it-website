@@ -7,10 +7,15 @@ const CONTENT_DIR = path.join(process.cwd(), "content", "blog");
 
 // English URLs only: no content is produced in other languages, and the /es
 // blog posts canonicalize to /en (see app/[locale]/blog/[slug]/page.jsx).
-const STATIC_PATHS = ["", "/about", "/services", "/community", "/contact", "/blog", "/privacy"];
+const STATIC_PATHS = ["", "/about", "/services", "/community", "/contact", "/blog", "/privacy", "/terms"];
 
-// Spanish-only legal document (Colombian data-protection law): its canonical URL is under /es.
-const SPANISH_ONLY_PATHS = ["/es/politica-de-tratamiento-de-datos"];
+// Legal documents whose canonical URL is under /es: the Spanish-only data-processing policy (Colombian
+// data-protection law) and the Spanish versions of the Privacy & Cookie Policy and of the Terms.
+const SPANISH_ONLY_PATHS = [
+  "/es/politica-de-tratamiento-de-datos",
+  "/es/privacy",
+  "/es/terminos",
+];
 
 function getBlogEntries() {
   if (!fs.existsSync(CONTENT_DIR)) return [];
