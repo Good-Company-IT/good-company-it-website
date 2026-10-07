@@ -61,10 +61,11 @@ Providers named in the policies: Google (Analytics, Tag Manager, Ads, Workspace/
 5. With Global Privacy Control enabled (for example Firefox with `privacy.globalprivacycontrol.enabled` = true): no banner and nothing from Google. (Brave's Shields block Google scripts by themselves, so it is not a valid test of our logic.)
 6. Check the Spanish version (`/es`) and a phone-sized window.
 
-## Known follow-ups
+## Standing rules and commitments
 
-- Once a year, delete the rows of the consent record (`GoCo_Consent_Log`) older than 3 years, as the policies promise.
-- Separate Analytics and Advertising choices in "Cookie settings" when Google Ads goes live.
+Dated tasks that come from these commitments are tracked outside this repo, in the team's private to-do list; this section keeps only what must stay true.
+
+- **Consent record:** delete the rows of `GoCo_Consent_Log` older than 3 years once a year, as the policies promise.
 - **Every legal text exists in two languages** (privacy policy and terms; the data-processing policy is Spanish-only). When one changes, change the other and the "Last updated" date, and bump `POLICY_VERSION`.
 - **Lead magnets (the quiz and any new one)** must ask for acceptance of the Terms with an unticked checkbox (or a clearly visible statement next to the button, with links), separate from the newsletter opt-in, link to the Spanish versions when the visitor is in the Spanish experience, and store the time, the Terms version and the language of the acceptance.
 - **Retention promised in the policies:** contacts up to 24 months after the last interaction; minimal authorization records up to 5 years (solely to demonstrate compliance, never for marketing); analytics 2 months (events) / 14 months (users); cookie-consent record 3 years. The process to delete contacts at 24 months must be built before the first contacts reach that age (2028), and the separate store with the minimal authorization evidence must exist before any contact is deleted.
