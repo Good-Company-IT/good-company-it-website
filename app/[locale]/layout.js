@@ -58,7 +58,6 @@ export default async function Layout({ children, params }) {
     company: t('navbar:company'),
     about: t('navbar:about'),
     contact: t('navbar:contact'),
-    disclaimer: t('footer:disclaimer'),
     termsLink: t('footer:termsLink'),
     privacyLink: t('footer:privacyLink'),
   };
