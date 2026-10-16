@@ -27,6 +27,7 @@ Read this before adding **any** tool, script, embed, form or analytics to the si
 | Legal page layout | `components/legal/LegalDocument.jsx` |
 | Contact form | `components/contact/ContactSection/ContactSecton.jsx` → `app/api/contact/route.js` → a Google Apps Script web app that writes one row to the company CRM Sheet. The script lives in Google (not in this repo). Server-side environment variables (set in Vercel, never committed): `CONTACT_WEBHOOK_URL`, `CONTACT_WEBHOOK_TOKEN` |
 | Cookie-consent record (proof of consent) | `utils/cookies/recordConsent.js` → `app/api/consent/route.js` → the same Google Apps Script as the contact form, which appends one row per decision to a **separate Google Sheet** named `GoCo_Consent_Log` (tab `Consents`; columns `Received_At, Visitor_ID, Decision, Origin, Banner_Version, Policy_Version, GPC, Locale`), owned by the company's marketing Google account. The file's ID is a script property in Google (`CONSENT_SPREADSHEET_ID`), not in this repo. It stores no IP and nothing personal. **Retention: 3 years** from each record — delete older rows once a year. The browser keeps a random id in local storage (`cookieConsentId`) |
+| Choice shared with the lead-magnet subdomains | Cookie `goco_consent` on `.goodcompanyit.com`, written and read only by `utils/cookies/consentScript.js` (constants in `constants.js`). It holds the analytics and advertising answers separately plus the random visitor id. The old localStorage **Decline** is carried into it; the old localStorage **Accept** is honored on this site only and is never copied (it was given for this site, not for the lead magnets). `/api/consent` also accepts records from `quiz.`, `calculator.` and `awareness.goodcompanyit.com` (CORS) and stores which site took the decision in a `Site` column of the consent sheet, which the Apps Script must write (the script lives in Google) |
 | Consent wording of the contact form | Two checkboxes in `ContactSecton.jsx` (required authorization; separate optional marketing). **Change `CONSENT_TEXT_VERSION` in that file whenever either text changes** — it is stored with every submission as proof of what was accepted |
 | Search Console ownership (HTML tag) | `metadata.verification` in `app/[locale]/layout.js` — keep it |
 
@@ -38,6 +39,7 @@ Read this before adding **any** tool, script, embed, form or analytics to the si
 | `_gcl_au` (Google Ads, when ads go live) | Ad conversion measurement | Required |
 | `cookieConsent` (local storage) | Remembers the cookie choice | Strictly necessary |
 | `cookieConsentId` (local storage) | Random id that links a browser's cookie decisions in the consent record | Strictly necessary |
+| `goco_consent` (first-party cookie, `.goodcompanyit.com`, 12 months) | Remembers the cookie choice across the site and the lead-magnet subdomains | Strictly necessary |
 | `cyberAssessmentPopupDismissed` (local storage) | Remembers the closed pop-up (30-day pause) or its used button | Preferences |
 | Vercel Analytics | Aggregate page views, cookieless | Not required |
 

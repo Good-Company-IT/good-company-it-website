@@ -1,4 +1,4 @@
-import { CONSENT_ID_STORAGE_KEY, BANNER_VERSION, POLICY_VERSION } from './constants';
+import { CONSENT_ID_STORAGE_KEY, BANNER_VERSION, POLICY_VERSION, SITE_ID } from './constants';
 
 // Sends one small record of the visitor's cookie decision to our own server (/api/consent), which stores it
 // in a separate Google Sheet. It is the company's proof of consent, so it must not depend only on the
@@ -10,7 +10,17 @@ const newId = () => {
   return 'v-' + Math.random().toString(36).slice(2) + Date.now().toString(36);
 };
 
+// The id written by another of our sites (a lead magnet) in the shared cookie, if any.
+const cookieVisitorId = () => {
+  try {
+    return window.gocoConsent?.getChoice?.()?.id || '';
+  } catch (e) {
+    return '';
+  }
+};
+
 export const hasVisitorId = () => {
+  if (cookieVisitorId()) return true;
   try {
     return Boolean(localStorage.getItem(CONSENT_ID_STORAGE_KEY));
   } catch (e) {
@@ -19,9 +29,15 @@ export const hasVisitorId = () => {
 };
 
 // The identifier links the decisions of one browser (accepted, later withdrawn...). It is created the first
-// time a decision is recorded, never before.
+// time a decision is recorded, never before. When the shared cookie already carries one, that one is used so a
+// person has a single identifier across our subdomains.
 const getVisitorId = () => {
   try {
+    const shared = cookieVisitorId();
+    if (shared) {
+      localStorage.setItem(CONSENT_ID_STORAGE_KEY, shared);
+      return shared;
+    }
     let id = localStorage.getItem(CONSENT_ID_STORAGE_KEY);
     if (!id) {
       id = newId();
@@ -45,6 +61,7 @@ export const recordConsent = (decision, origin) => {
         visitorId: getVisitorId(),
         decision,
         origin,
+        site: SITE_ID,
         bannerVersion: BANNER_VERSION,
         policyVersion: POLICY_VERSION,
         gpc: navigator.globalPrivacyControl === true,

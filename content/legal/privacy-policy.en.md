@@ -1,6 +1,6 @@
 # Privacy & Cookie Policy
 
-**Last updated:** October 6, 2026
+**Last updated:** October 16, 2026
 
 ## 1. Who we are
 
@@ -38,11 +38,12 @@ We ask for your choice with a cookie banner. **Analytics cookies are off by defa
 | `_gcl_au` (when Google Ads goes live) | Google Ads | Measures ad conversions | 90 days | Advertising (consent required) |
 | `cookieConsent` (browser local storage) | Good Company | Remembers your cookie choice | Until you clear it | Strictly necessary |
 | `cookieConsentId` (browser local storage) | Good Company | Random identifier that links your cookie decisions to our record of them | Until you clear it | Strictly necessary |
+| `goco_consent` (cookie on goodcompanyit.com and its subdomains) | Good Company | Remembers your cookie choice (analytics and advertising separately) and the random identifier of our record of it, so that your choice applies across our website and our subdomains | 12 months | Strictly necessary |
 | `cyberAssessmentPopupDismissed` (browser local storage) | Good Company | Remembers that you closed the assessment pop-up (it is not shown again for 30 days) or used its button | Until you clear it | Preferences |
 
 **Your choices.** You can decline cookies in the banner, change your choice at any time with the "Cookie settings" link in the footer, delete cookies in your browser, or use Google's opt-out add-on (tools.google.com/dlpage/gaoptout). We treat a Global Privacy Control signal from your browser as a refusal of analytics cookies. Declining does not limit your use of the site.
 
-**Record of your choice.** So that we can show that you made a choice, we keep a record of it: a random identifier stored in your browser, the date and time, the version of this policy and of the banner, your decision (accepted, declined or later withdrawn) and whether a Global Privacy Control signal was detected. We do not store your full IP address or any information that identifies you personally. We keep this record for 3 years.
+**Record of your choice.** So that we can show that you made a choice, we keep a record of it: a random identifier stored in your browser (in local storage and in the cookie `goco_consent`), the date and time, the version of this policy and of the banner, which of our sites you were on when you decided, your decision (accepted, declined or later withdrawn) and whether a Global Privacy Control signal was detected. We do not store your full IP address or any information that identifies you personally. We keep this record for 3 years.
 
 ## 5. Who we share information with
 

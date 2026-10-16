@@ -10,6 +10,41 @@ export const maxDuration = 30;
 
 const DECISIONS = ['accepted', 'declined', 'withdrawn', 'gpc_refusal'];
 const ORIGINS = ['banner', 'settings', 'gpc'];
+
+// Our lead-magnet subdomains may also send records. The site of a record is taken from the request's Origin
+// header, which the browser sets and a page cannot forge; the body's `site` is only used when there is no Origin.
+const LEAD_MAGNET_SITES = {
+  'quiz.goodcompanyit.com': 'quiz',
+  'calculator.goodcompanyit.com': 'calculator',
+  'awareness.goodcompanyit.com': 'awareness',
+};
+const SITES = ['www', 'quiz', 'calculator', 'awareness'];
+
+// Allowed cross-origin callers get CORS headers; every other origin gets none and is rejected below.
+function corsHeaders(request) {
+  const origin = request.headers.get('origin');
+  if (!origin) return {};
+  try {
+    if (LEAD_MAGNET_SITES[new URL(origin).host]) return { 'Access-Control-Allow-Origin': origin, Vary: 'Origin' };
+  } catch {
+    // Not a valid origin: no headers.
+  }
+  return {};
+}
+
+export async function OPTIONS(request) {
+  const cors = corsHeaders(request);
+  if (!cors['Access-Control-Allow-Origin']) return new Response(null, { status: 403 });
+  return new Response(null, {
+    status: 204,
+    headers: {
+      ...cors,
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'Access-Control-Max-Age': '86400',
+    },
+  });
+}
 const ID_PATTERN = /^[A-Za-z0-9-]{8,64}$/;
 
 // Light in-memory rate limit per server instance. The IP is only a temporary key and is never stored or forwarded.
@@ -34,14 +69,25 @@ const text = (value, max) => (typeof value === 'string' ? value.trim().slice(0, 
 const fail = (message, status) => NextResponse.json({ ok: false, error: message }, { status });
 
 export async function POST(request) {
-  // Only our own pages may send records.
+  const response = await handle(request);
+  Object.entries(corsHeaders(request)).forEach(([name, value]) => response.headers.set(name, value));
+  return response;
+}
+
+async function handle(request) {
+  // Only our own pages (this site and the lead-magnet subdomains) may send records.
   const origin = request.headers.get('origin');
+  let site = '';
   if (origin) {
+    let originHost = '';
     try {
-      if (new URL(origin).host !== request.headers.get('host')) return fail('Forbidden', 403);
+      originHost = new URL(origin).host;
     } catch {
       return fail('Forbidden', 403);
     }
+    if (originHost === request.headers.get('host')) site = 'www';
+    else if (LEAD_MAGNET_SITES[originHost]) site = LEAD_MAGNET_SITES[originHost];
+    else return fail('Forbidden', 403);
   }
 
   const ip = (request.headers.get('x-forwarded-for') || 'unknown').split(',')[0].trim();
@@ -76,6 +122,7 @@ export async function POST(request) {
     visitorId,
     decision,
     origin: consentOrigin,
+    site: site || (SITES.includes(body.site) ? body.site : ''),
     bannerVersion: text(body.bannerVersion, 40),
     policyVersion: text(body.policyVersion, 40),
     gpc: body.gpc === true,

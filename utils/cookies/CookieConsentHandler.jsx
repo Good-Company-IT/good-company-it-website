@@ -73,13 +73,16 @@ export default function CookieConsentHandler({ translations }) {
     } catch (e) {
       // Storage blocked: behave as if no choice was saved (nothing loads, banner shows).
     }
+    // A choice taken on one of our lead-magnet subdomains lives in the shared cookie, not in localStorage.
+    const shared = window.gocoConsent?.getChoice?.() || null;
+    const hasChoice = saved !== null || shared !== null;
     // Global Privacy Control counts as a refusal, so no question is needed.
     const gpcEnabled = navigator.globalPrivacyControl === true;
-    if (saved === null && !gpcEnabled) {
+    if (!hasChoice && !gpcEnabled) {
       setShowBanner(true);
     }
     // Keep proof that we honored the signal, once per browser (the identifier does not exist before this).
-    if (saved === null && gpcEnabled && !hasVisitorId()) {
+    if (!hasChoice && gpcEnabled && !hasVisitorId()) {
       recordConsent('gpc_refusal', 'gpc');
     }
 
@@ -123,9 +126,12 @@ export default function CookieConsentHandler({ translations }) {
     } catch (e) {
       // Storage blocked: treated as no previous choice.
     }
+    // The shared cookie, when present, is the most recent decision and wins over the old localStorage value.
+    const shared = window.gocoConsent?.getChoice?.() || null;
+    const wasAccepted = shared ? shared.a === 'granted' : previous === 'true';
     // Declining after having accepted is a withdrawal. Recorded BEFORE anything that may reload the page.
     recordConsent(
-      accepted ? 'accepted' : previous === 'true' ? 'withdrawn' : 'declined',
+      accepted ? 'accepted' : wasAccepted ? 'withdrawn' : 'declined',
       openedFromSettings ? 'settings' : 'banner'
     );
     try {

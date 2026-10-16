@@ -1,6 +1,6 @@
 # Política de Privacidad y Cookies
 
-**Última actualización:** 6 de octubre de 2026
+**Última actualización:** 16 de octubre de 2026
 
 ## 1. Quiénes somos
 
@@ -38,11 +38,12 @@ Le pedimos su decisión mediante un banner de cookies. **Las cookies de analíti
 | `_gcl_au` (cuando Google Ads esté activo) | Google Ads | Mide las conversiones de anuncios | 90 días | Publicidad (requiere consentimiento) |
 | `cookieConsent` (almacenamiento local del navegador) | Good Company | Recuerda su decisión sobre las cookies | Hasta que usted la borre | Estrictamente necesaria |
 | `cookieConsentId` (almacenamiento local del navegador) | Good Company | Identificador aleatorio que vincula sus decisiones sobre cookies con nuestro registro de ellas | Hasta que usted lo borre | Estrictamente necesaria |
+| `goco_consent` (cookie en goodcompanyit.com y sus subdominios) | Good Company | Recuerda su decisión sobre las cookies (analítica y publicidad por separado) y el identificador aleatorio de nuestro registro de ella, para que su decisión se aplique en nuestro sitio web y en nuestros subdominios | 12 meses | Estrictamente necesaria |
 | `cyberAssessmentPopupDismissed` (almacenamiento local del navegador) | Good Company | Recuerda que cerró la ventana de la evaluación (no se vuelve a mostrar durante 30 días) o que usó su botón | Hasta que usted la borre | Preferencias |
 
 **Sus opciones.** Puede rechazar las cookies en el banner, cambiar su decisión en cualquier momento con el enlace "Configuración de cookies" del pie de página, borrar las cookies en su navegador o usar el complemento de exclusión de Google (tools.google.com/dlpage/gaoptout). Tratamos la señal Global Privacy Control de su navegador como un rechazo de las cookies de analítica. Rechazar no limita su uso del sitio.
 
-**Registro de su decisión.** Para poder demostrar que usted tomó una decisión, guardamos un registro de ella: un identificador aleatorio guardado en su navegador, la fecha y hora, la versión de esta política y del banner, su decisión (aceptó, rechazó o la retiró después) y si se detectó una señal Global Privacy Control. No almacenamos su dirección IP completa ni información que lo identifique personalmente. Conservamos este registro durante 3 años.
+**Registro de su decisión.** Para poder demostrar que usted tomó una decisión, guardamos un registro de ella: un identificador aleatorio guardado en su navegador (en el almacenamiento local y en la cookie `goco_consent`), la fecha y hora, la versión de esta política y del banner, en cuál de nuestros sitios estaba cuando decidió, su decisión (aceptó, rechazó o la retiró después) y si se detectó una señal Global Privacy Control. No almacenamos su dirección IP completa ni información que lo identifique personalmente. Conservamos este registro durante 3 años.
 
 ## 5. Con quién compartimos la información
 
