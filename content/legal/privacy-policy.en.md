@@ -10,7 +10,9 @@ Privacy contact: **goco@goodcompanyit.com**
 
 ## 2. Information we collect
 
-**Information you give us.** When you use our contact form, you give us your full name, company name, email address, phone number, industry, the services you are interested in, your message, and whether you want to receive updates from us. When you complete the assessment on our own quiz application (quiz.goodcompanyit.com) or request another resource from us, we receive the answers you submit and any contact details you provide. Emails or calls with us also contain the information you share.
+**Information you give us.** When you use our contact form, you give us your full name, company name, email address, phone number, industry, the services you are interested in, your message, and whether you want to receive updates from us. When you use one of our interactive tools (the assessment quiz, the cost calculator and the awareness game, hosted on subdomains of goodcompanyit.com such as quiz.goodcompanyit.com) or request another resource from us, we receive the answers you submit and any contact details you provide. Emails or calls with us also contain the information you share.
+
+**Campaign information.** When you submit a form in one of those tools, we also store, together with your contact details, the campaign parameters of the link you used to reach it (for example, that it came from a LinkedIn post) and the name of the website you came from (never the full address of that page). We use it to understand which of our activities bring people to us. It stays in your browser's memory only until you submit the form, it is not stored in a cookie, and we keep it for as long as the contact information it is stored with (section 7).
 
 **Business contact information from other sources.** Where the law allows it, we may use business contact details obtained from public sources or professional directories to introduce our services to companies that may be interested. Where those details identify an individual and their processing is subject to Colombian data-protection law, we carry out marketing or outreach activities only when we have the authorization the law requires. You can ask us to stop contacting you at any time (see sections 9 and 12).
 
@@ -23,13 +25,14 @@ We do not knowingly collect sensitive personal information through this website.
 - To answer your enquiries and provide quotes or services you request.
 - To contact potential customers about our services, and to send updates or newsletters if you opted in. You can unsubscribe at any time.
 - To understand how the site is used and improve it (analytics, with your consent for cookie-based tools).
+- To understand which of our campaigns and channels bring people to us, using the campaign information stored with a form submission.
 - To keep the site secure and to comply with legal obligations.
 
 Where the law requires a legal basis, we rely on your consent (analytics cookies, newsletter), steps taken at your request before a contract (enquiries), and our legitimate interest in running and securing the business. Where the law requires your authorization for marketing or outreach (for example Colombian law, when the data belongs to an individual), we carry them out only if we have it.
 
 ## 4. Cookies and similar technologies
 
-We ask for your choice with a cookie banner. **Analytics cookies are off by default and are only set if you click "Agree".** Until then we do not load Google Analytics.
+We ask for your choice with a cookie banner. **Analytics cookies are off by default and are only set if you click "Agree".** Until then we do not load Google Analytics. The same applies to the interactive tools we host on subdomains of goodcompanyit.com (the assessment quiz, the cost calculator and the awareness game): there the banner asks only about analytics, we do not use advertising cookies, and your choice is shared across our website and these tools through the cookie `goco_consent`.
 
 | Name | Provider | Purpose | Duration | Type |
 |---|---|---|---|---|
@@ -50,6 +53,9 @@ We ask for your choice with a cookie banner. **Analytics cookies are off by defa
 We do not sell personal information for money. If you consent to advertising cookies, Google may receive information about your visit for advertising measurement and remarketing. You can refuse advertising cookies through the cookie banner or the "Cookie settings" link at any time. Service providers process data on our behalf:
 
 - **Google** (Analytics, Tag Manager and Ads, only after you accept cookies).
+- **Google reCAPTCHA** — protects our forms from abuse and fraud. In our interactive tools it is loaded when you reach the form, and it receives information about your visit and device for that security purpose.
+- **Cloudflare** — hosting of our interactive tools and filtering of excessive requests to their forms.
+- **Google Fonts and Google Public DNS** — in our interactive tools, the typeface is requested from Google when the page loads (Google receives your IP address), and when you submit a form we check, through Google Public DNS, that the domain of your email address can receive mail (only the domain is sent, not the address).
 - **Vercel** — website hosting and cookieless page-view analytics.
 - **Cloudinary** — delivery of the images and videos shown on the website. It receives your IP address when your browser loads them.
 - **Google Workspace / Google Sheets** — we keep our contact list (CRM) there.
