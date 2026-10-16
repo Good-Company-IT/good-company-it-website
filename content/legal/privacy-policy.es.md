@@ -1,6 +1,6 @@
 # Política de Privacidad y Cookies
 
-**Última actualización:** 6 de octubre de 2026
+**Última actualización:** 16 de octubre de 2026
 
 ## 1. Quiénes somos
 
@@ -10,7 +10,9 @@ Contacto de privacidad: **goco@goodcompanyit.com**
 
 ## 2. Información que recogemos
 
-**Información que usted nos entrega.** Cuando usa nuestro formulario de contacto, nos entrega su nombre completo, el nombre de su empresa, su correo electrónico, su teléfono, su industria, los servicios que le interesan, su mensaje y si desea recibir novedades nuestras. Cuando completa la evaluación en nuestra propia aplicación de quiz (quiz.goodcompanyit.com) o nos solicita otro recurso, recibimos las respuestas que envía y los datos de contacto que nos proporcione. Los correos o llamadas con nosotros también contienen la información que usted comparte.
+**Información que usted nos entrega.** Cuando usa nuestro formulario de contacto, nos entrega su nombre completo, el nombre de su empresa, su correo electrónico, su teléfono, su industria, los servicios que le interesan, su mensaje y si desea recibir novedades nuestras. Cuando usa una de nuestras herramientas interactivas (el quiz de evaluación, la calculadora de costos y el juego de concientización, alojadas en subdominios de goodcompanyit.com como quiz.goodcompanyit.com) o nos solicita otro recurso, recibimos las respuestas que envía y los datos de contacto que nos proporcione. Los correos o llamadas con nosotros también contienen la información que usted comparte.
+
+**Información de campaña.** Cuando envía un formulario en una de esas herramientas, guardamos además, junto con sus datos de contacto, los parámetros de campaña del enlace con el que llegó (por ejemplo, que venía de una publicación de LinkedIn) y el nombre del sitio web del que venía (nunca la dirección completa de esa página). La usamos para entender cuáles de nuestras actividades nos traen personas. Permanece solo en la memoria de su navegador hasta que envía el formulario, no se guarda en una cookie, y la conservamos durante el mismo tiempo que la información de contacto con la que se guarda (sección 7).
 
 **Información de contacto empresarial de otras fuentes.** Cuando la ley lo permita, podemos utilizar datos de contacto empresarial obtenidos de fuentes públicas o directorios profesionales para presentar nuestros servicios a empresas potencialmente interesadas. Cuando esos datos identifiquen a una persona natural y su tratamiento esté sujeto a la legislación colombiana, realizaremos actividades de marketing o prospección únicamente cuando contemos con la autorización exigida por la ley. Puede pedirnos que dejemos de contactarlo en cualquier momento (véanse las secciones 9 y 12).
 
@@ -23,13 +25,14 @@ No recogemos conscientemente información personal sensible a través de este si
 - Para responder sus consultas y prestarle las cotizaciones o servicios que solicite.
 - Para contactar a posibles clientes sobre nuestros servicios y enviar novedades o boletines si usted lo autorizó. Puede darse de baja en cualquier momento.
 - Para entender cómo se usa el sitio y mejorarlo (analítica, con su consentimiento para las herramientas basadas en cookies).
+- Para entender qué campañas y canales nos traen personas, a partir de la información de campaña que se guarda junto con el envío de un formulario.
 - Para mantener la seguridad del sitio y cumplir obligaciones legales.
 
 Cuando la ley exige una base jurídica, nos basamos en su consentimiento (cookies de analítica, boletín), en medidas adoptadas a petición suya antes de un contrato (consultas) y en nuestro interés legítimo de operar y proteger el negocio. Cuando la ley exige su autorización para actividades de marketing o prospección (por ejemplo, la legislación colombiana, tratándose de datos de una persona natural), solo las realizamos si contamos con ella.
 
 ## 4. Cookies y tecnologías similares
 
-Le pedimos su decisión mediante un banner de cookies. **Las cookies de analítica están desactivadas por defecto y solo se activan si usted pulsa "Acepto".** Hasta entonces no cargamos Google Analytics.
+Le pedimos su decisión mediante un banner de cookies. **Las cookies de analítica están desactivadas por defecto y solo se activan si usted pulsa "Acepto".** Hasta entonces no cargamos Google Analytics. Lo mismo aplica a las herramientas interactivas que alojamos en subdominios de goodcompanyit.com (el quiz de evaluación, la calculadora de costos y el juego de concientización): allí el banner pregunta solo por la analítica, no usamos cookies de publicidad, y su decisión se comparte entre nuestro sitio web y estas herramientas mediante la cookie `goco_consent`.
 
 | Nombre | Proveedor | Finalidad | Duración | Tipo |
 |---|---|---|---|---|
@@ -38,17 +41,21 @@ Le pedimos su decisión mediante un banner de cookies. **Las cookies de analíti
 | `_gcl_au` (cuando Google Ads esté activo) | Google Ads | Mide las conversiones de anuncios | 90 días | Publicidad (requiere consentimiento) |
 | `cookieConsent` (almacenamiento local del navegador) | Good Company | Recuerda su decisión sobre las cookies | Hasta que usted la borre | Estrictamente necesaria |
 | `cookieConsentId` (almacenamiento local del navegador) | Good Company | Identificador aleatorio que vincula sus decisiones sobre cookies con nuestro registro de ellas | Hasta que usted lo borre | Estrictamente necesaria |
+| `goco_consent` (cookie en goodcompanyit.com y sus subdominios) | Good Company | Recuerda su decisión sobre las cookies (analítica y publicidad por separado) y el identificador aleatorio de nuestro registro de ella, para que su decisión se aplique en nuestro sitio web y en nuestros subdominios | 12 meses | Estrictamente necesaria |
 | `cyberAssessmentPopupDismissed` (almacenamiento local del navegador) | Good Company | Recuerda que cerró la ventana de la evaluación (no se vuelve a mostrar durante 30 días) o que usó su botón | Hasta que usted la borre | Preferencias |
 
 **Sus opciones.** Puede rechazar las cookies en el banner, cambiar su decisión en cualquier momento con el enlace "Configuración de cookies" del pie de página, borrar las cookies en su navegador o usar el complemento de exclusión de Google (tools.google.com/dlpage/gaoptout). Tratamos la señal Global Privacy Control de su navegador como un rechazo de las cookies de analítica. Rechazar no limita su uso del sitio.
 
-**Registro de su decisión.** Para poder demostrar que usted tomó una decisión, guardamos un registro de ella: un identificador aleatorio guardado en su navegador, la fecha y hora, la versión de esta política y del banner, su decisión (aceptó, rechazó o la retiró después) y si se detectó una señal Global Privacy Control. No almacenamos su dirección IP completa ni información que lo identifique personalmente. Conservamos este registro durante 3 años.
+**Registro de su decisión.** Para poder demostrar que usted tomó una decisión, guardamos un registro de ella: un identificador aleatorio guardado en su navegador (en el almacenamiento local y en la cookie `goco_consent`), la fecha y hora, la versión de esta política y del banner, en cuál de nuestros sitios estaba cuando decidió, su decisión (aceptó, rechazó o la retiró después) y si se detectó una señal Global Privacy Control. No almacenamos su dirección IP completa ni información que lo identifique personalmente. Conservamos este registro durante 3 años.
 
 ## 5. Con quién compartimos la información
 
 No vendemos información personal a cambio de dinero. Si usted consiente las cookies de publicidad, Google puede recibir información sobre su visita para medir publicidad y para remarketing. Puede rechazar las cookies de publicidad en el banner o con el enlace "Configuración de cookies" en cualquier momento. Algunos proveedores tratan datos por nuestra cuenta:
 
 - **Google** (Analytics, Tag Manager y Ads, solo después de que usted acepte las cookies).
+- **Google reCAPTCHA**: protege nuestros formularios contra abusos y fraude. En nuestras herramientas interactivas se carga cuando usted llega al formulario, y recibe información sobre su visita y su dispositivo con esa finalidad de seguridad.
+- **Cloudflare**: alojamiento de nuestras herramientas interactivas y filtrado de solicitudes excesivas a sus formularios.
+- **Google Fonts y Google Public DNS**: en nuestras herramientas interactivas, la tipografía se solicita a Google cuando carga la página (Google recibe su dirección IP), y cuando usted envía un formulario comprobamos, mediante Google Public DNS, que el dominio de su correo pueda recibir mensajes (solo se envía el dominio, no la dirección).
 - **Vercel**: alojamiento del sitio web y medición de visitas sin cookies.
 - **Cloudinary**: entrega de las imágenes y los videos que se muestran en el sitio web. Recibe su dirección IP cuando su navegador los carga.
 - **Google Workspace / Google Sheets**: allí guardamos nuestra lista de contactos (CRM).
