@@ -7,7 +7,7 @@ category: Compliance
 author: GoCo Team
 date: '2026-09-30'
 readTime: 5 min read
-image: https://res.cloudinary.com/hxsmbfka/image/upload/v1790776826/mysfya06uo3m9kro8mp1.jpg
+image: https://res.cloudinary.com/hxsmbfka/image/upload/v1792767617/xonfqrudshbgexsyzzzt.jpg
 imageAlt: 'Logistics Cybersecurity Risks: What CBP and MTSA Require'
 featured: false
 ---
@@ -48,7 +48,7 @@ If your operation handles customs brokerage, you're expected to be able to repor
 
 ## MTSA Cybersecurity Plans, and What to Do Next
 
-![logistics cybersecurity risks: MTSA Cybersecurity Plans, and What to Do Next](https://res.cloudinary.com/hxsmbfka/image/upload/v1790776826/eash3lryeg6usdkjuvtd.jpg)
+![logistics cybersecurity risks: MTSA Cybersecurity Plans, and What to Do Next](https://res.cloudinary.com/hxsmbfka/image/upload/v1792767618/gyrfec3nrt7pafua5mid.webp)
 
 Operations involving MTSA-regulated port or vessel facilities are expected to maintain a written Cybersecurity Plan and a designated Cybersecurity Officer - a specific, named accountability requirement, not a general best practice. These logistics cybersecurity risks share a pattern: MFA, encryption, a tested response plan, reviewed vendors, current compliance, an uptime guarantee with real consequences, a 72-hour reporting procedure, and a named Cybersecurity Officer where MTSA applies. The operations that hold up under a real incident are the ones that checked.
 
